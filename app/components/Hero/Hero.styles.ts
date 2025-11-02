@@ -186,7 +186,6 @@ const useStyles = makeStyles({ name: "Hero" })(
         maxWidth: 600,
         borderRadius: "16px",
         objectFit: "cover",
-        boxShadow: "0 10px 40px rgba(0, 0, 0, 0.15)",
         transition: "transform 0.3s ease",
         "&:hover": {
           transform: "scale(1.02)",

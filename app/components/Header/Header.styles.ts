@@ -51,8 +51,8 @@ const useStyles = makeStyles({ name: "Header" })(
       navLink: {
         color: "#8B7355",
         textDecoration: "none",
-        fontSize: "0.875rem",
-        fontWeight: 400,
+        fontSize: "1rem",
+        fontWeight: 600,
         letterSpacing: "0.08em",
         textTransform: "uppercase",
         position: "relative",
@@ -100,8 +100,8 @@ const useStyles = makeStyles({ name: "Header" })(
       mobileNavLink: {
         color: "#8B7355",
         textDecoration: "none",
-        fontSize: "0.9375rem",
-        fontWeight: 400,
+        fontSize: "1.0625rem",
+        fontWeight: 600,
         letterSpacing: "0.05em",
         textTransform: "uppercase",
         padding: spacing(1.5, 3),
