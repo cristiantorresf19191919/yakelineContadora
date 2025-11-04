@@ -1,5 +1,6 @@
 "use client";
 
+import { ReactElement } from "react";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import { BlogArticle as BlogArticleType } from "@/lib/blogData";
@@ -15,7 +16,7 @@ export default function BlogArticle({ article }: BlogArticleProps) {
   // Simple markdown-like parser for the content
   const parseContent = (content: string) => {
     const lines = content.split("\n");
-    const elements: JSX.Element[] = [];
+    const elements: ReactElement[] = [];
     let currentParagraph: string[] = [];
     let currentList: string[] = [];
     let key = 0;

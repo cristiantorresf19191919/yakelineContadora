@@ -25,7 +25,7 @@ export const blogArticles: BlogArticle[] = [
     excerpt:
       "¿Te ha pasado que llega el día de pago… y a los pocos días el dinero desaparece como si nunca hubiera existido? No es solo un tema de ingresos, muchas veces es un tema de hábitos, emociones y decisiones automáticas.",
     category: "Finanzas Personales",
-    date: "2024-12-01",
+    date: "2025-11-04",
     heroImage: "/photo1.jpg",
     heroImageAlt: "Asesora contable profesional",
     seoTitle:
