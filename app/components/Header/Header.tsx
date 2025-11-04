@@ -3,15 +3,17 @@
 import { Box, IconButton } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
+import Link from "next/link";
 import { useState, useEffect } from "react";
 import useStyles from "./Header.styles";
 
 const navItems = [
-  { label: "INICIO", href: "#" },
+  { label: "INICIO", href: "/" },
   { label: "QUIEN SOY", href: "#" },
   { label: "SERVICIOS CONTABLES", href: "#" },
   { label: "MENTORÍAS", href: "#" },
   { label: "LIBRO", href: "#" },
+  { label: "BLOG", href: "/blog" },
 ];
 
 export default function Header() {
@@ -46,14 +48,14 @@ export default function Header() {
           aria-label="Main navigation"
         >
           {navItems.map((item) => (
-            <a
+            <Link
               key={item.label}
-              href={item.href}
+              href={item.href || "#"}
               className={classes.navLink}
               onClick={handleNavClick}
             >
               {item.label}
-            </a>
+            </Link>
           ))}
         </Box>
 
@@ -78,14 +80,14 @@ export default function Header() {
           aria-label="Mobile navigation"
         >
         {navItems.map((item) => (
-          <a
+          <Link
             key={item.label}
-            href={item.href}
+            href={item.href || "#"}
             className={classes.mobileNavLink}
             onClick={handleNavClick}
           >
             {item.label}
-          </a>
+          </Link>
         ))}
         </Box>
       )}
