@@ -142,7 +142,6 @@ const useStyles = makeStyles({ name: "BlogArticle" })(
           marginBottom: spacing(2.5),
           lineHeight: 1.3,
           paddingTop: spacing(2),
-          borderTop: "2px solid #E8E0D6",
           [breakpoints.down("md")]: {
             fontSize: "2rem",
             marginTop: spacing(4),
@@ -203,11 +202,31 @@ const useStyles = makeStyles({ name: "BlogArticle" })(
         },
         "& hr": {
           border: "none",
-          borderTop: "3px solid #E8E0D6",
-          margin: spacing(5, 0),
-          borderRadius: "2px",
+          borderTop: "none",
+          width: "100%",
+          height: "2px",
+          background: "linear-gradient(90deg, transparent 0%, #4A3728 20%, #4A3728 80%, transparent 100%)",
+          margin: `${spacing(3)} auto ${spacing(4)}`,
+          maxWidth: "200px",
+          position: "relative",
+          padding: 0,
+          "&::before, &::after": {
+            content: '""',
+            position: "absolute",
+            top: "-1px",
+            width: "2px",
+            height: "4px",
+            background: "#4A3728",
+          },
+          "&::before": {
+            left: "20%",
+          },
+          "&::after": {
+            right: "20%",
+          },
           [breakpoints.down("sm")]: {
-            margin: spacing(4, 0),
+            margin: `${spacing(2.5)} auto ${spacing(3.5)}`,
+            maxWidth: "160px",
           },
         },
       },
