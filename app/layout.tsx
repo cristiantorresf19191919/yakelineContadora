@@ -3,6 +3,7 @@ import EmotionCacheProvider from "./emotion-cache";
 import ThemeProvider from "./ThemeProvider";
 import Header from "./components/Header/Header";
 import "./globals.css";
+import { FloatingChat } from "./components/FloatingChat/FloatingChat";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -33,6 +34,7 @@ export default function RootLayout({
           <ThemeProvider>
             <Header />
             {children}
+            <FloatingChat />
           </ThemeProvider>
         </EmotionCacheProvider>
       </body>

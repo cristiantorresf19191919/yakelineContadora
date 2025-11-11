@@ -3,7 +3,11 @@ import { Theme } from "@mui/material/styles";
 
 const useStyles = makeStyles({ name: "Hero" })(
   (theme: Theme) => {
-    const { breakpoints, spacing } = theme;
+    const { breakpoints, spacing, palette } = theme;
+    const warmBrown = "#6B4C2F";
+    const cloudWhite = "#FFF1E4";
+    const blushIvory = "#FFE6CC";
+    const veilLilac = "#F0E1FF";
     return {
       hero: {
         position: "relative",
@@ -11,7 +15,7 @@ const useStyles = makeStyles({ name: "Hero" })(
         minHeight: "90vh",
         display: "flex",
         alignItems: "center",
-        background: "linear-gradient(to right, #FFFFFF 0%, #FFF8F5 100%)",
+        background: `linear-gradient(130deg, ${cloudWhite} 0%, ${blushIvory} 48%, ${veilLilac} 100%)`,
         padding: spacing(8, 6),
         overflow: "hidden",
         [breakpoints.down("lg")]: {
@@ -58,7 +62,7 @@ const useStyles = makeStyles({ name: "Hero" })(
       mainHeading: {
         fontSize: "3.5rem",
         fontWeight: 700,
-        color: "#4A3728",
+        color: warmBrown,
         lineHeight: 1.2,
         marginBottom: spacing(2),
         animation: "fadeInUp 0.8s ease-out 0.2s both",
@@ -89,7 +93,7 @@ const useStyles = makeStyles({ name: "Hero" })(
       tagline: {
         fontSize: "1.5rem",
         fontWeight: 400,
-        color: "#6B5B4A",
+        color: palette.primary.dark,
         marginTop: spacing(1),
         animation: "fadeInUp 0.8s ease-out 0.3s both",
         [breakpoints.down("lg")]: {
@@ -106,7 +110,7 @@ const useStyles = makeStyles({ name: "Hero" })(
       bodyText: {
         fontSize: "1.125rem",
         fontWeight: 400,
-        color: "#5A4A3A",
+        color: palette.text.secondary,
         lineHeight: 1.6,
         maxWidth: "90%",
         marginTop: spacing(1),
@@ -123,7 +127,7 @@ const useStyles = makeStyles({ name: "Hero" })(
       subHeading: {
         fontSize: "1.25rem",
         fontWeight: 500,
-        color: "#4A3728",
+        color: warmBrown,
         marginTop: spacing(2),
         animation: "fadeInUp 0.8s ease-out 0.5s both",
         [breakpoints.down("md")]: {
@@ -138,21 +142,22 @@ const useStyles = makeStyles({ name: "Hero" })(
         display: "inline-flex",
         alignItems: "center",
         gap: spacing(1.5),
-        backgroundColor: "#9FE870",
-        color: "#FFFFFF",
-        padding: spacing(1.5, 3),
-        borderRadius: "50px",
+        backgroundColor: palette.primary.main,
+        color: palette.primary.contrastText,
+        padding: spacing(1.5, 3.5),
+        borderRadius: "999px",
         textDecoration: "none",
         fontWeight: 600,
         fontSize: "1.125rem",
         marginTop: spacing(3),
-        transition: "all 0.3s ease",
-        boxShadow: "0 4px 12px rgba(159, 232, 112, 0.3)",
+        transition:
+          "transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease",
+        boxShadow: "0 14px 32px rgba(75, 38, 118, 0.24)",
         animation: "fadeInUp 0.8s ease-out 0.6s both",
         "&:hover": {
-          backgroundColor: "#8FD960",
+          backgroundColor: palette.primary.dark,
           transform: "translateY(-2px)",
-          boxShadow: "0 6px 16px rgba(159, 232, 112, 0.4)",
+          boxShadow: "0 20px 36px rgba(75, 38, 118, 0.28)",
         },
         "&:active": {
           transform: "translateY(0)",
@@ -161,7 +166,7 @@ const useStyles = makeStyles({ name: "Hero" })(
           alignSelf: "center",
         },
         [breakpoints.down("sm")]: {
-          padding: spacing(1.25, 2.5),
+          padding: spacing(1.25, 2.75),
           fontSize: "1rem",
         },
       },

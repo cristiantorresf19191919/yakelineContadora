@@ -3,13 +3,13 @@ import { Theme } from "@mui/material/styles";
 
 const useStyles = makeStyles({ name: "BlogArticle" })(
   (theme: Theme) => {
-    const { breakpoints, spacing } = theme;
+    const { breakpoints, spacing, palette } = theme;
     return {
       article: {
         maxWidth: 1000,
         margin: "0 auto",
         padding: spacing(0, 6),
-        backgroundColor: "#FFFFFF",
+        backgroundColor: palette.background.paper,
         [breakpoints.down("md")]: {
           padding: spacing(0, 4),
         },
@@ -130,14 +130,14 @@ const useStyles = makeStyles({ name: "BlogArticle" })(
         paddingTop: spacing(2),
       },
       content: {
-        color: "#4A3728",
+        color: palette.text.primary,
         fontSize: "1.1875rem",
         lineHeight: 1.85,
         fontWeight: 400,
         "& h2": {
           fontSize: "2.25rem",
           fontWeight: 700,
-          color: "#4A3728",
+          color: palette.secondary.dark,
           marginTop: spacing(5),
           marginBottom: spacing(2.5),
           lineHeight: 1.3,
@@ -154,7 +154,7 @@ const useStyles = makeStyles({ name: "BlogArticle" })(
         "& h3": {
           fontSize: "1.75rem",
           fontWeight: 600,
-          color: "#5A4A3A",
+          color: palette.primary.dark,
           marginTop: spacing(4),
           marginBottom: spacing(2),
           lineHeight: 1.4,
@@ -165,7 +165,7 @@ const useStyles = makeStyles({ name: "BlogArticle" })(
         },
         "& p": {
           marginBottom: spacing(3),
-          color: "#4A3728",
+          color: palette.text.primary,
           fontSize: "1.1875rem",
           lineHeight: 1.85,
           [breakpoints.down("sm")]: {
@@ -178,12 +178,12 @@ const useStyles = makeStyles({ name: "BlogArticle" })(
           paddingLeft: spacing(5),
           "& li": {
             marginBottom: spacing(1.5),
-            color: "#4A3728",
+            color: palette.text.primary,
             fontSize: "1.1875rem",
             lineHeight: 1.8,
             position: "relative",
             "&::marker": {
-              color: "#9FE870",
+              color: palette.primary.main,
               fontWeight: 600,
             },
             [breakpoints.down("sm")]: {
@@ -194,18 +194,18 @@ const useStyles = makeStyles({ name: "BlogArticle" })(
         },
         "& strong": {
           fontWeight: 600,
-          color: "#4A3728",
+          color: palette.secondary.dark,
         },
         "& em": {
           fontStyle: "italic",
-          color: "#6B5B4A",
+          color: palette.primary.dark,
         },
         "& hr": {
           border: "none",
           borderTop: "none",
           width: "100%",
           height: "2px",
-          background: "linear-gradient(90deg, transparent 0%, #4A3728 20%, #4A3728 80%, transparent 100%)",
+          background: `linear-gradient(90deg, transparent 0%, ${palette.secondary.dark} 20%, ${palette.secondary.dark} 80%, transparent 100%)`,
           margin: `${spacing(3)} auto ${spacing(4)}`,
           maxWidth: "200px",
           position: "relative",
@@ -216,7 +216,7 @@ const useStyles = makeStyles({ name: "BlogArticle" })(
             top: "-1px",
             width: "2px",
             height: "4px",
-            background: "#4A3728",
+            background: palette.secondary.dark,
           },
           "&::before": {
             left: "20%",
@@ -233,12 +233,12 @@ const useStyles = makeStyles({ name: "BlogArticle" })(
       introText: {
         fontSize: "1.375rem",
         fontWeight: 500,
-        color: "#6B5B4A",
+        color: palette.primary.dark,
         lineHeight: 1.7,
         fontStyle: "italic",
         marginBottom: spacing(4),
         paddingLeft: spacing(3),
-        borderLeft: "4px solid #9FE870",
+        borderLeft: `4px solid ${palette.primary.main}`,
         [breakpoints.down("sm")]: {
           fontSize: "1.1875rem",
           paddingLeft: spacing(2),
@@ -248,11 +248,11 @@ const useStyles = makeStyles({ name: "BlogArticle" })(
       cta: {
         marginTop: spacing(8),
         padding: spacing(5),
-        backgroundColor: "linear-gradient(135deg, #FDFBF8 0%, #FFF8F5 100%)",
-        background: "linear-gradient(135deg, #FDFBF8 0%, #FFF8F5 100%)",
+        backgroundColor: "transparent",
+        background: `linear-gradient(135deg, ${palette.primary.light} 0%, ${palette.background.paper} 100%)`,
         borderRadius: "20px",
-        border: "2px solid #E8E0D6",
-        boxShadow: "0 8px 32px rgba(0, 0, 0, 0.06)",
+        border: `2px solid rgba(207, 166, 220, 0.45)`,
+        boxShadow: "0 8px 32px rgba(44, 18, 54, 0.08)",
         position: "relative",
         overflow: "hidden",
         "&::before": {
@@ -262,7 +262,7 @@ const useStyles = makeStyles({ name: "BlogArticle" })(
           left: 0,
           width: "4px",
           height: "100%",
-          backgroundColor: "#9FE870",
+          backgroundColor: palette.primary.main,
         },
         [breakpoints.down("sm")]: {
           padding: spacing(4),
@@ -273,7 +273,7 @@ const useStyles = makeStyles({ name: "BlogArticle" })(
       ctaText: {
         fontSize: "1.5rem",
         fontWeight: 700,
-        color: "#4A3728",
+        color: palette.secondary.dark,
         marginBottom: spacing(3),
         lineHeight: 1.3,
         [breakpoints.down("sm")]: {
@@ -290,13 +290,13 @@ const useStyles = makeStyles({ name: "BlogArticle" })(
           position: "relative",
           marginBottom: spacing(2),
           fontSize: "1.125rem",
-          color: "#4A3728",
+          color: palette.text.primary,
           lineHeight: 1.6,
           "&::before": {
             content: '"✓"',
             position: "absolute",
             left: 0,
-            color: "#9FE870",
+            color: palette.primary.main,
             fontSize: "1.5rem",
             fontWeight: 700,
             lineHeight: 1,
@@ -311,19 +311,19 @@ const useStyles = makeStyles({ name: "BlogArticle" })(
         display: "inline-flex",
         alignItems: "center",
         gap: spacing(1.5),
-        backgroundColor: "#9FE870",
-        color: "#FFFFFF",
+        backgroundColor: palette.primary.main,
+        color: palette.primary.contrastText,
         padding: spacing(1.75, 4),
         borderRadius: "50px",
         textDecoration: "none",
         fontWeight: 600,
         fontSize: "1.125rem",
         transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
-        boxShadow: "0 4px 16px rgba(159, 232, 112, 0.3)",
+        boxShadow: "0 4px 16px rgba(44, 18, 54, 0.24)",
         "&:hover": {
-          backgroundColor: "#8FD960",
+          backgroundColor: palette.primary.dark,
           transform: "translateY(-2px)",
-          boxShadow: "0 6px 24px rgba(159, 232, 112, 0.4)",
+          boxShadow: "0 6px 24px rgba(44, 18, 54, 0.32)",
         },
         "&:active": {
           transform: "translateY(0)",

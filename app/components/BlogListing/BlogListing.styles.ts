@@ -3,10 +3,10 @@ import { Theme } from "@mui/material/styles";
 
 const useStyles = makeStyles({ name: "BlogListing" })(
   (theme: Theme) => {
-    const { breakpoints, spacing } = theme;
+    const { breakpoints, spacing, palette } = theme;
     return {
       section: {
-        backgroundColor: "#FDFBF8",
+        backgroundColor: palette.background.default,
         padding: spacing(8, 6),
         minHeight: "80vh",
         [breakpoints.down("md")]: {
@@ -30,7 +30,7 @@ const useStyles = makeStyles({ name: "BlogListing" })(
       title: {
         fontSize: "3rem",
         fontWeight: 700,
-        color: "#4A3728",
+        color: palette.secondary.dark,
         marginBottom: spacing(2),
         [breakpoints.down("lg")]: {
           fontSize: "2.5rem",
@@ -44,7 +44,7 @@ const useStyles = makeStyles({ name: "BlogListing" })(
       },
       intro: {
         fontSize: "1.25rem",
-        color: "#6B5B4A",
+        color: palette.text.secondary,
         maxWidth: 700,
         margin: "0 auto",
         lineHeight: 1.6,
@@ -58,7 +58,7 @@ const useStyles = makeStyles({ name: "BlogListing" })(
       emptyState: {
         textAlign: "center",
         padding: spacing(8, 2),
-        color: "#6B5B4A",
+        color: palette.text.secondary,
       },
       grid: {
         display: "grid",
@@ -73,19 +73,19 @@ const useStyles = makeStyles({ name: "BlogListing" })(
         },
       },
       card: {
-        backgroundColor: "#FFFFFF",
+        backgroundColor: palette.background.paper,
         borderRadius: "20px",
         overflow: "hidden",
         transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
         textDecoration: "none",
         display: "flex",
         flexDirection: "column",
-        boxShadow: "0 4px 16px rgba(0, 0, 0, 0.08)",
-        border: "1px solid rgba(139, 115, 85, 0.1)",
+        boxShadow: "0 4px 16px rgba(44, 18, 54, 0.1)",
+        border: "1px solid rgba(207, 166, 220, 0.25)",
         "&:hover": {
           transform: "translateY(-12px)",
-          boxShadow: "0 20px 48px rgba(0, 0, 0, 0.15)",
-          borderColor: "rgba(159, 232, 112, 0.3)",
+          boxShadow: "0 20px 48px rgba(44, 18, 54, 0.18)",
+          borderColor: "rgba(207, 166, 220, 0.45)",
           "& .imageZoom": {
             transform: "scale(1.08)",
           },
@@ -99,7 +99,7 @@ const useStyles = makeStyles({ name: "BlogListing" })(
         width: "100%",
         paddingTop: "65%",
         overflow: "hidden",
-        backgroundColor: "#F5F5F5",
+        backgroundColor: "#F7F1FA",
       },
       imageOverlay: {
         position: "absolute",
@@ -124,8 +124,8 @@ const useStyles = makeStyles({ name: "BlogListing" })(
         position: "absolute",
         top: spacing(2),
         left: spacing(2),
-        backgroundColor: "#FFFFFF",
-        color: "#8B7355",
+        backgroundColor: palette.background.paper,
+        color: palette.primary.dark,
         fontSize: "0.75rem",
         fontWeight: 600,
         textTransform: "uppercase",
@@ -148,13 +148,13 @@ const useStyles = makeStyles({ name: "BlogListing" })(
       },
       date: {
         fontSize: "0.875rem",
-        color: "#8B7355",
+        color: palette.primary.dark,
         fontWeight: 400,
       },
       cardTitle: {
         fontSize: "1.5rem",
         fontWeight: 600,
-        color: "#4A3728",
+        color: palette.secondary.dark,
         marginBottom: spacing(1.5),
         lineHeight: 1.3,
         display: "-webkit-box",
@@ -164,7 +164,7 @@ const useStyles = makeStyles({ name: "BlogListing" })(
       },
       cardExcerpt: {
         fontSize: "1rem",
-        color: "#6B5B4A",
+        color: palette.text.secondary,
         lineHeight: 1.6,
         display: "-webkit-box",
         WebkitLineClamp: 3,
@@ -179,7 +179,7 @@ const useStyles = makeStyles({ name: "BlogListing" })(
         gap: spacing(0.5),
         fontSize: "0.9375rem",
         fontWeight: 600,
-        color: "#9FE870",
+        color: palette.primary.dark,
         marginTop: "auto",
         transition: "transform 0.3s ease",
       },
