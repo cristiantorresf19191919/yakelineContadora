@@ -8,6 +8,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import { motion } from "framer-motion";
 import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
 import ErrorRoundedIcon from "@mui/icons-material/ErrorRounded";
 import LockRoundedIcon from "@mui/icons-material/LockRounded";
@@ -57,12 +58,32 @@ export default function NewsletterSection() {
 
   return (
     <Box component="section" className={classes.root}>
-      <Box className={classes.content}>
+      <motion.div
+        className={classes.content}
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+      >
         <Box className={classes.accentBlobTop} />
         <Box className={classes.accentBlobBottom} />
 
-        <Box className={classes.copy}>
-          <Box className={classes.badge}>newsletter exclusiva</Box>
+        <motion.div
+          className={classes.copy}
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+        >
+          <motion.div
+            className={classes.badge}
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: 0.3 }}
+          >
+            newsletter exclusiva
+          </motion.div>
           <Typography className={classes.heading}>
             ¡Suscríbete y recibe insights financieros diseñados para ti!
           </Typography>
@@ -73,15 +94,39 @@ export default function NewsletterSection() {
           </Typography>
 
           <Box className={classes.highlights}>
-            <Box className={classes.highlightChip}>Actualizaciones clave</Box>
-            <Box className={classes.highlightChip}>Consejos accionables</Box>
-            <Box className={classes.highlightChip}>Recursos descargables</Box>
+            {["Actualizaciones clave", "Consejos accionables", "Recursos descargables"].map((text, index) => (
+              <motion.div
+                key={text}
+                className={classes.highlightChip}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 0.5 + index * 0.1 }}
+                whileHover={{ scale: 1.05 }}
+              >
+                {text}
+              </motion.div>
+            ))}
           </Box>
-        </Box>
+        </motion.div>
 
-        <Box className={classes.formWrapper}>
+        <motion.div
+          className={classes.formWrapper}
+          initial={{ opacity: 0, x: 30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+        >
           <Box className={classes.formCard}>
-            <Typography variant="subtitle1" color="#6F4F33" fontWeight={600}>
+            <Typography 
+              variant="subtitle1" 
+              sx={{ 
+                color: "#5B21B6", 
+                fontWeight: 600,
+                fontSize: "1.125rem",
+                lineHeight: 1.5,
+              }}
+            >
               Une tu correo y recibe contenidos que simplifican tus finanzas.
             </Typography>
 
@@ -126,12 +171,15 @@ export default function NewsletterSection() {
             </Box>
 
             {status !== "idle" && statusMessage && (
-              <Box
+              <motion.div
                 className={cx(classes.statusMessage, {
                   success: status === "success",
                   error: status === "error",
                 })}
                 role={status === "error" ? "alert" : "status"}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3 }}
               >
                 {status === "success" ? (
                   <CheckCircleRoundedIcon fontSize="small" />
@@ -139,11 +187,11 @@ export default function NewsletterSection() {
                   <ErrorRoundedIcon fontSize="small" />
                 )}
                 {statusMessage}
-              </Box>
+              </motion.div>
             )}
           </Box>
-        </Box>
-      </Box>
+        </motion.div>
+      </motion.div>
     </Box>
   );
 }

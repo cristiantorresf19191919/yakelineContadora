@@ -12,6 +12,7 @@ const useStyles = makeStyles({ name: "Footer" })((theme: Theme) => {
   return {
     root: {
       backgroundColor: deepViolet,
+      background: `linear-gradient(180deg, ${deepViolet} 0%, ${midViolet} 50%, ${deepViolet} 100%)`,
       color: softViolet,
       padding: spacing(10, 4, 6),
       position: "relative",
@@ -25,14 +26,12 @@ const useStyles = makeStyles({ name: "Footer" })((theme: Theme) => {
     },
     topGlow: {
       position: "absolute",
-      top: "-120px",
-      left: "50%",
-      transform: "translateX(-50%)",
-      width: "80%",
-      maxWidth: 900,
-      height: 240,
+      top: 0,
+      left: 0,
+      right: 0,
+      height: "40%",
       background:
-        "radial-gradient(circle at center, rgba(230, 212, 255, 0.38) 0%, rgba(44, 27, 64, 0) 70%)",
+        "radial-gradient(ellipse at center top, rgba(139, 92, 246, 0.15) 0%, transparent 70%)",
       pointerEvents: "none",
     },
     container: {

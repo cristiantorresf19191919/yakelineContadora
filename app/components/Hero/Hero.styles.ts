@@ -15,7 +15,7 @@ const useStyles = makeStyles({ name: "Hero" })(
         minHeight: "90vh",
         display: "flex",
         alignItems: "center",
-        background: `linear-gradient(130deg, ${cloudWhite} 0%, ${blushIvory} 48%, ${veilLilac} 100%)`,
+        backgroundColor: "#FFFFFF",
         padding: spacing(8, 6),
         overflow: "hidden",
         [breakpoints.down("lg")]: {
@@ -191,10 +191,7 @@ const useStyles = makeStyles({ name: "Hero" })(
         maxWidth: 600,
         borderRadius: "16px",
         objectFit: "cover",
-        transition: "transform 0.3s ease",
-        "&:hover": {
-          transform: "scale(1.02)",
-        },
+        animation: "gentleScale 4s ease-in-out infinite",
         [breakpoints.down("lg")]: {
           maxWidth: 500,
         },
@@ -220,6 +217,14 @@ const useStyles = makeStyles({ name: "Hero" })(
         to: {
           opacity: 1,
           transform: "translateX(0)",
+        },
+      },
+      "@keyframes gentleScale": {
+        "0%, 100%": {
+          transform: "scale(1)",
+        },
+        "50%": {
+          transform: "scale(1.03)",
         },
       },
     };

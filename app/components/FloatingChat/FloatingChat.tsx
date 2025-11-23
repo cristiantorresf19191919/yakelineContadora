@@ -306,21 +306,42 @@ export function FloatingChat() {
       <motion.button
         className={`${styles.floatingButton} ${styles[animationState]}`}
         onClick={handleDrawerOpen}
-        whileHover={{ scale: 1.08 }}
-        whileTap={{ scale: 0.95 }}
+        whileHover={{ 
+          scale: 1.1,
+          rotate: [0, -5, 5, -5, 0],
+        }}
+        whileTap={{ scale: 0.96 }}
+        initial={{ scale: 0, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{
+          type: "spring",
+          stiffness: 260,
+          damping: 20,
+        }}
         aria-label="Abrir chat de asesor financiero"
         style={cssVars}
       >
-        <SmartToy className={styles.chatIcon} />
+        <motion.div
+          animate={{
+            rotate: animationState === "wave" ? [0, 5, -5, 0] : 0,
+          }}
+          transition={{
+            duration: 2,
+            repeat: animationState === "wave" ? Infinity : 0,
+            ease: "easeInOut",
+          }}
+        >
+          <SmartToy className={styles.chatIcon} />
+        </motion.div>
         {animationState !== "idle" && (
           <motion.div
             className={styles.ripple}
             animate={{
-              scale: [1, 2.1, 2.6],
-              opacity: [0.45, 0.25, 0],
+              scale: [1, 2.2, 2.8],
+              opacity: [0.5, 0.3, 0],
             }}
             transition={{
-              duration: 2,
+              duration: 2.5,
               repeat: Infinity,
               ease: "easeOut",
             }}
@@ -332,14 +353,17 @@ export function FloatingChat() {
         anchor="right"
         open={drawerOpen}
         onClose={() => setDrawerOpen(false)}
+        transitionDuration={400}
         PaperProps={{
           className: `${styles.drawer} ${isMaximized ? styles.maximized : ""}`,
           sx: {
-            width: isMaximized ? "100%" : { xs: "100%", sm: 420 },
+            width: isMaximized ? "100%" : { xs: "100%", sm: 440 },
             maxWidth: "100vw",
             backgroundColor: "#ffffff",
             borderLeft: "none",
-            boxShadow: isMaximized ? "none" : "-4px 0 24px rgba(46, 18, 53, 0.18)",
+            boxShadow: isMaximized 
+              ? "none" 
+              : "-8px 0 32px rgba(139, 92, 246, 0.15), -4px 0 16px rgba(124, 58, 237, 0.1)",
             height: "100vh",
             zIndex: isMaximized ? 1400 : 1200,
             display: "flex",
@@ -386,12 +410,18 @@ export function FloatingChat() {
 
         <Box className={styles.messagesContainer}>
           <AnimatePresence>
-            {messages.map((message) => (
+            {messages.map((message, index) => (
               <motion.div
                 key={message.id}
-                initial={{ opacity: 0, y: 24 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
+                initial={{ opacity: 0, y: 20, scale: 0.95 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                transition={{
+                  type: "spring",
+                  stiffness: 300,
+                  damping: 25,
+                  delay: index * 0.05,
+                }}
                 className={`${styles.messageWrapper} ${styles[message.sender]}`}
               >
                 <Box className={styles.messageContainer}>
@@ -408,12 +438,23 @@ export function FloatingChat() {
                     </Typography>
                     {message.detectedServices && (
                       <Box className={styles.serviceChips}>
-                        {message.detectedServices.map((detected) => (
-                          <Box
+                        {message.detectedServices.map((detected, idx) => (
+                          <motion.div
                             key={detected.service.id}
-                            className={styles.serviceCard}
-                            style={cssVars}
+                            initial={{ opacity: 0, y: 10, scale: 0.9 }}
+                            animate={{ opacity: 1, y: 0, scale: 1 }}
+                            transition={{
+                              type: "spring",
+                              stiffness: 200,
+                              damping: 20,
+                              delay: idx * 0.1,
+                            }}
+                            whileHover={{ scale: 1.02, y: -2 }}
                           >
+                            <Box
+                              className={styles.serviceCard}
+                              style={cssVars}
+                            >
                             <Chip
                               label={detected.service.name}
                               className={styles.serviceChip}
@@ -427,26 +468,36 @@ export function FloatingChat() {
                               {detected.service.summary}
                             </Typography>
                             <Box className={styles.serviceActions}>
-                              <Button
-                                variant="contained"
-                                startIcon={<WhatsApp />}
-                                onClick={() => window.open(detected.whatsappUrl, "_blank")}
-                                sx={{
-                                  textTransform: "none",
-                                  fontWeight: 600,
-                                  borderRadius: "999px",
-                                  paddingX: 2.4,
-                                  paddingY: 1,
-                                  backgroundColor: "#25D366",
-                                  "&:hover": {
-                                    backgroundColor: "#1EB358",
-                                  },
-                                }}
+                              <motion.div
+                                whileHover={{ scale: 1.02 }}
+                                whileTap={{ scale: 0.98 }}
                               >
-                                Continuar por WhatsApp
-                              </Button>
+                                <Button
+                                  variant="contained"
+                                  startIcon={<WhatsApp />}
+                                  onClick={() => window.open(detected.whatsappUrl, "_blank")}
+                                  sx={{
+                                    textTransform: "none",
+                                    fontWeight: 600,
+                                    borderRadius: "999px",
+                                    paddingX: 2.4,
+                                    paddingY: 1.2,
+                                    background: "linear-gradient(135deg, #25D366 0%, #1EB358 100%)",
+                                    boxShadow: "0 4px 16px rgba(37, 211, 102, 0.3)",
+                                    transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                                    "&:hover": {
+                                      background: "linear-gradient(135deg, #1EB358 0%, #25D366 100%)",
+                                      boxShadow: "0 6px 20px rgba(37, 211, 102, 0.4)",
+                                      transform: "translateY(-2px)",
+                                    },
+                                  }}
+                                >
+                                  Continuar por WhatsApp
+                                </Button>
+                              </motion.div>
                             </Box>
                           </Box>
+                          </motion.div>
                         ))}
                       </Box>
                     )}
@@ -460,12 +511,28 @@ export function FloatingChat() {
           </AnimatePresence>
 
           {isLoading && (
-            <Box className={styles.loadingIndicator}>
-              <Box className={styles.loadingContainer}>
-                <CircularProgress size={18} className={styles.loadingSpinner} />
-                <Typography className={styles.loadingText}>Analizando...</Typography>
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              <Box className={styles.loadingIndicator}>
+                <Box className={styles.loadingContainer}>
+                  <motion.div
+                    animate={{ rotate: 360 }}
+                    transition={{
+                      duration: 1.5,
+                      repeat: Infinity,
+                      ease: "linear",
+                    }}
+                  >
+                    <CircularProgress size={20} className={styles.loadingSpinner} />
+                  </motion.div>
+                  <Typography className={styles.loadingText}>Analizando...</Typography>
+                </Box>
               </Box>
-            </Box>
+            </motion.div>
           )}
 
           <div ref={messagesEndRef} />
@@ -486,47 +553,60 @@ export function FloatingChat() {
               InputProps={{
                 sx: {
                   backgroundColor: "white",
-                  borderRadius: "12px",
+                  borderRadius: "16px",
+                  transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                   "& fieldset": {
-                    borderColor: "rgba(90, 45, 104, 0.15)",
+                    borderColor: "rgba(139, 92, 246, 0.2)",
+                    borderWidth: "1.5px",
                   },
                   "&:hover fieldset": {
-                    borderColor: theme.palette.primary.dark,
+                    borderColor: "rgba(139, 92, 246, 0.4)",
                   },
                   "&.Mui-focused fieldset": {
-                    borderColor: theme.palette.primary.dark,
-                    boxShadow: `0 0 0 2px ${theme.palette.primary.light}`,
+                    borderColor: "#8B5CF6",
+                    borderWidth: "2px",
+                    boxShadow: "0 0 0 3px rgba(139, 92, 246, 0.1)",
                   },
                 },
               }}
             />
-            <IconButton
-              onClick={handleSendMessage}
-              disabled={!inputMessage.trim() || isLoading}
-              className={styles.sendButton}
-              sx={{
-                backgroundColor: theme.palette.primary.dark,
-                borderRadius: "50%",
-                width: 52,
-                height: 52,
-                transition: "all 0.2s",
-                "&:hover": {
-                  backgroundColor: theme.palette.primary.main,
-                },
-                "& svg": {
-                  fontSize: 24,
-                  color: theme.palette.primary.contrastText,
-                },
-                "&.Mui-disabled": {
-                  backgroundColor: theme.palette.action.disabledBackground,
-                },
-                "&.Mui-disabled svg": {
-                  color: theme.palette.action.disabled,
-                },
-              }}
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
-              <ChatSendIcon />
-            </IconButton>
+              <IconButton
+                onClick={handleSendMessage}
+                disabled={!inputMessage.trim() || isLoading}
+                className={styles.sendButton}
+                sx={{
+                  background: "linear-gradient(135deg, #8B5CF6 0%, #7C3AED 50%, #6D28D9 100%)",
+                  borderRadius: "50%",
+                  width: 56,
+                  height: 56,
+                  transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                  boxShadow: "0 4px 16px rgba(139, 92, 246, 0.3)",
+                  "&:hover": {
+                    background: "linear-gradient(135deg, #9F7AEA 0%, #8B5CF6 50%, #7C3AED 100%)",
+                    boxShadow: "0 6px 20px rgba(139, 92, 246, 0.4)",
+                    transform: "translateY(-2px)",
+                  },
+                  "& svg": {
+                    fontSize: 26,
+                    color: "white",
+                    filter: "drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2))",
+                  },
+                  "&.Mui-disabled": {
+                    background: "rgba(139, 92, 246, 0.2)",
+                    boxShadow: "none",
+                  },
+                  "&.Mui-disabled svg": {
+                    color: "rgba(139, 92, 246, 0.4)",
+                  },
+                }}
+              >
+                <ChatSendIcon />
+              </IconButton>
+            </motion.div>
           </Box>
         </Box>
       </Drawer>
