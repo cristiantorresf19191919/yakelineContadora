@@ -308,7 +308,6 @@ export function FloatingChat() {
         onClick={handleDrawerOpen}
         whileHover={{ 
           scale: 1.1,
-          rotate: [0, -5, 5, -5, 0],
         }}
         whileTap={{ scale: 0.96 }}
         initial={{ scale: 0, opacity: 0 }}
@@ -329,6 +328,7 @@ export function FloatingChat() {
             duration: 2,
             repeat: animationState === "wave" ? Infinity : 0,
             ease: "easeInOut",
+            type: "tween",
           }}
         >
           <SmartToy className={styles.chatIcon} />
