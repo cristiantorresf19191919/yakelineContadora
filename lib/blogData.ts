@@ -223,6 +223,157 @@ Soy Yakelin Bustamante, contadora y asesora financiera, y mi trabajo es unir nú
 
 Tu futuro financiero no se arregla solo… pero con un buen plan, sí se hace mucho más fácil.`,
   },
+  {
+    slug: "consejos-de-financiamiento-para-emprendedores",
+    title: "Consejos de Financiamiento para Emprendedores",
+    excerpt:
+      "Descubre las mejores estrategias para financiar tu emprendimiento y llevar tu negocio al siguiente nivel. Aprende a elegir la opción adecuada para ti.",
+    category: "Finanzas Empresariales",
+    date: "2026-01-06",
+    heroImage: "/photo2.jpg",
+    heroImageAlt: "Estrategias de financiamiento",
+    seoTitle:
+      "Consejos de Financiamiento para Emprendedores | Yakelin Bustamante",
+    seoDescription:
+      "Guía práctica sobre financiamiento para emprendedores. Conoce tus opciones y aprende a gestionar los recursos de tu negocio con Yakelin Bustamante.",
+    content: `Por: Yakelin Bustamante – Contadora y asesora financiera
+
+Iniciar y hacer crecer un negocio requiere más que una buena idea; requiere recursos. El financiamiento es el combustible que permite que tu motor empresarial siga funcionando y acelerando. Pero, ¿cómo saber cuál es la mejor opción para ti?
+
+Aquí te comparto algunos consejos clave para navegar el mundo del financiamiento empresarial.
+
+⸻
+
+## 1. Conoce tus Necesidades Reales
+
+Antes de buscar dinero, define exactamente para qué lo necesitas.
+
+*   ¿Es para capital de trabajo (operación diaria)?
+*   ¿Para comprar activos fijos (maquinaria, equipos)?
+*   ¿Para expansión o marketing?
+
+Tener claridad sobre el destino de los fondos te ayudará a elegir el tipo de financiamiento adecuado y a convencer a posibles inversionistas o entidades financieras.
+
+⸻
+
+## 2. Explora Diversas Fuentes de Financiamiento
+
+No te quedes con la primera opción. Existen múltiples alternativas:
+
+*   **Bootstrapping:** Financiarte con tus propios ahorros y los ingresos del negocio. Ideal para etapas tempranas para mantener el control total.
+*   **Préstamos Bancarios:** Tradicionales, pero requieren historial crediticio y garantías.
+*   **Capital de Riesgo (Venture Capital):** Para startups con alto potencial de crecimiento, a cambio de una participación en la empresa.
+*   **Ángeles Inversionistas:** Personas que invierten su propio dinero en etapas iniciales.
+*   **Crowdfunding:** Recaudar pequeñas cantidades de muchas personas a través de internet.
+
+Cada una tiene sus ventajas y costos. Investiga cuál se alinea mejor con tu etapa y modelo de negocio.
+
+⸻
+
+## 3. Mantén tu Contabilidad en Orden
+
+Nadie prestará dinero a un negocio desorganizado.
+
+Tener tus estados financieros al día (Balance General, Estado de Resultados, Flujo de Caja) es NO NEGOCIABLE. Esto demuestra profesionalismo, transparencia y capacidad de gestión. Como contadora, te digo: los números hablan por ti.
+
+⸻
+
+## 4. Cuida tu Historial Crediticio
+
+Tanto el tuyo personal como el de tu empresa. Paga tus deudas a tiempo. Un buen puntaje de crédito te abre puertas a mejores tasas de interés y condiciones más favorables.
+
+⸻
+
+## 5. Ten un Plan de Negocios Sólido
+
+Un plan de negocios no es solo un documento académico. Es tu hoja de ruta. Debe mostrar:
+
+*   Tu modelo de ingresos.
+*   Tu mercado objetivo.
+*   Tu ventaja competitiva.
+*   **Proyecciones financieras realistas.**
+
+Demuestra cómo generarás el dinero para pagar el préstamo o dar retorno a la inversión.
+
+⸻
+
+## Conclusión
+
+El financiamiento no es un fin en sí mismo, es un medio para alcanzar tus metas empresariales. Tómate el tiempo de analizar, comparar y preparar tu negocio para recibir esa inyección de capital.
+
+¿Necesitas ayuda para organizar tus números y presentar un perfil financiero sólido? ¡Contáctame y trabajemos juntos en el crecimiento de tu empresa!`,
+  },
+  {
+    slug: "dian-mas-fiel-que-tu-pareja",
+    title: "Por qué la DIAN es más fiel que tu pareja (y otros secretos prohibidos)",
+    excerpt:
+      "Olvídate de revisar el celular de tu novio. Si quieres saber la verdad, revisa tu reporte de información exógena. Una dosis de realidad financiera con un toque de picante.",
+    category: "Humor Financiero",
+    date: "2026-01-07",
+    heroImage: "/photo3.png",
+    heroImageAlt: "Mujer de negocios sonriendo con picardía",
+    seoTitle:
+      "Por qué la DIAN es más fiel que tu pareja | Humor Financiero y Contable",
+    seoDescription:
+      "Un artículo diferente sobre impuestos. Descubre por qué el ente fiscal sabe más de tus 'movimientos' que nadie más y cómo evitar que esa relación se vuelva tóxica.",
+    content: `Por: Yakelin Bustamante – Tu contadora de confianza (y confidente)
+
+Seamos brutalmente honestos por un minuto. Todos buscamos lealtad, compromiso y alguien que recuerde las fechas importantes. Bueno, tengo noticias: **Esa persona no es tu pareja, es la DIAN.**
+
+Sí, así como lo lees. Mientras tu "cuchurrumí" olvida vuestro aniversario, la administración de impuestos tiene marcadas en rojo sangre las fechas de tus vencimientos. Y créeme, si se te olvida a ti, ellos te lo recordarán. Con intereses.
+
+Aquí van tres verdades incómodas (y un poco picantes) sobre tu vida financiera que quizás no querías leer, pero necesitas saber.
+
+⸻
+
+## 1. El mito de "Nadie se va a dar cuenta"
+
+Ay, ternurita.
+
+¿Recuerdas esa transferencia que hiciste a las 2:00 a.m. un sábado? ¿Ese "gasto de representación" que en realidad fue una escapada de fin de semana?
+
+La DIAN lo sabe. La facturación electrónica no es solo para ahorrar papel; es el *Big Brother* fiscal. Saben qué comes, dónde duermes y con quién viajas (bueno, quizás no con quién, pero sí cuánto te costó).
+
+**Moraleja:** No intentes esconderle cosas a quien tiene acceso a tus extractos bancarios. Es como intentar mentirle a tu mamá: inútil y peligroso.
+
+⸻
+
+## 2. Los recibos son las cartas de amor que no debes quemar
+
+Está de moda el minimalismo, lo sé. "Suelta lo que te pesa", dicen los gurús.
+
+Pero por el amor de Dios, **¡no sueltes los soportes de tus costos!**
+
+Tirar una factura válida es como borrar los mensajes bonitos de tu ex: cuando te sientas solo (o en el caso fiscal, cuando te requieran), vas a desear tener pruebas de que eso realmente sucedió.
+
+Sin soporte, no hay deducción. Y sin deducción, terminas pagando impuestos sobre dinero que ya te gastaste. Y eso, querido lector, duele más que un "tenemos que hablar".
+
+⸻
+
+## 3. La evasión es seductora, pero el divorcio sale caro
+
+La idea de pagar menos "bajo cuerda" siempre coquetea. Es esa tentación de lo prohibido.
+
+Pero como en toda aventura ilícita, el problema no es el placer momentáneo del ahorro, sino las consecuencias. Una sanción por inexactitud puede costarte hasta el 200% del impuesto.
+
+¿Vale la pena arriesgar tu patrimonio (y tu paz mental) por una noche de pasión evasora? **Spoiler: No.**
+
+⸻
+
+## Una propuesta indecente
+
+No te estoy pidiendo que ames pagar impuestos. Eso sería masoquismo, y aquí no juzgamos fetiches, pero mantengamos lo profesional.
+
+Lo que te propongo es una relación abierta... y transparente.
+
+1.  **Organiza tus papeles:** Que no te pillen mal parqueado.
+2.  **Planea con anticipación:** El foreplay financiero es clave. No esperes al último día.
+3.  **Busca una buena pareja:** Y por pareja, me refiero a una contadora que sepa qué hacer cuando las cosas se ponen calientes (fiscalmente hablando).
+
+Si quieres que tu relación con el dinero pase de ser un "tóxico drama" a una "sólida historia de éxito", llámame.
+
+Yo me encargo de los números sucios, para que tú disfrutes de las ganancias limpias. 😉`,
+  },
 ];
 
 export function getBlogArticle(slug: string): BlogArticle | undefined {

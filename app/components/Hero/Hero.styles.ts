@@ -4,10 +4,7 @@ import { Theme } from "@mui/material/styles";
 const useStyles = makeStyles({ name: "Hero" })(
   (theme: Theme) => {
     const { breakpoints, spacing, palette } = theme;
-    const warmBrown = "#6B4C2F";
-    const cloudWhite = "#FFF1E4";
-    const blushIvory = "#FFE6CC";
-    const veilLilac = "#F0E1FF";
+    
     return {
       hero: {
         position: "relative",
@@ -15,7 +12,7 @@ const useStyles = makeStyles({ name: "Hero" })(
         minHeight: "90vh",
         display: "flex",
         alignItems: "center",
-        backgroundColor: "#FFFFFF",
+        backgroundColor: palette.background.default,
         padding: spacing(8, 6),
         overflow: "hidden",
         [breakpoints.down("lg")]: {
@@ -23,12 +20,23 @@ const useStyles = makeStyles({ name: "Hero" })(
         },
         [breakpoints.down("md")]: {
           flexDirection: "column",
-          padding: spacing(6, 4),
+          padding: spacing(12, 4, 6), // Added top padding for header
           minHeight: "auto",
         },
         [breakpoints.down("sm")]: {
-          padding: spacing(4, 2),
+          padding: spacing(10, 2, 6),
         },
+      },
+      heroBackground: {
+        position: "absolute",
+        top: -100,
+        right: -100,
+        width: "60%",
+        height: "80%",
+        background: `radial-gradient(circle at 50% 50%, ${palette.primary.light}20 0%, transparent 70%)`,
+        zIndex: 0,
+        filter: "blur(60px)",
+        borderRadius: "50%",
       },
       container: {
         maxWidth: 1400,
@@ -36,13 +44,14 @@ const useStyles = makeStyles({ name: "Hero" })(
         width: "100%",
         display: "flex",
         alignItems: "center",
-        gap: spacing(6),
+        gap: spacing(8),
+        zIndex: 1,
         [breakpoints.down("lg")]: {
           gap: spacing(5),
         },
         [breakpoints.down("md")]: {
           flexDirection: "column",
-          gap: spacing(4),
+          gap: spacing(6),
         },
       },
       contentWrapper: {
@@ -50,7 +59,6 @@ const useStyles = makeStyles({ name: "Hero" })(
         display: "flex",
         flexDirection: "column",
         gap: spacing(3),
-        animation: "fadeInUp 0.8s ease-out",
         [breakpoints.down("md")]: {
           alignItems: "center",
           textAlign: "center",
@@ -60,114 +68,75 @@ const useStyles = makeStyles({ name: "Hero" })(
         },
       },
       mainHeading: {
-        fontSize: "3.5rem",
-        fontWeight: 700,
-        color: warmBrown,
-        lineHeight: 1.2,
+        fontSize: "4rem", // Increased size
+        fontWeight: 800,
+        color: palette.text.primary, // Used theme text color
+        lineHeight: 1.1,
         marginBottom: spacing(2),
-        animation: "fadeInUp 0.8s ease-out 0.2s both",
         [breakpoints.down("xl")]: {
-          fontSize: "3rem",
+          fontSize: "3.5rem",
         },
         [breakpoints.down("lg")]: {
-          fontSize: "2.5rem",
+          fontSize: "3rem",
         },
         [breakpoints.down("md")]: {
-          fontSize: "2rem",
-          textAlign: "center",
+          fontSize: "2.5rem",
         },
         [breakpoints.down("sm")]: {
-          fontSize: "1.75rem",
+          fontSize: "2rem",
         },
       },
       firstLine: {
         display: "block",
+        color: palette.primary.main, // Highlight
       },
       secondLine: {
         display: "block",
-        paddingLeft: spacing(2),
-        [breakpoints.down("md")]: {
-          paddingLeft: 0,
-        },
       },
       tagline: {
         fontSize: "1.5rem",
-        fontWeight: 400,
-        color: palette.primary.dark,
+        fontWeight: 500,
+        color: palette.secondary.main,
         marginTop: spacing(1),
-        animation: "fadeInUp 0.8s ease-out 0.3s both",
+        letterSpacing: "0.5px",
+        textTransform: "uppercase",
         [breakpoints.down("lg")]: {
-          fontSize: "1.3rem",
+          fontSize: "1.25rem",
         },
         [breakpoints.down("md")]: {
-          fontSize: "1.2rem",
-          textAlign: "center",
-        },
-        [breakpoints.down("sm")]: {
           fontSize: "1.1rem",
         },
       },
       bodyText: {
-        fontSize: "1.125rem",
+        fontSize: "1.25rem",
         fontWeight: 400,
         color: palette.text.secondary,
-        lineHeight: 1.6,
+        lineHeight: 1.7,
         maxWidth: "90%",
-        marginTop: spacing(1),
-        animation: "fadeInUp 0.8s ease-out 0.4s both",
         [breakpoints.down("md")]: {
-          fontSize: "1rem",
+          fontSize: "1.1rem",
           maxWidth: "100%",
-          textAlign: "center",
         },
         [breakpoints.down("sm")]: {
-          fontSize: "0.9375rem",
+          fontSize: "1rem",
         },
       },
       subHeading: {
         fontSize: "1.25rem",
-        fontWeight: 500,
-        color: warmBrown,
-        marginTop: spacing(2),
-        animation: "fadeInUp 0.8s ease-out 0.5s both",
+        fontWeight: 600,
+        color: palette.text.primary,
+        marginTop: spacing(1),
         [breakpoints.down("md")]: {
-          fontSize: "1.125rem",
-          textAlign: "center",
-        },
-        [breakpoints.down("sm")]: {
-          fontSize: "1rem",
+          fontSize: "1.1rem",
         },
       },
       ctaButton: {
-        display: "inline-flex",
-        alignItems: "center",
-        gap: spacing(1.5),
-        backgroundColor: palette.primary.main,
-        color: palette.primary.contrastText,
-        padding: spacing(1.5, 3.5),
-        borderRadius: "999px",
-        textDecoration: "none",
-        fontWeight: 600,
-        fontSize: "1.125rem",
-        marginTop: spacing(3),
-        transition:
-          "transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease",
-        boxShadow: "0 14px 32px rgba(75, 38, 118, 0.24)",
-        animation: "fadeInUp 0.8s ease-out 0.6s both",
-        "&:hover": {
-          backgroundColor: palette.primary.dark,
-          transform: "translateY(-2px)",
-          boxShadow: "0 20px 36px rgba(75, 38, 118, 0.28)",
-        },
-        "&:active": {
-          transform: "translateY(0)",
-        },
+        // Styles are now mostly handled by MUI Button theme overrides
+        marginTop: spacing(2),
+        padding: spacing(1.5, 5),
+        fontSize: "1.1rem",
         [breakpoints.down("md")]: {
           alignSelf: "center",
-        },
-        [breakpoints.down("sm")]: {
-          padding: spacing(1.25, 2.75),
-          fontSize: "1rem",
         },
       },
       whatsappIcon: {
@@ -179,52 +148,34 @@ const useStyles = makeStyles({ name: "Hero" })(
         justifyContent: "center",
         alignItems: "center",
         position: "relative",
-        animation: "fadeInRight 0.8s ease-out 0.4s both",
         [breakpoints.down("md")]: {
           width: "100%",
           maxWidth: 500,
         },
       },
+      imageBackdrop: {
+        position: "absolute",
+        top: 20,
+        right: 20,
+        bottom: -20,
+        left: -20,
+        background: palette.secondary.light,
+        opacity: 0.3,
+        borderRadius: "30% 70% 70% 30% / 30% 30% 70% 70%", // Blob shape
+        zIndex: -1,
+      },
       image: {
         width: "100%",
         height: "auto",
-        maxWidth: 600,
-        borderRadius: "16px",
+        maxWidth: 550,
+        borderRadius: "24px",
         objectFit: "cover",
-        animation: "gentleScale 4s ease-in-out infinite",
+        boxShadow: theme.shadows[10], // Deep shadow
         [breakpoints.down("lg")]: {
-          maxWidth: 500,
+          maxWidth: 450,
         },
         [breakpoints.down("md")]: {
           maxWidth: "100%",
-        },
-      },
-      "@keyframes fadeInUp": {
-        from: {
-          opacity: 0,
-          transform: "translateY(30px)",
-        },
-        to: {
-          opacity: 1,
-          transform: "translateY(0)",
-        },
-      },
-      "@keyframes fadeInRight": {
-        from: {
-          opacity: 0,
-          transform: "translateX(30px)",
-        },
-        to: {
-          opacity: 1,
-          transform: "translateX(0)",
-        },
-      },
-      "@keyframes gentleScale": {
-        "0%, 100%": {
-          transform: "scale(1)",
-        },
-        "50%": {
-          transform: "scale(1.03)",
         },
       },
     };

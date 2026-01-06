@@ -1,8 +1,9 @@
 "use client";
 
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, Button } from "@mui/material";
 import Image from "next/image";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
+import { motion } from "framer-motion";
 import useStyles from "./Hero.styles";
 
 export default function Hero() {
@@ -20,46 +21,95 @@ export default function Hero() {
     );
   };
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.3,
+      },
+    },
+  } as const;
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: "easeOut" },
+    },
+  } as const;
+
+  const imageVariants = {
+    hidden: { opacity: 0, x: 50, scale: 0.95 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      scale: 1,
+      transition: { duration: 1, ease: "easeOut", delay: 0.5 },
+    },
+  } as const;
+
   return (
     <Box component="section" className={classes.hero}>
+      <Box className={classes.heroBackground} />
       <Box className={classes.container}>
-        <Box className={classes.contentWrapper}>
-          <Typography variant="h1" className={classes.mainHeading}>
-            <span className={classes.firstLine}>Asesoría Contable y</span>
-            <span className={classes.secondLine}>Tributaria</span>
-          </Typography>
+        <motion.div
+          className={classes.contentWrapper}
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          <motion.div variants={itemVariants}>
+            <Typography variant="h1" className={classes.mainHeading}>
+              <span className={classes.firstLine}>Asesoría Contable y</span>
+              <span className={classes.secondLine}>Tributaria</span>
+            </Typography>
+          </motion.div>
 
-          <Typography className={classes.tagline}>
-            Para el Bienestar De Tus Finanzas
-          </Typography>
+          <motion.div variants={itemVariants}>
+            <Typography className={classes.tagline}>
+              Para el Bienestar De Tus Finanzas
+            </Typography>
+          </motion.div>
 
-          <Typography className={classes.bodyText}>
-            Optimiza Tu Contabilidad y Asegura el Manejo Correcto De tus Impuestos
-          </Typography>
+          <motion.div variants={itemVariants}>
+            <Typography className={classes.bodyText}>
+              Optimiza Tu Contabilidad y Asegura el Manejo Correcto De tus Impuestos
+            </Typography>
+          </motion.div>
 
-          <Typography className={classes.subHeading}>
-            Con la Asesoría de Una Experta en Finanzas.
-          </Typography>
+          <motion.div variants={itemVariants}>
+            <Typography className={classes.subHeading}>
+              Con la Asesoría de Una Experta en Finanzas.
+            </Typography>
+          </motion.div>
 
-          <Box
-            component="a"
-            href={`https://wa.me/3207269417?text=${encodeURIComponent(
-              "Hola, me gustaría solicitar una consulta contable."
-            )}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={classes.ctaButton}
-            onClick={(e) => {
-              e.preventDefault();
-              handleWhatsAppClick();
-            }}
-          >
-            <WhatsAppIcon className={classes.whatsappIcon} />
-            Solicita tu Consulta
-          </Box>
-        </Box>
+          <motion.div variants={itemVariants}>
+            <Button
+              variant="contained"
+              color="primary"
+              size="large"
+              startIcon={<WhatsAppIcon />}
+              onClick={handleWhatsAppClick}
+              className={classes.ctaButton}
+              component={motion.button}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Solicita tu Consulta
+            </Button>
+          </motion.div>
+        </motion.div>
 
-        <Box className={classes.imageWrapper}>
+        <motion.div
+          className={classes.imageWrapper}
+          variants={imageVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          <Box className={classes.imageBackdrop} />
           <Image
             src="/photo2.png"
             alt="Asesora contable profesional"
@@ -68,7 +118,7 @@ export default function Hero() {
             className={classes.image}
             priority
           />
-        </Box>
+        </motion.div>
       </Box>
     </Box>
   );
