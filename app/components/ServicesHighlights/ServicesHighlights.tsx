@@ -6,24 +6,24 @@ import useStyles from "./ServicesHighlights.styles";
 
 const services = [
   {
-    title: "Planeación Fiscal",
+    title: "Auditorías",
     description:
-      "Reduce el impacto de tus impuestos de manera legal, ética y eficiente.",
+      "Evaluación exhaustiva de tu situación financiera para garantizar transparencia y cumplimiento.",
   },
   {
-    title: "Casos DIAN",
+    title: "Balances",
     description:
-      "Resolvemos y prevenimos problemas con la DIAN, garantizando cumplimiento fiscal y tranquilidad financiera.",
+      "Preparación y análisis de estados financieros precisos para la toma de decisiones estratégicas.",
   },
   {
-    title: "Protección patrimonial",
+    title: "Liquidaciones",
     description:
-      "Preservamos el valor de tus bienes y aseguramos su disponibilidad para las generaciones futuras.",
+      "Cálculo exacto de impuestos y obligaciones laborales, minimizando riesgos y errores.",
   },
   {
-    title: "Contabilidades",
+    title: "Asesoría tributaria",
     description:
-      "Mantén tus registros contables organizados, claros y listos para auditorías, con el respaldo de una experta.",
+      "Estrategias fiscales personalizadas para optimizar tu carga tributaria legalmente.",
   },
 ];
 
@@ -88,6 +88,17 @@ export default function ServicesHighlights() {
                 </Typography>
               </motion.div>
             ))}
+             <motion.div
+                className={classes.promoCard}
+                variants={cardVariants}
+                whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
+              >
+                 <Typography variant="h4" className={classes.promoTitle}>
+                  PRIMERA ASESORÍA
+                  <br />
+                  <span style={{ color: "white", background: "#d4af37", padding: "0 8px" }}>GRATIS</span>
+                </Typography>
+              </motion.div>
           </Box>
         </Box>
       </motion.div>

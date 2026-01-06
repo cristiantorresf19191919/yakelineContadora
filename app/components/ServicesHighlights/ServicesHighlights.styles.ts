@@ -179,6 +179,42 @@ const useStyles = makeStyles({ name: "ServicesHighlights" })(
           boxShadow: `0 0 0 0 ${palette.secondary.main}00`,
         },
       },
+      },
+      promoCard: {
+        gridColumn: "1 / -1",
+        marginTop: spacing(2),
+        padding: spacing(4),
+        background: `linear-gradient(135deg, ${palette.primary.main} 0%, ${palette.primary.dark} 100%)`,
+        borderRadius: shape.borderRadius * 1.5,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        boxShadow: `0 20px 40px ${palette.primary.main}40`,
+        position: "relative",
+        overflow: "hidden",
+        "&::after": {
+           content: '""',
+           position: "absolute",
+           top: 0,
+           left: 0,
+           right: 0,
+           bottom: 0,
+           background: "url('/noise.png')", // Optional texture
+           opacity: 0.05,
+        }
+      },
+      promoTitle: {
+        fontSize: "2rem",
+        fontWeight: 800,
+        color: "#ffffff",
+        textAlign: "center",
+        lineHeight: 1.2,
+        letterSpacing: "0.05em",
+        textTransform: "uppercase",
+        [breakpoints.down("sm")]: {
+            fontSize: "1.5rem",
+        },
+      }
     };
   }
 );
