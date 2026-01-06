@@ -374,6 +374,162 @@ Si quieres que tu relación con el dinero pase de ser un "tóxico drama" a una "
 
 Yo me encargo de los números sucios, para que tú disfrutes de las ganancias limpias. 😉`,
   },
+  {
+    slug: "el-dinero-nos-hizo-o-nosotros-al-dinero",
+    title: "¿El dinero nos creó o nosotros a él? (Y por qué debería importarte)",
+    excerpt:
+      "La economía no es solo gente aburrida en trajes hablando de tasas de interés. Es la historia de cómo pasamos de buscar bayas a pedir taxis desde un reloj inteligente.",
+    category: "Economía para No Economistas",
+    date: "2026-01-08",
+    heroImage: "/photo4.png",
+    heroImageAlt: "Concepto abstracto de economía global",
+    seoTitle:
+      "Historia Económica del Mundo (Versión Picante) | Yakelin Bustamante",
+    seoDescription:
+      "5 lecciones de historia económica que explican por qué tu vida es como es. Especialización, innovación y por qué ser mamá sale tan caro.",
+    content: `Por: Yakelin Bustamante – Traduciendo a "economista" al español real (basado en ideas de Andrew Leigh)
+
+La economía tiene mala fama. Suena a señores aburridos en oficinas grises decidiendo por qué el tomate subió de precio.
+
+Pero la verdad es que la economía decide **todo**: desde qué estudias, hasta con quién te casas (estadísticamente hablando) y cuánto tiempo vives. Es un baile eterno: la economía nos moldea y nosotros, con nuestros inventos locos y desesperación, la moldeamos a ella.
+
+Aquí te dejo 5 "bocados" de realidad económica que explican el mundo, sin dormirte en el intento.
+
+⸻
+
+## 1. La Especialización: El síndrome de la Navaja Suiza inútil
+
+Seamos honestos: la mayoría de nosotros no sabría ni coser un botón si nuestra vida dependiera de ello, mucho menos construir un iPhone o cultivar uvas para vino.
+
+Y está bien. Porque si intentaras ser "más o menos bueno" en todo, terminarías siendo la versión humana de una navaja suiza barata: con unas tijeras que no cortan y un destornillador que no sirve.
+
+La magia moderna es la **especialización**. Tú haces una cosa genial, yo hago otra cosa genial, y comerciamos.
+
+¿Tu Boeing 787? Tiene piezas de Japón, Italia, Francia, Suecia... Es un rompecabezas global. Los países ricos no son los que "hacen todo", son los que hacen *lo que mejor saben hacer* y compran el resto.
+
+⸻
+
+## 2. Innovación: Cuando la luz era un lujo de millonarios
+
+Dato para volar la cabeza: En la antigüedad, para tener **una hora** de luz artificial, tenías que trabajar **58 horas** recolectando leña.
+
+Hoy, trabajas **menos de un segundo** para pagar esa misma hora de luz LED.
+
+¿El resultado? Dejamos las luces prendidas porque es insultantemente barato. La tecnología no es solo "gadgets nuevos"; es lo que nos permitió dejar de morirnos por una muela infectada y empezar a vivir en rascacielos con aire acondicionado.
+
+Si quieres culpar a alguien de tu comodidad, culpa a los innovadores.
+
+⸻
+
+## 3. Desigualdad: La escalera a la que le faltan peldaños
+
+Aquí se pone seria la cosa (pero solo un poco).
+
+Imagina una escalera. Si los peldaños están cerquita, es fácil subir. Si los peldaños están a dos metros uno del otro, buena suerte intentando trepar.
+
+Eso es la desigualdad. En países como los escandinavos, la escalera es amigable; no importa mucho dónde naces, puedes subir. En lugares con brechas gigantes (hola, Latinoamérica y EE.UU.), si naces abajo, necesitas ser Spiderman para llegar arriba.
+
+Y ojo: cuando los de arriba tienen demasiada torta, empiezan a comprar las reglas del juego (aka, influir en la política). No es envidia, es que una sociedad estática es una sociedad aburrida y peligrosa.
+
+⸻
+
+## 4. Los Mercados: El secreto de los 18 valientes
+
+En 1978, en un pueblito de China llamado Xiaogang, 18 agricultores firmaron un contrato secreto. Bajo el comunismo de Mao, todos ganaban lo mismo trabajaran o no. Resultado: hambre. Nadie se esforzaba porque, ¿para qué?
+
+Su pacto secreto fue simple: "Si trabajamos nuestra propia parcela, nos quedamos con lo que sobre después de la cuota".
+
+¿Qué pasó? Produjeron en un año lo que antes producían en cinco. Los descubrieron, claro, pero en lugar de castigarlos, el gobierno (inteligentemente) dijo: "Oye, esto funciona". Y boom, China empezó a salir de la pobreza.
+
+El mercado no es perfecto (a veces ignora al necesitado), pero como motor para producir cosas, es una bestia imparable.
+
+⸻
+
+## 5. Género: El impuesto a la maternidad
+
+Las mujeres ganan menos. "Es que estudian menos", decían antes. Falso. Hoy las mujeres estudian más.
+
+¿Entonces?
+
+El problema real son los "trabajos codiciosos" (Greedy Jobs). Esos puestos de CEO o abogado top que te exigen estar disponible 24/7.
+
+Cuando llegan los hijos, adivina quién suele dar un paso atrás. Exacto. La carrera de los hombres (sin hijos o con ellos) sigue recto hacia arriba. La de las mujeres madres se estanca o cae.
+
+Esto no se arregla con discursos bonitos. Se arregla reestructurando el trabajo para que cuidar a un ser humano no sea un suicidio profesional.
+
+⸻
+
+**Resumen:** La economía no es solo dinero. Es cómo organizamos nuestra vida, nuestro tiempo y nuestro futuro. ¿Tú controlas tu economía o ella te controla a ti?`,
+  },
+  {
+    slug: "lo-que-la-escuela-no-me-enseno-sobre-el-dinero",
+    title: "Lo que la escuela NO me enseñó sobre el dinero (pero la vida sí)",
+    excerpt:
+      "Aprendí que la mitocondria es la central de energía de la célula, pero nadie me dijo qué hacer cuando llega la factura de la tarjeta de crédito. Hablemos de lo que debimos aprender en clase.",
+    category: "Educación Financiera Real",
+    date: "2026-01-09",
+    heroImage: "/photo5.png",
+    heroImageAlt: "Estudiante confundido con libros y dinero",
+    seoTitle:
+      "Lo que la escuela no me enseñó sobre el dinero | Yakelin Bustamante",
+    seoDescription:
+      "Presupuestos, crédito e inversión: las materias que faltaron en tu boletín de notas. Descubre las lecciones financieras que la vida te enseña a las malas.",
+    content: `Por: Yakelin Bustamante – Tu profesora de finanzas (la que sí necesitabas)
+
+Cuando pienso en mis años de colegio, recuerdo muchas cosas: cómo despejar la X, la fecha de la batalla de Boyacá y cómo escribir ensayos de cinco párrafos sobre el Renacimiento.
+
+Pero hubo una materia que brilló por su ausencia. Una pequeña cosita sin importancia llamada: **¿CÓMO NO MORIR DE HAMBRE SIENDO ADULTO?** (o sea, Finanzas Personales).
+
+Nunca tuve una clase de presupuestos. Nadie me explicó que las tarjetas de crédito no son dinero mágico de Monopoly. ¿Planificación para el retiro? Ja. Por favor.
+
+Salí al mundo real perfectamente capacitada para analizar un poema, pero totalmente inútil para manejar mi propia billetera. Y sé que no estoy sola. He visto gente brillante, con posgrados y doctorados, que tiemblan ante un extracto bancario.
+
+No es que no nos interesara. Es que nadie nos dio el mapa.
+
+⸻
+
+## Lo que la vida me enseñó (a punta de golpes)
+
+Cuando empecé a trabajar y las facturas empezaron a llegar con mi nombre (qué miedo), me di cuenta de que la alfabetización financiera es más importante que saberse la tabla periódica. Aquí van mis lecciones aprendidas:
+
+### 1. El Presupuesto es Libertad, no Cárcel
+
+Mucha gente cree que hacer un presupuesto es ponerse a dieta de dinero. "No puedo comprar esto, no puedo ir allá".
+
+¡Falso!
+
+Saber a dónde se va tu dinero te da el superpoder de gastar **sin culpa**. Cuando sabes que ya cubriste lo importante, ese café o ese viaje se disfrutan el doble porque sabes que puedes pagarlos. Es tomar el control en lugar de dejar que el dinero te controle a ti.
+
+### 2. El Crédito: Herramienta o Arma Mortal
+
+El crédito no es un número abstracto para presumir. Es una llave.
+
+Si la usas bien, te abre puertas (casa, carro, negocios). Si la usas mal (pagando el mínimo, comprando cosas que no necesitas), te cierra las puertas en la cara y te deja los dedos atrapados. Entender cómo funciona el interés es la diferencia entre que el banco trabaje para ti o tú trabajes para el banco.
+
+### 3. Invertir no es solo para el Lobo de Wall Street
+
+Nos vendieron la idea de que invertir es para gente con traje y millones en Suiza.
+
+Mentira. Invertir es simplemente hacer que tu dinero tenga hijitos. Y entre más temprano empieces (así sea con poquito), más tiempo tienen esos hijitos para crecer. El interés compuesto es la octava maravilla del mundo, y no necesitas ser un genio para usarlo.
+
+### 4. No se trata de cuánto ganas
+
+Conozco gente que gana millones y está quebrada. Conozco gente que gana el mínimo y vive tranquila.
+
+La planificación financiera no se trata de tener una bóveda llena de oro como Tío Rico McPato. Se trata de **hacer más con lo que tienes**. Necesitas mentalidad y estrategia, no un salario de seis cifras.
+
+⸻
+
+## ¿Por qué no nos enseñaron esto?
+
+Sigo haciéndome esa pregunta. Quizás porque el dinero sigue siendo tabú. O porque el sistema educativo avanza a velocidad de tortuga coja.
+
+Pero estamos en el mundo real. Y aquí, cada decisión financiera cuenta.
+
+**Mi consejo:** Si te sientes perdido, no te preocupes. No vas tarde, solo estás empezando. La educación financiera es un viaje. Pregunta, lee, busca mentores. Nunca es tarde para reescribir tu historia con el dinero.
+
+Y si necesitas ayuda para empezar, aquí estoy. Hagamos que el conocimiento financiero deje de ser un privilegio de pocos y sea un derecho de todos.`,
+  },
 ];
 
 export function getBlogArticle(slug: string): BlogArticle | undefined {
