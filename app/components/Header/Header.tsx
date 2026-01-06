@@ -9,10 +9,10 @@ import useStyles from "./Header.styles";
 
 const navItems = [
   { label: "INICIO", href: "/" },
-  { label: "QUIEN SOY", href: "#" },
-  { label: "SERVICIOS CONTABLES", href: "#" },
-  { label: "MENTORÍAS", href: "#" },
-  { label: "LIBRO", href: "#" },
+  { label: "QUIEN SOY", href: "/about" },
+  { label: "SERVICIOS CONTABLES", href: "/services" },
+  { label: "MENTORÍAS", href: "/mentorship" },
+  { label: "LIBRO", href: "/book" },
   { label: "BLOG", href: "/blog" },
 ];
 

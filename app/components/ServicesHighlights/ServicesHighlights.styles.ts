@@ -179,7 +179,7 @@ const useStyles = makeStyles({ name: "ServicesHighlights" })(
           boxShadow: `0 0 0 0 ${palette.secondary.main}00`,
         },
       },
-      },
+
       promoCard: {
         gridColumn: "1 / -1",
         marginTop: spacing(2),

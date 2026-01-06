@@ -173,12 +173,12 @@ export default function ConfidenceShowcase() {
                     },
                   }}
                   whileHover={{
-                    scale: 1.15,
-                    y: baseY - 20,
-                    zIndex: 20,
-                    rotate: 0, // Straighten up on hover
-                    filter: "brightness(1.1)",
-                    transition: { duration: 0.3 },
+                    scale: 1.35,
+                    y: baseY - 30, // Lift it a bit higher too
+                    zIndex: 50,
+                    rotate: 0, 
+                    filter: "brightness(1.15)",
+                    transition: { duration: 0.4, type: "spring", stiffness: 300 }, // Snappier spring
                   }}
                 >
                   <Image
