@@ -35,12 +35,12 @@ export default function HomeVideoSection() {
       y: 0,
       scale: 1,
       transition: { 
-        type: "spring",
+        type: "spring" as const,
         damping: 20,
         stiffness: 100 
       },
     },
-  };
+  } as const;
 
   return (
     <Box component="section" className={classes.section}>
