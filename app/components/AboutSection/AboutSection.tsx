@@ -127,9 +127,6 @@ export default function AboutSection() {
                 sizes="(max-width: 1024px) 100vw, 560px"
                 priority
               />
-              <Box className={classes.photoCaption}>
-                Yakelin Bustamante trabajando con clientes
-              </Box>
             </Box>
 
             <Box className={classes.secondaryColumn}>
@@ -141,9 +138,6 @@ export default function AboutSection() {
                   className={classes.photoImage}
                   sizes="(max-width: 1024px) 50vw, 260px"
                 />
-                <Box className={classes.photoCaption}>
-                  Yakelin Bustamante sonriendo
-                </Box>
               </Box>
               <Box className={classes.secondaryPhoto}>
                 <Image
@@ -153,9 +147,6 @@ export default function AboutSection() {
                   className={classes.photoImage}
                   sizes="(max-width: 1024px) 50vw, 260px"
                 />
-                <Box className={classes.photoCaption}>
-                  Yakelin Bustamante en sesión profesional
-                </Box>
               </Box>
             </Box>
           </Box>

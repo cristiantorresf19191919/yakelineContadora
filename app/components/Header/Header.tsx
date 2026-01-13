@@ -5,7 +5,9 @@ import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import useStyles from "./Header.styles";
+import MobileMenu from "./MobileMenu";
 
 const navItems = [
   { label: "INICIO", href: "/" },
@@ -14,11 +16,13 @@ const navItems = [
   { label: "MENTORÍAS", href: "/mentorship" },
   { label: "LIBRO", href: "/book" },
   { label: "BLOG", href: "/blog" },
+  { label: "VIDEO BLOG", href: "/videos" },
 ];
 
 export default function Header() {
   const { classes } = useStyles();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [rippleKey, setRippleKey] = useState(0);
 
   useEffect(() => {
     if (mobileMenuOpen) {
@@ -32,6 +36,7 @@ export default function Header() {
   }, [mobileMenuOpen]);
 
   const toggleMobileMenu = () => {
+    setRippleKey((prev) => prev + 1);
     setMobileMenuOpen(!mobileMenuOpen);
   };
 
@@ -65,6 +70,19 @@ export default function Header() {
           aria-label="Toggle menu"
           aria-expanded={mobileMenuOpen}
         >
+          <AnimatePresence mode="wait">
+            <motion.span
+              key={rippleKey}
+              className={classes.ripple}
+              initial={{ width: 0, height: 0, opacity: 1 }}
+              animate={{ width: 200, height: 200, opacity: 0 }}
+              exit={{ width: 0, height: 0, opacity: 0 }}
+              transition={{
+                duration: 0.6,
+                ease: [0.4, 0, 0.2, 1],
+              }}
+            />
+          </AnimatePresence>
           {mobileMenuOpen ? (
             <CloseIcon className={classes.menuIcon} />
           ) : (
@@ -73,24 +91,7 @@ export default function Header() {
         </IconButton>
       </Box>
 
-      {mobileMenuOpen && (
-        <Box
-          component="nav"
-          className={`${classes.mobileMenu} ${classes.mobileMenuOpen}`}
-          aria-label="Mobile navigation"
-        >
-        {navItems.map((item) => (
-          <Link
-            key={item.label}
-            href={item.href || "#"}
-            className={classes.mobileNavLink}
-            onClick={handleNavClick}
-          >
-            {item.label}
-          </Link>
-        ))}
-        </Box>
-      )}
+      <MobileMenu isOpen={mobileMenuOpen} onClose={() => setMobileMenuOpen(false)} />
     </Box>
   );
 }

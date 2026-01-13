@@ -99,6 +99,14 @@ const useStyles = makeStyles({ name: "ConfidenceShowcase" })(
         [breakpoints.down("md")]: {
           flexWrap: "wrap",
           gap: spacing(2.5),
+          padding: spacing(3, 1.5),
+        },
+        [breakpoints.down("sm")]: {
+          flexDirection: "column",
+          flexWrap: "nowrap",
+          gap: spacing(3),
+          padding: spacing(2, 1),
+          alignItems: "center",
         },
       },
       photoCard: {
@@ -133,8 +141,11 @@ const useStyles = makeStyles({ name: "ConfidenceShowcase" })(
           marginTop: 0,
         },
         [breakpoints.down("sm")]: {
-          width: "78vw",
-          height: "105vw",
+          width: "85vw",
+          maxWidth: 320,
+          height: "auto",
+          aspectRatio: "3/4",
+          marginTop: 0,
         },
       },
       cardMedium: {
@@ -148,8 +159,11 @@ const useStyles = makeStyles({ name: "ConfidenceShowcase" })(
           marginTop: 0,
         },
         [breakpoints.down("sm")]: {
-          width: "82vw",
-          height: "110vw",
+          width: "85vw",
+          maxWidth: 320,
+          height: "auto",
+          aspectRatio: "3/4",
+          marginTop: 0,
         },
       },
       cardLarge: {
@@ -164,7 +178,10 @@ const useStyles = makeStyles({ name: "ConfidenceShowcase" })(
         },
         [breakpoints.down("sm")]: {
           width: "90vw",
-          height: "124vw",
+          maxWidth: 360,
+          height: "auto",
+          aspectRatio: "3/4",
+          boxShadow: "0 20px 40px rgba(93, 63, 211, 0.2)",
         },
       },
       cardRight: {
@@ -178,8 +195,11 @@ const useStyles = makeStyles({ name: "ConfidenceShowcase" })(
           marginTop: 0,
         },
         [breakpoints.down("sm")]: {
-          width: "82vw",
-          height: "110vw",
+          width: "85vw",
+          maxWidth: 320,
+          height: "auto",
+          aspectRatio: "3/4",
+          marginTop: 0,
         },
       },
       cardRightSmall: {
@@ -193,8 +213,11 @@ const useStyles = makeStyles({ name: "ConfidenceShowcase" })(
           marginTop: 0,
         },
         [breakpoints.down("sm")]: {
-          width: "78vw",
-          height: "105vw",
+          width: "85vw",
+          maxWidth: 320,
+          height: "auto",
+          aspectRatio: "3/4",
+          marginTop: 0,
         },
       },
       ctaArea: {
@@ -205,6 +228,9 @@ const useStyles = makeStyles({ name: "ConfidenceShowcase" })(
         alignItems: "center",
         gap: spacing(3),
         position: "relative",
+        [breakpoints.down("sm")]: {
+          marginTop: spacing(6),
+        },
       },
       ctaGlow: {
         position: "absolute",
@@ -230,6 +256,12 @@ const useStyles = makeStyles({ name: "ConfidenceShowcase" })(
         fontSize: "1.125rem",
         textDecoration: "none",
         boxShadow: "0 10px 30px rgba(37, 211, 102, 0.25)",
+        [breakpoints.down("sm")]: {
+          padding: spacing(1.5, 4),
+          fontSize: "1rem",
+          width: "90%",
+          maxWidth: 320,
+        },
       },
       whatsappIcon: {
         fontSize: "1.6rem",

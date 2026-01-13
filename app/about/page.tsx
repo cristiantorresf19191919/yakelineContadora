@@ -6,7 +6,6 @@ import Image from "next/image";
 import Link from "next/link";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import Footer from "../components/Footer/Footer";
-import FloatingWhatsApp from "../components/FloatingWhatsApp/FloatingWhatsApp";
 import { useRef } from "react";
 
 export default function AboutPage() {
@@ -162,7 +161,6 @@ export default function AboutPage() {
       </Box>
 
       <Footer />
-      <FloatingWhatsApp />
     </>
   );
 }

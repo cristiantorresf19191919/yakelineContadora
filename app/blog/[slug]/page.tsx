@@ -6,7 +6,6 @@ import Breadcrumb, {
   BreadcrumbItem,
 } from "@/app/components/Breadcrumb/Breadcrumb";
 import SuggestedArticles from "@/app/components/SuggestedArticles/SuggestedArticles";
-import FloatingWhatsApp from "@/app/components/FloatingWhatsApp/FloatingWhatsApp";
 import {
   getBlogArticle,
   getSuggestedArticles,
@@ -34,7 +33,6 @@ export default function BlogArticlePage() {
           <Typography variant="h1">Artículo no encontrado</Typography>
           <Typography>El artículo que buscas no existe.</Typography>
         </Box>
-        <FloatingWhatsApp />
       </>
     );
   }
@@ -54,7 +52,6 @@ export default function BlogArticlePage() {
       {suggestedArticles.length > 0 && (
         <SuggestedArticles articles={suggestedArticles} currentSlug={slug} />
       )}
-      <FloatingWhatsApp />
     </>
   );
 }

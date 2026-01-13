@@ -1,0 +1,140 @@
+/* Expand Button - Minimal icon at bottom-right corner */
+.expandButton {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 50%, #6D28D9 100%);
+  color: white;
+  border: none;
+  border-radius: 20px 0 0 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 
+    0 -4px 16px rgba(139, 92, 246, 0.4),
+    0 -2px 8px rgba(124, 58, 237, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  z-index: 1200;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: visible;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 0;
+  margin: 0;
+}
+
+.expandButton:hover {
+  box-shadow: 
+    0 -6px 20px rgba(139, 92, 246, 0.5),
+    0 -3px 10px rgba(124, 58, 237, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.expandButton:active {
+  transform: scale(0.95);
+}
+
+.expandIcon {
+  font-size: 18px;
+  z-index: 1;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ripple {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.4) 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 70%
+  );
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Overlay with radial expansion */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1199;
+  background: linear-gradient(
+    135deg,
+    rgba(139, 92, 246, 0.15) 0%,
+    rgba(124, 58, 237, 0.1) 100%
+  ),
+    rgba(255, 255, 255, 0.95);
+  overflow: hidden;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* Buttons Container */
+.buttonsContainer {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: flex-end;
+  z-index: 1201;
+  pointer-events: none;
+}
+
+.buttonsContainer > * {
+  pointer-events: auto;
+}
+
+.buttonWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* Override fixed positioning for buttons inside container on mobile */
+.buttonWrapper :global(.floatingButton) {
+  position: relative !important;
+  bottom: auto !important;
+  right: auto !important;
+}
+
+.buttonWrapper :global([class*="floatingButton"]) {
+  position: relative !important;
+  bottom: auto !important;
+  right: auto !important;
+}
+
+/* Hide original floating buttons on mobile when using container */
+@media (max-width: 960px) {
+  /* This will be handled by the component logic */
+}
+
+/* Small mobile adjustments */
+@media (max-width: 480px) {
+  .expandButton {
+    width: 36px;
+    height: 36px;
+  }
+
+  .expandIcon {
+    font-size: 16px;
+  }
+
+  .buttonsContainer {
+    bottom: 70px;
+    right: 16px;
+    gap: 14px;
+  }
+}

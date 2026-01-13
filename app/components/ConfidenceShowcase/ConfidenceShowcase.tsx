@@ -1,10 +1,10 @@
 "use client";
 
-import { useCallback, useRef } from "react";
+import { useCallback, useRef, useEffect, useState } from "react";
 import Image from "next/image";
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { motion, useMotionValue, useSpring, useTransform, useScroll } from "framer-motion";
 import useStyles from "./ConfidenceShowcase.styles";
 
 const cardClassNames = [
@@ -68,8 +68,12 @@ const galleryImages: GalleryImage[] = [
 export default function ConfidenceShowcase() {
   const { classes, cx } = useStyles();
   const containerRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isTablet = useMediaQuery(theme.breakpoints.down("md"));
 
-  // Mouse position values
+  // Mouse position values (desktop only)
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
@@ -77,7 +81,14 @@ export default function ConfidenceShowcase() {
   const mouseX = useSpring(x, { stiffness: 100, damping: 30 });
   const mouseY = useSpring(y, { stiffness: 100, damping: 30 });
 
+  // Scroll-based animations for mobile (optional, can be removed if not needed)
+  // const { scrollYProgress } = useScroll({
+  //   target: sectionRef,
+  //   offset: ["start end", "end start"],
+  // });
+
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (isMobile) return; // Disable on mobile
     const rect = containerRef.current?.getBoundingClientRect();
     if (rect) {
       const centerX = rect.width / 2;
@@ -88,6 +99,7 @@ export default function ConfidenceShowcase() {
   };
 
   const handleMouseLeave = () => {
+    if (isMobile) return; // Disable on mobile
     x.set(0);
     y.set(0);
   };
@@ -108,15 +120,19 @@ export default function ConfidenceShowcase() {
     <Box
       component="section"
       className={classes.section}
-      ref={containerRef}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
+      ref={sectionRef}
     >
       <Box className={classes.glowBackdrop} />
-      <Box className={classes.container}>
+      <Box 
+        className={classes.container}
+        ref={containerRef}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+      >
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8 }}
         >
           <Typography variant="h2" className={classes.heading}>
@@ -131,62 +147,93 @@ export default function ConfidenceShowcase() {
         <Box className={classes.gallery}>
           {galleryImages.map(
             ({ src, alt, className, baseTilt, priority, baseY }, index) => {
-              // Creating unique rotation transforms for each card based on mouse position
-              // Center card moves less, outer cards move more for depth
-              const depthFactor = Math.abs(index - 2) + 1; // 1 for center, 2 for mid, 3 for outer
+              // Desktop: mouse-based parallax
+              // Mobile: scroll-based or static with nice animations
+              const depthFactor = Math.abs(index - 2) + 1;
               
+              // Desktop transforms
               const rotateY = useTransform(mouseX, [-1, 1], [-5 * depthFactor, 5 * depthFactor]);
               const rotateX = useTransform(mouseY, [-1, 1], [5 * depthFactor, -5 * depthFactor]);
               const translateX = useTransform(mouseX, [-1, 1], [-10 * depthFactor, 10 * depthFactor]);
+
+              // Adjust baseTilt for mobile (less tilt, more subtle)
+              const mobileTilt = isMobile ? baseTilt * 0.2 : baseTilt;
 
               return (
                 <motion.div
                   key={src}
                   className={cx(classes.photoCard, classes[className])}
                   style={{
-                    rotateY,
-                    rotateX,
-                    x: translateX,
-                    zIndex: index === 2 ? 10 : 5 - Math.abs(index - 2), // Stack order
+                    rotateY: isMobile ? 0 : rotateY,
+                    rotateX: isMobile ? 0 : rotateX,
+                    x: isMobile ? 0 : translateX,
+                    zIndex: index === 2 ? 10 : 5 - Math.abs(index - 2),
                   }}
-                  initial={{ opacity: 0, y: 100, rotate: baseTilt }}
+                  initial={{ 
+                    opacity: 0, 
+                    y: isMobile ? 50 : 100, 
+                    rotate: mobileTilt,
+                    scale: isMobile ? 0.9 : 1,
+                  }}
                   whileInView={{
                     opacity: 1,
-                    y: baseY, // Apply the arch offset
-                    rotate: baseTilt,
+                    y: isMobile ? 0 : baseY,
+                    rotate: mobileTilt,
+                    scale: 1,
                     transition: {
                       type: "spring",
-                      duration: 1,
-                      delay: index * 0.1,
-                      bounce: 0.3,
+                      duration: isMobile ? 0.6 : 1,
+                      delay: index * (isMobile ? 0.12 : 0.1),
+                      bounce: isMobile ? 0.5 : 0.3,
                     },
                   }}
-                  animate={{
-                    y: [baseY, baseY - 8, baseY], // Breathing animation
-                  }}
-                  transition={{
-                    y: {
-                      duration: 4,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                      delay: index * 0.5, // Stagger bouncing
-                    },
-                  }}
-                  whileHover={{
-                    scale: 1.35,
-                    y: baseY - 30, // Lift it a bit higher too
-                    zIndex: 50,
-                    rotate: 0, 
-                    filter: "brightness(1.15)",
-                    transition: { duration: 0.4, type: "spring", stiffness: 300 }, // Snappier spring
-                  }}
+                  viewport={{ once: false, margin: isMobile ? "-100px" : "-50px" }}
+                  animate={
+                    isMobile
+                      ? undefined // Disable breathing on mobile for better performance
+                      : {
+                          y: [baseY, baseY - 8, baseY],
+                        }
+                  }
+                  transition={
+                    isMobile
+                      ? undefined
+                      : {
+                          y: {
+                            duration: 4,
+                            repeat: Infinity,
+                            ease: "easeInOut",
+                            delay: index * 0.5,
+                          },
+                        }
+                  }
+                  whileHover={
+                    isMobile
+                      ? undefined // Disable hover on mobile
+                      : {
+                          scale: 1.35,
+                          y: baseY - 30,
+                          zIndex: 50,
+                          rotate: 0,
+                          filter: "brightness(1.15)",
+                          transition: { duration: 0.4, type: "spring", stiffness: 300 },
+                        }
+                  }
+                  whileTap={
+                    isMobile
+                      ? {
+                          scale: 0.98,
+                          transition: { duration: 0.2 },
+                        }
+                      : undefined
+                  }
                 >
                   <Image
                     src={src}
                     alt={alt}
                     fill
                     priority={priority}
-                    sizes="(max-width: 900px) 45vw, 300px"
+                    sizes={isMobile ? "(max-width: 600px) 90vw, (max-width: 900px) 45vw, 300px" : "(max-width: 900px) 45vw, 300px"}
                     style={{ objectFit: "cover" }}
                   />
                 </motion.div>

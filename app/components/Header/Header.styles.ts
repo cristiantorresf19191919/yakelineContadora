@@ -75,6 +75,8 @@ const useStyles = makeStyles({ name: "Header" })(
       },
       menuButton: {
         display: "none",
+        position: "relative",
+        overflow: "visible",
         [breakpoints.down("sm")]: {
           display: "flex",
           alignItems: "center",
@@ -84,11 +86,25 @@ const useStyles = makeStyles({ name: "Header" })(
           cursor: "pointer",
           padding: spacing(1),
           color: headerTextColor,
+          zIndex: 1001,
         },
+      },
+      ripple: {
+        position: "absolute",
+        top: "50%",
+        left: "50%",
+        borderRadius: "50%",
+        background: `radial-gradient(circle, rgba(93, 63, 211, 0.3) 0%, rgba(167, 139, 250, 0.2) 50%, transparent 70%)`,
+        transform: "translate(-50%, -50%)",
+        pointerEvents: "none",
+        zIndex: -1,
       },
       menuIcon: {
         fontSize: "1.5rem",
         color: headerTextColor,
+        position: "relative",
+        zIndex: 1,
+        transition: "transform 0.3s ease, color 0.3s ease",
       },
       mobileMenu: {
         display: "none",

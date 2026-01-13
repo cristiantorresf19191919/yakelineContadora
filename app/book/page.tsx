@@ -4,7 +4,6 @@ import { Box, Typography, Container, Button, Stack } from "@mui/material";
 import { motion } from "framer-motion";
 import DownloadIcon from "@mui/icons-material/Download";
 import Footer from "../components/Footer/Footer";
-import FloatingWhatsApp from "../components/FloatingWhatsApp/FloatingWhatsApp";
 
 export default function BookPage() {
   return (
@@ -107,7 +106,6 @@ export default function BookPage() {
 
       </Box>
       <Footer />
-      <FloatingWhatsApp />
     </>
   );
 }

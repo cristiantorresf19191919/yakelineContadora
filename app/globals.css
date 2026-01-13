@@ -17,3 +17,38 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+/* Custom styling for Instagram embeds to make them less branded */
+[data-testid="instagram-embed"],
+[data-testid="instagram-embed"] iframe,
+iframe[src*="instagram.com"] {
+  border-radius: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  width: 100% !important;
+}
+
+/* Hide or minimize Instagram branding elements */
+iframe[src*="instagram.com"] {
+  filter: brightness(1.02) contrast(1.02);
+}
+
+/* Style the embed container - remove all padding and margins */
+div[style*="instagram"],
+div[data-testid="instagram-embed"] {
+  border-radius: 0 !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  width: 100% !important;
+}
+
+/* Remove padding from Instagram embed wrapper divs */
+div[style*="instagram"] > div,
+[data-testid="instagram-embed"] > div {
+  padding: 0 !important;
+  margin: 0 !important;
+}

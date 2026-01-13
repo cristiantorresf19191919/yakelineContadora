@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import StarIcon from "@mui/icons-material/Star";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import Footer from "../components/Footer/Footer";
-import FloatingWhatsApp from "../components/FloatingWhatsApp/FloatingWhatsApp";
 
 export default function MentorshipPage() {
   return (
@@ -122,7 +121,6 @@ export default function MentorshipPage() {
 
       </Box>
       <Footer />
-      <FloatingWhatsApp />
     </>
   );
 }

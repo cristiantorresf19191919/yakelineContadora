@@ -69,42 +69,53 @@ const useStyles = makeStyles({ name: "InstagramFeed" })((theme: Theme) => {
       },
     },
     card: {
-      background: "rgba(255, 255, 255, 0.8)",
-      backdropFilter: "blur(20px)",
-      borderRadius: "32px",
+      background: "transparent",
+      borderRadius: "0",
       overflow: "hidden",
-      boxShadow: "0 20px 40px rgba(0,0,0,0.05)",
-      border: "1px solid rgba(255, 255, 255, 0.6)",
+      boxShadow: "none",
+      border: "none",
       transition: "all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
       position: "relative",
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
-      padding: spacing(2),
+      padding: 0,
+      margin: 0,
       "&::before": {
-        content: '""',
-        position: "absolute",
-        top: 0,
-        left: 0,
-        right: 0,
-        height: "6px",
-        background: "linear-gradient(90deg, #ff0080, #7928ca)", // Instagram-ish gradient but cooler
-        opacity: 0,
-        transition: "opacity 0.3s ease",
+        display: "none",
       },
       "&:hover": {
-        transform: "translateY(-12px) scale(1.02)",
-        boxShadow: "0 30px 60px rgba(0,0,0,0.12)",
-        "&::before": {
-          opacity: 1,
-        },
+        transform: "translateY(-8px)",
+        boxShadow: "none",
       },
-      // Ensure embed fits nicely
+      // Ensure embed fills parent completely
       "& > div": {
         width: "100% !important",
-        display: "flex",
-        justifyContent: "center",
-      }
+        height: "100% !important",
+        display: "flex !important",
+        justifyContent: "center !important",
+        padding: "0 !important",
+        margin: "0 !important",
+        "& iframe": {
+          width: "100% !important",
+          height: "100% !important",
+          border: "none !important",
+          boxShadow: "none !important",
+          padding: "0 !important",
+          margin: "0 !important",
+        },
+      },
+      // Target Instagram embed wrapper
+      "& [data-testid='instagram-embed']": {
+        width: "100% !important",
+        padding: "0 !important",
+        margin: "0 !important",
+        "& iframe": {
+          width: "100% !important",
+          padding: "0 !important",
+          margin: "0 !important",
+        },
+      },
     },
     // Decorative background elements
     glowBlob: {

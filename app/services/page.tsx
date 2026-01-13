@@ -8,7 +8,6 @@ import GavelIcon from "@mui/icons-material/Gavel";
 import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
 import Link from "next/link";
 import Footer from "../components/Footer/Footer";
-import FloatingWhatsApp from "../components/FloatingWhatsApp/FloatingWhatsApp";
 
 const services = [
   {
@@ -164,7 +163,6 @@ export default function ServicesPage() {
       </Box>
 
       <Footer />
-      <FloatingWhatsApp />
     </>
   );
 }

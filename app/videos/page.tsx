@@ -5,7 +5,6 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import Footer from "../components/Footer/Footer";
-import FloatingWhatsApp from "../components/FloatingWhatsApp/FloatingWhatsApp";
 import InstagramFeed from "../components/InstagramFeed/InstagramFeed";
 
 export default function VideosPage() {
@@ -96,7 +95,6 @@ export default function VideosPage() {
       </Box>
 
       <Footer />
-      <FloatingWhatsApp />
     </>
   );
 }
