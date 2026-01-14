@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Box, useMediaQuery, useTheme } from "@mui/material";
 import { FloatingChat } from "../FloatingChat/FloatingChat";
 import FloatingWhatsApp from "../FloatingWhatsApp/FloatingWhatsApp";
-import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
+import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 import CloseIcon from "@mui/icons-material/Close";
 import styles from "./FloatingButtonsContainer.module.css";
 
@@ -126,7 +126,14 @@ export function FloatingButtonsContainer() {
           {isExpanded ? (
             <CloseIcon className={styles.expandIcon} />
           ) : (
-            <ChatBubbleOutlineIcon className={styles.expandIcon} />
+            <ArrowUpwardIcon 
+              className={styles.expandIcon}
+              sx={{
+                fontSize: '22px',
+                fontWeight: 900,
+                filter: 'drop-shadow(0 0 0.5px currentColor)',
+              }}
+            />
           )}
         </motion.div>
       </motion.button>

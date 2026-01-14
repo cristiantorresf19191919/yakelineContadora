@@ -150,7 +150,6 @@ const useStyles = makeStyles({ name: "Hero" })(
         position: "relative",
         [breakpoints.down("md")]: {
           width: "100%",
-          maxWidth: 500,
         },
       },
       imageBackdrop: {
@@ -163,6 +162,9 @@ const useStyles = makeStyles({ name: "Hero" })(
         opacity: 0.3,
         borderRadius: "30% 70% 70% 30% / 30% 30% 70% 70%", // Blob shape
         zIndex: -1,
+        [breakpoints.down("md")]: {
+          display: "none",
+        },
       },
       image: {
         width: "100%",
@@ -171,12 +173,89 @@ const useStyles = makeStyles({ name: "Hero" })(
         borderRadius: "24px",
         objectFit: "cover",
         boxShadow: theme.shadows[10], // Deep shadow
+        position: "relative",
+        zIndex: 2,
         [breakpoints.down("lg")]: {
           maxWidth: 450,
         },
         [breakpoints.down("md")]: {
           maxWidth: "100%",
+          boxShadow: "none",
         },
+      },
+      // Mobile-only animation container
+      mobileAnimationContainer: {
+        position: "absolute",
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        width: "100%",
+        height: "100%",
+        overflow: "hidden",
+        borderRadius: "24px",
+        zIndex: 1,
+        display: "none",
+        [breakpoints.down("md")]: {
+          display: "block",
+        },
+      },
+      // Animated blob shape 1
+      animatedBlob1: {
+        position: "absolute",
+        top: "10%",
+        right: "5%",
+        width: "120px",
+        height: "120px",
+        background: `linear-gradient(135deg, ${palette.primary.main}40, ${palette.secondary.main}40)`,
+        filter: "blur(20px)",
+        opacity: 0.6,
+        zIndex: 1,
+        mixBlendMode: "multiply",
+      },
+      // Animated blob shape 2
+      animatedBlob2: {
+        position: "absolute",
+        bottom: "15%",
+        left: "8%",
+        width: "100px",
+        height: "100px",
+        background: `linear-gradient(225deg, ${palette.secondary.main}50, ${palette.primary.light}50)`,
+        filter: "blur(25px)",
+        opacity: 0.5,
+        zIndex: 1,
+        mixBlendMode: "multiply",
+      },
+      // Gradient sweep shape
+      gradientSweep: {
+        position: "absolute",
+        top: 0,
+        left: 0,
+        width: "150%",
+        height: "100%",
+        background: `linear-gradient(
+          90deg,
+          transparent 0%,
+          ${palette.primary.light}20 30%,
+          ${palette.secondary.main}30 50%,
+          ${palette.primary.light}20 70%,
+          transparent 100%
+        )`,
+        transform: "skewX(-20deg)",
+        zIndex: 1,
+        mixBlendMode: "overlay",
+        opacity: 0.4,
+      },
+      // Floating particles
+      floatingParticle: {
+        position: "absolute",
+        width: "8px",
+        height: "8px",
+        borderRadius: "50%",
+        background: palette.primary.main,
+        opacity: 0.4,
+        filter: "blur(2px)",
+        zIndex: 1,
       },
     };
   }
