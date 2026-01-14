@@ -2,12 +2,12 @@
 
 import { Box, Button, ButtonGroup } from "@mui/material";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useCallback } from "react";
+import { useCallback, Suspense } from "react";
 import useStyles from "./LanguageSwitch.styles";
 
 type Language = "es" | "en";
 
-export default function LanguageSwitch() {
+function LanguageSwitchContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const currentLang = (searchParams.get("lang") || "es") as Language;
@@ -50,5 +50,13 @@ export default function LanguageSwitch() {
         </Button>
       </ButtonGroup>
     </Box>
+  );
+}
+
+export default function LanguageSwitch() {
+  return (
+    <Suspense fallback={<Box sx={{ height: 40 }} />}>
+      <LanguageSwitchContent />
+    </Suspense>
   );
 }
