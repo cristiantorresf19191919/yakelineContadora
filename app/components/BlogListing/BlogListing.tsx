@@ -6,6 +6,7 @@ import Image from "next/image";
 import { BlogArticle } from "@/lib/blogData";
 import { motion } from "framer-motion";
 import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 import useStyles from "./BlogListing.styles";
 
 interface BlogListingProps {
@@ -48,7 +49,7 @@ const cardVariants = {
   },
 } as const;
 
-export default function BlogListing({ articles }: BlogListingProps) {
+function BlogListingContent({ articles }: BlogListingProps) {
   const { classes } = useStyles();
   const searchParams = useSearchParams();
   const lang = (searchParams.get("lang") || "es") as Language;
@@ -157,6 +158,18 @@ export default function BlogListing({ articles }: BlogListingProps) {
         )}
       </Box>
     </Box>
+  );
+}
+
+export default function BlogListing({ articles }: BlogListingProps) {
+  return (
+    <Suspense fallback={
+      <Box component="section" sx={{ minHeight: "60vh", display: "flex", alignItems: "center", justifyContent: "center" }}>
+        <Typography>Loading...</Typography>
+      </Box>
+    }>
+      <BlogListingContent articles={articles} />
+    </Suspense>
   );
 }
 
