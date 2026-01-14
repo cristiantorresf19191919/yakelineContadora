@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, Typography, Button, IconButton } from "@mui/material";
+import { Box, Typography, Button, IconButton, useTheme, useMediaQuery } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import { useState, useEffect } from "react";
@@ -11,6 +11,8 @@ export default function SmartPopup() {
   const [open, setOpen] = useState(false);
   const [hasSeen, setHasSeen] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   useEffect(() => {
     setMounted(true);
@@ -122,7 +124,7 @@ export default function SmartPopup() {
               bottom: 0,
               background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
               display: "flex",
-              alignItems: { xs: "flex-start", sm: "center" },
+              alignItems: isMobile ? "flex-start" : "center",
               justifyContent: "center",
               overflowY: "auto",
             }}
