@@ -10,13 +10,8 @@ import { createPortal } from "react-dom";
 export default function SmartPopup() {
   const [open, setOpen] = useState(false);
   const [hasSeen, setHasSeen] = useState(false);
-  const [mounted, setMounted] = useState(false);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   useEffect(() => {
     // Verificar si ya vieron el popup hoy
@@ -254,7 +249,7 @@ export default function SmartPopup() {
     </AnimatePresence>
   );
 
-  if (!mounted) return null;
+  if (typeof window === 'undefined') return null;
 
   return createPortal(popupContent, document.body);
 }
