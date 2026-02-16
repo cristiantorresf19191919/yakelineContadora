@@ -1,21 +1,18 @@
 "use client";
 
-import { useCallback, useRef, useEffect, useState } from "react";
+import { useCallback, useRef } from "react";
 import Image from "next/image";
 import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
-import { motion, useMotionValue, useSpring, useTransform, useScroll } from "framer-motion";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import useStyles from "./ConfidenceShowcase.styles";
 
-const cardClassNames = [
-  "cardSmall",
-  "cardMedium",
-  "cardLarge",
-  "cardRight",
-  "cardRightSmall",
-] as const;
-
-type CardClassName = (typeof cardClassNames)[number];
+type CardClassName =
+  | "cardSmall"
+  | "cardMedium"
+  | "cardLarge"
+  | "cardRight"
+  | "cardRightSmall";
 
 type GalleryImage = {
   src: string;
@@ -71,7 +68,6 @@ export default function ConfidenceShowcase() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-  const isTablet = useMediaQuery(theme.breakpoints.down("md"));
 
   // Mouse position values (desktop only)
   const x = useMotionValue(0);
@@ -81,11 +77,36 @@ export default function ConfidenceShowcase() {
   const mouseX = useSpring(x, { stiffness: 100, damping: 30 });
   const mouseY = useSpring(y, { stiffness: 100, damping: 30 });
 
-  // Scroll-based animations for mobile (optional, can be removed if not needed)
-  // const { scrollYProgress } = useScroll({
-  //   target: sectionRef,
-  //   offset: ["start end", "end start"],
-  // });
+  // Pre-compute transforms for all 5 images to comply with Rules of Hooks
+  // Image 0: depthFactor = 3, Image 1: depthFactor = 2, Image 2: depthFactor = 1
+  // Image 3: depthFactor = 2, Image 4: depthFactor = 3
+  const imageTransforms = [
+    {
+      rotateY: useTransform(mouseX, [-1, 1], [-15, 15]),
+      rotateX: useTransform(mouseY, [-1, 1], [15, -15]),
+      translateX: useTransform(mouseX, [-1, 1], [-30, 30]),
+    },
+    {
+      rotateY: useTransform(mouseX, [-1, 1], [-10, 10]),
+      rotateX: useTransform(mouseY, [-1, 1], [10, -10]),
+      translateX: useTransform(mouseX, [-1, 1], [-20, 20]),
+    },
+    {
+      rotateY: useTransform(mouseX, [-1, 1], [-5, 5]),
+      rotateX: useTransform(mouseY, [-1, 1], [5, -5]),
+      translateX: useTransform(mouseX, [-1, 1], [-10, 10]),
+    },
+    {
+      rotateY: useTransform(mouseX, [-1, 1], [-10, 10]),
+      rotateX: useTransform(mouseY, [-1, 1], [10, -10]),
+      translateX: useTransform(mouseX, [-1, 1], [-20, 20]),
+    },
+    {
+      rotateY: useTransform(mouseX, [-1, 1], [-15, 15]),
+      rotateX: useTransform(mouseY, [-1, 1], [15, -15]),
+      translateX: useTransform(mouseX, [-1, 1], [-30, 30]),
+    },
+  ];
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (isMobile) return; // Disable on mobile
@@ -147,14 +168,8 @@ export default function ConfidenceShowcase() {
         <Box className={classes.gallery}>
           {galleryImages.map(
             ({ src, alt, className, baseTilt, priority, baseY }, index) => {
-              // Desktop: mouse-based parallax
-              // Mobile: scroll-based or static with nice animations
-              const depthFactor = Math.abs(index - 2) + 1;
-              
-              // Desktop transforms
-              const rotateY = useTransform(mouseX, [-1, 1], [-5 * depthFactor, 5 * depthFactor]);
-              const rotateX = useTransform(mouseY, [-1, 1], [5 * depthFactor, -5 * depthFactor]);
-              const translateX = useTransform(mouseX, [-1, 1], [-10 * depthFactor, 10 * depthFactor]);
+              // Get pre-computed transforms for this image
+              const { rotateY, rotateX, translateX } = imageTransforms[index];
 
               // Adjust baseTilt for mobile (less tilt, more subtle)
               const mobileTilt = isMobile ? baseTilt * 0.2 : baseTilt;

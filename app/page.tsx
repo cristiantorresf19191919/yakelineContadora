@@ -10,7 +10,6 @@ import Hero from "./components/Hero/Hero";
 import NewsletterSection from "./components/NewsletterSection/NewsletterSection";
 import PremiumClientsCarousel from "./components/PremiumClientsCarousel/PremiumClientsCarousel";
 import ServicesHighlights from "./components/ServicesHighlights/ServicesHighlights";
-import InstagramFeed from "./components/InstagramFeed/InstagramFeed";
 import HomeVideoSection from "./components/HomeVideoSection/HomeVideoSection";
 import SmartPopup from "./components/SmartPopup/SmartPopup";
 

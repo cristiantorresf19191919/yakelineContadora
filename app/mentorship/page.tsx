@@ -103,7 +103,7 @@ export default function MentorshipPage() {
                                     {[1,2,3,4,5].map(s => <StarIcon key={s} sx={{ color: "#D4AF37", fontSize: 18 }} />)}
                                 </Box>
                                 <Typography sx={{ color: "#ccc", mb: 3, fontStyle: "italic" }}>
-                                    "La claridad que obtuve en solo 3 sesiones valió más que un año de intentar descifrarlo sola. Yakeline tiene una visión comercial que pocos contadores tienen."
+                                    &quot;La claridad que obtuve en solo 3 sesiones valió más que un año de intentar descifrarlo sola. Yakeline tiene una visión comercial que pocos contadores tienen.&quot;
                                 </Typography>
                                 <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
                                     <Avatar sx={{ bgcolor: "#333" }}>C</Avatar>

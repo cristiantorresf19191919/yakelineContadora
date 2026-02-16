@@ -4,9 +4,6 @@ import { Theme } from "@mui/material/styles";
 const useStyles = makeStyles({ name: "ServicesHighlights" })(
   (theme: Theme) => {
     const { breakpoints, palette, spacing, shape } = theme;
-    // Using theme palette instead of hardcoded warmBrown (139,115,85)
-    // Secondary main is amber/gold, primary is purple.
-    const glowColor = palette.secondary.main; 
 
     return {
       section: {

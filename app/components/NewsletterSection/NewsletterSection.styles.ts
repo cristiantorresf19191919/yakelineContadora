@@ -2,7 +2,7 @@ import { makeStyles } from "tss-react/mui";
 import { Theme } from "@mui/material/styles";
 
 const useStyles = makeStyles({ name: "NewsletterSection" })((theme: Theme) => {
-  const { breakpoints, spacing, palette } = theme;
+  const { breakpoints, spacing } = theme;
 
   return {
     root: {

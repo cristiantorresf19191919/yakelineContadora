@@ -13,7 +13,6 @@ interface SuggestedArticlesProps {
 
 export default function SuggestedArticles({
   articles,
-  currentSlug,
 }: SuggestedArticlesProps) {
   const { classes } = useStyles();
 

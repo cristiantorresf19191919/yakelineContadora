@@ -73,7 +73,7 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
     },
   ];
 
-  const handleLinkClick = (href: string): void => {
+  const handleLinkClick = (): void => {
     onClose();
   };
 

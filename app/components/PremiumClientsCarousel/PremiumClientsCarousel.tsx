@@ -78,16 +78,15 @@ export default function PremiumClientsCarousel() {
     return 3;
   }, [isLgDown, isMdDown]);
 
-  const [currentIndex, setCurrentIndex] = useState(0);
   const totalSlides = testimonials.length;
   const maxIndex = Math.max(totalSlides - visibleSlides, 0);
+  const [currentIndex, setCurrentIndex] = useState(0);
   const autoPlayRef = useRef<NodeJS.Timeout | null>(null);
   const carouselTrackRef = useRef<HTMLDivElement | null>(null);
   const isHoveredRef = useRef(false);
 
-  useEffect(() => {
-    setCurrentIndex((prev) => Math.min(prev, maxIndex));
-  }, [maxIndex]);
+  // Clamp currentIndex when maxIndex changes
+  const clampedIndex = Math.min(currentIndex, maxIndex);
 
   const moveToIndex = useCallback(
     (index: number) => {
@@ -138,7 +137,7 @@ export default function PremiumClientsCarousel() {
 
   const slideWidthPercent = 100 / visibleSlides;
   const trackStyle = {
-    transform: `translate3d(-${currentIndex * slideWidthPercent}%, 0, 0)`,
+    transform: `translate3d(-${clampedIndex * slideWidthPercent}%, 0, 0)`,
   };
 
   return (
@@ -230,7 +229,7 @@ export default function PremiumClientsCarousel() {
               <Box
                 key={`indicator-${indicatorIndex}`}
                 className={classes.indicatorDot}
-                data-active={indicatorIndex === currentIndex}
+                data-active={indicatorIndex === clampedIndex}
               />
             ))}
           </Box>
