@@ -169,7 +169,7 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
                   <Link
                     href={item.href}
                     className={styles.navLink}
-                    onClick={() => handleLinkClick(item.href)}
+                    onClick={handleLinkClick}
                   >
                     <div className={styles.navContent}>
                       <div className={styles.navIcon}>
