@@ -5,8 +5,27 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import Footer from "../components/Footer/Footer";
 import { useRef } from "react";
+
+const timelineItems = [
+  {
+    title: "El Inicio",
+    color: "secondary.main",
+    text: "Comencé mi carrera con una convicción clara: la contabilidad no debe ser un dolor de cabeza, sino la brújula que guía el éxito empresarial. Tras años trabajando con grandes firmas, noté que los emprendedores necesitaban más que declaraciones de impuestos; necesitaban educación y estrategia.",
+  },
+  {
+    title: "La Transformación",
+    color: "primary.main",
+    text: "Decidí fundar mi propia firma para romper el molde tradicional. Integré tecnología, mentoría personalizada y un enfoque humano. No solo gestiono números; entiendo los sueños detrás de ellos.",
+  },
+  {
+    title: "Hoy",
+    color: "#1a1a1a",
+    text: "Hoy, ayudo a cientos de empresarios a navegar el complejo mundo fiscal con confianza. Autora, conferencista y tu próxima aliada. ¿Estás listo para llevar tu negocio al siguiente nivel?",
+  },
+];
 
 export default function AboutPage() {
   const containerRef = useRef(null);
@@ -21,141 +40,198 @@ export default function AboutPage() {
     <>
       <Box sx={{ bgcolor: "#fff", overflow: "hidden" }} ref={containerRef}>
         {/* HERO SECTION */}
-        <Box sx={{ 
-            height: "90vh", 
-            position: "relative", 
-            display: "flex", 
-            alignItems: "center", 
-            justifyContent: "center",
-            background: "radial-gradient(circle at 60% 50%, #fdfbf7 0%, #fff 60%)" 
+        <Box sx={{
+          minHeight: { xs: "auto", md: "90vh" },
+          pt: { xs: 14, md: 0 },
+          position: "relative",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          background: "radial-gradient(circle at 60% 50%, #fdfbf7 0%, #fff 60%)"
         }}>
-            <Box sx={{
-                position: "absolute",
-                top: 0, 
-                left: 0,
-                width: "100%",
-                height: "100%", 
-                opacity: 0.4,
-                backgroundImage: "url('/noise.png')", // Assuming noise texture exists or just ignore
-                pointerEvents: "none"
-            }} />
-            
-            <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1, display: "flex", flexDirection: { xs: "column-reverse", md: "row" }, alignItems: "center", gap: 8 }}>
-                 <motion.div 
-                    initial={{ opacity: 0, x: -50 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.8 }}
-                    style={{ flex: 1 }}
-                 >
-                     <Typography variant="overline" sx={{ letterSpacing: 4, color: "secondary.main", fontWeight: 700, mb: 2, display: "block" }}>
-                         QUIEN SOY
-                     </Typography>
-                     <Typography variant="h1" sx={{ 
-                         fontSize: { xs: "3rem", md: "4.5rem" }, 
-                         fontWeight: 800, 
-                         color: "#1a1a1a", 
-                         lineHeight: 1.1, 
-                         mb: 3 
-                     }}>
-                         Más que una contadora, tu <span style={{ color: "#8B7355" }}>aliada estratégica.</span>
-                     </Typography>
-                     <Typography variant="body1" sx={{ fontSize: "1.2rem", color: "text.secondary", maxWidth: 500, mb: 4, lineHeight: 1.8 }}>
-                         Transformo números complejos en estrategias de crecimiento claras. Mi misión es empoderarte para que tomes el control de tu destino financiero.
-                     </Typography>
-                     <Link href="/services" passHref>
-                        <Button 
-                            variant="contained" 
-                            color="primary"
-                            size="large"
-                            endIcon={<ArrowForwardIcon />}
-                            sx={{ 
-                                borderRadius: 50, 
-                                px: 5, 
-                                py: 2, 
-                                fontSize: "1rem",
-                                textTransform: "none",
-                                boxShadow: "0 20px 40px -10px rgba(93, 63, 211, 0.3)"
-                            }}
-                        >
-                            Conoce mis servicios
-                        </Button>
-                     </Link>
-                 </motion.div>
+          <Container maxWidth="lg" sx={{
+            position: "relative",
+            zIndex: 1,
+            display: "flex",
+            flexDirection: { xs: "column-reverse", md: "row" },
+            alignItems: "center",
+            gap: { xs: 4, md: 8 },
+            py: { xs: 4, md: 0 }
+          }}>
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              style={{ flex: 1 }}
+            >
+              <Typography variant="overline" sx={{ letterSpacing: 4, color: "secondary.main", fontWeight: 700, mb: 2, display: "block", fontSize: "0.8rem" }}>
+                QUIEN SOY
+              </Typography>
+              <Typography variant="h1" sx={{
+                fontSize: { xs: "2.5rem", sm: "3.2rem", md: "4rem" },
+                fontWeight: 800,
+                color: "#1a1a1a",
+                lineHeight: 1.15,
+                mb: 3,
+                letterSpacing: "-0.02em"
+              }}>
+                Más que una contadora, tu <span style={{ color: "#8B7355" }}>aliada estratégica.</span>
+              </Typography>
+              <Typography variant="body1" sx={{ fontSize: { xs: "1.05rem", md: "1.2rem" }, color: "text.secondary", maxWidth: 500, mb: 4, lineHeight: 1.85 }}>
+                Transformo números complejos en estrategias de crecimiento claras. Mi misión es empoderarte para que tomes el control de tu destino financiero.
+              </Typography>
+              <Link href="/services" passHref>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  size="large"
+                  endIcon={<ArrowForwardIcon />}
+                  sx={{
+                    borderRadius: 50,
+                    px: 5,
+                    py: 2,
+                    fontSize: "1rem",
+                    textTransform: "none",
+                    boxShadow: "0 20px 40px -10px rgba(93, 63, 211, 0.3)"
+                  }}
+                >
+                  Conoce mis servicios
+                </Button>
+              </Link>
+            </motion.div>
 
-                 <motion.div 
-                    initial={{ opacity: 0, scale: 0.9, rotate: 3 }}
-                    animate={{ opacity: 1, scale: 1, rotate: 0 }}
-                    transition={{ duration: 1, ease: "easeOut" }}
-                    style={{ flex: 1, position: "relative", height: 600, width: "100%" }}
-                 >
-                     <Box sx={{ position: "relative", width: "100%", height: "100%", borderRadius: "300px 300px 20px 20px", overflow: "hidden", boxShadow: "0 40px 80px rgba(0,0,0,0.1)" }}>
-                        <Image 
-                            src="/photo2.png" 
-                            alt="Yakeline Bustamante"
-                            fill
-                            style={{ objectFit: "cover" }}
-                            priority
-                        />
-                     </Box>
-                     <Box 
-                        component={motion.div}
-                        style={{ y: y1 }}
-                        sx={{ 
-                            position: "absolute", 
-                            top: 40, 
-                            right: -20, 
-                            width: 120, 
-                            height: 120, 
-                            borderRadius: "50%", 
-                            background: "#8B7355", 
-                            zIndex: -1 
-                        }} 
-                     />
-                 </motion.div>
-            </Container>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1, ease: "easeOut" }}
+              style={{ flex: 1, position: "relative", width: "100%" }}
+            >
+              <Box sx={{
+                position: "relative",
+                width: "100%",
+                height: { xs: 400, sm: 500, md: 600 },
+                borderRadius: { xs: "24px", md: "300px 300px 20px 20px" },
+                overflow: "hidden",
+                boxShadow: "0 40px 80px rgba(0,0,0,0.1)"
+              }}>
+                <Image
+                  src="/photo2.png"
+                  alt="Yakeline Bustamante"
+                  fill
+                  style={{ objectFit: "cover" }}
+                  priority
+                />
+              </Box>
+              <Box
+                component={motion.div}
+                style={{ y: y1 }}
+                sx={{
+                  position: "absolute",
+                  top: 40,
+                  right: -20,
+                  width: { xs: 80, md: 120 },
+                  height: { xs: 80, md: 120 },
+                  borderRadius: "50%",
+                  background: "#8B7355",
+                  zIndex: -1,
+                  display: { xs: "none", md: "block" }
+                }}
+              />
+            </motion.div>
+          </Container>
         </Box>
 
         {/* STORY SECTION */}
-        <Container maxWidth="md" sx={{ py: 15, position: "relative" }}>
-            <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-            >
-                <Typography variant="h2" sx={{ textAlign: "center", mb: 8, fontSize: "3rem", fontWeight: 700 }}>
-                    Mi Historia
-                </Typography>
+        <Container maxWidth="md" sx={{ py: { xs: 8, md: 15 }, position: "relative" }}>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <Typography variant="h2" sx={{ textAlign: "center", mb: { xs: 5, md: 8 }, fontSize: { xs: "2rem", md: "3rem" }, fontWeight: 700 }}>
+              Mi Historia
+            </Typography>
 
-                <Box sx={{ borderLeft: "2px solid #f0f0f0", pl: { xs: 3, md: 8 }, ml: { xs: 2, md: 0 } }}>
-                    <Box sx={{ mb: 8, position: "relative" }}>
-                        <Box sx={{ position: "absolute", left: { xs: -33, md: -72 }, top: 0, width: 14, height: 14, bgcolor: "secondary.main", borderRadius: "50%", border: "4px solid #fff", boxShadow: "0 0 0 2px #f0f0f0" }} />
-                        <Typography variant="h4" sx={{ mb: 2, fontWeight: 700 }}>El Inicio</Typography>
-                        <Typography variant="body1" sx={{ color: "text.secondary", fontSize: "1.1rem", lineHeight: 1.8 }}>
-                            Comencé mi carrera con una convicción clara: la contabilidad no debe ser un dolor de cabeza, sino la brújula que guía el éxito empresarial. Tras años trabajando con grandes firmas, noté que los emprendedores necesitaban más que declaraciones de impuestos; necesitaban educación y estrategia.
-                        </Typography>
+            <Box sx={{ display: "flex", flexDirection: "column", gap: { xs: 4, md: 6 } }}>
+              {timelineItems.map((item, index) => (
+                <motion.div
+                  key={item.title}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.15 }}
+                >
+                  <Box sx={{
+                    display: "flex",
+                    gap: { xs: 2.5, md: 4 },
+                    alignItems: "flex-start",
+                  }}>
+                    {/* Timeline indicator */}
+                    <Box sx={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      flexShrink: 0,
+                      pt: 0.5
+                    }}>
+                      <Box sx={{
+                        width: 16,
+                        height: 16,
+                        bgcolor: item.color,
+                        borderRadius: "50%",
+                        border: "4px solid #fff",
+                        boxShadow: "0 0 0 2px #e0e0e0",
+                        flexShrink: 0,
+                      }} />
+                      {index < timelineItems.length - 1 && (
+                        <Box sx={{
+                          width: 2,
+                          flex: 1,
+                          minHeight: 40,
+                          bgcolor: "#f0f0f0",
+                          mt: 1,
+                        }} />
+                      )}
                     </Box>
 
-                    <Box sx={{ mb: 8, position: "relative" }}>
-                        <Box sx={{ position: "absolute", left: { xs: -33, md: -72 }, top: 0, width: 14, height: 14, bgcolor: "primary.main", borderRadius: "50%", border: "4px solid #fff", boxShadow: "0 0 0 2px #f0f0f0" }} />
-                        <Typography variant="h4" sx={{ mb: 2, fontWeight: 700 }}>La Transformación</Typography>
-                        <Typography variant="body1" sx={{ color: "text.secondary", fontSize: "1.1rem", lineHeight: 1.8 }}>
-                            Decidí fundar mi propia firma para romper el molde tradicional. Integré tecnología, mentoría personalizada y un enfoque humano. No solo gestiono números; entiendo los sueños detrás de ellos.
-                        </Typography>
+                    {/* Content */}
+                    <Box sx={{ pb: { xs: 0, md: 2 } }}>
+                      <Typography variant="h4" sx={{ mb: 1.5, fontWeight: 700, fontSize: { xs: "1.3rem", md: "1.6rem" } }}>
+                        {item.title}
+                      </Typography>
+                      <Typography variant="body1" sx={{ color: "text.secondary", fontSize: { xs: "1rem", md: "1.1rem" }, lineHeight: 1.85 }}>
+                        {item.text}
+                      </Typography>
                     </Box>
+                  </Box>
+                </motion.div>
+              ))}
+            </Box>
 
-                    <Box sx={{ position: "relative" }}>
-                         <Box sx={{ position: "absolute", left: { xs: -33, md: -72 }, top: 0, width: 14, height: 14, bgcolor: "#1a1a1a", borderRadius: "50%", border: "4px solid #fff", boxShadow: "0 0 0 2px #f0f0f0" }} />
-                        <Typography variant="h4" sx={{ mb: 2, fontWeight: 700 }}>Hoy</Typography>
-                        <Typography variant="body1" sx={{ color: "text.secondary", fontSize: "1.1rem", lineHeight: 1.8 }}>
-                            Hoy, ayudo a cientos de empresarios a navegar el complejo mundo fiscal con confianza. Autora, conferencista y tu próxima aliada. ¿Estás listo para llevar tu negocio al siguiente nivel?
-                        </Typography>
-                        <Box sx={{ mt: 4 }}>
-                            <Image src="/firma_placeholder.png" width={200} height={80} alt="Firma" style={{ opacity: 0.6 }} /> 
-                        </Box>
-                    </Box>
-                </Box>
-            </motion.div>
+            {/* CTA after story */}
+            <Box sx={{ textAlign: "center", mt: { xs: 6, md: 8 } }}>
+              <Button
+                component="a"
+                href="https://wa.me/573207269417?text=Hola%20Yakeline,%20me%20gustaría%20conocer%20más%20sobre%20tus%20servicios"
+                target="_blank"
+                rel="noopener noreferrer"
+                variant="contained"
+                size="large"
+                startIcon={<WhatsAppIcon />}
+                sx={{
+                  borderRadius: 50,
+                  px: 5,
+                  py: 2,
+                  fontSize: "1rem",
+                  textTransform: "none",
+                  boxShadow: "0 20px 40px -10px rgba(93, 63, 211, 0.3)"
+                }}
+              >
+                Conversemos
+              </Button>
+            </Box>
+          </motion.div>
         </Container>
       </Box>
 
