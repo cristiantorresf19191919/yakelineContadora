@@ -4,6 +4,10 @@
   margin: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 html,
 body {
   max-width: 100vw;
@@ -16,6 +20,48 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom themed text selection */
+::selection {
+  background-color: rgba(93, 63, 211, 0.2);
+  color: #4C1D95;
+}
+
+::-moz-selection {
+  background-color: rgba(93, 63, 211, 0.2);
+  color: #4C1D95;
+}
+
+/* Custom scrollbar - Webkit browsers */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f8f9fa;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #A78BFA 0%, #5D3FD3 100%);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #8B5CF6 0%, #4C1D95 100%);
+}
+
+/* Firefox scrollbar */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #A78BFA #f8f9fa;
+}
+
+/* Focus visible outline for keyboard navigation */
+*:focus-visible {
+  outline: 2px solid #5D3FD3;
+  outline-offset: 2px;
+  border-radius: 4px;
 }
 
 /* Custom styling for Instagram embeds to make them less branded */

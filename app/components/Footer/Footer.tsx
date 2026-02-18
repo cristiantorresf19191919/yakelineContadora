@@ -115,12 +115,21 @@ export default function Footer() {
 
       <Box className={classes.bottomBar}>
         <Typography component="span">
-          © {new Date().getFullYear()} Yakeline Bustamante. Todos los derechos
+          &copy; {new Date().getFullYear()} Yakeline Bustamante. Todos los derechos
           reservados.
         </Typography>
+        <Box sx={{
+          display: "flex",
+          alignItems: "center",
+          gap: 1,
+          fontSize: "0.85rem",
+          color: "rgba(243, 229, 244, 0.6)",
+        }}>
+          Hecho con <span style={{ color: "#EF4444" }}>&hearts;</span> en Colombia
+        </Box>
         <Box className={classes.legalLinks}>
-          <Link href="/politica-de-privacidad">Política de privacidad</Link>
-          <Link href="/terminos-y-condiciones">Términos y condiciones</Link>
+          <Link href="/politica-de-privacidad">Pol&iacute;tica de privacidad</Link>
+          <Link href="/terminos-y-condiciones">T&eacute;rminos y condiciones</Link>
         </Box>
       </Box>
     </Box>

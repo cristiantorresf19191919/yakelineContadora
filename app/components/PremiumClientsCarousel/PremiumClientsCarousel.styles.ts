@@ -122,7 +122,8 @@ const useStyles = makeStyles({ name: "PremiumClientsCarousel" })(
       cardHeader: {
         padding: spacing(3, 3.5, 0),
         display: "flex",
-        justifyContent: "flex-start",
+        justifyContent: "space-between",
+        alignItems: "center",
       },
       categoryPill: {
         padding: spacing(0.75, 1.75),

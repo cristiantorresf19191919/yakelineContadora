@@ -4,6 +4,8 @@ import Script from "next/script";
 import EmotionCacheProvider from "./emotion-cache";
 import ThemeProvider from "./ThemeProvider";
 import Header from "./components/Header/Header";
+import ScrollProgressBar from "./components/ScrollProgressBar/ScrollProgressBar";
+import BackToTopButton from "./components/BackToTopButton/BackToTopButton";
 import "./globals.css";
 import { FloatingButtonsContainer } from "./components/FloatingButtonsContainer/FloatingButtonsContainer";
 
@@ -193,9 +195,11 @@ export default function RootLayout({
         />
         <EmotionCacheProvider>
           <ThemeProvider>
+            <ScrollProgressBar />
             <Header />
             {children}
             <FloatingButtonsContainer />
+            <BackToTopButton />
           </ThemeProvider>
         </EmotionCacheProvider>
       </body>

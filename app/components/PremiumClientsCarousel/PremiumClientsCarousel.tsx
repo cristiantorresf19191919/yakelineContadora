@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import StarRoundedIcon from "@mui/icons-material/StarRounded";
 import useStyles from "./PremiumClientsCarousel.styles";
 
 type Testimonial = {
@@ -18,47 +19,59 @@ type Testimonial = {
   quote: string;
   name: string;
   role: string;
+  rating: number;
+  avatarColor: string;
 };
 
 const testimonials: Testimonial[] = [
   {
     id: "alejandro-lopez",
     category: "Tributario",
-    quote: "Excelentes resultados con Yenny.",
-    name: "Alejandro López",
-    role: "CEO · Cámara de Abogados",
+    quote: "Excelentes resultados con Yenny. Nos ayud\u00f3 a resolver nuestra situaci\u00f3n tributaria de manera eficiente y profesional.",
+    name: "Alejandro L\u00f3pez",
+    role: "CEO \u00b7 C\u00e1mara de Abogados",
+    rating: 5,
+    avatarColor: "#7C3AED",
   },
   {
     id: "jorge-henao",
-    category: "Asesoría",
+    category: "Asesor\u00eda",
     quote:
-      "Trabajar con Yenny ha sido una de las mejores decisiones para mi negocio. Su asesoría optimizó mis finanzas y me dio tranquilidad.",
+      "Trabajar con Yenny ha sido una de las mejores decisiones para mi negocio. Su asesor\u00eda optimiz\u00f3 mis finanzas y me dio tranquilidad.",
     name: "Jorge Henao",
     role: "Empresario Colombiano",
+    rating: 5,
+    avatarColor: "#DB2777",
   },
   {
     id: "valentina-vega",
-    category: "Asesoría",
+    category: "Asesor\u00eda",
     quote:
-      "Yenny ha sido fundamental para el crecimiento de mi negocio. Su organización financiera me brindó la calma que necesitaba.",
+      "Yenny ha sido fundamental para el crecimiento de mi negocio. Su organizaci\u00f3n financiera me brind\u00f3 la calma que necesitaba.",
     name: "Valentina Vega",
     role: "Profesional Independiente",
+    rating: 5,
+    avatarColor: "#F59E0B",
   },
   {
     id: "libardo-sanchez",
     category: "Casos DIAN",
     quote:
-      "Gracias a Yenny resolvimos problemas con la DIAN en tiempo récord. La acompañé profesional y humana que necesitábamos.",
-    name: "Libardo Sánchez",
+      "Gracias a Yenny resolvimos problemas con la DIAN en tiempo r\u00e9cord. El acompa\u00f1amiento profesional y humano que necesit\u00e1bamos.",
+    name: "Libardo S\u00e1nchez",
     role: "Director Financiero",
+    rating: 5,
+    avatarColor: "#4CAF50",
   },
   {
     id: "sofia-garcia",
-    category: "Planeación",
+    category: "Planeaci\u00f3n",
     quote:
-      "Nos ayudó a planear un año fiscal impecable. El equipo ahora trabaja con mayor claridad y foco en el crecimiento.",
-    name: "Sofía García",
-    role: "COO · StartUp Tech",
+      "Nos ayud\u00f3 a planear un a\u00f1o fiscal impecable. El equipo ahora trabaja con mayor claridad y foco en el crecimiento.",
+    name: "Sof\u00eda Garc\u00eda",
+    role: "COO \u00b7 StartUp Tech",
+    rating: 5,
+    avatarColor: "#2196F3",
   },
 ];
 
@@ -180,19 +193,50 @@ export default function PremiumClientsCarousel() {
                       <Box className={classes.categoryPill}>
                         {testimonial.category}
                       </Box>
+                      {/* Star rating */}
+                      <Box sx={{ display: "flex", gap: 0.25 }}>
+                        {Array.from({ length: testimonial.rating }).map((_, i) => (
+                          <StarRoundedIcon
+                            key={i}
+                            sx={{ fontSize: 16, color: "#F59E0B" }}
+                          />
+                        ))}
+                      </Box>
                     </Box>
                     <Box className={classes.content}>
-                      <span className={classes.quoteMark}>“</span>
+                      <span className={classes.quoteMark}>&ldquo;</span>
                       <Typography className={classes.quote}>
                         {testimonial.quote}
                       </Typography>
                       <Box className={classes.clientInfo}>
-                        <Typography className={classes.clientName}>
-                          {testimonial.name}
-                        </Typography>
-                        <Typography className={classes.clientRole}>
-                          {testimonial.role}
-                        </Typography>
+                        <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
+                          {/* Avatar initials */}
+                          <Box
+                            sx={{
+                              width: 40,
+                              height: 40,
+                              borderRadius: "50%",
+                              background: `linear-gradient(135deg, ${testimonial.avatarColor} 0%, ${testimonial.avatarColor}cc 100%)`,
+                              color: "#fff",
+                              display: "grid",
+                              placeItems: "center",
+                              fontSize: "0.875rem",
+                              fontWeight: 700,
+                              flexShrink: 0,
+                              boxShadow: `0 4px 12px ${testimonial.avatarColor}30`,
+                            }}
+                          >
+                            {testimonial.name.split(" ").map(n => n[0]).join("")}
+                          </Box>
+                          <Box>
+                            <Typography className={classes.clientName}>
+                              {testimonial.name}
+                            </Typography>
+                            <Typography className={classes.clientRole}>
+                              {testimonial.role}
+                            </Typography>
+                          </Box>
+                        </Box>
                       </Box>
                     </Box>
                   </Box>
