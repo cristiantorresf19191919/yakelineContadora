@@ -6,8 +6,20 @@ import Image from "next/image";
 import Link from "next/link";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
+import CalendarMonthRoundedIcon from "@mui/icons-material/CalendarMonthRounded";
+import VerifiedRoundedIcon from "@mui/icons-material/VerifiedRounded";
+import GroupsRoundedIcon from "@mui/icons-material/GroupsRounded";
+import EmojiEventsRoundedIcon from "@mui/icons-material/EmojiEventsRounded";
+import WorkHistoryRoundedIcon from "@mui/icons-material/WorkHistoryRounded";
 import Footer from "../components/Footer/Footer";
 import { useRef } from "react";
+
+const trustMetrics = [
+  { icon: <WorkHistoryRoundedIcon />, value: "10+", label: "Años de experiencia" },
+  { icon: <GroupsRoundedIcon />, value: "500+", label: "Clientes satisfechos" },
+  { icon: <VerifiedRoundedIcon />, value: "100%", label: "Cumplimiento DIAN" },
+  { icon: <EmojiEventsRoundedIcon />, value: "30%", label: "Ahorro promedio en impuestos" },
+];
 
 const timelineItems = [
   {
@@ -141,6 +153,62 @@ export default function AboutPage() {
           </Container>
         </Box>
 
+        {/* TRUST METRICS */}
+        <Box sx={{
+          py: { xs: 5, md: 7 },
+          background: "linear-gradient(135deg, #F8F5FF 0%, #FAFAFA 100%)",
+          borderTop: "1px solid rgba(93, 63, 211, 0.06)",
+          borderBottom: "1px solid rgba(93, 63, 211, 0.06)",
+        }}>
+          <Container maxWidth="lg">
+            <Box sx={{
+              display: "grid",
+              gridTemplateColumns: { xs: "repeat(2, 1fr)", md: "repeat(4, 1fr)" },
+              gap: { xs: 3, md: 4 },
+            }}>
+              {trustMetrics.map((metric, i) => (
+                <motion.div
+                  key={metric.label}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: i * 0.1 }}
+                >
+                  <Box sx={{ textAlign: "center" }}>
+                    <Box sx={{
+                      width: 56,
+                      height: 56,
+                      borderRadius: "16px",
+                      background: "linear-gradient(135deg, #5D3FD3 0%, #7C5CE7 100%)",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      mx: "auto",
+                      mb: 1.5,
+                      color: "white",
+                      boxShadow: "0 8px 20px rgba(93, 63, 211, 0.25)",
+                    }}>
+                      {metric.icon}
+                    </Box>
+                    <Typography sx={{
+                      fontFamily: "'Playfair Display', serif",
+                      fontWeight: 700,
+                      fontSize: { xs: "1.8rem", md: "2.2rem" },
+                      color: "#5D3FD3",
+                      lineHeight: 1.2,
+                    }}>
+                      {metric.value}
+                    </Typography>
+                    <Typography sx={{ color: "#6B7280", fontSize: "0.85rem", fontWeight: 500 }}>
+                      {metric.label}
+                    </Typography>
+                  </Box>
+                </motion.div>
+              ))}
+            </Box>
+          </Container>
+        </Box>
+
         {/* STORY SECTION */}
         <Container maxWidth="md" sx={{ py: { xs: 8, md: 15 }, position: "relative" }}>
           <motion.div
@@ -210,13 +278,30 @@ export default function AboutPage() {
             </Box>
 
             {/* CTA after story */}
-            <Box sx={{ textAlign: "center", mt: { xs: 6, md: 8 } }}>
+            <Box sx={{ textAlign: "center", mt: { xs: 6, md: 8 }, display: "flex", gap: 2, justifyContent: "center", flexWrap: "wrap" }}>
+              <Link href="/citas" passHref>
+                <Button
+                  variant="contained"
+                  size="large"
+                  startIcon={<CalendarMonthRoundedIcon />}
+                  sx={{
+                    borderRadius: 50,
+                    px: 5,
+                    py: 2,
+                    fontSize: "1rem",
+                    textTransform: "none",
+                    boxShadow: "0 20px 40px -10px rgba(93, 63, 211, 0.3)"
+                  }}
+                >
+                  Agendar Consulta
+                </Button>
+              </Link>
               <Button
                 component="a"
                 href="https://wa.me/573207269417?text=Hola%20Yakeline,%20me%20gustaría%20conocer%20más%20sobre%20tus%20servicios"
                 target="_blank"
                 rel="noopener noreferrer"
-                variant="contained"
+                variant="outlined"
                 size="large"
                 startIcon={<WhatsAppIcon />}
                 sx={{
@@ -225,10 +310,12 @@ export default function AboutPage() {
                   py: 2,
                   fontSize: "1rem",
                   textTransform: "none",
-                  boxShadow: "0 20px 40px -10px rgba(93, 63, 211, 0.3)"
+                  borderColor: "rgba(93, 63, 211, 0.3)",
+                  color: "#5D3FD3",
+                  "&:hover": { borderColor: "#5D3FD3", bgcolor: "rgba(93, 63, 211, 0.04)" },
                 }}
               >
-                Conversemos
+                WhatsApp
               </Button>
             </Box>
           </motion.div>

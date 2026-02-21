@@ -9,6 +9,8 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
+import CalendarMonthRoundedIcon from "@mui/icons-material/CalendarMonthRounded";
+import Link from "next/link";
 import Footer from "../components/Footer/Footer";
 
 const modules = [
@@ -361,30 +363,54 @@ export default function MentorshipPage() {
               <Typography variant="h4" sx={{ fontWeight: 700, mb: 2, fontSize: { xs: "1.5rem", md: "2rem" }, lineHeight: 1.3 }}>
                 ¿Lista para transformar tu negocio?
               </Typography>
-              <Typography sx={{ color: "#666", mb: 4, lineHeight: 1.7 }}>
+              <Typography sx={{ color: "#666", mb: 1.5, lineHeight: 1.7 }}>
                 Cupos limitados. Aplica hoy y agenda tu llamada de diagnóstico gratuita.
               </Typography>
-              <Button
-                component="a"
-                href="https://wa.me/573207269417?text=Hola%20Yakeline,%20quiero%20aplicar%20al%20programa%20de%20mentoría"
-                target="_blank"
-                rel="noopener noreferrer"
-                variant="contained"
-                size="large"
-                startIcon={<WhatsAppIcon />}
-                sx={{
-                  bgcolor: "#D4AF37",
-                  color: "#000",
-                  fontWeight: 800,
-                  fontSize: "1rem",
-                  borderRadius: 2,
-                  px: 5,
-                  py: 2,
-                  "&:hover": { bgcolor: "#b5952f" }
-                }}
-              >
-                Aplicar Ahora
-              </Button>
+              <Typography sx={{ color: "#D4AF37", fontWeight: 600, fontSize: "0.85rem", mb: 4 }}>
+                Solo 5 cupos disponibles este mes
+              </Typography>
+              <Box sx={{ display: "flex", gap: 2, justifyContent: "center", flexWrap: "wrap" }}>
+                <Link href="/citas" passHref>
+                  <Button
+                    variant="contained"
+                    size="large"
+                    startIcon={<CalendarMonthRoundedIcon />}
+                    sx={{
+                      bgcolor: "#D4AF37",
+                      color: "#000",
+                      fontWeight: 800,
+                      fontSize: "1rem",
+                      borderRadius: 2,
+                      px: 5,
+                      py: 2,
+                      "&:hover": { bgcolor: "#b5952f" }
+                    }}
+                  >
+                    Agendar Consulta
+                  </Button>
+                </Link>
+                <Button
+                  component="a"
+                  href="https://wa.me/573207269417?text=Hola%20Yakeline,%20quiero%20aplicar%20al%20programa%20de%20mentoría"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  variant="outlined"
+                  size="large"
+                  startIcon={<WhatsAppIcon />}
+                  sx={{
+                    color: "#D4AF37",
+                    borderColor: "rgba(212, 175, 55, 0.4)",
+                    fontWeight: 700,
+                    fontSize: "1rem",
+                    borderRadius: 2,
+                    px: 5,
+                    py: 2,
+                    "&:hover": { borderColor: "#D4AF37", bgcolor: "rgba(212, 175, 55, 0.06)" }
+                  }}
+                >
+                  WhatsApp
+                </Button>
+              </Box>
             </motion.div>
           </Container>
         </Box>

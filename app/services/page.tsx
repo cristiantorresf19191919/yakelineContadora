@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Box, Typography, Container, Button, Grid, Paper, Collapse, Accordion, AccordionSummary, AccordionDetails } from "@mui/material";
+import { Box, Typography, Container, Button, Grid, Paper, Collapse, Accordion, AccordionSummary, AccordionDetails, Chip } from "@mui/material";
 import { motion } from "framer-motion";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
@@ -10,6 +10,9 @@ import GavelIcon from "@mui/icons-material/Gavel";
 import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
+import CalendarMonthRoundedIcon from "@mui/icons-material/CalendarMonthRounded";
+import StarRoundedIcon from "@mui/icons-material/StarRounded";
+import Link from "next/link";
 import Footer from "../components/Footer/Footer";
 
 const services = [
@@ -18,6 +21,7 @@ const services = [
     description: "Despreocúpate de los impuestos. Optimizamos tu carga tributaria cumpliendo rigurosamente con la ley.",
     icon: <GavelIcon sx={{ fontSize: 40, color: "white" }} />,
     color: "#7C3AED",
+    popular: true,
     details: [
       "Presentación de declaraciones de renta, IVA, retención en la fuente e ICA",
       "Planeación fiscal para minimizar tu carga tributaria legalmente",
@@ -40,6 +44,7 @@ const services = [
       "Dictamen sobre estados financieros con estándares NIIF",
     ],
     benefit: "Protege tu empresa con información financiera confiable y transparente.",
+    popular: false,
   },
   {
     title: "Consultoría Financiera Estratégica",
@@ -54,6 +59,7 @@ const services = [
       "Acompañamiento en toma de decisiones de inversión",
     ],
     benefit: "Toma decisiones inteligentes basadas en datos reales de tu negocio.",
+    popular: false,
   },
 ];
 
@@ -120,18 +126,37 @@ export default function ServicesPage() {
                       display: "flex",
                       flexDirection: "column",
                       alignItems: "flex-start",
+                      position: "relative",
+                      overflow: "hidden",
                       boxShadow: isExpanded
                         ? `0 24px 48px ${service.color}20`
                         : "0 8px 32px rgba(0,0,0,0.06)",
                       border: isExpanded
                         ? `2px solid ${service.color}30`
-                        : "1px solid rgba(0,0,0,0.05)",
+                        : service.popular ? `2px solid ${service.color}30` : "1px solid rgba(0,0,0,0.05)",
                       transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
                       "&:hover": {
                         transform: "translateY(-6px)",
                         boxShadow: `0 20px 48px ${service.color}18`,
                       }
                     }}>
+                      {service.popular && (
+                        <Chip
+                          icon={<StarRoundedIcon sx={{ fontSize: 16 }} />}
+                          label="Más Solicitado"
+                          size="small"
+                          sx={{
+                            position: "absolute",
+                            top: 16,
+                            right: 16,
+                            background: `linear-gradient(135deg, ${service.color} 0%, ${service.color}cc 100%)`,
+                            color: "white",
+                            fontWeight: 700,
+                            fontSize: "0.7rem",
+                            "& .MuiChip-icon": { color: "white" },
+                          }}
+                        />
+                      )}
                       <Box sx={{
                         width: { xs: 64, md: 80 },
                         height: { xs: 64, md: 80 },
@@ -312,30 +337,54 @@ export default function ServicesPage() {
             <Typography variant="h3" sx={{ fontWeight: 800, mb: 3, fontSize: { xs: "1.8rem", md: "2.5rem" }, lineHeight: 1.3 }}>
               ¿Listo para ordenar tu negocio?
             </Typography>
-            <Typography sx={{ fontSize: { xs: "1.05rem", md: "1.2rem" }, opacity: 0.7, mb: 5, lineHeight: 1.7, maxWidth: 550, mx: "auto" }}>
+            <Typography sx={{ fontSize: { xs: "1.05rem", md: "1.2rem" }, opacity: 0.7, mb: 2, lineHeight: 1.7, maxWidth: 550, mx: "auto" }}>
               Agenda una consulta inicial gratuita y descubre cómo podemos optimizar tus impuestos hoy mismo.
             </Typography>
-            <Button
-              component="a"
-              href="https://wa.me/573207269417?text=Hola%20Yakeline,%20quiero%20agendar%20una%20consulta"
-              target="_blank"
-              rel="noopener noreferrer"
-              variant="contained"
-              size="large"
-              startIcon={<WhatsAppIcon />}
-              sx={{
-                bgcolor: "white",
-                color: "black",
-                borderRadius: 50,
-                px: { xs: 4, md: 6 },
-                py: 2,
-                fontSize: { xs: "1rem", md: "1.1rem" },
-                fontWeight: 700,
-                "&:hover": { bgcolor: "#f0f0f0" }
-              }}
-            >
-              Contactar por WhatsApp
-            </Button>
+            <Typography sx={{ fontSize: "0.9rem", opacity: 0.5, mb: 5 }}>
+              Primera asesoría sin costo - Sin compromiso
+            </Typography>
+            <Box sx={{ display: "flex", gap: 2, justifyContent: "center", flexWrap: "wrap" }}>
+              <Link href="/citas" passHref>
+                <Button
+                  variant="contained"
+                  size="large"
+                  startIcon={<CalendarMonthRoundedIcon />}
+                  sx={{
+                    bgcolor: "white",
+                    color: "black",
+                    borderRadius: 50,
+                    px: { xs: 4, md: 5 },
+                    py: 2,
+                    fontSize: { xs: "1rem", md: "1.1rem" },
+                    fontWeight: 700,
+                    "&:hover": { bgcolor: "#f0f0f0" }
+                  }}
+                >
+                  Agendar Cita
+                </Button>
+              </Link>
+              <Button
+                component="a"
+                href="https://wa.me/573207269417?text=Hola%20Yakeline,%20quiero%20agendar%20una%20consulta"
+                target="_blank"
+                rel="noopener noreferrer"
+                variant="outlined"
+                size="large"
+                startIcon={<WhatsAppIcon />}
+                sx={{
+                  color: "white",
+                  borderColor: "rgba(255,255,255,0.3)",
+                  borderRadius: 50,
+                  px: { xs: 4, md: 5 },
+                  py: 2,
+                  fontSize: { xs: "1rem", md: "1.1rem" },
+                  fontWeight: 700,
+                  "&:hover": { borderColor: "white", bgcolor: "rgba(255,255,255,0.06)" }
+                }}
+              >
+                WhatsApp
+              </Button>
+            </Box>
           </motion.div>
         </Container>
       </Box>

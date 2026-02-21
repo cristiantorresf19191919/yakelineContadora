@@ -12,17 +12,17 @@ import useStyles from "./Footer.styles";
 const socialLinks = [
   {
     label: "Facebook",
-    href: "https://www.facebook.com/",
+    href: "https://www.facebook.com/yakelinecontadora",
     icon: <FacebookRoundedIcon fontSize="small" />,
   },
   {
     label: "Instagram",
-    href: "https://www.instagram.com/",
+    href: "https://www.instagram.com/yakelinecontadora",
     icon: <InstagramIcon fontSize="small" />,
   },
   {
     label: "LinkedIn",
-    href: "https://www.linkedin.com/",
+    href: "https://www.linkedin.com/in/yakelin-bustamante",
     icon: <LinkedInIcon fontSize="small" />,
   },
 ];
@@ -64,17 +64,20 @@ export default function Footer() {
         <Box>
           <Typography className={classes.sectionTitle}>Explora</Typography>
           <Box className={classes.linkList}>
-            <Link href="#servicios" className={classes.footerLink}>
+            <Link href="/services" className={classes.footerLink}>
               Servicios
+            </Link>
+            <Link href="/citas" className={classes.footerLink}>
+              Agendar Cita
             </Link>
             <Link href="/blog" className={classes.footerLink}>
               Blog
             </Link>
-            <Link href="#testimonios" className={classes.footerLink}>
-              Testimonios
+            <Link href="/mentorship" className={classes.footerLink}>
+              Mentorías
             </Link>
-            <Link href="#contacto" className={classes.footerLink}>
-              Agenda una consulta
+            <Link href="/about" className={classes.footerLink}>
+              Quien Soy
             </Link>
           </Box>
         </Box>

@@ -2,11 +2,10 @@ import { MetadataRoute } from 'next'
 import { getAllBlogArticles } from '@/lib/blogData'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  // ⚠️ IMPORTANTE: Cambia esto por tu dominio real cuando lo tengas
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://yakelinecontadora.com'
-  
+
   const blogArticles = getAllBlogArticles()
-  
+
   const blogRoutes = blogArticles.map((article) => ({
     url: `${baseUrl}/blog/${article.slug}`,
     lastModified: new Date(article.date),
@@ -25,6 +24,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${baseUrl}/services`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/citas`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
       priority: 0.9,
     },
     {
