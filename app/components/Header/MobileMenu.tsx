@@ -9,6 +9,7 @@ import SchoolIcon from '@mui/icons-material/School';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import ArticleIcon from '@mui/icons-material/Article';
 import VideoLibraryIcon from '@mui/icons-material/VideoLibrary';
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import CloseIcon from '@mui/icons-material/Close';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import CalculateIcon from '@mui/icons-material/Calculate';
@@ -52,6 +53,12 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
       icon: <SchoolIcon />,
       title: 'MENTORÍAS',
       description: 'Asesoría personalizada',
+    },
+    {
+      href: '/citas',
+      icon: <CalendarMonthIcon />,
+      title: 'AGENDAR CITA',
+      description: 'Reserva tu consulta',
     },
     {
       href: '/book',

@@ -15,6 +15,7 @@ const navItems = [
   { label: "QUIEN SOY", href: "/about" },
   { label: "SERVICIOS CONTABLES", href: "/services" },
   { label: "MENTORÍAS", href: "/mentorship" },
+  { label: "AGENDAR CITA", href: "/citas" },
   { label: "LIBRO", href: "/book" },
   { label: "BLOG", href: "/blog" },
   { label: "VIDEO BLOG", href: "/videos" },
