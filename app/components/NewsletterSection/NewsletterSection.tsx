@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useMemo, useState, useRef, useEffect } from "react";
 import {
   Box,
   Button,
@@ -15,6 +15,102 @@ import LockRoundedIcon from "@mui/icons-material/LockRounded";
 import useStyles from "./NewsletterSection.styles";
 import { subscribeToNewsletter } from "@/lib/newsletter/subscription";
 
+// Lightweight confetti effect using CSS animations
+function ConfettiEffect() {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+
+    const colors = ["#5D3FD3", "#F59E0B", "#10B981", "#EC4899", "#7C5CE7", "#FCD34D"];
+    const particles: Array<{
+      x: number; y: number; vx: number; vy: number;
+      size: number; color: string; rotation: number; rotSpeed: number;
+      life: number; shape: number;
+    }> = [];
+
+    // Create particles
+    for (let i = 0; i < 80; i++) {
+      particles.push({
+        x: canvas.width / 2 + (Math.random() - 0.5) * 100,
+        y: canvas.height / 2,
+        vx: (Math.random() - 0.5) * 12,
+        vy: -Math.random() * 14 - 4,
+        size: Math.random() * 6 + 3,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        rotation: Math.random() * 360,
+        rotSpeed: (Math.random() - 0.5) * 10,
+        life: 1,
+        shape: Math.floor(Math.random() * 3), // 0: square, 1: circle, 2: line
+      });
+    }
+
+    let animFrame: number;
+    const animate = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      let alive = false;
+
+      particles.forEach((p) => {
+        if (p.life <= 0) return;
+        alive = true;
+
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy += 0.35; // gravity
+        p.vx *= 0.99;
+        p.rotation += p.rotSpeed;
+        p.life -= 0.012;
+
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate((p.rotation * Math.PI) / 180);
+        ctx.globalAlpha = Math.max(0, p.life);
+        ctx.fillStyle = p.color;
+
+        if (p.shape === 0) {
+          ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
+        } else if (p.shape === 1) {
+          ctx.beginPath();
+          ctx.arc(0, 0, p.size / 2, 0, Math.PI * 2);
+          ctx.fill();
+        } else {
+          ctx.fillRect(-p.size / 2, -1, p.size, 2);
+        }
+
+        ctx.restore();
+      });
+
+      if (alive) {
+        animFrame = requestAnimationFrame(animate);
+      }
+    };
+
+    animate();
+    return () => cancelAnimationFrame(animFrame);
+  }, []);
+
+  return (
+    <canvas
+      ref={canvasRef}
+      style={{
+        position: "absolute",
+        top: 0,
+        left: 0,
+        width: "100%",
+        height: "100%",
+        pointerEvents: "none",
+        zIndex: 10,
+      }}
+    />
+  );
+}
+
 type SubmissionState = "idle" | "loading" | "success" | "error";
 
 export default function NewsletterSection() {
@@ -22,6 +118,7 @@ export default function NewsletterSection() {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<SubmissionState>("idle");
   const [statusMessage, setStatusMessage] = useState("");
+  const [showConfetti, setShowConfetti] = useState(false);
 
   const isSubmitDisabled = useMemo(() => {
     if (!email.trim()) return true;
@@ -41,6 +138,7 @@ export default function NewsletterSection() {
       try {
         await subscribeToNewsletter(email.trim());
         setStatus("success");
+        setShowConfetti(true);
         setStatusMessage(
           "¡Te has suscrito con éxito! Pronto recibirás novedades llenas de valor."
         );
@@ -57,7 +155,8 @@ export default function NewsletterSection() {
   );
 
   return (
-    <Box component="section" className={classes.root}>
+    <Box component="section" className={classes.root} sx={{ position: "relative" }}>
+      {showConfetti && <ConfettiEffect />}
       <motion.div
         className={classes.content}
         initial={{ opacity: 0, y: 40 }}

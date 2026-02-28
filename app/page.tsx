@@ -14,6 +14,8 @@ import SectionDivider from "./components/SectionDivider/SectionDivider";
 import ServicesHighlights from "./components/ServicesHighlights/ServicesHighlights";
 import HomeVideoSection from "./components/HomeVideoSection/HomeVideoSection";
 import SmartPopup from "./components/SmartPopup/SmartPopup";
+import SocialProofToast from "./components/SocialProofToast/SocialProofToast";
+import TaxSavingsCalculator from "./components/TaxSavingsCalculator/TaxSavingsCalculator";
 
 export default function Home() {
   return (
@@ -25,6 +27,7 @@ export default function Home() {
       <FinancialGrowth />
       <ServicesHighlights />
       <SectionDivider variant="curve" topColor="#FFFFFF" bottomColor="#F8F6FF" />
+      <TaxSavingsCalculator />
       <ProcessSteps />
       <SectionDivider variant="curve" topColor="#FFFFFF" bottomColor="#FAFAFA" flip />
       <DiagnosisPromo />
@@ -35,6 +38,7 @@ export default function Home() {
       <NewsletterSection />
       <Footer />
       <SmartPopup />
+      <SocialProofToast />
     </>
   );
 }

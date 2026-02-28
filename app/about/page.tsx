@@ -1,7 +1,8 @@
 "use client";
 
+import { useRef, useState, useEffect, useCallback } from "react";
 import { Box, Typography, Container, Button } from "@mui/material";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
@@ -12,13 +13,37 @@ import GroupsRoundedIcon from "@mui/icons-material/GroupsRounded";
 import EmojiEventsRoundedIcon from "@mui/icons-material/EmojiEventsRounded";
 import WorkHistoryRoundedIcon from "@mui/icons-material/WorkHistoryRounded";
 import Footer from "../components/Footer/Footer";
-import { useRef } from "react";
+
+function AnimatedCounter({ target, suffix = "", duration = 2000 }: { target: number; suffix?: string; duration?: number }) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
+  const [count, setCount] = useState(0);
+
+  const animate = useCallback(() => {
+    const startTime = Date.now();
+    const step = () => {
+      const elapsed = Date.now() - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      // Ease out cubic
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setCount(Math.round(eased * target));
+      if (progress < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }, [target, duration]);
+
+  useEffect(() => {
+    if (isInView) animate();
+  }, [isInView, animate]);
+
+  return <span ref={ref}>{count}{suffix}</span>;
+}
 
 const trustMetrics = [
-  { icon: <WorkHistoryRoundedIcon />, value: "10+", label: "Años de experiencia" },
-  { icon: <GroupsRoundedIcon />, value: "500+", label: "Clientes satisfechos" },
-  { icon: <VerifiedRoundedIcon />, value: "100%", label: "Cumplimiento DIAN" },
-  { icon: <EmojiEventsRoundedIcon />, value: "30%", label: "Ahorro promedio en impuestos" },
+  { icon: <WorkHistoryRoundedIcon />, target: 10, suffix: "+", label: "Años de experiencia" },
+  { icon: <GroupsRoundedIcon />, target: 500, suffix: "+", label: "Clientes satisfechos" },
+  { icon: <VerifiedRoundedIcon />, target: 100, suffix: "%", label: "Cumplimiento DIAN" },
+  { icon: <EmojiEventsRoundedIcon />, target: 30, suffix: "%", label: "Ahorro promedio en impuestos" },
 ];
 
 const timelineItems = [
@@ -197,7 +222,7 @@ export default function AboutPage() {
                       color: "#5D3FD3",
                       lineHeight: 1.2,
                     }}>
-                      {metric.value}
+                      <AnimatedCounter target={metric.target} suffix={metric.suffix} duration={2000 + i * 300} />
                     </Typography>
                     <Typography sx={{ color: "#6B7280", fontSize: "0.85rem", fontWeight: 500 }}>
                       {metric.label}

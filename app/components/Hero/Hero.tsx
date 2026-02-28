@@ -1,15 +1,74 @@
 "use client";
 
+import { useState, useEffect, useCallback } from "react";
 import { Box, Typography, Button } from "@mui/material";
 import Image from "next/image";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import useStyles from "./Hero.styles";
 import { useReducedMotion } from "@/app/hooks/useReducedMotion";
+
+function useTimeGreeting() {
+  const [greeting, setGreeting] = useState("");
+
+  useEffect(() => {
+    const hour = new Date().getHours();
+    if (hour >= 5 && hour < 12) setGreeting("Buenos días");
+    else if (hour >= 12 && hour < 19) setGreeting("Buenas tardes");
+    else setGreeting("Buenas noches");
+  }, []);
+
+  return greeting;
+}
+
+const typewriterPhrases = [
+  "Para el Bienestar De Tus Finanzas",
+  "Para Crecer Tu Negocio Con Confianza",
+  "Para Ahorrar En Impuestos Legalmente",
+  "Para Tu Tranquilidad Fiscal",
+];
+
+function useTypewriter(phrases: string[], speed = 60, deleteSpeed = 35, pauseTime = 2500) {
+  const [text, setText] = useState("");
+  const [phraseIndex, setPhraseIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  const tick = useCallback(() => {
+    const currentPhrase = phrases[phraseIndex];
+
+    if (!isDeleting) {
+      const nextText = currentPhrase.slice(0, text.length + 1);
+      setText(nextText);
+
+      if (nextText === currentPhrase) {
+        setTimeout(() => setIsDeleting(true), pauseTime);
+        return;
+      }
+    } else {
+      const nextText = currentPhrase.slice(0, text.length - 1);
+      setText(nextText);
+
+      if (nextText === "") {
+        setIsDeleting(false);
+        setPhraseIndex((prev) => (prev + 1) % phrases.length);
+        return;
+      }
+    }
+  }, [text, phraseIndex, isDeleting, phrases, pauseTime]);
+
+  useEffect(() => {
+    const timer = setTimeout(tick, isDeleting ? deleteSpeed : speed);
+    return () => clearTimeout(timer);
+  }, [tick, isDeleting, deleteSpeed, speed]);
+
+  return text;
+}
 
 export default function Hero() {
   const { classes } = useStyles();
   const prefersReducedMotion = useReducedMotion();
+  const greeting = useTimeGreeting();
+  const typewriterText = useTypewriter(typewriterPhrases);
 
   const handleWhatsAppClick = () => {
     const phoneNumber = "3207269417";
@@ -76,6 +135,22 @@ export default function Hero() {
           initial="hidden"
           animate="visible"
         >
+          {greeting && (
+            <motion.div variants={itemVariants}>
+              <Typography
+                sx={{
+                  fontSize: { xs: "0.85rem", md: "1rem" },
+                  fontWeight: 500,
+                  color: "#F59E0B",
+                  letterSpacing: "0.05em",
+                  mb: 0.5,
+                }}
+              >
+                {greeting} &#x1F44B;
+              </Typography>
+            </motion.div>
+          )}
+
           <motion.div variants={itemVariants}>
             <Typography variant="h1" className={classes.mainHeading}>
               <span className={classes.firstLine}>Asesoría Contable y</span>
@@ -84,8 +159,19 @@ export default function Hero() {
           </motion.div>
 
           <motion.div variants={itemVariants}>
-            <Typography className={classes.tagline}>
-              Para el Bienestar De Tus Finanzas
+            <Typography className={classes.tagline} sx={{ minHeight: { xs: "1.8em", md: "1.5em" } }}>
+              {prefersReducedMotion ? typewriterPhrases[0] : (
+                <>
+                  {typewriterText}
+                  <motion.span
+                    animate={{ opacity: [1, 0] }}
+                    transition={{ duration: 0.5, repeat: Infinity, repeatType: "reverse" }}
+                    style={{ marginLeft: 2, fontWeight: 300 }}
+                  >
+                    |
+                  </motion.span>
+                </>
+              )}
             </Typography>
           </motion.div>
 
