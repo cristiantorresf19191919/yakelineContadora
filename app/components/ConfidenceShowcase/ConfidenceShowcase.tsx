@@ -262,7 +262,7 @@ export default function ConfidenceShowcase() {
 
           <motion.a
             className={classes.whatsappButton}
-            href="https://wa.me/3207269417"
+            href="https://wa.me/573207269417"
             target="_blank"
             rel="noopener noreferrer"
             onClick={(event) => {

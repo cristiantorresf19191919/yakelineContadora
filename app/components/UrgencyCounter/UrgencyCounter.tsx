@@ -1,33 +1,11 @@
 "use client";
 
-import { Box, Typography, LinearProgress } from "@mui/material";
-import { useState, useEffect } from "react";
+import { Box, Typography } from "@mui/material";
 import { motion } from "framer-motion";
+import CalendarMonthRoundedIcon from "@mui/icons-material/CalendarMonthRounded";
 
-interface UrgencyCounterProps {
-  total?: number;
-  initialRemaining?: number;
-}
-
-export default function UrgencyCounter({ 
-  total = 10, 
-  initialRemaining = 7 
-}: UrgencyCounterProps) {
-  const [remaining, setRemaining] = useState(initialRemaining);
-  const percentage = (remaining / total) * 100;
-
-  // Simular que ocasionalmente se reserva un cupo (opcional - para demo)
-  // En producción, esto vendría de una API o base de datos
-  useEffect(() => {
-    const interval = setInterval(() => {
-      // Solo decrementar si hay cupos disponibles y es aleatorio (10% de probabilidad cada 30 segundos)
-      if (remaining > 0 && Math.random() < 0.1) {
-        setRemaining((prev) => Math.max(0, prev - 1));
-      }
-    }, 30000); // Cada 30 segundos
-
-    return () => clearInterval(interval);
-  }, [remaining]);
+export default function UrgencyCounter() {
+  const currentMonth = new Date().toLocaleString("es-CO", { month: "long" });
 
   return (
     <motion.div
@@ -35,34 +13,25 @@ export default function UrgencyCounter({
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <Box sx={{ 
-        p: 3, 
-        bgcolor: "#fff3cd", 
-        borderRadius: 2, 
-        border: "2px solid #ffc107",
+      <Box sx={{
+        p: 3,
+        bgcolor: "#F3EEFF",
+        borderRadius: 2,
+        border: "1px solid rgba(93, 63, 211, 0.15)",
         mb: 3,
-        boxShadow: "0 4px 12px rgba(255, 193, 7, 0.2)"
+        display: "flex",
+        alignItems: "center",
+        gap: 2,
       }}>
-        <Typography variant="h6" sx={{ fontWeight: 700, mb: 1, color: "#856404" }}>
-          ⚡ Solo quedan {remaining} cupos disponibles
-        </Typography>
-        <LinearProgress 
-          variant="determinate" 
-          value={percentage} 
-          sx={{ 
-            height: 10, 
-            borderRadius: 5,
-            bgcolor: "#ffe082",
-            mb: 1,
-            "& .MuiLinearProgress-bar": {
-              bgcolor: "#ff9800",
-              borderRadius: 5,
-            }
-          }} 
-        />
-        <Typography variant="body2" sx={{ mt: 1, color: "#856404" }}>
-          {total - remaining} personas ya reservaron su diagnóstico hoy
-        </Typography>
+        <CalendarMonthRoundedIcon sx={{ color: "#5D3FD3", fontSize: 32 }} />
+        <Box>
+          <Typography variant="h6" sx={{ fontWeight: 700, mb: 0.5, color: "#1F2937", fontSize: "1rem" }}>
+            Consultas disponibles para {currentMonth}
+          </Typography>
+          <Typography variant="body2" sx={{ color: "#6B7280" }}>
+            Agenda tu diagnóstico financiero gratuito y da el primer paso hacia la tranquilidad fiscal.
+          </Typography>
+        </Box>
       </Box>
     </motion.div>
   );

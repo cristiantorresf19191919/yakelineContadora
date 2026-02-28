@@ -184,7 +184,7 @@ export default function BlogArticle({ article }: BlogArticleProps) {
           </Typography>
           <Box
             component="a"
-            href={`https://wa.me/3207269417?text=${encodeURIComponent(
+            href={`https://wa.me/573207269417?text=${encodeURIComponent(
               "Hola, me gustaría solicitar una consulta contable."
             )}`}
             target="_blank"

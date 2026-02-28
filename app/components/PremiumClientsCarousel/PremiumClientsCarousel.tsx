@@ -27,7 +27,7 @@ const testimonials: Testimonial[] = [
   {
     id: "alejandro-lopez",
     category: "Tributario",
-    quote: "Excelentes resultados con Yenny. Nos ayud\u00f3 a resolver nuestra situaci\u00f3n tributaria de manera eficiente y profesional.",
+    quote: "Excelentes resultados con Yakeline. Nos ayud\u00f3 a resolver nuestra situaci\u00f3n tributaria de manera eficiente y profesional.",
     name: "Alejandro L\u00f3pez",
     role: "CEO \u00b7 C\u00e1mara de Abogados",
     rating: 5,
@@ -37,7 +37,7 @@ const testimonials: Testimonial[] = [
     id: "jorge-henao",
     category: "Asesor\u00eda",
     quote:
-      "Trabajar con Yenny ha sido una de las mejores decisiones para mi negocio. Su asesor\u00eda optimiz\u00f3 mis finanzas y me dio tranquilidad.",
+      "Trabajar con Yakeline ha sido una de las mejores decisiones para mi negocio. Su asesor\u00eda optimiz\u00f3 mis finanzas y me dio tranquilidad.",
     name: "Jorge Henao",
     role: "Empresario Colombiano",
     rating: 5,
@@ -47,7 +47,7 @@ const testimonials: Testimonial[] = [
     id: "valentina-vega",
     category: "Asesor\u00eda",
     quote:
-      "Yenny ha sido fundamental para el crecimiento de mi negocio. Su organizaci\u00f3n financiera me brind\u00f3 la calma que necesitaba.",
+      "Yakeline ha sido fundamental para el crecimiento de mi negocio. Su organizaci\u00f3n financiera me brind\u00f3 la calma que necesitaba.",
     name: "Valentina Vega",
     role: "Profesional Independiente",
     rating: 5,
@@ -57,7 +57,7 @@ const testimonials: Testimonial[] = [
     id: "libardo-sanchez",
     category: "Casos DIAN",
     quote:
-      "Gracias a Yenny resolvimos problemas con la DIAN en tiempo r\u00e9cord. El acompa\u00f1amiento profesional y humano que necesit\u00e1bamos.",
+      "Gracias a Yakeline resolvimos problemas con la DIAN en tiempo r\u00e9cord. El acompa\u00f1amiento profesional y humano que necesit\u00e1bamos.",
     name: "Libardo S\u00e1nchez",
     role: "Director Financiero",
     rating: 5,

@@ -57,7 +57,7 @@ export default function SmartPopup() {
   };
 
   const handleWhatsAppClick = () => {
-    const phoneNumber = "3207269417";
+    const phoneNumber = "573207269417";
     const message = encodeURIComponent(
       "Hola Yakeline, quiero reclamar la oferta especial de consulta inicial gratuita."
     );
@@ -205,9 +205,7 @@ export default function SmartPopup() {
                     px: { xs: 2, sm: 0 },
                   }}
                 >
-                  Solo para los primeros 10 clientes de este mes.
-                  <br />
-                  Agenda ahora y recibe un diagnóstico completo de tus finanzas.
+                  Agenda tu primera consulta y recibe un diagnóstico completo de tu situación financiera y tributaria.
                 </Typography>
 
                 <Button

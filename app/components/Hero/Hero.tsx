@@ -87,7 +87,7 @@ export default function Hero() {
   const typewriterText = useTypewriter(phrases);
 
   const handleWhatsAppClick = () => {
-    const phoneNumber = "3207269417";
+    const phoneNumber = "573207269417";
     const message = encodeURIComponent(
       "Hola, me gustaría solicitar una consulta contable."
     );

@@ -44,13 +44,13 @@ interface DetectedService {
 }
 
 const WELCOME_MESSAGES = [
-  "¡Hola! 👋 Soy tu asistente financiero. Jackeline Bot ¿Hablamos sobre cómo ordenar tus impuestos y finanzas?",
+  "¡Hola! 👋 Soy tu asistente financiero, Yakeline Bot. ¿Hablamos sobre cómo ordenar tus impuestos y finanzas?",
   "¡Bienvenido! 📊 Estoy aquí para ayudarte a tomar mejores decisiones tributarias y contables.",
   "Hola, soy tu aliada financiera. 💼 Cuéntame qué reto contable o fiscal quieres resolver hoy.",
   "¡Qué gusto verte! 🤝 Te acompaño en temas DIAN, planeación tributaria y finanzas empresariales.",
 ];
 
-const WHATSAPP_NUMBER = "3207269417";
+const WHATSAPP_NUMBER = "573207269417";
 const ASSISTANT_AVATAR_SRC = "/photo1.jpg";
 
 function ChatSendIcon(props: SvgIconProps) {
@@ -187,7 +187,7 @@ export function FloatingChat() {
             "{userMessage}",
             userContext || "Necesito orientación tributaria y contable."
           );
-          const whatsappUrl = `https://wa.me/57${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+          const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
             filledPrompt
           )}`;
 

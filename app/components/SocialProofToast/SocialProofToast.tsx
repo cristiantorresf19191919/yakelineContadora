@@ -3,26 +3,24 @@
 import { useState, useEffect, useCallback } from "react";
 import { Box, Typography } from "@mui/material";
 import { motion, AnimatePresence } from "framer-motion";
-import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
-import CalendarMonthRoundedIcon from "@mui/icons-material/CalendarMonthRounded";
+import LightbulbRoundedIcon from "@mui/icons-material/LightbulbRounded";
+import TipsAndUpdatesRoundedIcon from "@mui/icons-material/TipsAndUpdatesRounded";
 
-interface ProofItem {
-  name: string;
-  city: string;
-  action: string;
-  icon: "check" | "calendar";
-  timeAgo: string;
+interface TipItem {
+  tip: string;
+  category: string;
+  icon: "lightbulb" | "tips";
 }
 
-const proofData: ProofItem[] = [
-  { name: "María G.", city: "Bogotá", action: "agendó una consulta tributaria", icon: "calendar", timeAgo: "hace 3 min" },
-  { name: "Carlos R.", city: "Medellín", action: "se suscribió a la mentoría", icon: "check", timeAgo: "hace 8 min" },
-  { name: "Ana P.", city: "Cali", action: "reservó una asesoría gratis", icon: "calendar", timeAgo: "hace 12 min" },
-  { name: "Diego L.", city: "Barranquilla", action: "descargó la guía fiscal", icon: "check", timeAgo: "hace 15 min" },
-  { name: "Laura M.", city: "Cartagena", action: "agendó revisoría fiscal", icon: "calendar", timeAgo: "hace 20 min" },
-  { name: "Andrés V.", city: "Bucaramanga", action: "solicitó consulta contable", icon: "calendar", timeAgo: "hace 25 min" },
-  { name: "Paola S.", city: "Pereira", action: "se unió al newsletter", icon: "check", timeAgo: "hace 30 min" },
-  { name: "Julián T.", city: "Manizales", action: "agendó planeación tributaria", icon: "calendar", timeAgo: "hace 35 min" },
+const tipsData: TipItem[] = [
+  { tip: "¿Sabías que puedes deducir gastos de salud en tu declaración de renta?", category: "Renta", icon: "lightbulb" },
+  { tip: "La fecha límite de IVA bimestral depende de tu último dígito del NIT.", category: "IVA", icon: "tips" },
+  { tip: "Los independientes pueden deducir hasta el 25% de sus ingresos como costos.", category: "Tributario", icon: "lightbulb" },
+  { tip: "La facturación electrónica es obligatoria para todos los responsables de IVA.", category: "DIAN", icon: "tips" },
+  { tip: "Mantener tu contabilidad al día te evita sanciones de hasta el 5% del patrimonio.", category: "Contabilidad", icon: "lightbulb" },
+  { tip: "Las personas naturales con ingresos > $59M deben declarar renta en 2026.", category: "Renta", icon: "tips" },
+  { tip: "Puedes reducir tu base gravable con aportes voluntarios a pensión.", category: "Ahorro", icon: "lightbulb" },
+  { tip: "Los pagos a seguridad social son deducibles en tu declaración de renta.", category: "Tributario", icon: "tips" },
 ];
 
 export default function SocialProofToast() {
@@ -33,20 +31,18 @@ export default function SocialProofToast() {
     setVisible(true);
     setTimeout(() => {
       setVisible(false);
-    }, 4500);
+    }, 6000);
   }, []);
 
   useEffect(() => {
-    // Show first notification after 25 seconds
     const initialTimeout = setTimeout(() => {
       showNotification();
-    }, 25000);
+    }, 30000);
 
-    // Then show every 35-55 seconds (randomized)
     const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % proofData.length);
+      setCurrentIndex((prev) => (prev + 1) % tipsData.length);
       showNotification();
-    }, 35000 + Math.random() * 20000);
+    }, 45000 + Math.random() * 15000);
 
     return () => {
       clearTimeout(initialTimeout);
@@ -54,7 +50,7 @@ export default function SocialProofToast() {
     };
   }, [showNotification]);
 
-  const current = proofData[currentIndex];
+  const current = tipsData[currentIndex];
 
   return (
     <AnimatePresence>
@@ -85,7 +81,7 @@ export default function SocialProofToast() {
               boxShadow: "0 12px 40px rgba(0,0,0,0.12), 0 4px 12px rgba(93, 63, 211, 0.08)",
               border: "1px solid rgba(93, 63, 211, 0.08)",
               cursor: "pointer",
-              maxWidth: 340,
+              maxWidth: 360,
               "&:hover": { boxShadow: "0 12px 40px rgba(0,0,0,0.16)" },
               transition: "box-shadow 0.2s",
             }}
@@ -95,52 +91,41 @@ export default function SocialProofToast() {
                 width: 40,
                 height: 40,
                 borderRadius: "12px",
-                background: current.icon === "calendar"
-                  ? "linear-gradient(135deg, #5D3FD3 0%, #7C5CE7 100%)"
-                  : "linear-gradient(135deg, #10B981 0%, #34D399 100%)",
+                background: current.icon === "lightbulb"
+                  ? "linear-gradient(135deg, #F59E0B 0%, #FCD34D 100%)"
+                  : "linear-gradient(135deg, #5D3FD3 0%, #7C5CE7 100%)",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
                 flexShrink: 0,
               }}
             >
-              {current.icon === "calendar" ? (
-                <CalendarMonthRoundedIcon sx={{ color: "white", fontSize: 20 }} />
+              {current.icon === "lightbulb" ? (
+                <LightbulbRoundedIcon sx={{ color: "white", fontSize: 20 }} />
               ) : (
-                <CheckCircleRoundedIcon sx={{ color: "white", fontSize: 20 }} />
+                <TipsAndUpdatesRoundedIcon sx={{ color: "white", fontSize: 20 }} />
               )}
             </Box>
             <Box sx={{ minWidth: 0 }}>
               <Typography
                 sx={{
-                  fontSize: "0.82rem",
+                  fontSize: "0.78rem",
                   fontWeight: 600,
-                  color: "#1F2937",
+                  color: "#5D3FD3",
                   lineHeight: 1.3,
-                  whiteSpace: "nowrap",
-                  overflow: "hidden",
-                  textOverflow: "ellipsis",
+                  mb: 0.3,
                 }}
               >
-                {current.name} de {current.city}
+                Tip {current.category}
               </Typography>
               <Typography
                 sx={{
-                  fontSize: "0.75rem",
-                  color: "#6B7280",
-                  lineHeight: 1.3,
+                  fontSize: "0.78rem",
+                  color: "#4B5563",
+                  lineHeight: 1.4,
                 }}
               >
-                {current.action}
-              </Typography>
-              <Typography
-                sx={{
-                  fontSize: "0.68rem",
-                  color: "#9CA3AF",
-                  mt: 0.3,
-                }}
-              >
-                {current.timeAgo}
+                {current.tip}
               </Typography>
             </Box>
           </Box>

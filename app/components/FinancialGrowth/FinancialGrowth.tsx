@@ -30,7 +30,7 @@ export default function FinancialGrowth() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
         >
-             <Button variant="contained" className={classes.ctaButton} href="#contact">
+             <Button variant="contained" className={classes.ctaButton} href="/citas">
                 Descúbrelo
             </Button>
         </motion.div>

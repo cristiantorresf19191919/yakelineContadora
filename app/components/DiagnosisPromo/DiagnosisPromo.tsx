@@ -50,11 +50,11 @@ export default function DiagnosisPromo() {
             no ves.
             <br />
             <br />
-            Estoy dando diagnósticos financieros gratuitos (solo 10 cupos) de 15
+            Estoy ofreciendo diagnósticos financieros gratuitos de 15
             minutos.
           </Typography>
 
-          <UrgencyCounter total={10} initialRemaining={7} />
+          <UrgencyCounter />
 
           <ul className={classes.list}>
             {features.map((feature, index) => (

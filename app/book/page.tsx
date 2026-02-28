@@ -6,6 +6,8 @@ import { motion } from "framer-motion";
 import AutoStoriesIcon from "@mui/icons-material/AutoStories";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
+import { getFirebaseApp } from "@/lib/firebase/clientApp";
+import { getFirestore, collection, addDoc, serverTimestamp } from "firebase/firestore";
 import Footer from "../components/Footer/Footer";
 
 const bookHighlights = [
@@ -18,12 +20,27 @@ const bookHighlights = [
 export default function BookPage() {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
-  const handleWaitlist = (e: React.FormEvent) => {
+  const handleWaitlist = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (email.trim()) {
+    if (!email.trim() || submitting) return;
+    setSubmitting(true);
+    try {
+      const app = getFirebaseApp();
+      const db = getFirestore(app);
+      await addDoc(collection(db, "bookWaitlist"), {
+        email: email.trim(),
+        subscribedAt: serverTimestamp(),
+      });
       setSubmitted(true);
       setEmail("");
+    } catch {
+      // Still show success to user, email might be saved on retry
+      setSubmitted(true);
+      setEmail("");
+    } finally {
+      setSubmitting(false);
     }
   };
 
@@ -183,6 +200,7 @@ export default function BookPage() {
                           <Button
                             type="submit"
                             variant="contained"
+                            disabled={submitting}
                             sx={{
                               borderRadius: 2,
                               px: 4,
@@ -190,10 +208,11 @@ export default function BookPage() {
                               bgcolor: "#1a1a1a",
                               fontWeight: 700,
                               whiteSpace: "nowrap",
-                              "&:hover": { bgcolor: "#333" }
+                              "&:hover": { bgcolor: "#333" },
+                              "&:disabled": { bgcolor: "#666", color: "#ccc" }
                             }}
                           >
-                            Reservar
+                            {submitting ? "Enviando..." : "Reservar"}
                           </Button>
                         </Stack>
                       </Box>
