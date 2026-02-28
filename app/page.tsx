@@ -19,6 +19,7 @@ import SmartPopup from "./components/SmartPopup/SmartPopup";
 import SocialProofToast from "./components/SocialProofToast/SocialProofToast";
 import TaxCalendar from "./components/TaxCalendar/TaxCalendar";
 import TaxSavingsCalculator from "./components/TaxSavingsCalculator/TaxSavingsCalculator";
+import GamesArcade from "./components/GamesArcade/GamesArcade";
 
 export default function Home() {
   return (
@@ -39,6 +40,7 @@ export default function Home() {
       <ConfidenceShowcase />
       <SectionDivider variant="wave" topColor="#FAFAFA" bottomColor="#FFF7F0" />
       <PremiumClientsCarousel />
+      <GamesArcade />
       <TaxCalendar />
       <AboutSection />
       <NewsletterSection />
