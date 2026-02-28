@@ -9,22 +9,29 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import useStyles from "./Header.styles";
 import MobileMenu from "./MobileMenu";
+import { useLanguage } from "@/app/contexts/LanguageContext";
 
-const navItems = [
-  { label: "INICIO", href: "/" },
-  { label: "QUIEN SOY", href: "/about" },
-  { label: "SERVICIOS CONTABLES", href: "/services" },
-  { label: "MENTORÍAS", href: "/mentorship" },
-  { label: "AGENDAR CITA", href: "/citas" },
-  { label: "LIBRO", href: "/book" },
-  { label: "BLOG", href: "/blog" },
-  { label: "VIDEO BLOG", href: "/videos" },
+const navItemsData = [
+  { es: "INICIO", en: "HOME", href: "/" },
+  { es: "QUIEN SOY", en: "ABOUT", href: "/about" },
+  { es: "SERVICIOS CONTABLES", en: "SERVICES", href: "/services" },
+  { es: "MENTORÍAS", en: "MENTORSHIP", href: "/mentorship" },
+  { es: "AGENDAR CITA", en: "BOOK NOW", href: "/citas" },
+  { es: "LIBRO", en: "BOOK", href: "/book" },
+  { es: "BLOG", en: "BLOG", href: "/blog" },
+  { es: "VIDEO BLOG", en: "VIDEOS", href: "/videos" },
 ];
 
 export default function Header() {
   const { classes } = useStyles();
+  const { lang, setLang, t } = useLanguage();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [rippleKey, setRippleKey] = useState(0);
+
+  const navItems = navItemsData.map((item) => ({
+    label: lang === "es" ? item.es : item.en,
+    href: item.href,
+  }));
 
   useEffect(() => {
     if (mobileMenuOpen) {
@@ -67,7 +74,7 @@ export default function Header() {
         >
           {navItems.map((item) => (
             <Link
-              key={item.label}
+              key={item.href}
               href={item.href || "#"}
               className={classes.navLink}
               onClick={handleNavClick}
@@ -75,6 +82,71 @@ export default function Header() {
               {item.label}
             </Link>
           ))}
+
+          {/* Language Toggle */}
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              gap: 0,
+              ml: 1,
+              border: "1.5px solid rgba(93, 63, 211, 0.2)",
+              borderRadius: "20px",
+              overflow: "hidden",
+              height: 32,
+            }}
+          >
+            <Box
+              component="button"
+              onClick={() => setLang("es")}
+              aria-label="Español"
+              sx={{
+                px: 1.2,
+                py: 0.4,
+                fontSize: "0.7rem",
+                fontWeight: 700,
+                letterSpacing: "0.05em",
+                border: "none",
+                cursor: "pointer",
+                transition: "all 0.25s ease",
+                background: lang === "es"
+                  ? "linear-gradient(135deg, #5D3FD3, #7C5CE7)"
+                  : "transparent",
+                color: lang === "es" ? "#fff" : "#5D3FD3",
+                height: "100%",
+                display: "flex",
+                alignItems: "center",
+                gap: 0.5,
+              }}
+            >
+              🇨🇴 ES
+            </Box>
+            <Box
+              component="button"
+              onClick={() => setLang("en")}
+              aria-label="English"
+              sx={{
+                px: 1.2,
+                py: 0.4,
+                fontSize: "0.7rem",
+                fontWeight: 700,
+                letterSpacing: "0.05em",
+                border: "none",
+                cursor: "pointer",
+                transition: "all 0.25s ease",
+                background: lang === "en"
+                  ? "linear-gradient(135deg, #5D3FD3, #7C5CE7)"
+                  : "transparent",
+                color: lang === "en" ? "#fff" : "#5D3FD3",
+                height: "100%",
+                display: "flex",
+                alignItems: "center",
+                gap: 0.5,
+              }}
+            >
+              🇺🇸 EN
+            </Box>
+          </Box>
         </Box>
       </Box>
 

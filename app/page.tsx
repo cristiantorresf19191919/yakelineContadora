@@ -1,10 +1,12 @@
 "use client";
 
 import AboutSection from "./components/AboutSection/AboutSection";
+import ClientResults from "./components/ClientResults/ClientResults";
 import ConfidenceShowcase from "./components/ConfidenceShowcase/ConfidenceShowcase";
 import CredibilityBadges from "./components/CredibilityBadges/CredibilityBadges";
 import DiagnosisPromo from "./components/DiagnosisPromo/DiagnosisPromo";
 import FinancialGrowth from "./components/FinancialGrowth/FinancialGrowth";
+import FinancialHealthQuiz from "./components/FinancialHealthQuiz/FinancialHealthQuiz";
 import Footer from "./components/Footer/Footer";
 import Hero from "./components/Hero/Hero";
 import NewsletterSection from "./components/NewsletterSection/NewsletterSection";
@@ -15,6 +17,7 @@ import ServicesHighlights from "./components/ServicesHighlights/ServicesHighligh
 import HomeVideoSection from "./components/HomeVideoSection/HomeVideoSection";
 import SmartPopup from "./components/SmartPopup/SmartPopup";
 import SocialProofToast from "./components/SocialProofToast/SocialProofToast";
+import TaxCalendar from "./components/TaxCalendar/TaxCalendar";
 import TaxSavingsCalculator from "./components/TaxSavingsCalculator/TaxSavingsCalculator";
 
 export default function Home() {
@@ -28,12 +31,15 @@ export default function Home() {
       <ServicesHighlights />
       <SectionDivider variant="curve" topColor="#FFFFFF" bottomColor="#F8F6FF" />
       <TaxSavingsCalculator />
+      <FinancialHealthQuiz />
       <ProcessSteps />
       <SectionDivider variant="curve" topColor="#FFFFFF" bottomColor="#FAFAFA" flip />
       <DiagnosisPromo />
+      <ClientResults />
       <ConfidenceShowcase />
       <SectionDivider variant="wave" topColor="#FAFAFA" bottomColor="#FFF7F0" />
       <PremiumClientsCarousel />
+      <TaxCalendar />
       <AboutSection />
       <NewsletterSection />
       <Footer />

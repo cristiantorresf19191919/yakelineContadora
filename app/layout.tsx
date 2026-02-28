@@ -8,6 +8,7 @@ import ScrollProgressBar from "./components/ScrollProgressBar/ScrollProgressBar"
 import BackToTopButton from "./components/BackToTopButton/BackToTopButton";
 import "./globals.css";
 import { FloatingButtonsContainer } from "./components/FloatingButtonsContainer/FloatingButtonsContainer";
+import { LanguageProvider } from "./contexts/LanguageContext";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -195,11 +196,13 @@ export default function RootLayout({
         />
         <EmotionCacheProvider>
           <ThemeProvider>
-            <ScrollProgressBar />
-            <Header />
-            {children}
-            <FloatingButtonsContainer />
-            <BackToTopButton />
+            <LanguageProvider>
+              <ScrollProgressBar />
+              <Header />
+              {children}
+              <FloatingButtonsContainer />
+              <BackToTopButton />
+            </LanguageProvider>
           </ThemeProvider>
         </EmotionCacheProvider>
       </body>

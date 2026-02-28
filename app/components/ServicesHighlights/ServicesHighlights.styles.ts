@@ -196,7 +196,8 @@ const useStyles = makeStyles({ name: "ServicesHighlights" })(
            left: 0,
            right: 0,
            bottom: 0,
-           background: "url('/noise.png')", // Optional texture
+           background: "repeating-conic-gradient(rgba(255,255,255,0.03) 0% 25%, transparent 0% 50%)",
+           backgroundSize: "4px 4px",
            opacity: 0.05,
         }
       },

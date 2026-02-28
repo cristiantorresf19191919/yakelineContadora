@@ -5,32 +5,48 @@ import VerifiedIcon from "@mui/icons-material/Verified";
 import SchoolIcon from "@mui/icons-material/School";
 import PeopleIcon from "@mui/icons-material/People";
 import { motion } from "framer-motion";
+import { useLanguage } from "@/app/contexts/LanguageContext";
 
-const badges = [
+const badgesData = [
   {
     Icon: VerifiedIcon,
-    text: "10+ a\u00f1os de experiencia",
+    es: "10+ años de experiencia",
+    en: "10+ Years of Experience",
     color: "#4CAF50",
     gradient: "linear-gradient(135deg, #4CAF50 0%, #66BB6A 100%)",
-    description: "Experiencia comprobada en contabilidad y finanzas"
+    descEs: "Experiencia comprobada en contabilidad y finanzas",
+    descEn: "Proven experience in accounting and finance",
   },
   {
     Icon: SchoolIcon,
-    text: "Contadora P\u00fablica Certificada",
+    es: "Contadora Pública Certificada",
+    en: "Certified Public Accountant",
     color: "#2196F3",
     gradient: "linear-gradient(135deg, #2196F3 0%, #42A5F5 100%)",
-    description: "T\u00edtulos y certificaciones profesionales"
+    descEs: "Títulos y certificaciones profesionales",
+    descEn: "Professional degrees and certifications",
   },
   {
     Icon: PeopleIcon,
-    text: "500+ clientes satisfechos",
+    es: "500+ clientes satisfechos",
+    en: "500+ Satisfied Clients",
     color: "#FF9800",
     gradient: "linear-gradient(135deg, #FF9800 0%, #FFB74D 100%)",
-    description: "Resultados que hablan por s\u00ed solos"
+    descEs: "Resultados que hablan por sí solos",
+    descEn: "Results that speak for themselves",
   },
 ];
 
 export default function CredibilityBadges() {
+  const { lang } = useLanguage();
+  const badges = badgesData.map((b) => ({
+    Icon: b.Icon,
+    text: lang === "es" ? b.es : b.en,
+    color: b.color,
+    gradient: b.gradient,
+    description: lang === "es" ? b.descEs : b.descEn,
+  }));
+
   return (
     <Box sx={{
       py: { xs: 4, md: 7 },

@@ -7,25 +7,39 @@ import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import { motion, AnimatePresence } from "framer-motion";
 import useStyles from "./Hero.styles";
 import { useReducedMotion } from "@/app/hooks/useReducedMotion";
+import { useLanguage } from "@/app/contexts/LanguageContext";
 
-function useTimeGreeting() {
+function useTimeGreeting(lang: "es" | "en") {
   const [greeting, setGreeting] = useState("");
 
   useEffect(() => {
     const hour = new Date().getHours();
-    if (hour >= 5 && hour < 12) setGreeting("Buenos días");
-    else if (hour >= 12 && hour < 19) setGreeting("Buenas tardes");
-    else setGreeting("Buenas noches");
-  }, []);
+    if (lang === "es") {
+      if (hour >= 5 && hour < 12) setGreeting("Buenos días");
+      else if (hour >= 12 && hour < 19) setGreeting("Buenas tardes");
+      else setGreeting("Buenas noches");
+    } else {
+      if (hour >= 5 && hour < 12) setGreeting("Good morning");
+      else if (hour >= 12 && hour < 19) setGreeting("Good afternoon");
+      else setGreeting("Good evening");
+    }
+  }, [lang]);
 
   return greeting;
 }
 
-const typewriterPhrases = [
+const typewriterPhrasesEs = [
   "Para el Bienestar De Tus Finanzas",
   "Para Crecer Tu Negocio Con Confianza",
   "Para Ahorrar En Impuestos Legalmente",
   "Para Tu Tranquilidad Fiscal",
+];
+
+const typewriterPhrasesEn = [
+  "For Your Financial Wellbeing",
+  "To Grow Your Business With Confidence",
+  "To Save On Taxes Legally",
+  "For Your Financial Peace of Mind",
 ];
 
 function useTypewriter(phrases: string[], speed = 60, deleteSpeed = 35, pauseTime = 2500) {
@@ -67,8 +81,10 @@ function useTypewriter(phrases: string[], speed = 60, deleteSpeed = 35, pauseTim
 export default function Hero() {
   const { classes } = useStyles();
   const prefersReducedMotion = useReducedMotion();
-  const greeting = useTimeGreeting();
-  const typewriterText = useTypewriter(typewriterPhrases);
+  const { lang, t } = useLanguage();
+  const greeting = useTimeGreeting(lang);
+  const phrases = lang === "es" ? typewriterPhrasesEs : typewriterPhrasesEn;
+  const typewriterText = useTypewriter(phrases);
 
   const handleWhatsAppClick = () => {
     const phoneNumber = "3207269417";
@@ -153,14 +169,18 @@ export default function Hero() {
 
           <motion.div variants={itemVariants}>
             <Typography variant="h1" className={classes.mainHeading}>
-              <span className={classes.firstLine}>Asesoría Contable y</span>
-              <span className={classes.secondLine}>Tributaria</span>
+              <span className={classes.firstLine}>
+                {t("Asesoría Contable y", "Accounting &")}
+              </span>
+              <span className={classes.secondLine}>
+                {t("Tributaria", "Tax Advisory")}
+              </span>
             </Typography>
           </motion.div>
 
           <motion.div variants={itemVariants}>
             <Typography className={classes.tagline} sx={{ minHeight: { xs: "1.8em", md: "1.5em" } }}>
-              {prefersReducedMotion ? typewriterPhrases[0] : (
+              {prefersReducedMotion ? phrases[0] : (
                 <>
                   {typewriterText}
                   <motion.span
@@ -177,13 +197,19 @@ export default function Hero() {
 
           <motion.div variants={itemVariants}>
             <Typography className={classes.bodyText}>
-              Optimiza Tu Contabilidad y Asegura el Manejo Correcto De tus Impuestos
+              {t(
+                "Optimiza Tu Contabilidad y Asegura el Manejo Correcto De tus Impuestos",
+                "Optimize Your Accounting and Ensure Proper Tax Management"
+              )}
             </Typography>
           </motion.div>
 
           <motion.div variants={itemVariants}>
             <Typography className={classes.subHeading}>
-              Con la Asesoría de Una Experta en Finanzas.
+              {t(
+                "Con la Asesoría de Una Experta en Finanzas.",
+                "With Expert Financial Advisory."
+              )}
             </Typography>
           </motion.div>
 
@@ -199,7 +225,7 @@ export default function Hero() {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
-              Solicita tu Consulta
+              {t("Solicita tu Consulta", "Book Your Consultation")}
             </Button>
           </motion.div>
         </motion.div>
