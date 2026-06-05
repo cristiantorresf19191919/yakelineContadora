@@ -17,13 +17,13 @@ export default function UrgencyCounter() {
         p: 3,
         bgcolor: "#F3EEFF",
         borderRadius: 2,
-        border: "1px solid rgba(93, 63, 211, 0.15)",
+        border: "1px solid rgba(var(--brand-primary-rgb), 0.15)",
         mb: 3,
         display: "flex",
         alignItems: "center",
         gap: 2,
       }}>
-        <CalendarMonthRoundedIcon sx={{ color: "#5D3FD3", fontSize: 32 }} />
+        <CalendarMonthRoundedIcon sx={{ color: "var(--brand-primary)", fontSize: 32 }} />
         <Box>
           <Typography variant="h6" sx={{ fontWeight: 700, mb: 0.5, color: "#1F2937", fontSize: "1rem" }}>
             Consultas disponibles para {currentMonth}

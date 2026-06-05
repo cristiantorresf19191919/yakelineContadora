@@ -27,7 +27,7 @@ export default function CitasPage() {
                 minHeight: "80vh",
               }}
             >
-              <CircularProgress sx={{ color: "#5D3FD3" }} />
+              <CircularProgress sx={{ color: "var(--brand-primary)" }} />
             </Box>
           }
         >

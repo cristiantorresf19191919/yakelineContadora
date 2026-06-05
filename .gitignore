@@ -39,3 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local browser-automation + screenshot artifacts (real assets live in /public)
+.playwright-mcp/
+/*.png
+/*.jpeg
+/*.jpg

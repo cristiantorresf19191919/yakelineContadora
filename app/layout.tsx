@@ -3,6 +3,8 @@ import { Outfit, Playfair_Display } from "next/font/google";
 import Script from "next/script";
 import EmotionCacheProvider from "./emotion-cache";
 import ThemeProvider from "./ThemeProvider";
+import { ThemeScript } from "./components/ThemeScript/ThemeScript";
+import { CommandPalette } from "./components/CommandPalette/CommandPalette";
 import Header from "./components/Header/Header";
 import ScrollProgressBar from "./components/ScrollProgressBar/ScrollProgressBar";
 import BackToTopButton from "./components/BackToTopButton/BackToTopButton";
@@ -185,8 +187,13 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="es" className={`${outfit.variable} ${playfair.variable}`}>
+    <html
+      lang="es"
+      className={`${outfit.variable} ${playfair.variable}`}
+      suppressHydrationWarning
+    >
       <body>
+        <ThemeScript />
         <Script
           id="schema-org"
           type="application/ld+json"
@@ -202,6 +209,7 @@ export default function RootLayout({
               {children}
               <FloatingButtonsContainer />
               <BackToTopButton />
+              <CommandPalette />
             </LanguageProvider>
           </ThemeProvider>
         </EmotionCacheProvider>

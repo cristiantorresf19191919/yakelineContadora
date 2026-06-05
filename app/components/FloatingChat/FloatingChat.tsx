@@ -563,7 +563,7 @@ export function FloatingChat() {
                     borderColor: "rgba(139, 92, 246, 0.4)",
                   },
                   "&.Mui-focused fieldset": {
-                    borderColor: "#8B5CF6",
+                    borderColor: "var(--brand-primary-light)",
                     borderWidth: "2px",
                     boxShadow: "0 0 0 3px rgba(139, 92, 246, 0.1)",
                   },
@@ -579,14 +579,14 @@ export function FloatingChat() {
                 disabled={!inputMessage.trim() || isLoading}
                 className={styles.sendButton}
                 sx={{
-                  background: "linear-gradient(135deg, #8B5CF6 0%, #7C3AED 50%, #6D28D9 100%)",
+                  background: "linear-gradient(135deg, var(--brand-primary-light) 0%, #7C3AED 50%, #6D28D9 100%)",
                   borderRadius: "50%",
                   width: 56,
                   height: 56,
                   transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                   boxShadow: "0 4px 16px rgba(139, 92, 246, 0.3)",
                   "&:hover": {
-                    background: "linear-gradient(135deg, #9F7AEA 0%, #8B5CF6 50%, #7C3AED 100%)",
+                    background: "linear-gradient(135deg, #9F7AEA 0%, var(--brand-primary-light) 50%, #7C3AED 100%)",
                     boxShadow: "0 6px 20px rgba(139, 92, 246, 0.4)",
                     transform: "translateY(-2px)",
                   },

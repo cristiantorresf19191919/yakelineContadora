@@ -106,7 +106,7 @@ export default function VideosPage() {
       {/* CTA Section */}
       <Box sx={{
         py: { xs: 8, md: 12 },
-        background: "linear-gradient(135deg, #5D3FD3 0%, #4C1D95 100%)",
+        background: "linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-primary-dark) 100%)",
         textAlign: "center",
         color: "white",
       }}>
@@ -140,7 +140,7 @@ export default function VideosPage() {
                   startIcon={<CalendarMonthRoundedIcon />}
                   sx={{
                     bgcolor: "white",
-                    color: "#5D3FD3",
+                    color: "var(--brand-primary)",
                     borderRadius: 50,
                     px: 4,
                     py: 1.5,

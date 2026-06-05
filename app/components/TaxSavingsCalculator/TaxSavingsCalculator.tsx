@@ -65,7 +65,7 @@ export default function TaxSavingsCalculator() {
           width: 300,
           height: 300,
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(93, 63, 211, 0.06) 0%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(var(--brand-primary-rgb), 0.06) 0%, transparent 70%)",
         }}
       />
       <Box
@@ -76,7 +76,7 @@ export default function TaxSavingsCalculator() {
           width: 250,
           height: 250,
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(245, 158, 11, 0.06) 0%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(var(--brand-accent-rgb), 0.06) 0%, transparent 70%)",
         }}
       />
 
@@ -114,7 +114,7 @@ export default function TaxSavingsCalculator() {
               Descubre cuánto puedes{" "}
               <span
                 style={{
-                  background: "linear-gradient(90deg, #5D3FD3 0%, #F59E0B 100%)",
+                  background: "linear-gradient(90deg, var(--brand-primary) 0%, var(--brand-accent) 100%)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                 }}
@@ -141,8 +141,8 @@ export default function TaxSavingsCalculator() {
               bgcolor: "white",
               borderRadius: 4,
               p: { xs: 3, md: 5 },
-              boxShadow: "0 20px 60px rgba(93, 63, 211, 0.08), 0 4px 16px rgba(0,0,0,0.04)",
-              border: "1px solid rgba(93, 63, 211, 0.06)",
+              boxShadow: "0 20px 60px rgba(var(--brand-primary-rgb), 0.08), 0 4px 16px rgba(0,0,0,0.04)",
+              border: "1px solid rgba(var(--brand-primary-rgb), 0.06)",
             }}
           >
             {/* Slider Section */}
@@ -168,7 +168,7 @@ export default function TaxSavingsCalculator() {
                     fontFamily: "'Playfair Display', serif",
                     fontWeight: 700,
                     fontSize: { xs: "1.8rem", md: "2.4rem" },
-                    color: "#5D3FD3",
+                    color: "var(--brand-primary)",
                     mb: 3,
                   }}
                 >
@@ -184,20 +184,20 @@ export default function TaxSavingsCalculator() {
                 step={5}
                 marks={revenueMarks}
                 sx={{
-                  color: "#5D3FD3",
+                  color: "var(--brand-primary)",
                   height: 8,
                   "& .MuiSlider-track": {
-                    background: "linear-gradient(90deg, #5D3FD3, #7C5CE7)",
+                    background: "linear-gradient(90deg, var(--brand-primary), var(--brand-primary-strong))",
                     border: "none",
                   },
                   "& .MuiSlider-thumb": {
                     width: 24,
                     height: 24,
                     bgcolor: "white",
-                    border: "3px solid #5D3FD3",
-                    boxShadow: "0 4px 12px rgba(93, 63, 211, 0.3)",
+                    border: "3px solid var(--brand-primary)",
+                    boxShadow: "0 4px 12px rgba(var(--brand-primary-rgb), 0.3)",
                     "&:hover, &.Mui-focusVisible": {
-                      boxShadow: "0 4px 20px rgba(93, 63, 211, 0.4)",
+                      boxShadow: "0 4px 20px rgba(var(--brand-primary-rgb), 0.4)",
                     },
                   },
                   "& .MuiSlider-rail": {
@@ -297,9 +297,9 @@ export default function TaxSavingsCalculator() {
                     sx={{
                       p: 2.5,
                       borderRadius: 3,
-                      background: "linear-gradient(135deg, #5D3FD3 0%, #7C5CE7 100%)",
+                      background: "linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-primary-strong) 100%)",
                       textAlign: "center",
-                      boxShadow: "0 8px 20px rgba(93, 63, 211, 0.25)",
+                      boxShadow: "0 8px 20px rgba(var(--brand-primary-rgb), 0.25)",
                     }}
                   >
                     <SavingsRoundedIcon sx={{ color: "#FCD34D", fontSize: 28, mb: 0.5 }} />
@@ -352,7 +352,7 @@ export default function TaxSavingsCalculator() {
                     fontFamily: "'Playfair Display', serif",
                     fontWeight: 800,
                     fontSize: { xs: "2rem", md: "2.5rem" },
-                    color: "#B45309",
+                    color: "var(--brand-accent-dark)",
                   }}
                 >
                   {formatCOP(calculations.annualSavings)}
@@ -389,11 +389,11 @@ export default function TaxSavingsCalculator() {
                   fontSize: "1rem",
                   fontWeight: 700,
                   textTransform: "none",
-                  background: "linear-gradient(135deg, #5D3FD3 0%, #7C5CE7 100%)",
-                  boxShadow: "0 12px 30px rgba(93, 63, 211, 0.3)",
+                  background: "linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-primary-strong) 100%)",
+                  boxShadow: "0 12px 30px rgba(var(--brand-primary-rgb), 0.3)",
                   "&:hover": {
-                    background: "linear-gradient(135deg, #4C1D95 0%, #5D3FD3 100%)",
-                    boxShadow: "0 16px 40px rgba(93, 63, 211, 0.4)",
+                    background: "linear-gradient(135deg, var(--brand-primary-dark) 0%, var(--brand-primary) 100%)",
+                    boxShadow: "0 16px 40px rgba(var(--brand-primary-rgb), 0.4)",
                   },
                 }}
               >

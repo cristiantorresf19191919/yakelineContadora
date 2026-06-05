@@ -1,3 +1,250 @@
+/* ============================================================================
+   Yakeline Contadora — global styles + multi-mood theme tokens.
+
+   The active mood is set as `data-theme` on <html> (pre-paint by ThemeScript,
+   switched at runtime by ThemeProvider). Each block below re-declares the same
+   semantic `--brand-*` / surface / text tokens so every component that reads
+   them recolors instantly. `:root` mirrors the default mood (iris) as the SSR
+   fallback before the attribute is applied.
+
+   `--*-rgb` triplets exist so translucent colors can be written as
+   `rgba(var(--brand-primary-rgb), 0.2)` and still follow the active mood.
+   ============================================================================ */
+
+:root {
+  /* base mood = iris (light) */
+  --brand-primary: #5d3fd3;
+  --brand-primary-rgb: 93, 63, 211;
+  --brand-primary-light: #a78bfa;
+  --brand-primary-light-rgb: 167, 139, 250;
+  --brand-primary-dark: #4c1d95;
+  --brand-primary-dark-rgb: 76, 29, 149;
+  --brand-primary-strong: #7c5ce7;
+  --brand-accent: #f59e0b;
+  --brand-accent-rgb: 245, 158, 11;
+  --brand-accent-dark: #b45309;
+
+  --bg: #fafafa;
+  --bg-rgb: 250, 250, 250;
+  --bg-elevated: #ffffff;
+  --surface: #ffffff;
+  --surface-rgb: 255, 255, 255;
+  --surface-muted: #f4f0ff;
+  --border: rgba(93, 63, 211, 0.14);
+
+  --text: #1f2937;
+  --text-rgb: 31, 41, 55;
+  --text-muted: #4b5563;
+  --text-subtle: #6b7280;
+
+  --brand-gradient: linear-gradient(135deg, var(--brand-primary-strong), var(--brand-primary));
+  --shadow-glow: rgba(var(--brand-primary-rgb), 0.35);
+  --ring: var(--brand-primary);
+
+  --ease-standard: cubic-bezier(0.22, 1, 0.36, 1);
+  color-scheme: light;
+}
+
+html[data-theme="iris"] {
+  --brand-primary: #5d3fd3;
+  --brand-primary-rgb: 93, 63, 211;
+  --brand-primary-light: #a78bfa;
+  --brand-primary-light-rgb: 167, 139, 250;
+  --brand-primary-dark: #4c1d95;
+  --brand-primary-dark-rgb: 76, 29, 149;
+  --brand-primary-strong: #7c5ce7;
+  --brand-accent: #f59e0b;
+  --brand-accent-rgb: 245, 158, 11;
+  --brand-accent-dark: #b45309;
+  --bg: #fafafa;
+  --bg-rgb: 250, 250, 250;
+  --bg-elevated: #ffffff;
+  --surface: #ffffff;
+  --surface-rgb: 255, 255, 255;
+  --surface-muted: #f4f0ff;
+  --border: rgba(93, 63, 211, 0.14);
+  --text: #1f2937;
+  --text-rgb: 31, 41, 55;
+  --text-muted: #4b5563;
+  --text-subtle: #6b7280;
+  color-scheme: light;
+}
+
+html[data-theme="esmeralda"] {
+  --brand-primary: #0e9f6e;
+  --brand-primary-rgb: 14, 159, 110;
+  --brand-primary-light: #34d399;
+  --brand-primary-light-rgb: 52, 211, 153;
+  --brand-primary-dark: #065f46;
+  --brand-primary-dark-rgb: 6, 95, 70;
+  --brand-primary-strong: #10b981;
+  --brand-accent: #f59e0b;
+  --brand-accent-rgb: 245, 158, 11;
+  --brand-accent-dark: #b45309;
+  --bg: #f6fbf8;
+  --bg-rgb: 246, 251, 248;
+  --bg-elevated: #ffffff;
+  --surface: #ffffff;
+  --surface-rgb: 255, 255, 255;
+  --surface-muted: #e9f8f1;
+  --border: rgba(14, 159, 110, 0.16);
+  --text: #0f2a22;
+  --text-rgb: 15, 42, 34;
+  --text-muted: #3f5b52;
+  --text-subtle: #6e8a7f;
+  color-scheme: light;
+}
+
+html[data-theme="zafiro"] {
+  --brand-primary: #2563eb;
+  --brand-primary-rgb: 37, 99, 235;
+  --brand-primary-light: #60a5fa;
+  --brand-primary-light-rgb: 96, 165, 250;
+  --brand-primary-dark: #1e40af;
+  --brand-primary-dark-rgb: 30, 64, 175;
+  --brand-primary-strong: #3b82f6;
+  --brand-accent: #f59e0b;
+  --brand-accent-rgb: 245, 158, 11;
+  --brand-accent-dark: #b45309;
+  --bg: #f5f8ff;
+  --bg-rgb: 245, 248, 255;
+  --bg-elevated: #ffffff;
+  --surface: #ffffff;
+  --surface-rgb: 255, 255, 255;
+  --surface-muted: #eaf1ff;
+  --border: rgba(37, 99, 235, 0.16);
+  --text: #14213d;
+  --text-rgb: 20, 33, 61;
+  --text-muted: #41506b;
+  --text-subtle: #6b7793;
+  color-scheme: light;
+}
+
+html[data-theme="oro"] {
+  --brand-primary: #b7791f;
+  --brand-primary-rgb: 183, 121, 31;
+  --brand-primary-light: #e0a93c;
+  --brand-primary-light-rgb: 224, 169, 60;
+  --brand-primary-dark: #7c5410;
+  --brand-primary-dark-rgb: 124, 84, 16;
+  --brand-primary-strong: #d4942f;
+  --brand-accent: #5d3fd3;
+  --brand-accent-rgb: 93, 63, 211;
+  --brand-accent-dark: #4c1d95;
+  --bg: #fbf7ee;
+  --bg-rgb: 251, 247, 238;
+  --bg-elevated: #ffffff;
+  --surface: #ffffff;
+  --surface-rgb: 255, 255, 255;
+  --surface-muted: #fbf1dc;
+  --border: rgba(183, 121, 31, 0.2);
+  --text: #2a2014;
+  --text-rgb: 42, 32, 20;
+  --text-muted: #6b5a3e;
+  --text-subtle: #927e5a;
+  color-scheme: light;
+}
+
+html[data-theme="rosa"] {
+  --brand-primary: #db2777;
+  --brand-primary-rgb: 219, 39, 119;
+  --brand-primary-light: #f472b6;
+  --brand-primary-light-rgb: 244, 114, 182;
+  --brand-primary-dark: #9d174d;
+  --brand-primary-dark-rgb: 157, 23, 77;
+  --brand-primary-strong: #e94f94;
+  --brand-accent: #7c3aed;
+  --brand-accent-rgb: 124, 58, 237;
+  --brand-accent-dark: #5b21b6;
+  --bg: #fff5f9;
+  --bg-rgb: 255, 245, 249;
+  --bg-elevated: #ffffff;
+  --surface: #ffffff;
+  --surface-rgb: 255, 255, 255;
+  --surface-muted: #fdeaf2;
+  --border: rgba(219, 39, 119, 0.16);
+  --text: #2e1622;
+  --text-rgb: 46, 22, 34;
+  --text-muted: #6b4453;
+  --text-subtle: #936377;
+  color-scheme: light;
+}
+
+html[data-theme="medianoche"] {
+  --brand-primary: #a78bfa;
+  --brand-primary-rgb: 167, 139, 250;
+  --brand-primary-light: #c4b5fd;
+  --brand-primary-light-rgb: 196, 181, 253;
+  --brand-primary-dark: #7c5ce7;
+  --brand-primary-dark-rgb: 124, 92, 231;
+  --brand-primary-strong: #7c5ce7;
+  --brand-accent: #fbbf24;
+  --brand-accent-rgb: 251, 191, 36;
+  --brand-accent-dark: #d97706;
+  --bg: #0f1020;
+  --bg-rgb: 15, 16, 32;
+  --bg-elevated: #181a2e;
+  --surface: #1c1e36;
+  --surface-rgb: 28, 30, 54;
+  --surface-muted: #262943;
+  --border: rgba(167, 139, 250, 0.22);
+  --text: #eceaf6;
+  --text-rgb: 236, 234, 246;
+  --text-muted: #a9a7c4;
+  --text-subtle: #7e7c9c;
+  color-scheme: dark;
+}
+
+html[data-theme="onix"] {
+  --brand-primary: #8b5cf6;
+  --brand-primary-rgb: 139, 92, 246;
+  --brand-primary-light: #a78bfa;
+  --brand-primary-light-rgb: 167, 139, 250;
+  --brand-primary-dark: #6d28d9;
+  --brand-primary-dark-rgb: 109, 40, 217;
+  --brand-primary-strong: #7c3aed;
+  --brand-accent: #f59e0b;
+  --brand-accent-rgb: 245, 158, 11;
+  --brand-accent-dark: #b45309;
+  --bg: #0a0a0b;
+  --bg-rgb: 10, 10, 11;
+  --bg-elevated: #141416;
+  --surface: #18181b;
+  --surface-rgb: 24, 24, 27;
+  --surface-muted: #232327;
+  --border: rgba(255, 255, 255, 0.1);
+  --text: #f4f4f5;
+  --text-rgb: 244, 244, 245;
+  --text-muted: #a1a1aa;
+  --text-subtle: #71717a;
+  color-scheme: dark;
+}
+
+html[data-theme="bosque"] {
+  --brand-primary: #34d399;
+  --brand-primary-rgb: 52, 211, 153;
+  --brand-primary-light: #6ee7b7;
+  --brand-primary-light-rgb: 110, 231, 183;
+  --brand-primary-dark: #059669;
+  --brand-primary-dark-rgb: 5, 150, 105;
+  --brand-primary-strong: #10b981;
+  --brand-accent: #fbbf24;
+  --brand-accent-rgb: 251, 191, 36;
+  --brand-accent-dark: #d97706;
+  --bg: #07140f;
+  --bg-rgb: 7, 20, 15;
+  --bg-elevated: #0d2118;
+  --surface: #102a1f;
+  --surface-rgb: 16, 42, 31;
+  --surface-muted: #16382a;
+  --border: rgba(52, 211, 153, 0.22);
+  --text: #e6f4ec;
+  --text-rgb: 230, 244, 236;
+  --text-muted: #9cc0ae;
+  --text-subtle: #6e8e7e;
+  color-scheme: dark;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -18,19 +265,22 @@ body {
   font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.4s var(--ease-standard);
 }
 
-/* Custom themed text selection */
+/* Custom themed text selection — follows the active mood. */
 ::selection {
-  background-color: rgba(93, 63, 211, 0.2);
-  color: #4C1D95;
+  background-color: rgba(var(--brand-primary-rgb), 0.22);
+  color: var(--brand-primary-dark);
 }
 
 ::-moz-selection {
-  background-color: rgba(93, 63, 211, 0.2);
-  color: #4C1D95;
+  background-color: rgba(var(--brand-primary-rgb), 0.22);
+  color: var(--brand-primary-dark);
 }
 
 /* Custom scrollbar - Webkit browsers */
@@ -39,29 +289,44 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #f8f9fa;
+  background: var(--surface-muted);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #A78BFA 0%, #5D3FD3 100%);
+  background: linear-gradient(180deg, var(--brand-primary-light) 0%, var(--brand-primary) 100%);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #8B5CF6 0%, #4C1D95 100%);
+  background: linear-gradient(180deg, var(--brand-primary) 0%, var(--brand-primary-dark) 100%);
 }
 
 /* Firefox scrollbar */
 html {
   scrollbar-width: thin;
-  scrollbar-color: #A78BFA #f8f9fa;
+  scrollbar-color: var(--brand-primary-light) var(--surface-muted);
 }
 
 /* Focus visible outline for keyboard navigation */
 *:focus-visible {
-  outline: 2px solid #5D3FD3;
+  outline: 2px solid var(--ring);
   outline-offset: 2px;
   border-radius: 4px;
+}
+
+/* ── Theme reveal: a clean radial wipe via the View Transitions API.
+   Disable the default root cross-fade so the ThemeToggle's clip-path
+   animation reads as one crisp sweep instead of a muddy dissolve. ── */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+::view-transition-old(root) {
+  z-index: 1;
+}
+::view-transition-new(root) {
+  z-index: 2;
 }
 
 /* Custom styling for Instagram embeds to make them less branded */
@@ -99,6 +364,11 @@ div[style*="instagram"] > div,
   margin: 0 !important;
 }
 
+/* Lock background scroll while a full-screen overlay (mobile menu) is open. */
+body[data-overlay-open] {
+  overflow: hidden;
+}
+
 /* Respect reduced motion preferences */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -108,5 +378,10 @@ div[style*="instagram"] > div,
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
   }
 }

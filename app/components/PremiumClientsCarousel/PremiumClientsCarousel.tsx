@@ -198,7 +198,7 @@ export default function PremiumClientsCarousel() {
                         {Array.from({ length: testimonial.rating }).map((_, i) => (
                           <StarRoundedIcon
                             key={i}
-                            sx={{ fontSize: 16, color: "#F59E0B" }}
+                            sx={{ fontSize: 16, color: "var(--brand-accent)" }}
                           />
                         ))}
                       </Box>

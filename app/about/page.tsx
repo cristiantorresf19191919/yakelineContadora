@@ -129,7 +129,7 @@ export default function AboutPage() {
                     py: 2,
                     fontSize: "1rem",
                     textTransform: "none",
-                    boxShadow: "0 20px 40px -10px rgba(93, 63, 211, 0.3)"
+                    boxShadow: "0 20px 40px -10px rgba(var(--brand-primary-rgb), 0.3)"
                   }}
                 >
                   Conoce mis servicios
@@ -182,8 +182,8 @@ export default function AboutPage() {
         <Box sx={{
           py: { xs: 5, md: 7 },
           background: "linear-gradient(135deg, #F8F5FF 0%, #FAFAFA 100%)",
-          borderTop: "1px solid rgba(93, 63, 211, 0.06)",
-          borderBottom: "1px solid rgba(93, 63, 211, 0.06)",
+          borderTop: "1px solid rgba(var(--brand-primary-rgb), 0.06)",
+          borderBottom: "1px solid rgba(var(--brand-primary-rgb), 0.06)",
         }}>
           <Container maxWidth="lg">
             <Box sx={{
@@ -204,14 +204,14 @@ export default function AboutPage() {
                       width: 56,
                       height: 56,
                       borderRadius: "16px",
-                      background: "linear-gradient(135deg, #5D3FD3 0%, #7C5CE7 100%)",
+                      background: "linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-primary-strong) 100%)",
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
                       mx: "auto",
                       mb: 1.5,
                       color: "white",
-                      boxShadow: "0 8px 20px rgba(93, 63, 211, 0.25)",
+                      boxShadow: "0 8px 20px rgba(var(--brand-primary-rgb), 0.25)",
                     }}>
                       {metric.icon}
                     </Box>
@@ -219,7 +219,7 @@ export default function AboutPage() {
                       fontFamily: "'Playfair Display', serif",
                       fontWeight: 700,
                       fontSize: { xs: "1.8rem", md: "2.2rem" },
-                      color: "#5D3FD3",
+                      color: "var(--brand-primary)",
                       lineHeight: 1.2,
                     }}>
                       <AnimatedCounter target={metric.target} suffix={metric.suffix} duration={2000 + i * 300} />
@@ -315,7 +315,7 @@ export default function AboutPage() {
                     py: 2,
                     fontSize: "1rem",
                     textTransform: "none",
-                    boxShadow: "0 20px 40px -10px rgba(93, 63, 211, 0.3)"
+                    boxShadow: "0 20px 40px -10px rgba(var(--brand-primary-rgb), 0.3)"
                   }}
                 >
                   Agendar Consulta
@@ -335,9 +335,9 @@ export default function AboutPage() {
                   py: 2,
                   fontSize: "1rem",
                   textTransform: "none",
-                  borderColor: "rgba(93, 63, 211, 0.3)",
-                  color: "#5D3FD3",
-                  "&:hover": { borderColor: "#5D3FD3", bgcolor: "rgba(93, 63, 211, 0.04)" },
+                  borderColor: "rgba(var(--brand-primary-rgb), 0.3)",
+                  color: "var(--brand-primary)",
+                  "&:hover": { borderColor: "var(--brand-primary)", bgcolor: "rgba(var(--brand-primary-rgb), 0.04)" },
                 }}
               >
                 WhatsApp

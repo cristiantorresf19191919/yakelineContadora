@@ -11,14 +11,14 @@ const useStyles = makeStyles({ name: "Header" })(
 
     return {
       header: {
-        backgroundColor: "#FFFFFF",
+        backgroundColor: "var(--surface)",
         color: headerTextColor,
         width: "100%",
         position: "sticky",
         top: 0,
         zIndex: 1000,
         boxShadow: "0 10px 28px rgba(90, 60, 130, 0.08)",
-        borderBottom: "1px solid rgba(106, 63, 160, 0.08)",
+        borderBottom: "1px solid var(--border)",
         [breakpoints.down("sm")]: {
           backgroundColor: "transparent",
           boxShadow: "none",
@@ -134,9 +134,9 @@ const useStyles = makeStyles({ name: "Header" })(
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          backgroundColor: "rgba(255, 255, 255, 0.9)",
+          backgroundColor: "var(--surface)",
           backdropFilter: "blur(10px)",
-          border: "none",
+          border: "1px solid var(--border)",
           cursor: "pointer",
           padding: spacing(1.25),
           color: headerTextColor,
@@ -151,7 +151,7 @@ const useStyles = makeStyles({ name: "Header" })(
             transform: "scale(0.95)",
           },
           "&:hover": {
-            backgroundColor: "rgba(255, 255, 255, 1)",
+            backgroundColor: "var(--bg-elevated)",
             boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
           },
         },
@@ -161,7 +161,7 @@ const useStyles = makeStyles({ name: "Header" })(
         top: "50%",
         left: "50%",
         borderRadius: "50%",
-        background: `radial-gradient(circle, rgba(93, 63, 211, 0.3) 0%, rgba(167, 139, 250, 0.2) 50%, transparent 70%)`,
+        background: `radial-gradient(circle, rgba(var(--brand-primary-rgb), 0.3) 0%, rgba(var(--brand-primary-light-rgb), 0.2) 50%, transparent 70%)`,
         transform: "translate(-50%, -50%)",
         pointerEvents: "none",
         zIndex: -1,

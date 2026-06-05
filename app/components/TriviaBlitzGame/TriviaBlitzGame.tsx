@@ -1098,7 +1098,7 @@ export default function TriviaBlitzGame() {
               fontWeight: 900,
               fontFamily: "'Playfair Display', serif",
               background:
-                "linear-gradient(135deg, #A78BFA 0%, #F59E0B 50%, #A78BFA 100%)",
+                "linear-gradient(135deg, var(--brand-primary-light) 0%, var(--brand-accent) 50%, var(--brand-primary-light) 100%)",
               backgroundSize: "200% 200%",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
@@ -1140,8 +1140,8 @@ export default function TriviaBlitzGame() {
                   px: 2,
                   py: 0.75,
                   borderRadius: 50,
-                  border: "1px solid rgba(167,139,250,0.3)",
-                  background: "rgba(93,63,211,0.15)",
+                  border: "1px solid rgba(var(--brand-primary-light-rgb), 0.3)",
+                  background: "rgba(var(--brand-primary-rgb), 0.15)",
                   color: "rgba(255,255,255,0.8)",
                   fontSize: "0.85rem",
                   fontFamily: "'Outfit', sans-serif",
@@ -1161,7 +1161,7 @@ export default function TriviaBlitzGame() {
             >
               <Typography
                 sx={{
-                  color: "#F59E0B",
+                  color: "var(--brand-accent)",
                   fontSize: "0.95rem",
                   fontWeight: 600,
                 }}
@@ -1181,7 +1181,7 @@ export default function TriviaBlitzGame() {
               size="large"
               sx={{
                 background:
-                  "linear-gradient(135deg, #5D3FD3 0%, #7C3AED 100%)",
+                  "linear-gradient(135deg, var(--brand-primary) 0%, #7C3AED 100%)",
                 color: "#FFF",
                 fontWeight: 800,
                 fontSize: { xs: "1.1rem", sm: "1.25rem" },
@@ -1190,11 +1190,11 @@ export default function TriviaBlitzGame() {
                 borderRadius: 50,
                 textTransform: "uppercase",
                 letterSpacing: 2,
-                boxShadow: "0 0 30px rgba(93,63,211,0.4)",
+                boxShadow: "0 0 30px rgba(var(--brand-primary-rgb), 0.4)",
                 "&:hover": {
                   background:
-                    "linear-gradient(135deg, #7C3AED 0%, #5D3FD3 100%)",
-                  boxShadow: "0 0 40px rgba(93,63,211,0.6)",
+                    "linear-gradient(135deg, #7C3AED 0%, var(--brand-primary) 100%)",
+                  boxShadow: "0 0 40px rgba(var(--brand-primary-rgb), 0.6)",
                 },
               }}
             >
@@ -1347,8 +1347,8 @@ export default function TriviaBlitzGame() {
               animate={{ opacity: 1 }}
               transition={{ delay: 1 }}
               sx={{
-                background: "rgba(245,158,11,0.1)",
-                border: "1px solid rgba(245,158,11,0.25)",
+                background: "rgba(var(--brand-accent-rgb), 0.1)",
+                border: "1px solid rgba(var(--brand-accent-rgb), 0.25)",
                 borderRadius: 2,
                 p: 2,
                 mb: 3,
@@ -1357,7 +1357,7 @@ export default function TriviaBlitzGame() {
             >
               <Typography
                 sx={{
-                  color: "#F59E0B",
+                  color: "var(--brand-accent)",
                   fontWeight: 700,
                   fontSize: "0.85rem",
                   mb: 0.5,
@@ -1476,7 +1476,7 @@ export default function TriviaBlitzGame() {
               variant="contained"
               sx={{
                 background:
-                  "linear-gradient(135deg, #5D3FD3 0%, #7C3AED 100%)",
+                  "linear-gradient(135deg, var(--brand-primary) 0%, #7C3AED 100%)",
                 color: "#FFF",
                 fontWeight: 700,
                 px: 4,
@@ -1485,7 +1485,7 @@ export default function TriviaBlitzGame() {
                 fontSize: "0.95rem",
                 "&:hover": {
                   background:
-                    "linear-gradient(135deg, #7C3AED 0%, #5D3FD3 100%)",
+                    "linear-gradient(135deg, #7C3AED 0%, var(--brand-primary) 100%)",
                 },
               }}
             >
@@ -1693,11 +1693,11 @@ export default function TriviaBlitzGame() {
           >
             <Typography
               sx={{
-                color: "#F59E0B",
+                color: "var(--brand-accent)",
                 fontWeight: 900,
                 fontSize: { xs: "1.5rem", sm: "2rem" },
                 textShadow:
-                  "0 0 30px rgba(245,158,11,0.8), 0 0 60px rgba(245,158,11,0.4)",
+                  "0 0 30px rgba(var(--brand-accent-rgb), 0.8), 0 0 60px rgba(var(--brand-accent-rgb), 0.4)",
                 whiteSpace: "nowrap",
               }}
             >
@@ -1769,7 +1769,7 @@ export default function TriviaBlitzGame() {
                             ? currentQuestion.difficulty === 1
                               ? "#10B981"
                               : currentQuestion.difficulty === 2
-                                ? "#F59E0B"
+                                ? "var(--brand-accent)"
                                 : "#EF4444"
                             : "rgba(255,255,255,0.1)",
                         transition: "background 0.3s ease",
@@ -1820,7 +1820,7 @@ export default function TriviaBlitzGame() {
                   const showResult = selectedAnswer !== null;
 
                   let bgColor = "rgba(255,255,255,0.04)";
-                  let borderColor = "rgba(167,139,250,0.2)";
+                  let borderColor = "rgba(var(--brand-primary-light-rgb), 0.2)";
                   let textColor = "rgba(255,255,255,0.9)";
 
                   if (showResult) {
@@ -1874,10 +1874,10 @@ export default function TriviaBlitzGame() {
                           "&:hover": showResult
                             ? {}
                             : {
-                                background: "rgba(93,63,211,0.15)",
-                                borderColor: "#5D3FD3",
+                                background: "rgba(var(--brand-primary-rgb), 0.15)",
+                                borderColor: "var(--brand-primary)",
                                 boxShadow:
-                                  "0 0 20px rgba(93,63,211,0.25)",
+                                  "0 0 20px rgba(var(--brand-primary-rgb), 0.25)",
                                 transform: "translateY(-1px)",
                               },
                           "&.Mui-disabled": {
@@ -1900,7 +1900,7 @@ export default function TriviaBlitzGame() {
                                 ? "rgba(16,185,129,0.2)"
                                 : showResult && isSelected && !isCorrectOption
                                   ? "rgba(239,68,68,0.2)"
-                                  : "rgba(167,139,250,0.15)",
+                                  : "rgba(var(--brand-primary-light-rgb), 0.15)",
                             mr: 1.5,
                             flexShrink: 0,
                             fontSize: "0.8rem",
@@ -1910,7 +1910,7 @@ export default function TriviaBlitzGame() {
                                 ? "#10B981"
                                 : showResult && isSelected && !isCorrectOption
                                   ? "#EF4444"
-                                  : "#A78BFA",
+                                  : "var(--brand-primary-light)",
                           }}
                         >
                           {showResult && isCorrectOption ? (
@@ -1940,8 +1940,8 @@ export default function TriviaBlitzGame() {
                     transition={{ duration: 0.3 }}
                     sx={{
                       mt: 2,
-                      background: "rgba(167,139,250,0.08)",
-                      border: "1px solid rgba(167,139,250,0.2)",
+                      background: "rgba(var(--brand-primary-light-rgb), 0.08)",
+                      border: "1px solid rgba(var(--brand-primary-light-rgb), 0.2)",
                       borderRadius: 2,
                       p: 2,
                       overflow: "hidden",
@@ -1992,14 +1992,14 @@ export default function TriviaBlitzGame() {
                 borderRadius: "50%",
                 background:
                   i < currentIndex
-                    ? "#5D3FD3"
+                    ? "var(--brand-primary)"
                     : i === currentIndex
-                      ? "#A78BFA"
+                      ? "var(--brand-primary-light)"
                       : "rgba(255,255,255,0.1)",
                 transition: "all 0.3s ease",
                 boxShadow:
                   i === currentIndex
-                    ? "0 0 8px rgba(167,139,250,0.6)"
+                    ? "0 0 8px rgba(var(--brand-primary-light-rgb), 0.6)"
                     : "none",
               }}
             />
@@ -2065,7 +2065,7 @@ function CountUpScore({ target }: { target: number }) {
         fontSize: { xs: "3rem", sm: "3.8rem" },
         fontFamily: "'Playfair Display', serif",
         lineHeight: 1,
-        textShadow: "0 0 40px rgba(167,139,250,0.4)",
+        textShadow: "0 0 40px rgba(var(--brand-primary-light-rgb), 0.4)",
       }}
     >
       {displayed}

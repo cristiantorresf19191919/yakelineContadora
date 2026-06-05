@@ -427,7 +427,7 @@ export default function TaxCalendar() {
           width: 800,
           height: 800,
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(93, 63, 211, 0.08) 0%, transparent 60%)",
+          background: "radial-gradient(circle, rgba(var(--brand-primary-rgb), 0.08) 0%, transparent 60%)",
           pointerEvents: "none",
         }}
       />
@@ -439,7 +439,7 @@ export default function TaxCalendar() {
           width: 400,
           height: 400,
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(245, 158, 11, 0.06) 0%, transparent 60%)",
+          background: "radial-gradient(circle, rgba(var(--brand-accent-rgb), 0.06) 0%, transparent 60%)",
           pointerEvents: "none",
         }}
       />
@@ -469,7 +469,7 @@ export default function TaxCalendar() {
                 icon={<WarningAmberRoundedIcon sx={{ color: "#0F0A1A !important", fontSize: 18 }} />}
                 label="NO TE ATRASES"
                 sx={{
-                  bgcolor: "#F59E0B",
+                  bgcolor: "var(--brand-accent)",
                   color: "#0F0A1A",
                   fontWeight: 800,
                   fontSize: "0.8rem",
@@ -497,7 +497,7 @@ export default function TaxCalendar() {
               <Box
                 component="span"
                 sx={{
-                  background: "linear-gradient(90deg, #5D3FD3 0%, #F59E0B 100%)",
+                  background: "linear-gradient(90deg, var(--brand-primary) 0%, var(--brand-accent) 100%)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                 }}
@@ -547,7 +547,7 @@ export default function TaxCalendar() {
                   bgcolor:
                     activeFilter === cat.key
                       ? cat.key === "all"
-                        ? "#5D3FD3"
+                        ? "var(--brand-primary)"
                         : CATEGORY_COLORS[cat.key as TaxDeadline["category"]]
                       : "rgba(255,255,255,0.06)",
                   color:
@@ -591,7 +591,7 @@ export default function TaxCalendar() {
               top: 0,
               bottom: 0,
               width: 2,
-              background: "linear-gradient(180deg, rgba(93, 63, 211, 0.4) 0%, rgba(245, 158, 11, 0.2) 100%)",
+              background: "linear-gradient(180deg, rgba(var(--brand-primary-rgb), 0.4) 0%, rgba(var(--brand-accent-rgb), 0.2) 100%)",
             }}
           />
 
@@ -923,9 +923,9 @@ export default function TaxCalendar() {
               textAlign: "center",
               p: { xs: 4, md: 5 },
               borderRadius: 4,
-              background: "rgba(93, 63, 211, 0.08)",
+              background: "rgba(var(--brand-primary-rgb), 0.08)",
               backdropFilter: "blur(20px)",
-              border: "1px solid rgba(93, 63, 211, 0.15)",
+              border: "1px solid rgba(var(--brand-primary-rgb), 0.15)",
               maxWidth: 700,
               mx: "auto",
             }}
@@ -933,7 +933,7 @@ export default function TaxCalendar() {
             <CalendarMonthRoundedIcon
               sx={{
                 fontSize: 40,
-                color: "#5D3FD3",
+                color: "var(--brand-primary)",
                 mb: 2,
               }}
             />
@@ -979,12 +979,12 @@ export default function TaxCalendar() {
                 fontSize: { xs: "0.95rem", md: "1rem" },
                 fontWeight: 700,
                 textTransform: "none",
-                background: "linear-gradient(135deg, #5D3FD3 0%, #7C5CE7 100%)",
+                background: "linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-primary-strong) 100%)",
                 color: "#FFFFFF",
-                boxShadow: "0 12px 30px rgba(93, 63, 211, 0.35)",
+                boxShadow: "0 12px 30px rgba(var(--brand-primary-rgb), 0.35)",
                 "&:hover": {
-                  background: "linear-gradient(135deg, #4C1D95 0%, #5D3FD3 100%)",
-                  boxShadow: "0 16px 40px rgba(93, 63, 211, 0.45)",
+                  background: "linear-gradient(135deg, var(--brand-primary-dark) 0%, var(--brand-primary) 100%)",
+                  boxShadow: "0 16px 40px rgba(var(--brand-primary-rgb), 0.45)",
                 },
               }}
             >

@@ -58,7 +58,7 @@ export default function GamesArcade() {
           width: 300,
           height: 300,
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(93,63,211,0.08) 0%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(var(--brand-primary-rgb),0.08) 0%, transparent 70%)",
           pointerEvents: "none",
         }}
       />
@@ -70,7 +70,7 @@ export default function GamesArcade() {
           width: 400,
           height: 400,
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(245,158,11,0.06) 0%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(var(--brand-accent-rgb),0.06) 0%, transparent 70%)",
           pointerEvents: "none",
         }}
       />
@@ -94,7 +94,7 @@ export default function GamesArcade() {
                 fontSize: "0.8rem",
                 fontWeight: 700,
                 letterSpacing: "0.1em",
-                background: "linear-gradient(135deg, #5D3FD3 0%, #7C5CE7 100%)",
+                background: "linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-primary-strong) 100%)",
                 color: "white",
                 "& .MuiChip-icon": { color: "white" },
               }}
@@ -114,7 +114,7 @@ export default function GamesArcade() {
               <Box
                 component="span"
                 sx={{
-                  background: "linear-gradient(135deg, #F59E0B 0%, #FCD34D 100%)",
+                  background: "linear-gradient(135deg, var(--brand-accent) 0%, #FCD34D 100%)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                 }}

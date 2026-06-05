@@ -85,7 +85,7 @@ const useStyles = makeStyles({ name: "ConfidenceShowcase" })(
         padding: spacing(0.5, 1.5),
         borderRadius: "999px",
         background:
-          "linear-gradient(90deg, rgba(93, 63, 211, 0.08) 0%, rgba(167, 139, 250, 0.2) 100%)",
+          "linear-gradient(90deg, rgba(var(--brand-primary-rgb), 0.08) 0%, rgba(var(--brand-primary-light-rgb), 0.2) 100%)",
       },
       gallery: {
         width: "100%",
@@ -170,7 +170,7 @@ const useStyles = makeStyles({ name: "ConfidenceShowcase" })(
         width: 300,
         height: 400,
         zIndex: 10,
-        boxShadow: "0 30px 60px rgba(93, 63, 211, 0.25)",
+        boxShadow: "0 30px 60px rgba(var(--brand-primary-rgb), 0.25)",
         [breakpoints.down("md")]: {
           width: "60vw",
           maxWidth: 300,
@@ -181,7 +181,7 @@ const useStyles = makeStyles({ name: "ConfidenceShowcase" })(
           maxWidth: 360,
           height: "auto",
           aspectRatio: "3/4",
-          boxShadow: "0 20px 40px rgba(93, 63, 211, 0.2)",
+          boxShadow: "0 20px 40px rgba(var(--brand-primary-rgb), 0.2)",
         },
       },
       cardRight: {

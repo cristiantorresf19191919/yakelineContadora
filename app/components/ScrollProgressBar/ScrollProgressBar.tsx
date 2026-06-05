@@ -28,9 +28,9 @@ export default function ScrollProgressBar() {
           scaleX,
           transformOrigin: "0%",
           height: "100%",
-          background: "linear-gradient(90deg, #5D3FD3 0%, #A78BFA 40%, #F59E0B 100%)",
+          background: "linear-gradient(90deg, var(--brand-primary) 0%, var(--brand-primary-light) 40%, var(--brand-accent) 100%)",
           borderRadius: "0 2px 2px 0",
-          boxShadow: "0 0 10px rgba(93, 63, 211, 0.5), 0 0 5px rgba(245, 158, 11, 0.3)",
+          boxShadow: "0 0 10px rgba(var(--brand-primary-rgb), 0.5), 0 0 5px rgba(var(--brand-accent-rgb), 0.3)",
         }}
       />
     </Box>

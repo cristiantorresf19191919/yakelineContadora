@@ -897,8 +897,8 @@ export default function DeductionCatcherGame() {
           position: "relative",
           borderRadius: 3,
           overflow: "hidden",
-          boxShadow: "0 8px 32px rgba(93, 63, 211, 0.3)",
-          border: "1px solid rgba(93, 63, 211, 0.3)",
+          boxShadow: "0 8px 32px rgba(var(--brand-primary-rgb), 0.3)",
+          border: "1px solid rgba(var(--brand-primary-rgb), 0.3)",
         }}
       >
         <canvas
@@ -935,7 +935,7 @@ export default function DeductionCatcherGame() {
                 fontSize: { xs: "1.6rem", sm: "2.2rem" },
                 color: "#FFFFFF",
                 textAlign: "center",
-                textShadow: "0 0 20px rgba(93, 63, 211, 0.6)",
+                textShadow: "0 0 20px rgba(var(--brand-primary-rgb), 0.6)",
               }}
             >
               {"\u{1F3AF}"} Atrapa Deducciones
@@ -956,7 +956,7 @@ export default function DeductionCatcherGame() {
               <Typography
                 sx={{
                   fontSize: "0.9rem",
-                  color: "#F59E0B",
+                  color: "var(--brand-accent)",
                   fontWeight: 600,
                 }}
               >
@@ -978,10 +978,10 @@ export default function DeductionCatcherGame() {
                   px: { xs: 1.5, sm: 2.5 },
                   "&.Mui-selected": {
                     color: "#FFFFFF",
-                    backgroundColor: "rgba(93, 63, 211, 0.5)",
-                    borderColor: "#5D3FD3",
+                    backgroundColor: "rgba(var(--brand-primary-rgb), 0.5)",
+                    borderColor: "var(--brand-primary)",
                     "&:hover": {
-                      backgroundColor: "rgba(93, 63, 211, 0.6)",
+                      backgroundColor: "rgba(var(--brand-primary-rgb), 0.6)",
                     },
                   },
                   "&:hover": {
@@ -1004,13 +1004,13 @@ export default function DeductionCatcherGame() {
                 py: 1.3,
                 fontSize: { xs: "1rem", sm: "1.2rem" },
                 fontWeight: 800,
-                backgroundColor: "#5D3FD3",
+                backgroundColor: "var(--brand-primary)",
                 borderRadius: 3,
                 textTransform: "none",
                 animation: "pulseBtn 2s ease-in-out infinite",
                 "@keyframes pulseBtn": {
-                  "0%, 100%": { boxShadow: "0 0 0 0 rgba(93, 63, 211, 0.5)" },
-                  "50%": { boxShadow: "0 0 0 12px rgba(93, 63, 211, 0)" },
+                  "0%, 100%": { boxShadow: "0 0 0 0 rgba(var(--brand-primary-rgb), 0.5)" },
+                  "50%": { boxShadow: "0 0 0 12px rgba(var(--brand-primary-rgb), 0)" },
                 },
                 "&:hover": {
                   backgroundColor: "#4C2FC2",
@@ -1058,8 +1058,8 @@ export default function DeductionCatcherGame() {
               sx={{
                 fontSize: { xs: "2rem", sm: "2.8rem" },
                 fontWeight: 900,
-                color: "#F59E0B",
-                textShadow: "0 0 20px rgba(245, 158, 11, 0.5)",
+                color: "var(--brand-accent)",
+                textShadow: "0 0 20px rgba(var(--brand-accent-rgb), 0.5)",
               }}
             >
               {displayedScore}
@@ -1144,7 +1144,7 @@ export default function DeductionCatcherGame() {
                 }}
                 variant="contained"
                 sx={{
-                  backgroundColor: "#5D3FD3",
+                  backgroundColor: "var(--brand-primary)",
                   fontWeight: 700,
                   textTransform: "none",
                   borderRadius: 2,

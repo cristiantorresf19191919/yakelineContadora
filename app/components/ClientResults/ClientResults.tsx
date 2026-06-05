@@ -317,7 +317,7 @@ function SavingsBadge({
         px: 2,
         mt: 1,
         borderRadius: 3,
-        background: "linear-gradient(135deg, rgba(93,63,211,0.08) 0%, rgba(16,185,129,0.08) 100%)",
+        background: "linear-gradient(135deg, rgba(var(--brand-primary-rgb),0.08) 0%, rgba(16,185,129,0.08) 100%)",
         position: "relative",
         overflow: "hidden",
       }}
@@ -342,13 +342,13 @@ function SavingsBadge({
           height: 120,
           borderRadius: "50%",
           background:
-            "radial-gradient(circle, rgba(93,63,211,0.25) 0%, transparent 70%)",
+            "radial-gradient(circle, rgba(var(--brand-primary-rgb),0.25) 0%, transparent 70%)",
           pointerEvents: "none",
         }}
       />
 
       <EmojiEventsIcon
-        sx={{ fontSize: 28, color: "#F59E0B", mb: 0.5 }}
+        sx={{ fontSize: 28, color: "var(--brand-accent)", mb: 0.5 }}
       />
 
       <Typography
@@ -356,7 +356,7 @@ function SavingsBadge({
         sx={{
           fontWeight: 800,
           fontSize: { xs: "2rem", md: "2.4rem" },
-          background: "linear-gradient(135deg, #5D3FD3, #10B981)",
+          background: "linear-gradient(135deg, var(--brand-primary), #10B981)",
           WebkitBackgroundClip: "text",
           WebkitTextFillColor: "transparent",
           lineHeight: 1.1,
@@ -413,7 +413,7 @@ function ClientCard({
           bgcolor: "#FFFFFF",
           boxShadow:
             "0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px -2px rgba(0,0,0,0.05)",
-          border: "1px solid rgba(93,63,211,0.08)",
+          border: "1px solid rgba(var(--brand-primary-rgb),0.08)",
           overflow: "hidden",
           display: "flex",
           flexDirection: "column",
@@ -421,7 +421,7 @@ function ClientCard({
           "&:hover": {
             transform: "translateY(-6px)",
             boxShadow:
-              "0 20px 40px -12px rgba(93,63,211,0.15), 0 8px 16px -8px rgba(0,0,0,0.08)",
+              "0 20px 40px -12px rgba(var(--brand-primary-rgb),0.15), 0 8px 16px -8px rgba(0,0,0,0.08)",
           },
         }}
       >
@@ -583,7 +583,7 @@ export default function ClientResults() {
           height: 400,
           borderRadius: "50%",
           background:
-            "radial-gradient(circle, rgba(93,63,211,0.04) 0%, transparent 70%)",
+            "radial-gradient(circle, rgba(var(--brand-primary-rgb),0.04) 0%, transparent 70%)",
           pointerEvents: "none",
         }}
       />
@@ -615,15 +615,15 @@ export default function ClientResults() {
               label="CASOS DE EXITO"
               sx={{
                 mb: 2,
-                bgcolor: "rgba(93,63,211,0.08)",
-                color: "#5D3FD3",
+                bgcolor: "rgba(var(--brand-primary-rgb),0.08)",
+                color: "var(--brand-primary)",
                 fontWeight: 700,
                 fontSize: "0.75rem",
                 letterSpacing: "0.12em",
                 height: 32,
-                border: "1px solid rgba(93,63,211,0.15)",
+                border: "1px solid rgba(var(--brand-primary-rgb),0.15)",
                 "& .MuiChip-icon": {
-                  color: "#5D3FD3",
+                  color: "var(--brand-primary)",
                 },
               }}
             />
@@ -642,7 +642,7 @@ export default function ClientResults() {
               <Box
                 component="span"
                 sx={{
-                  background: "linear-gradient(135deg, #5D3FD3, #A78BFA)",
+                  background: "linear-gradient(135deg, var(--brand-primary), var(--brand-primary-light))",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                 }}
@@ -700,8 +700,8 @@ export default function ClientResults() {
               px: { xs: 3, md: 5 },
               borderRadius: 4,
               background:
-                "linear-gradient(135deg, rgba(93,63,211,0.04) 0%, rgba(16,185,129,0.04) 100%)",
-              border: "1px solid rgba(93,63,211,0.08)",
+                "linear-gradient(135deg, rgba(var(--brand-primary-rgb),0.04) 0%, rgba(16,185,129,0.04) 100%)",
+              border: "1px solid rgba(var(--brand-primary-rgb),0.08)",
             }}
           >
             <Typography
@@ -717,7 +717,7 @@ export default function ClientResults() {
               <Box
                 component="span"
                 sx={{
-                  background: "linear-gradient(135deg, #5D3FD3, #10B981)",
+                  background: "linear-gradient(135deg, var(--brand-primary), #10B981)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                 }}

@@ -6,7 +6,7 @@
   right: 24px;
   width: 68px;
   height: 68px;
-  background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 50%, #6D28D9 100%);
+  background: linear-gradient(135deg, var(--brand-primary-light) 0%, #7C3AED 50%, #6D28D9 100%);
   color: white;
   border-radius: 50%;
   border: 3px solid rgba(255, 255, 255, 0.2);
@@ -157,7 +157,7 @@
 .header {
   padding: 28px 24px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 50%, #6D28D9 100%);
+  background: linear-gradient(135deg, var(--brand-primary-light) 0%, #7C3AED 50%, #6D28D9 100%);
   color: white;
   display: flex;
   align-items: center;
@@ -289,14 +289,14 @@
 }
 
 .messagesContainer::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #8B5CF6 0%, #7C3AED 100%);
+  background: linear-gradient(180deg, var(--brand-primary-light) 0%, #7C3AED 100%);
   border-radius: 10px;
   border: 2px solid transparent;
   background-clip: padding-box;
 }
 
 .messagesContainer::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #9F7AEA 0%, #8B5CF6 100%);
+  background: linear-gradient(180deg, #9F7AEA 0%, var(--brand-primary-light) 100%);
   background-clip: padding-box;
 }
 
@@ -363,7 +363,7 @@
 }
 
 .messageAvatar.user {
-  background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 50%, #6D28D9 100%);
+  background: linear-gradient(135deg, var(--brand-primary-light) 0%, #7C3AED 50%, #6D28D9 100%);
   color: white;
   border: 2px solid rgba(255, 255, 255, 0.3);
 }
@@ -407,7 +407,7 @@
 }
 
 .messageBubble.user {
-  background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 50%, #6D28D9 100%);
+  background: linear-gradient(135deg, var(--brand-primary-light) 0%, #7C3AED 50%, #6D28D9 100%);
   color: white;
   border-bottom-right-radius: 8px;
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -422,7 +422,7 @@
 
 .messageBubble.ai {
   background: linear-gradient(135deg, #FFFFFF 0%, #FAF5FF 100%);
-  color: #4C1D95;
+  color: var(--brand-primary-dark);
   border: 1px solid rgba(139, 92, 246, 0.15);
   border-bottom-left-radius: 8px;
   backdrop-filter: blur(10px);
@@ -451,7 +451,7 @@
 }
 
 .messageBubble.ai .messageText {
-  color: #4C1D95;
+  color: var(--brand-primary-dark);
 }
 
 .messageTimestamp {
@@ -510,7 +510,7 @@
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(90deg, #8B5CF6 0%, #7C3AED 50%, #6D28D9 100%);
+  background: linear-gradient(90deg, var(--brand-primary-light) 0%, #7C3AED 50%, #6D28D9 100%);
 }
 
 .serviceCard:hover {
@@ -596,7 +596,7 @@
 .loadingSpinner {
   width: 20px;
   height: 20px;
-  color: #8B5CF6;
+  color: var(--brand-primary-light);
 }
 
 .loadingText {

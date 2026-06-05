@@ -31,7 +31,7 @@ const useStyles = makeStyles({ name: "Footer" })((theme: Theme) => {
       right: 0,
       height: "40%",
       background:
-        "radial-gradient(ellipse at center top, rgba(139, 92, 246, 0.15) 0%, transparent 70%)",
+        "radial-gradient(ellipse at center top, rgba(var(--brand-primary-rgb), 0.18) 0%, transparent 70%)",
       pointerEvents: "none",
     },
     container: {
@@ -74,10 +74,11 @@ const useStyles = makeStyles({ name: "Footer" })((theme: Theme) => {
       width: 42,
       height: 42,
       borderRadius: "50%",
-      background: `linear-gradient(140deg, ${accentViolet} 0%, ${accentVioletStrong} 100%)`,
-      color: theme.palette.primary.dark,
+      background: "var(--brand-gradient)",
+      color: "#FFFFFF",
       fontWeight: 700,
       fontSize: "1.25rem",
+      boxShadow: "0 8px 22px -8px var(--shadow-glow)",
     },
     brandCopy: {
       color: "rgba(243, 229, 244, 0.85)",

@@ -37,7 +37,7 @@ const packages = [
     priceNote: "por sesión",
     icon: <StarRoundedIcon sx={{ fontSize: 28 }} />,
     color: "#5D3FD3",
-    gradient: "linear-gradient(135deg, #5D3FD3 0%, #7C5CE7 100%)",
+    gradient: "linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-primary-strong) 100%)",
     features: [
       "Consulta personalizada de 60 min",
       "Análisis detallado de tu contabilidad",
@@ -57,7 +57,7 @@ const packages = [
     priceNote: "por mes",
     icon: <DiamondRoundedIcon sx={{ fontSize: 28 }} />,
     color: "#F59E0B",
-    gradient: "linear-gradient(135deg, #F59E0B 0%, #FCD34D 100%)",
+    gradient: "linear-gradient(135deg, var(--brand-accent) 0%, #FCD34D 100%)",
     features: [
       "Todo lo del Plan Profesional",
       "Gestión tributaria mensual completa",
@@ -105,7 +105,7 @@ export default function ServicePackages({ onSelectPackage }: ServicePackagesProp
                 fontSize: "0.8rem",
                 fontWeight: 700,
                 letterSpacing: "0.1em",
-                background: "linear-gradient(135deg, #5D3FD3 0%, #7C5CE7 100%)",
+                background: "linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-primary-strong) 100%)",
                 color: "white",
                 "& .MuiChip-icon": { color: "white" },
               }}
@@ -125,7 +125,7 @@ export default function ServicePackages({ onSelectPackage }: ServicePackagesProp
               <Box
                 component="span"
                 sx={{
-                  background: "linear-gradient(135deg, #5D3FD3 0%, #A78BFA 100%)",
+                  background: "linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-primary-light) 100%)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                 }}
@@ -181,13 +181,13 @@ export default function ServicePackages({ onSelectPackage }: ServicePackagesProp
                     label="MÁS POPULAR"
                     size="small"
                     sx={{
-                      background: "linear-gradient(135deg, #F59E0B 0%, #FCD34D 100%)",
+                      background: "linear-gradient(135deg, var(--brand-accent) 0%, #FCD34D 100%)",
                       color: "#78350F",
                       fontWeight: 800,
                       fontSize: "0.7rem",
                       letterSpacing: "0.08em",
                       px: 1,
-                      boxShadow: "0 4px 12px rgba(245, 158, 11, 0.4)",
+                      boxShadow: "0 4px 12px rgba(var(--brand-accent-rgb), 0.4)",
                     }}
                   />
                 </Box>
@@ -202,10 +202,10 @@ export default function ServicePackages({ onSelectPackage }: ServicePackagesProp
                   display: "flex",
                   flexDirection: "column",
                   border: pkg.popular
-                    ? "2px solid rgba(93, 63, 211, 0.3)"
-                    : "1px solid rgba(93, 63, 211, 0.08)",
+                    ? "2px solid rgba(var(--brand-primary-rgb), 0.3)"
+                    : "1px solid rgba(var(--brand-primary-rgb), 0.08)",
                   boxShadow: pkg.popular
-                    ? "0 20px 60px rgba(93, 63, 211, 0.15), 0 8px 24px rgba(0,0,0,0.06)"
+                    ? "0 20px 60px rgba(var(--brand-primary-rgb), 0.15), 0 8px 24px rgba(0,0,0,0.06)"
                     : "0 8px 32px rgba(0,0,0,0.04)",
                   transition: "all 0.35s cubic-bezier(0.4, 0, 0.2, 1)",
                   transform: hoveredId === pkg.id ? "translateY(-8px)" : "none",

@@ -157,7 +157,7 @@ export default function Hero() {
                 sx={{
                   fontSize: { xs: "0.85rem", md: "1rem" },
                   fontWeight: 500,
-                  color: "#F59E0B",
+                  color: "var(--brand-accent)",
                   letterSpacing: "0.05em",
                   mb: 0.5,
                 }}

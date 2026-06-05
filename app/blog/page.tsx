@@ -37,7 +37,7 @@ export default function BlogPage() {
                 py: 2.5,
                 fontSize: "0.85rem",
                 fontWeight: 600,
-                background: "linear-gradient(135deg, #5D3FD3 0%, #7C5CE7 100%)",
+                background: "linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-primary-strong) 100%)",
                 color: "white",
                 "& .MuiChip-icon": { color: "white" },
               }}
@@ -57,7 +57,7 @@ export default function BlogPage() {
               <Box
                 component="span"
                 sx={{
-                  background: "linear-gradient(135deg, #5D3FD3 0%, #A78BFA 100%)",
+                  background: "linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-primary-light) 100%)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                 }}

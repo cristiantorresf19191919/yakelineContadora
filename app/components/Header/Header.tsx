@@ -9,6 +9,8 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import useStyles from "./Header.styles";
 import MobileMenu from "./MobileMenu";
+import ThemeToggle from "../ThemeToggle/ThemeToggle";
+import { CommandPaletteTrigger } from "../CommandPalette/CommandPalette";
 import { useLanguage } from "@/app/contexts/LanguageContext";
 
 const navItemsData = [
@@ -83,69 +85,69 @@ export default function Header() {
             </Link>
           ))}
 
-          {/* Language Toggle */}
-          <Box
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              gap: 0,
-              ml: 1,
-              border: "1.5px solid rgba(93, 63, 211, 0.2)",
-              borderRadius: "20px",
-              overflow: "hidden",
-              height: 32,
-            }}
-          >
+          {/* Search · Language Toggle · Theme Wheel */}
+          <Box sx={{ display: "flex", alignItems: "center", gap: 1.25, ml: 1 }}>
+            <CommandPaletteTrigger />
             <Box
-              component="button"
-              onClick={() => setLang("es")}
-              aria-label="Español"
               sx={{
-                px: 1.2,
-                py: 0.4,
-                fontSize: "0.7rem",
-                fontWeight: 700,
-                letterSpacing: "0.05em",
-                border: "none",
-                cursor: "pointer",
-                transition: "all 0.25s ease",
-                background: lang === "es"
-                  ? "linear-gradient(135deg, #5D3FD3, #7C5CE7)"
-                  : "transparent",
-                color: lang === "es" ? "#fff" : "#5D3FD3",
-                height: "100%",
                 display: "flex",
                 alignItems: "center",
-                gap: 0.5,
+                gap: 0,
+                border: "1.5px solid var(--border)",
+                borderRadius: "20px",
+                overflow: "hidden",
+                height: 32,
               }}
             >
-              🇨🇴 ES
+              <Box
+                component="button"
+                onClick={() => setLang("es")}
+                aria-label="Español"
+                sx={{
+                  px: 1.2,
+                  py: 0.4,
+                  fontSize: "0.7rem",
+                  fontWeight: 700,
+                  letterSpacing: "0.05em",
+                  border: "none",
+                  cursor: "pointer",
+                  transition: "all 0.25s ease",
+                  background: lang === "es" ? "var(--brand-gradient)" : "transparent",
+                  color: lang === "es" ? "#fff" : "var(--brand-primary)",
+                  height: "100%",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 0.5,
+                }}
+              >
+                🇨🇴 ES
+              </Box>
+              <Box
+                component="button"
+                onClick={() => setLang("en")}
+                aria-label="English"
+                sx={{
+                  px: 1.2,
+                  py: 0.4,
+                  fontSize: "0.7rem",
+                  fontWeight: 700,
+                  letterSpacing: "0.05em",
+                  border: "none",
+                  cursor: "pointer",
+                  transition: "all 0.25s ease",
+                  background: lang === "en" ? "var(--brand-gradient)" : "transparent",
+                  color: lang === "en" ? "#fff" : "var(--brand-primary)",
+                  height: "100%",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 0.5,
+                }}
+              >
+                🇺🇸 EN
+              </Box>
             </Box>
-            <Box
-              component="button"
-              onClick={() => setLang("en")}
-              aria-label="English"
-              sx={{
-                px: 1.2,
-                py: 0.4,
-                fontSize: "0.7rem",
-                fontWeight: 700,
-                letterSpacing: "0.05em",
-                border: "none",
-                cursor: "pointer",
-                transition: "all 0.25s ease",
-                background: lang === "en"
-                  ? "linear-gradient(135deg, #5D3FD3, #7C5CE7)"
-                  : "transparent",
-                color: lang === "en" ? "#fff" : "#5D3FD3",
-                height: "100%",
-                display: "flex",
-                alignItems: "center",
-                gap: 0.5,
-              }}
-            >
-              🇺🇸 EN
-            </Box>
+
+            <ThemeToggle />
           </Box>
         </Box>
       </Box>

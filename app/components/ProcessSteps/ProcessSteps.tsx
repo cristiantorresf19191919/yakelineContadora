@@ -72,7 +72,7 @@ export default function ProcessSteps() {
           width: 600,
           height: 600,
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(93,63,211,0.06) 0%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(var(--brand-primary-rgb),0.06) 0%, transparent 70%)",
           filter: "blur(40px)",
           pointerEvents: "none",
         }}
@@ -148,7 +148,7 @@ export default function ProcessSteps() {
                 right: "20%",
                 height: 2,
                 background:
-                  "linear-gradient(90deg, #25D366 0%, #5D3FD3 50%, #F59E0B 100%)",
+                  "linear-gradient(90deg, #25D366 0%, var(--brand-primary) 50%, var(--brand-accent) 100%)",
                 opacity: 0.25,
                 zIndex: 0,
               }}

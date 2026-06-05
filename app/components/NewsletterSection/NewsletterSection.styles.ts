@@ -71,7 +71,7 @@ const useStyles = makeStyles({ name: "NewsletterSection" })((theme: Theme) => {
       width: 450,
       height: 450,
       background:
-        "radial-gradient(circle at center, rgba(167, 139, 250, 0.15) 0%, rgba(139, 92, 246, 0.08) 50%, transparent 80%)",
+        "radial-gradient(circle at center, rgba(var(--brand-primary-light-rgb), 0.15) 0%, rgba(139, 92, 246, 0.08) 50%, transparent 80%)",
       zIndex: 0,
       pointerEvents: "none",
       filter: "blur(50px)",
@@ -108,7 +108,7 @@ const useStyles = makeStyles({ name: "NewsletterSection" })((theme: Theme) => {
       fontSize: "3.25rem",
       fontWeight: 800,
       lineHeight: 1.1,
-      background: "linear-gradient(135deg, #4C1D95 0%, #6D28D9 50%, #7C3AED 100%)",
+      background: "linear-gradient(135deg, var(--brand-primary-dark) 0%, #6D28D9 50%, #7C3AED 100%)",
       WebkitBackgroundClip: "text",
       WebkitTextFillColor: "transparent",
       backgroundClip: "text",
@@ -226,7 +226,7 @@ const useStyles = makeStyles({ name: "NewsletterSection" })((theme: Theme) => {
       border: "2px solid rgba(139, 92, 246, 0.2)",
       transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
       "&:focus-within": {
-        border: "2px solid #8B5CF6",
+        border: "2px solid var(--brand-primary-light)",
         boxShadow: 
           "0 12px 32px -12px rgba(139, 92, 246, 0.4), 0 0 0 4px rgba(139, 92, 246, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.9)",
         transform: "translateY(-1px)",
@@ -234,9 +234,9 @@ const useStyles = makeStyles({ name: "NewsletterSection" })((theme: Theme) => {
       "& input": {
         fontSize: "1.0625rem",
         fontWeight: 500,
-        color: "#4C1D95",
+        color: "var(--brand-primary-dark)",
         "&::placeholder": {
-          color: "#A78BFA",
+          color: "var(--brand-primary-light)",
           opacity: 0.7,
         },
       },
@@ -244,7 +244,7 @@ const useStyles = makeStyles({ name: "NewsletterSection" })((theme: Theme) => {
     submitButton: {
       minWidth: 200,
       borderRadius: "999px",
-      background: "linear-gradient(135deg, #8B5CF6 0%, #7C3AED 50%, #6D28D9 100%)",
+      background: "linear-gradient(135deg, var(--brand-primary-light) 0%, #7C3AED 50%, #6D28D9 100%)",
       color: "#FFFFFF",
       fontWeight: 700,
       textTransform: "none",
@@ -268,7 +268,7 @@ const useStyles = makeStyles({ name: "NewsletterSection" })((theme: Theme) => {
       },
       "&:hover": {
         transform: "translateY(-3px) scale(1.02)",
-        background: "linear-gradient(135deg, #9F7AEA 0%, #8B5CF6 50%, #7C3AED 100%)",
+        background: "linear-gradient(135deg, #9F7AEA 0%, var(--brand-primary-light) 50%, #7C3AED 100%)",
         boxShadow: 
           "0 16px 40px -12px rgba(139, 92, 246, 0.6), 0 6px 20px -8px rgba(124, 58, 237, 0.5)",
         "&::before": {

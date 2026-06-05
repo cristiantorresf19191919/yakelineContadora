@@ -1094,7 +1094,7 @@ export default function TaxRunnerGame() {
         py: { xs: 6, md: 10 },
         px: { xs: 2, md: 4 },
         background:
-          "linear-gradient(180deg, rgba(93,63,211,0.04) 0%, rgba(255,255,255,0) 100%)",
+          "linear-gradient(180deg, rgba(var(--brand-primary-rgb),0.04) 0%, rgba(255,255,255,0) 100%)",
       }}
     >
       {/* Section Header */}
@@ -1104,7 +1104,7 @@ export default function TaxRunnerGame() {
           sx={{
             fontWeight: 700,
             fontSize: { xs: "1.6rem", md: "2.2rem" },
-            background: "linear-gradient(135deg, #5D3FD3 0%, #A78BFA 100%)",
+            background: "linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-primary-light) 100%)",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
             backgroundClip: "text",
@@ -1136,8 +1136,8 @@ export default function TaxRunnerGame() {
           borderRadius: "16px",
           overflow: "hidden",
           boxShadow:
-            "0 0 30px rgba(93,63,211,0.25), 0 0 60px rgba(93,63,211,0.1)",
-          border: "1px solid rgba(93,63,211,0.3)",
+            "0 0 30px rgba(var(--brand-primary-rgb),0.25), 0 0 60px rgba(var(--brand-primary-rgb),0.1)",
+          border: "1px solid rgba(var(--brand-primary-rgb),0.3)",
           "&::before": {
             content: '""',
             position: "absolute",
@@ -1145,7 +1145,7 @@ export default function TaxRunnerGame() {
             borderRadius: "17px",
             padding: "1px",
             background:
-              "linear-gradient(135deg, rgba(93,63,211,0.5), rgba(167,139,250,0.3), rgba(93,63,211,0.5))",
+              "linear-gradient(135deg, rgba(var(--brand-primary-rgb),0.5), rgba(var(--brand-primary-light-rgb),0.3), rgba(var(--brand-primary-rgb),0.5))",
             WebkitMask:
               "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
             WebkitMaskComposite: "xor",

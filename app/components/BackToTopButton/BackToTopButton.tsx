@@ -47,13 +47,13 @@ export default function BackToTopButton() {
               cursor: "pointer",
               display: "grid",
               placeItems: "center",
-              background: "linear-gradient(135deg, #5D3FD3 0%, #7C3AED 100%)",
+              background: "linear-gradient(135deg, var(--brand-primary) 0%, #7C3AED 100%)",
               color: "#fff",
-              boxShadow: "0 8px 24px rgba(93, 63, 211, 0.4), 0 2px 8px rgba(93, 63, 211, 0.2)",
+              boxShadow: "0 8px 24px rgba(var(--brand-primary-rgb), 0.4), 0 2px 8px rgba(var(--brand-primary-rgb), 0.2)",
               transition: "transform 0.2s ease, box-shadow 0.2s ease",
               "&:hover": {
                 transform: "translateY(-3px)",
-                boxShadow: "0 12px 32px rgba(93, 63, 211, 0.5), 0 4px 12px rgba(93, 63, 211, 0.3)",
+                boxShadow: "0 12px 32px rgba(var(--brand-primary-rgb), 0.5), 0 4px 12px rgba(var(--brand-primary-rgb), 0.3)",
               },
               "&:active": {
                 transform: "translateY(-1px)",

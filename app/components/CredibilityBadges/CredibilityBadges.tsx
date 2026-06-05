@@ -63,7 +63,7 @@ export default function CredibilityBadges() {
         width: 500,
         height: 500,
         borderRadius: "50%",
-        background: "radial-gradient(circle, rgba(93,63,211,0.04) 0%, transparent 70%)",
+        background: "radial-gradient(circle, rgba(var(--brand-primary-rgb), 0.04) 0%, transparent 70%)",
         pointerEvents: "none",
       }} />
 

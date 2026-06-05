@@ -346,6 +346,9 @@ export default function FinancialHealthQuiz() {
   const [showResults, setShowResults] = useState(false);
   const [direction, setDirection] = useState(1); // 1 forward, -1 back
   const containerRef = useRef<HTMLDivElement>(null);
+  // Skip the auto-scroll on first mount so the page doesn't jump to the quiz
+  // on load — only recenter when the user actually advances a step/result.
+  const hasAdvancedRef = useRef(false);
 
   const totalQuestions = questions.length;
   const maxScore = totalQuestions * 3;
@@ -410,8 +413,12 @@ export default function FinancialHealthQuiz() {
     return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
   }, [percentage, diagnosis.label]);
 
-  // Scroll into view when step changes
+  // Scroll into view when step changes (but never on the initial mount).
   useEffect(() => {
+    if (!hasAdvancedRef.current) {
+      hasAdvancedRef.current = true;
+      return;
+    }
     if (containerRef.current) {
       const rect = containerRef.current.getBoundingClientRect();
       if (rect.top < 0 || rect.top > window.innerHeight * 0.5) {
@@ -459,7 +466,7 @@ export default function FinancialHealthQuiz() {
           inset: 0,
           opacity: 0.4,
           background:
-            "radial-gradient(circle at 20% 20%, rgba(93, 63, 211, 0.08) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(245, 158, 11, 0.08) 0%, transparent 50%), radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.05) 0%, transparent 40%)",
+            "radial-gradient(circle at 20% 20%, rgba(var(--brand-primary-rgb), 0.08) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(var(--brand-accent-rgb), 0.08) 0%, transparent 50%), radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.05) 0%, transparent 40%)",
           pointerEvents: "none",
         }}
       />
@@ -481,7 +488,7 @@ export default function FinancialHealthQuiz() {
                 fontSize: "0.75rem",
                 letterSpacing: 1.5,
                 background:
-                  "linear-gradient(135deg, #5D3FD3 0%, #8B5CF6 100%)",
+                  "linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-primary-light) 100%)",
                 color: "#fff",
                 height: 32,
                 px: 1,
@@ -504,7 +511,7 @@ export default function FinancialHealthQuiz() {
                 component="span"
                 sx={{
                   background:
-                    "linear-gradient(135deg, #5D3FD3, #F59E0B)",
+                    "linear-gradient(135deg, var(--brand-primary), var(--brand-accent))",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
                 }}
@@ -542,7 +549,7 @@ export default function FinancialHealthQuiz() {
               WebkitBackdropFilter: "blur(20px)",
               border: "1px solid rgba(255, 255, 255, 0.8)",
               boxShadow:
-                "0 20px 60px -15px rgba(93, 63, 211, 0.15), 0 0 0 1px rgba(93, 63, 211, 0.05)",
+                "0 20px 60px -15px rgba(var(--brand-primary-rgb), 0.15), 0 0 0 1px rgba(var(--brand-primary-rgb), 0.05)",
               overflow: "hidden",
               minHeight: { xs: 420, md: 400 },
             }}
@@ -555,11 +562,11 @@ export default function FinancialHealthQuiz() {
                 sx={{
                   height: 5,
                   borderRadius: 0,
-                  backgroundColor: "rgba(93, 63, 211, 0.08)",
+                  backgroundColor: "rgba(var(--brand-primary-rgb), 0.08)",
                   "& .MuiLinearProgress-bar": {
                     borderRadius: 0,
                     background:
-                      "linear-gradient(90deg, #5D3FD3, #8B5CF6, #F59E0B)",
+                      "linear-gradient(90deg, var(--brand-primary), var(--brand-primary-light), var(--brand-accent))",
                     transition: "transform 0.6s ease",
                   },
                 }}
@@ -584,7 +591,7 @@ export default function FinancialHealthQuiz() {
                       sx={{
                         fontSize: "0.8rem",
                         fontWeight: 600,
-                        color: "#5D3FD3",
+                        color: "var(--brand-primary)",
                         letterSpacing: 0.5,
                         mb: 1,
                       }}
@@ -635,10 +642,10 @@ export default function FinancialHealthQuiz() {
                                 p: { xs: 2, md: 2.5 },
                                 borderRadius: "16px",
                                 border: isSelected
-                                  ? "2px solid #5D3FD3"
-                                  : "2px solid rgba(93, 63, 211, 0.08)",
+                                  ? "2px solid var(--brand-primary)"
+                                  : "2px solid rgba(var(--brand-primary-rgb), 0.08)",
                                 background: isSelected
-                                  ? "linear-gradient(135deg, rgba(93, 63, 211, 0.08), rgba(139, 92, 246, 0.06))"
+                                  ? "linear-gradient(135deg, rgba(var(--brand-primary-rgb), 0.08), rgba(139, 92, 246, 0.06))"
                                   : "rgba(255, 255, 255, 0.6)",
                                 cursor:
                                   selectedOption === null
@@ -652,9 +659,9 @@ export default function FinancialHealthQuiz() {
                                   selectedOption === null
                                     ? {
                                         borderColor:
-                                          "rgba(93, 63, 211, 0.3)",
+                                          "rgba(var(--brand-primary-rgb), 0.3)",
                                         background:
-                                          "rgba(93, 63, 211, 0.04)",
+                                          "rgba(var(--brand-primary-rgb), 0.04)",
                                         transform: "scale(1.01)",
                                       }
                                     : {},
@@ -680,11 +687,11 @@ export default function FinancialHealthQuiz() {
                                     fontWeight: 700,
                                     fontSize: "0.85rem",
                                     background: isSelected
-                                      ? "linear-gradient(135deg, #5D3FD3, #8B5CF6)"
-                                      : "rgba(93, 63, 211, 0.08)",
+                                      ? "linear-gradient(135deg, var(--brand-primary), var(--brand-primary-light))"
+                                      : "rgba(var(--brand-primary-rgb), 0.08)",
                                     color: isSelected
                                       ? "#fff"
-                                      : "#5D3FD3",
+                                      : "var(--brand-primary)",
                                     transition: "all 0.25s ease",
                                   }}
                                 >
@@ -698,7 +705,7 @@ export default function FinancialHealthQuiz() {
                                     },
                                     fontWeight: isSelected ? 600 : 500,
                                     color: isSelected
-                                      ? "#5D3FD3"
+                                      ? "var(--brand-primary)"
                                       : "#374151",
                                     lineHeight: 1.4,
                                   }}
@@ -730,8 +737,8 @@ export default function FinancialHealthQuiz() {
                             textTransform: "none",
                             boxShadow: "none",
                             "&:hover": {
-                              background: "rgba(93, 63, 211, 0.06)",
-                              color: "#5D3FD3",
+                              background: "rgba(var(--brand-primary-rgb), 0.06)",
+                              color: "var(--brand-primary)",
                               boxShadow: "none",
                               transform: "none",
                             },
@@ -823,9 +830,9 @@ export default function FinancialHealthQuiz() {
                             mb: 4,
                             p: { xs: 2.5, md: 3 },
                             borderRadius: "16px",
-                            background: "rgba(93, 63, 211, 0.03)",
+                            background: "rgba(var(--brand-primary-rgb), 0.03)",
                             border:
-                              "1px solid rgba(93, 63, 211, 0.08)",
+                              "1px solid rgba(var(--brand-primary-rgb), 0.08)",
                           }}
                         >
                           <Typography
@@ -875,7 +882,7 @@ export default function FinancialHealthQuiz() {
                                       minWidth: 6,
                                       borderRadius: "50%",
                                       background:
-                                        "linear-gradient(135deg, #5D3FD3, #F59E0B)",
+                                        "linear-gradient(135deg, var(--brand-primary), var(--brand-accent))",
                                       mt: "8px",
                                     }}
                                   />
@@ -943,8 +950,8 @@ export default function FinancialHealthQuiz() {
                             startIcon={<RestartAltRoundedIcon />}
                             onClick={handleRestart}
                             sx={{
-                              borderColor: "rgba(93, 63, 211, 0.3)",
-                              color: "#5D3FD3",
+                              borderColor: "rgba(var(--brand-primary-rgb), 0.3)",
+                              color: "var(--brand-primary)",
                               fontWeight: 600,
                               fontSize: "0.9rem",
                               py: 1.3,
@@ -953,9 +960,9 @@ export default function FinancialHealthQuiz() {
                               textTransform: "none",
                               boxShadow: "none",
                               "&:hover": {
-                                borderColor: "#5D3FD3",
+                                borderColor: "var(--brand-primary)",
                                 background:
-                                  "rgba(93, 63, 211, 0.06)",
+                                  "rgba(var(--brand-primary-rgb), 0.06)",
                                 boxShadow: "none",
                                 transform: "translateY(-1px)",
                               },

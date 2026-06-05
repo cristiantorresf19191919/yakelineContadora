@@ -169,7 +169,7 @@ export default function CalendarBooking() {
               py: 2.5,
               fontSize: "0.9rem",
               fontWeight: 600,
-              background: "linear-gradient(135deg, #5D3FD3 0%, #7C5CE7 100%)",
+              background: "linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-primary-strong) 100%)",
               color: "white",
               "& .MuiChip-icon": { color: "white" },
             }}
@@ -189,7 +189,7 @@ export default function CalendarBooking() {
             <Box
               component="span"
               sx={{
-                background: "linear-gradient(135deg, #5D3FD3 0%, #A78BFA 100%)",
+                background: "linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-primary-light) 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
               }}
@@ -237,7 +237,7 @@ export default function CalendarBooking() {
               position: "relative",
               borderRadius: "24px",
               overflow: "hidden",
-              boxShadow: "0 20px 60px rgba(93, 63, 211, 0.15), 0 8px 24px rgba(0,0,0,0.08)",
+              boxShadow: "0 20px 60px rgba(var(--brand-primary-rgb), 0.15), 0 8px 24px rgba(0,0,0,0.08)",
               height: { xs: 400, md: "100%" },
               minHeight: { md: 520 },
             }}
@@ -259,7 +259,7 @@ export default function CalendarBooking() {
                 right: 0,
                 height: "55%",
                 background:
-                  "linear-gradient(to top, rgba(93, 63, 211, 0.92) 0%, rgba(93, 63, 211, 0.4) 60%, transparent 100%)",
+                  "linear-gradient(to top, rgba(var(--brand-primary-rgb), 0.92) 0%, rgba(var(--brand-primary-rgb), 0.4) 60%, transparent 100%)",
               }}
             />
             {/* Info on photo */}
@@ -331,8 +331,8 @@ export default function CalendarBooking() {
               background: "white",
               borderRadius: "24px",
               p: { xs: 2, sm: 3, md: 3.5 },
-              boxShadow: "0 12px 40px rgba(93, 63, 211, 0.08), 0 4px 16px rgba(0,0,0,0.04)",
-              border: "1px solid rgba(93, 63, 211, 0.08)",
+              boxShadow: "0 12px 40px rgba(var(--brand-primary-rgb), 0.08), 0 4px 16px rgba(0,0,0,0.04)",
+              border: "1px solid rgba(var(--brand-primary-rgb), 0.08)",
               height: "100%",
               display: "flex",
               flexDirection: "column",
@@ -345,7 +345,7 @@ export default function CalendarBooking() {
                 gap: 1.5,
                 mb: 2.5,
                 pb: 2,
-                borderBottom: "1px solid rgba(93, 63, 211, 0.08)",
+                borderBottom: "1px solid rgba(var(--brand-primary-rgb), 0.08)",
               }}
             >
               <Box
@@ -353,11 +353,11 @@ export default function CalendarBooking() {
                   width: 40,
                   height: 40,
                   borderRadius: "12px",
-                  background: "linear-gradient(135deg, #5D3FD3 0%, #7C5CE7 100%)",
+                  background: "linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-primary-strong) 100%)",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  boxShadow: "0 4px 12px rgba(93, 63, 211, 0.3)",
+                  boxShadow: "0 4px 12px rgba(var(--brand-primary-rgb), 0.3)",
                 }}
               >
                 <CalendarMonthRoundedIcon sx={{ color: "white", fontSize: 22 }} />
@@ -405,7 +405,7 @@ export default function CalendarBooking() {
               sx={{
                 mt: 2.5,
                 pt: 2,
-                borderTop: "1px solid rgba(93, 63, 211, 0.08)",
+                borderTop: "1px solid rgba(var(--brand-primary-rgb), 0.08)",
                 display: "flex",
                 flexWrap: "wrap",
                 gap: 2,
@@ -427,7 +427,7 @@ export default function CalendarBooking() {
                     fontSize: "0.8rem",
                   }}
                 >
-                  <Box sx={{ color: "#5D3FD3", fontSize: 18, display: "flex" }}>{item.icon}</Box>
+                  <Box sx={{ color: "var(--brand-primary)", fontSize: 18, display: "flex" }}>{item.icon}</Box>
                   <Typography sx={{ fontSize: "0.8rem" }}>{item.text}</Typography>
                 </Box>
               ))}
@@ -453,7 +453,7 @@ export default function CalendarBooking() {
         {/* Dialog Header */}
         <Box
           sx={{
-            background: "linear-gradient(135deg, #5D3FD3 0%, #7C5CE7 100%)",
+            background: "linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-primary-strong) 100%)",
             color: "white",
             px: 3,
             py: 2.5,
@@ -535,7 +535,7 @@ export default function CalendarBooking() {
                     borderRadius: "50px",
                     px: 4,
                     py: 1.2,
-                    background: "linear-gradient(135deg, #5D3FD3 0%, #7C5CE7 100%)",
+                    background: "linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-primary-strong) 100%)",
                     fontWeight: 600,
                     textTransform: "none",
                     fontSize: "1rem",
@@ -651,13 +651,13 @@ export default function CalendarBooking() {
                   sx={{
                     borderRadius: "50px",
                     py: 1.3,
-                    background: "linear-gradient(135deg, #5D3FD3 0%, #7C5CE7 100%)",
+                    background: "linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-primary-strong) 100%)",
                     fontWeight: 600,
                     textTransform: "none",
                     fontSize: "1rem",
-                    boxShadow: "0 4px 16px rgba(93, 63, 211, 0.35)",
+                    boxShadow: "0 4px 16px rgba(var(--brand-primary-rgb), 0.35)",
                     "&:hover": {
-                      boxShadow: "0 6px 24px rgba(93, 63, 211, 0.45)",
+                      boxShadow: "0 6px 24px rgba(var(--brand-primary-rgb), 0.45)",
                     },
                   }}
                   startIcon={
