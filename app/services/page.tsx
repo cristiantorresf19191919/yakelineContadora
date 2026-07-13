@@ -14,6 +14,8 @@ import CalendarMonthRoundedIcon from "@mui/icons-material/CalendarMonthRounded";
 import StarRoundedIcon from "@mui/icons-material/StarRounded";
 import Link from "next/link";
 import Footer from "../components/Footer/Footer";
+import JsonLd from "@/app/components/JsonLd/JsonLd";
+import ServicePackages from "../components/ServicePackages/ServicePackages";
 
 const services = [
   {
@@ -63,6 +65,78 @@ const services = [
   },
 ];
 
+const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL || "https://yakelinecontadora.com";
+
+const faqItems: { q: string; a: string }[] = [
+  {
+    q: "¿Cómo funciona la primera consulta gratuita?",
+    a: "Agendamos una llamada de 15 minutos por WhatsApp o videollamada donde analizo rápidamente tu situación fiscal, identifico oportunidades de mejora y te doy un plan de acción claro.",
+  },
+  {
+    q: "¿Trabajan con emprendedores pequeños o solo empresas grandes?",
+    a: "Trabajamos con emprendedores de todos los tamaños. Desde profesionales independientes hasta pymes con equipos de más de 50 personas. Cada plan se adapta a tu realidad.",
+  },
+  {
+    q: "¿Cuánto tiempo toma ver resultados en mi carga tributaria?",
+    a: "Desde la primera sesión identificamos oportunidades inmediatas. La planeación fiscal completa se implementa en 2-4 semanas, y los ahorros se reflejan en tu siguiente declaración.",
+  },
+  {
+    q: "¿Pueden ayudarme si tengo problemas con la DIAN?",
+    a: "Sí, tenemos amplia experiencia en respuesta a requerimientos, procesos de fiscalización y resolución de sanciones con la DIAN. Te acompañamos en todo el proceso.",
+  },
+  {
+    q: "¿Los servicios son presenciales o virtuales?",
+    a: "Ofrecemos ambas modalidades. La mayoría de nuestros clientes trabajan de forma virtual, lo que permite atender empresarios en todo Colombia. Para casos especiales, también hay opción presencial en Medellín.",
+  },
+];
+
+const servicesListSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "Servicios de Yakeline Contadora",
+  itemListElement: services.map((service, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    item: {
+      "@type": "Service",
+      name: service.title,
+      description: service.description,
+      serviceType: service.title,
+      areaServed: { "@type": "Country", name: "Colombia" },
+      provider: {
+        "@type": "AccountingService",
+        name: "Yakeline Contadora",
+        "@id": `${SITE_URL}/#organization`,
+      },
+    },
+  })),
+};
+
+const servicesBreadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Inicio", item: SITE_URL },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Servicios",
+      item: `${SITE_URL}/services`,
+    },
+  ],
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqItems.map((faq) => ({
+    "@type": "Question",
+    name: faq.q,
+    acceptedAnswer: { "@type": "Answer", text: faq.a },
+  })),
+};
+
 export default function ServicesPage() {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
 
@@ -72,6 +146,9 @@ export default function ServicesPage() {
 
   return (
     <>
+      <JsonLd data={servicesListSchema} />
+      <JsonLd data={servicesBreadcrumbSchema} />
+      <JsonLd data={faqSchema} />
       {/* HEADER SECTION */}
       <Box sx={{
         pt: { xs: 16, md: 20 },
@@ -180,6 +257,8 @@ export default function ServicesPage() {
                       {/* Expand/Collapse Button */}
                       <Button
                         onClick={() => toggleExpand(index)}
+                        aria-expanded={isExpanded}
+                        aria-controls={`service-details-${index}`}
                         endIcon={isExpanded ? <ExpandLessIcon /> : <ExpandMoreIcon />}
                         sx={{
                           color: service.color,
@@ -195,7 +274,7 @@ export default function ServicesPage() {
 
                       {/* Expandable Details */}
                       <Collapse in={isExpanded} timeout={400}>
-                        <Box sx={{ mt: 2, pt: 2, borderTop: `1px solid ${service.color}15` }}>
+                        <Box id={`service-details-${index}`} sx={{ mt: 2, pt: 2, borderTop: `1px solid ${service.color}15` }}>
                           {service.details.map((detail, i) => (
                             <Box key={i} sx={{ display: "flex", alignItems: "flex-start", gap: 1.5, mb: 1.5 }}>
                               <CheckCircleOutlineIcon sx={{ color: service.color, fontSize: 20, mt: 0.3, flexShrink: 0 }} />
@@ -252,6 +331,9 @@ export default function ServicesPage() {
         </Container>
       </Box>
 
+      {/* SERVICE PACKAGES / PRICING */}
+      <ServicePackages />
+
       {/* FAQ SECTION */}
       <Box sx={{ py: { xs: 8, md: 12 }, bgcolor: "#fafafa" }}>
         <Container maxWidth="md">
@@ -267,28 +349,7 @@ export default function ServicesPage() {
             <Typography variant="h3" sx={{ fontWeight: 700, mb: 5, textAlign: "center", fontSize: { xs: "1.8rem", md: "2.5rem" }, lineHeight: 1.3 }}>
               Todo lo que necesitas saber
             </Typography>
-            {[
-              {
-                q: "¿Cómo funciona la primera consulta gratuita?",
-                a: "Agendamos una llamada de 15 minutos por WhatsApp o videollamada donde analizo rápidamente tu situación fiscal, identifico oportunidades de mejora y te doy un plan de acción claro."
-              },
-              {
-                q: "¿Trabajan con emprendedores pequeños o solo empresas grandes?",
-                a: "Trabajamos con emprendedores de todos los tamaños. Desde profesionales independientes hasta pymes con equipos de más de 50 personas. Cada plan se adapta a tu realidad."
-              },
-              {
-                q: "¿Cuánto tiempo toma ver resultados en mi carga tributaria?",
-                a: "Desde la primera sesión identificamos oportunidades inmediatas. La planeación fiscal completa se implementa en 2-4 semanas, y los ahorros se reflejan en tu siguiente declaración."
-              },
-              {
-                q: "¿Pueden ayudarme si tengo problemas con la DIAN?",
-                a: "Sí, tenemos amplia experiencia en respuesta a requerimientos, procesos de fiscalización y resolución de sanciones con la DIAN. Te acompañamos en todo el proceso."
-              },
-              {
-                q: "¿Los servicios son presenciales o virtuales?",
-                a: "Ofrecemos ambas modalidades. La mayoría de nuestros clientes trabajan de forma virtual, lo que permite atender empresarios en todo Colombia. Para casos especiales, también hay opción presencial en Medellín."
-              },
-            ].map((faq, i) => (
+            {faqItems.map((faq, i) => (
               <Accordion
                 key={i}
                 disableGutters

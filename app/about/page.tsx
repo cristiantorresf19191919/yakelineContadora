@@ -13,6 +13,59 @@ import GroupsRoundedIcon from "@mui/icons-material/GroupsRounded";
 import EmojiEventsRoundedIcon from "@mui/icons-material/EmojiEventsRounded";
 import WorkHistoryRoundedIcon from "@mui/icons-material/WorkHistoryRounded";
 import Footer from "../components/Footer/Footer";
+import JsonLd from "@/app/components/JsonLd/JsonLd";
+
+const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL || "https://yakelinecontadora.com";
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Yakelin Bustamante",
+  jobTitle: "Contadora Pública",
+  url: `${SITE_URL}/about`,
+  image: `${SITE_URL}/photo2.png`,
+  worksFor: {
+    "@type": "AccountingService",
+    name: "Yakeline Contadora",
+    "@id": `${SITE_URL}/#organization`,
+  },
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Medellín",
+    addressRegion: "Antioquia",
+    addressCountry: "CO",
+  },
+  areaServed: { "@type": "Country", name: "Colombia" },
+  knowsAbout: [
+    "Contabilidad",
+    "Tributación",
+    "Declaración de renta",
+    "Facturación electrónica DIAN",
+    "Revisoría fiscal",
+    "Planeación tributaria",
+    "Consultoría financiera",
+  ],
+  sameAs: [
+    "https://www.instagram.com/yakelinecontadora",
+    "https://www.facebook.com/yakelinecontadora",
+    "https://www.linkedin.com/in/yakelin-bustamante",
+  ],
+};
+
+const aboutBreadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Inicio", item: SITE_URL },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Quién soy",
+      item: `${SITE_URL}/about`,
+    },
+  ],
+};
 
 function AnimatedCounter({ target, suffix = "", duration = 2000 }: { target: number; suffix?: string; duration?: number }) {
   const ref = useRef(null);
@@ -75,6 +128,8 @@ export default function AboutPage() {
 
   return (
     <>
+      <JsonLd data={personSchema} />
+      <JsonLd data={aboutBreadcrumbSchema} />
       <Box sx={{ bgcolor: "#fff", overflow: "hidden" }} ref={containerRef}>
         {/* HERO SECTION */}
         <Box sx={{

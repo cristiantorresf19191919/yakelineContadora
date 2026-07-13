@@ -1,11 +1,19 @@
 "use client";
 
-import { useState, useEffect, useMemo } from "react";
-import { Box, Typography, Container, Button, Chip } from "@mui/material";
+import { useState, useEffect, useMemo, useCallback } from "react";
+import { Box, Typography, Container, Button, Chip, Snackbar, Alert } from "@mui/material";
 import { motion, AnimatePresence } from "framer-motion";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import CalendarMonthRoundedIcon from "@mui/icons-material/CalendarMonthRounded";
 import WarningAmberRoundedIcon from "@mui/icons-material/WarningAmberRounded";
+import EventAvailableRoundedIcon from "@mui/icons-material/EventAvailableRounded";
+import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
+import {
+  buildIcsCalendar,
+  downloadIcs,
+  googleCalendarUrl,
+  type IcsEvent,
+} from "@/lib/calendar/ics";
 
 interface TaxDeadline {
   id: string;
@@ -308,6 +316,14 @@ const TAX_DEADLINES_2026: TaxDeadline[] = [
   },
 ];
 
+function deadlineToIcsEvent(deadline: TaxDeadline): IcsEvent {
+  return {
+    title: deadline.name,
+    date: deadline.date,
+    description: deadline.description,
+  };
+}
+
 function getDaysRemaining(targetDate: Date): number {
   const now = new Date();
   const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
@@ -376,6 +392,7 @@ function CountdownNumber({ value, label }: { value: number; label: string }) {
 export default function TaxCalendar() {
   const [now, setNow] = useState<Date>(new Date());
   const [activeFilter, setActiveFilter] = useState<TaxDeadline["category"] | "all">("all");
+  const [feedback, setFeedback] = useState<string | null>(null);
 
   // Update current time every minute for countdown accuracy
   useEffect(() => {
@@ -383,6 +400,36 @@ export default function TaxCalendar() {
       setNow(new Date());
     }, 60000);
     return () => clearInterval(interval);
+  }, []);
+
+  const handleAddSingle = useCallback((deadline: TaxDeadline) => {
+    try {
+      const ics = buildIcsCalendar([deadlineToIcsEvent(deadline)]);
+      downloadIcs(`${deadline.id}.ics`, ics);
+    } catch {
+      setFeedback("No pudimos generar el archivo de calendario. Inténtalo de nuevo.");
+    }
+  }, []);
+
+  const handleAddToGoogle = useCallback((deadline: TaxDeadline) => {
+    try {
+      window.open(
+        googleCalendarUrl(deadlineToIcsEvent(deadline)),
+        "_blank",
+        "noopener,noreferrer"
+      );
+    } catch {
+      setFeedback("No pudimos abrir Google Calendar. Inténtalo de nuevo.");
+    }
+  }, []);
+
+  const handleDownloadAll = useCallback(() => {
+    try {
+      const ics = buildIcsCalendar(TAX_DEADLINES_2026.map(deadlineToIcsEvent));
+      downloadIcs("calendario-tributario-2026.ics", ics);
+    } catch {
+      setFeedback("No pudimos generar el archivo de calendario. Inténtalo de nuevo.");
+    }
   }, []);
 
   const upcomingDeadlines = useMemo(() => {
@@ -521,6 +568,42 @@ export default function TaxCalendar() {
           </Box>
         </motion.div>
 
+        {/* Download entire calendar */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.15 }}
+        >
+          <Box sx={{ display: "flex", justifyContent: "center", mb: { xs: 4, md: 5 } }}>
+            <Button
+              onClick={handleDownloadAll}
+              startIcon={<EventAvailableRoundedIcon />}
+              aria-label="Descargar todo el calendario tributario 2026 en formato .ics"
+              sx={{
+                borderRadius: 50,
+                px: { xs: 3, md: 4 },
+                py: 1.4,
+                fontSize: { xs: "0.85rem", md: "0.95rem" },
+                fontWeight: 700,
+                textTransform: "none",
+                color: "#FFFFFF",
+                background:
+                  "linear-gradient(135deg, rgba(var(--brand-primary-rgb), 0.9) 0%, rgba(var(--brand-accent-rgb), 0.85) 100%)",
+                border: "1px solid rgba(255,255,255,0.15)",
+                boxShadow: "0 10px 28px rgba(var(--brand-primary-rgb), 0.3)",
+                "&:hover": {
+                  background:
+                    "linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-accent-dark) 100%)",
+                  boxShadow: "0 14px 34px rgba(var(--brand-primary-rgb), 0.4)",
+                },
+              }}
+            >
+              Descargar todo el calendario tributario (.ics)
+            </Button>
+          </Box>
+        </motion.div>
+
         {/* Category Filters */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -542,6 +625,7 @@ export default function TaxCalendar() {
                 key={cat.key}
                 label={cat.label}
                 clickable
+                aria-pressed={activeFilter === cat.key}
                 onClick={() => setActiveFilter(cat.key)}
                 sx={{
                   bgcolor:
@@ -608,7 +692,7 @@ export default function TaxCalendar() {
                   <CalendarMonthRoundedIcon
                     sx={{ fontSize: 48, color: "rgba(255,255,255,0.2)", mb: 2 }}
                   />
-                  <Typography sx={{ color: "rgba(255,255,255,0.4)", fontSize: "1.1rem" }}>
+                  <Typography sx={{ color: "rgba(255,255,255,0.72)", fontSize: "1.1rem" }}>
                     No hay vencimientos pr\u00f3ximos en esta categor\u00eda.
                   </Typography>
                 </Box>
@@ -837,12 +921,75 @@ export default function TaxCalendar() {
                             <Typography
                               sx={{
                                 fontSize: "0.82rem",
-                                color: "rgba(255,255,255,0.45)",
+                                color: "rgba(255,255,255,0.72)",
                                 lineHeight: 1.5,
                               }}
                             >
                               {deadline.description}
                             </Typography>
+
+                            {/* Add to calendar controls */}
+                            <Box
+                              sx={{
+                                display: "flex",
+                                flexWrap: "wrap",
+                                gap: 1,
+                                mt: 1.5,
+                              }}
+                            >
+                              <Button
+                                size="small"
+                                onClick={() => handleAddSingle(deadline)}
+                                startIcon={
+                                  <EventAvailableRoundedIcon sx={{ fontSize: 16 }} />
+                                }
+                                aria-label={`Agregar a calendario: ${deadline.name}`}
+                                sx={{
+                                  textTransform: "none",
+                                  fontSize: "0.72rem",
+                                  fontWeight: 600,
+                                  color: "rgba(255,255,255,0.7)",
+                                  borderRadius: 50,
+                                  px: 1.5,
+                                  py: 0.4,
+                                  minWidth: 0,
+                                  border: "1px solid rgba(255,255,255,0.12)",
+                                  "& .MuiButton-startIcon": { mr: 0.6 },
+                                  "&:hover": {
+                                    color: "#FFFFFF",
+                                    borderColor: "rgba(var(--brand-primary-rgb), 0.5)",
+                                    bgcolor: "rgba(var(--brand-primary-rgb), 0.12)",
+                                  },
+                                }}
+                              >
+                                Agregar a calendario
+                              </Button>
+                              <Button
+                                size="small"
+                                onClick={() => handleAddToGoogle(deadline)}
+                                startIcon={<CalendarMonthIcon sx={{ fontSize: 16 }} />}
+                                aria-label={`Agregar a Google Calendar: ${deadline.name}`}
+                                sx={{
+                                  textTransform: "none",
+                                  fontSize: "0.72rem",
+                                  fontWeight: 600,
+                                  color: "rgba(255,255,255,0.7)",
+                                  borderRadius: 50,
+                                  px: 1.5,
+                                  py: 0.4,
+                                  minWidth: 0,
+                                  border: "1px solid rgba(255,255,255,0.12)",
+                                  "& .MuiButton-startIcon": { mr: 0.6 },
+                                  "&:hover": {
+                                    color: "#FFFFFF",
+                                    borderColor: "rgba(var(--brand-accent-rgb), 0.5)",
+                                    bgcolor: "rgba(var(--brand-accent-rgb), 0.12)",
+                                  },
+                                }}
+                              >
+                                Google
+                              </Button>
+                            </Box>
                           </Box>
 
                           {/* Countdown */}
@@ -892,7 +1039,7 @@ export default function TaxCalendar() {
                             <Typography
                               sx={{
                                 fontSize: "0.6rem",
-                                color: "rgba(255,255,255,0.3)",
+                                color: "rgba(255,255,255,0.72)",
                                 mt: 0.5,
                                 textAlign: "center",
                               }}
@@ -993,7 +1140,7 @@ export default function TaxCalendar() {
             <Typography
               sx={{
                 fontSize: "0.72rem",
-                color: "rgba(255,255,255,0.3)",
+                color: "rgba(255,255,255,0.72)",
                 mt: 2,
               }}
             >
@@ -1002,6 +1149,22 @@ export default function TaxCalendar() {
           </Box>
         </motion.div>
       </Container>
+
+      <Snackbar
+        open={Boolean(feedback)}
+        autoHideDuration={5000}
+        onClose={() => setFeedback(null)}
+        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+      >
+        <Alert
+          severity="error"
+          variant="filled"
+          onClose={() => setFeedback(null)}
+          sx={{ width: "100%" }}
+        >
+          {feedback}
+        </Alert>
+      </Snackbar>
     </Box>
   );
 }

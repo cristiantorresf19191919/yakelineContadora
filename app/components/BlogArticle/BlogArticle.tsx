@@ -1,7 +1,9 @@
 "use client";
 
-import { ReactElement } from "react";
-import { Box, Typography } from "@mui/material";
+import { ReactElement, useCallback, useMemo, useState } from "react";
+import { Box, Button, Typography } from "@mui/material";
+import IosShareRoundedIcon from "@mui/icons-material/IosShareRounded";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import { BlogArticle as BlogArticleType } from "@/lib/blogData";
 import useStyles from "./BlogArticle.styles";
@@ -12,6 +14,47 @@ interface BlogArticleProps {
 
 export default function BlogArticle({ article }: BlogArticleProps) {
   const { classes } = useStyles();
+  const reduce = useReducedMotion();
+  const [copied, setCopied] = useState(false);
+  const [shareError, setShareError] = useState(false);
+
+  // Estimated reading time at ~200 words per minute.
+  const readingMinutes = useMemo(() => {
+    const words = article.content.trim().split(/\s+/).filter(Boolean).length;
+    return Math.max(1, Math.round(words / 200));
+  }, [article.content]);
+
+  const handleShare = useCallback(async () => {
+    if (typeof window === "undefined") return;
+    const url = window.location.href;
+    const shareData = { title: article.title, url };
+
+    // Prefer the native share sheet when available (mobile / supported browsers).
+    if (typeof navigator !== "undefined" && typeof navigator.share === "function") {
+      try {
+        await navigator.share(shareData);
+        return;
+      } catch (error) {
+        // User dismissed the share sheet: not an error worth surfacing.
+        if (error instanceof DOMException && error.name === "AbortError") return;
+        // Otherwise fall through to the clipboard fallback below.
+      }
+    }
+
+    try {
+      if (typeof navigator !== "undefined" && navigator.clipboard) {
+        await navigator.clipboard.writeText(url);
+        setCopied(true);
+        window.setTimeout(() => setCopied(false), 2000);
+      } else {
+        setShareError(true);
+        window.setTimeout(() => setShareError(false), 3000);
+      }
+    } catch {
+      setShareError(true);
+      window.setTimeout(() => setShareError(false), 3000);
+    }
+  }, [article.title]);
 
   // Simple markdown-like parser for the content
   const parseContent = (content: string) => {
@@ -144,6 +187,8 @@ export default function BlogArticle({ article }: BlogArticleProps) {
                     day: "numeric",
                   })}
                 </Typography>
+                <Typography className={classes.metaSeparator}>•</Typography>
+                <Typography>{readingMinutes} min de lectura</Typography>
               </Box>
             </Box>
           </Box>
@@ -151,6 +196,87 @@ export default function BlogArticle({ article }: BlogArticleProps) {
       </Box>
 
       <Box className={classes.contentWrapper}>
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "flex-end",
+            gap: 1.5,
+            mb: { xs: 3, md: 4 },
+            minHeight: 40,
+          }}
+        >
+          <Box
+            aria-live="polite"
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              minHeight: 24,
+            }}
+          >
+            <AnimatePresence initial={false}>
+              {copied && (
+                <motion.span
+                  key="copied"
+                  initial={reduce ? { opacity: 0 } : { opacity: 0, y: 4 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                  style={{
+                    fontSize: "0.875rem",
+                    fontWeight: 600,
+                    color: "#16A34A",
+                  }}
+                >
+                  Enlace copiado
+                </motion.span>
+              )}
+              {shareError && (
+                <motion.span
+                  key="share-error"
+                  initial={reduce ? { opacity: 0 } : { opacity: 0, y: 4 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                  style={{
+                    fontSize: "0.875rem",
+                    fontWeight: 600,
+                    color: "#DC2626",
+                  }}
+                >
+                  No se pudo copiar el enlace
+                </motion.span>
+              )}
+            </AnimatePresence>
+          </Box>
+          <Button
+            onClick={handleShare}
+            startIcon={<IosShareRoundedIcon />}
+            aria-label="Compartir este artículo"
+            sx={{
+              textTransform: "none",
+              fontWeight: 600,
+              fontSize: "0.9375rem",
+              color: "var(--brand-primary)",
+              borderRadius: "50px",
+              border: "1px solid rgba(var(--brand-primary-rgb), 0.3)",
+              px: 2,
+              py: 0.75,
+              transition: "all 0.2s ease",
+              "&:hover": {
+                backgroundColor: "rgba(var(--brand-primary-rgb), 0.08)",
+                borderColor: "var(--brand-primary)",
+              },
+              "&:focus-visible": {
+                outline: "2px solid var(--brand-primary)",
+                outlineOffset: "2px",
+              },
+            }}
+          >
+            Compartir
+          </Button>
+        </Box>
+
         <Box className={classes.content}>
           {parseContent(article.content)}
         </Box>

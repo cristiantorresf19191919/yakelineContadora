@@ -8,6 +8,9 @@ import {
   Container,
   LinearProgress,
   Chip,
+  CircularProgress,
+  Snackbar,
+  Alert,
 } from "@mui/material";
 import { motion, AnimatePresence } from "framer-motion";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
@@ -17,6 +20,10 @@ import ErrorRoundedIcon from "@mui/icons-material/ErrorRounded";
 import ShieldRoundedIcon from "@mui/icons-material/ShieldRounded";
 import ArrowBackRoundedIcon from "@mui/icons-material/ArrowBackRounded";
 import RestartAltRoundedIcon from "@mui/icons-material/RestartAltRounded";
+import PictureAsPdfRoundedIcon from "@mui/icons-material/PictureAsPdfRounded";
+import IosShareRoundedIcon from "@mui/icons-material/IosShareRounded";
+import { downloadHealthReport } from "@/lib/export/pdfReport";
+import { createStoryCardBlob, shareOrDownload } from "@/lib/export/shareCard";
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -413,6 +420,44 @@ export default function FinancialHealthQuiz() {
     return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
   }, [percentage, diagnosis.label]);
 
+  const [generating, setGenerating] = useState<null | "pdf" | "share">(null);
+  const [errorOpen, setErrorOpen] = useState(false);
+
+  const handleDownloadPdf = useCallback(async () => {
+    setGenerating("pdf");
+    try {
+      await downloadHealthReport({
+        percentage,
+        diagnosisLabel: diagnosis.label,
+        diagnosisMessage: diagnosis.message,
+        recommendations,
+      });
+    } catch {
+      setErrorOpen(true);
+    } finally {
+      setGenerating(null);
+    }
+  }, [percentage, diagnosis.label, diagnosis.message, recommendations]);
+
+  const handleShare = useCallback(async () => {
+    setGenerating("share");
+    try {
+      const blob = await createStoryCardBlob({
+        headline: `${percentage}%`,
+        label: `Salud financiera: ${diagnosis.label}`,
+      });
+      await shareOrDownload(
+        blob,
+        "diagnostico-financiero.png",
+        "Hice el diagnostico de salud financiera con Yakeline Contadora."
+      );
+    } catch {
+      setErrorOpen(true);
+    } finally {
+      setGenerating(null);
+    }
+  }, [percentage, diagnosis.label]);
+
   // Scroll into view when step changes (but never on the initial mount).
   useEffect(() => {
     if (!hasAdvancedRef.current) {
@@ -634,11 +679,20 @@ export default function FinancialHealthQuiz() {
                             }}
                           >
                             <Box
+                              component="button"
+                              type="button"
+                              disabled={selectedOption !== null}
+                              aria-pressed={isSelected}
                               onClick={() =>
                                 selectedOption === null &&
                                 handleSelectOption(option.score, idx)
                               }
                               sx={{
+                                width: "100%",
+                                textAlign: "left",
+                                font: "inherit",
+                                color: "inherit",
+                                appearance: "none",
                                 p: { xs: 2, md: 2.5 },
                                 borderRadius: "16px",
                                 border: isSelected
@@ -912,6 +966,7 @@ export default function FinancialHealthQuiz() {
                           sx={{
                             display: "flex",
                             flexDirection: { xs: "column", sm: "row" },
+                            flexWrap: "wrap",
                             gap: 2,
                             justifyContent: "center",
                           }}
@@ -944,6 +999,72 @@ export default function FinancialHealthQuiz() {
                             }}
                           >
                             Consulta gratuita
+                          </Button>
+                          <Button
+                            variant="outlined"
+                            onClick={handleDownloadPdf}
+                            disabled={generating !== null}
+                            aria-busy={generating === "pdf"}
+                            startIcon={
+                              generating === "pdf" ? (
+                                <CircularProgress size={16} color="inherit" />
+                              ) : (
+                                <PictureAsPdfRoundedIcon />
+                              )
+                            }
+                            sx={{
+                              borderColor: "rgba(var(--brand-primary-rgb), 0.3)",
+                              color: "var(--brand-primary)",
+                              fontWeight: 600,
+                              fontSize: "0.9rem",
+                              py: 1.3,
+                              px: 3,
+                              borderRadius: "50px",
+                              textTransform: "none",
+                              boxShadow: "none",
+                              "&:hover": {
+                                borderColor: "var(--brand-primary)",
+                                background:
+                                  "rgba(var(--brand-primary-rgb), 0.06)",
+                                boxShadow: "none",
+                                transform: "translateY(-1px)",
+                              },
+                            }}
+                          >
+                            Descargar PDF
+                          </Button>
+                          <Button
+                            variant="outlined"
+                            onClick={handleShare}
+                            disabled={generating !== null}
+                            aria-busy={generating === "share"}
+                            startIcon={
+                              generating === "share" ? (
+                                <CircularProgress size={16} color="inherit" />
+                              ) : (
+                                <IosShareRoundedIcon />
+                              )
+                            }
+                            sx={{
+                              borderColor: "rgba(var(--brand-primary-rgb), 0.3)",
+                              color: "var(--brand-primary)",
+                              fontWeight: 600,
+                              fontSize: "0.9rem",
+                              py: 1.3,
+                              px: 3,
+                              borderRadius: "50px",
+                              textTransform: "none",
+                              boxShadow: "none",
+                              "&:hover": {
+                                borderColor: "var(--brand-primary)",
+                                background:
+                                  "rgba(var(--brand-primary-rgb), 0.06)",
+                                boxShadow: "none",
+                                transform: "translateY(-1px)",
+                              },
+                            }}
+                          >
+                            Compartir
                           </Button>
                           <Button
                             variant="outlined"
@@ -980,6 +1101,22 @@ export default function FinancialHealthQuiz() {
           </Box>
         </motion.div>
       </Container>
+
+      <Snackbar
+        open={errorOpen}
+        autoHideDuration={4000}
+        onClose={() => setErrorOpen(false)}
+        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+      >
+        <Alert
+          severity="error"
+          variant="filled"
+          onClose={() => setErrorOpen(false)}
+          sx={{ width: "100%" }}
+        >
+          No se pudo generar el archivo, inténtalo de nuevo.
+        </Alert>
+      </Snackbar>
     </Box>
   );
 }

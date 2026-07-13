@@ -1,12 +1,25 @@
 "use client";
 
-import { useState, useMemo } from "react";
-import { Box, Typography, Container, Slider, Button } from "@mui/material";
+import { useState, useMemo, useCallback } from "react";
+import {
+  Box,
+  Typography,
+  Container,
+  Slider,
+  Button,
+  CircularProgress,
+  Snackbar,
+  Alert,
+} from "@mui/material";
 import { motion, AnimatePresence } from "framer-motion";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import SavingsRoundedIcon from "@mui/icons-material/SavingsRounded";
 import TrendingDownRoundedIcon from "@mui/icons-material/TrendingDownRounded";
 import AccountBalanceWalletRoundedIcon from "@mui/icons-material/AccountBalanceWalletRounded";
+import PictureAsPdfRoundedIcon from "@mui/icons-material/PictureAsPdfRounded";
+import IosShareRoundedIcon from "@mui/icons-material/IosShareRounded";
+import { downloadSavingsReport } from "@/lib/export/pdfReport";
+import { createStoryCardBlob, shareOrDownload } from "@/lib/export/shareCard";
 
 function formatCOP(value: number): string {
   return new Intl.NumberFormat("es-CO", {
@@ -45,6 +58,46 @@ export default function TaxSavingsCalculator() {
       savingsPercentage: Math.round(savingsRate * 100),
     };
   }, [revenue]);
+
+  const [generating, setGenerating] = useState<null | "pdf" | "share">(null);
+  const [errorOpen, setErrorOpen] = useState(false);
+
+  const handleDownloadPdf = useCallback(async () => {
+    setGenerating("pdf");
+    try {
+      await downloadSavingsReport({
+        monthlyRevenue: calculations.monthlyRevenue,
+        estimatedTax: calculations.estimatedTax,
+        optimizedTax: calculations.optimizedTax,
+        monthlySavings: calculations.monthlySavings,
+        annualSavings: calculations.annualSavings,
+        savingsPercentage: calculations.savingsPercentage,
+      });
+    } catch {
+      setErrorOpen(true);
+    } finally {
+      setGenerating(null);
+    }
+  }, [calculations]);
+
+  const handleShare = useCallback(async () => {
+    setGenerating("share");
+    try {
+      const blob = await createStoryCardBlob({
+        headline: formatCOP(calculations.annualSavings),
+        label: "Ahorro anual estimado en impuestos",
+      });
+      await shareOrDownload(
+        blob,
+        "ahorro-tributario.png",
+        "Descubre cuanto puedes ahorrar en impuestos con Yakeline Contadora."
+      );
+    } catch {
+      setErrorOpen(true);
+    } finally {
+      setGenerating(null);
+    }
+  }, [calculations]);
 
   return (
     <Box
@@ -183,6 +236,8 @@ export default function TaxSavingsCalculator() {
                 max={200}
                 step={5}
                 marks={revenueMarks}
+                aria-label="Facturación mensual estimada en pesos colombianos"
+                getAriaValueText={(v) => formatCOP(v * 1_000_000)}
                 sx={{
                   color: "var(--brand-primary)",
                   height: 8,
@@ -372,33 +427,109 @@ export default function TaxSavingsCalculator() {
 
             {/* CTA */}
             <Box sx={{ textAlign: "center" }}>
-              <Button
-                component="a"
-                href={`https://wa.me/573207269417?text=${encodeURIComponent(
-                  `Hola Yakeline, facturo aproximadamente ${formatCOP(calculations.monthlyRevenue)} mensuales y me gustaría optimizar mis impuestos. ¿Podemos agendar una consulta?`
-                )}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                variant="contained"
-                size="large"
-                startIcon={<WhatsAppIcon />}
+              <Box
                 sx={{
-                  borderRadius: 50,
-                  px: 5,
-                  py: 1.8,
-                  fontSize: "1rem",
-                  fontWeight: 700,
-                  textTransform: "none",
-                  background: "linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-primary-strong) 100%)",
-                  boxShadow: "0 12px 30px rgba(var(--brand-primary-rgb), 0.3)",
-                  "&:hover": {
-                    background: "linear-gradient(135deg, var(--brand-primary-dark) 0%, var(--brand-primary) 100%)",
-                    boxShadow: "0 16px 40px rgba(var(--brand-primary-rgb), 0.4)",
-                  },
+                  display: "flex",
+                  flexWrap: "wrap",
+                  gap: 1.5,
+                  justifyContent: "center",
+                  alignItems: "center",
                 }}
               >
-                Quiero optimizar mis impuestos
-              </Button>
+                <Button
+                  component="a"
+                  href={`https://wa.me/573207269417?text=${encodeURIComponent(
+                    `Hola Yakeline, facturo aproximadamente ${formatCOP(calculations.monthlyRevenue)} mensuales y me gustaría optimizar mis impuestos. ¿Podemos agendar una consulta?`
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  variant="contained"
+                  size="large"
+                  startIcon={<WhatsAppIcon />}
+                  sx={{
+                    borderRadius: 50,
+                    px: 5,
+                    py: 1.8,
+                    fontSize: "1rem",
+                    fontWeight: 700,
+                    textTransform: "none",
+                    background: "linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-primary-strong) 100%)",
+                    boxShadow: "0 12px 30px rgba(var(--brand-primary-rgb), 0.3)",
+                    "&:hover": {
+                      background: "linear-gradient(135deg, var(--brand-primary-dark) 0%, var(--brand-primary) 100%)",
+                      boxShadow: "0 16px 40px rgba(var(--brand-primary-rgb), 0.4)",
+                    },
+                  }}
+                >
+                  Quiero optimizar mis impuestos
+                </Button>
+
+                <Button
+                  onClick={handleDownloadPdf}
+                  disabled={generating !== null}
+                  aria-busy={generating === "pdf"}
+                  variant="outlined"
+                  size="large"
+                  startIcon={
+                    generating === "pdf" ? (
+                      <CircularProgress size={18} color="inherit" />
+                    ) : (
+                      <PictureAsPdfRoundedIcon />
+                    )
+                  }
+                  sx={{
+                    borderRadius: 50,
+                    px: 3.5,
+                    py: 1.5,
+                    fontSize: "0.95rem",
+                    fontWeight: 700,
+                    textTransform: "none",
+                    borderWidth: 2,
+                    borderColor: "rgba(var(--brand-primary-rgb), 0.35)",
+                    color: "var(--brand-primary)",
+                    "&:hover": {
+                      borderWidth: 2,
+                      borderColor: "var(--brand-primary)",
+                      background: "rgba(var(--brand-primary-rgb), 0.06)",
+                    },
+                  }}
+                >
+                  Descargar PDF
+                </Button>
+
+                <Button
+                  onClick={handleShare}
+                  disabled={generating !== null}
+                  aria-busy={generating === "share"}
+                  variant="outlined"
+                  size="large"
+                  startIcon={
+                    generating === "share" ? (
+                      <CircularProgress size={18} color="inherit" />
+                    ) : (
+                      <IosShareRoundedIcon />
+                    )
+                  }
+                  sx={{
+                    borderRadius: 50,
+                    px: 3.5,
+                    py: 1.5,
+                    fontSize: "0.95rem",
+                    fontWeight: 700,
+                    textTransform: "none",
+                    borderWidth: 2,
+                    borderColor: "rgba(var(--brand-primary-rgb), 0.35)",
+                    color: "var(--brand-primary)",
+                    "&:hover": {
+                      borderWidth: 2,
+                      borderColor: "var(--brand-primary)",
+                      background: "rgba(var(--brand-primary-rgb), 0.06)",
+                    },
+                  }}
+                >
+                  Compartir
+                </Button>
+              </Box>
               <Typography
                 sx={{
                   fontSize: "0.75rem",
@@ -412,6 +543,22 @@ export default function TaxSavingsCalculator() {
           </Box>
         </motion.div>
       </Container>
+
+      <Snackbar
+        open={errorOpen}
+        autoHideDuration={4000}
+        onClose={() => setErrorOpen(false)}
+        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+      >
+        <Alert
+          severity="error"
+          variant="filled"
+          onClose={() => setErrorOpen(false)}
+          sx={{ width: "100%" }}
+        >
+          No se pudo generar el archivo, inténtalo de nuevo.
+        </Alert>
+      </Snackbar>
     </Box>
   );
 }

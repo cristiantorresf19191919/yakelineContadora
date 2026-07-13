@@ -8,6 +8,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import useStyles from "./Hero.styles";
 import { useReducedMotion } from "@/app/hooks/useReducedMotion";
 import { useLanguage } from "@/app/contexts/LanguageContext";
+import MagneticButton from "@/app/components/MagneticButton/MagneticButton";
 
 function useTimeGreeting(lang: "es" | "en") {
   const [greeting, setGreeting] = useState("");
@@ -214,19 +215,21 @@ export default function Hero() {
           </motion.div>
 
           <motion.div variants={itemVariants}>
-            <Button
-              variant="contained"
-              color="primary"
-              size="large"
-              startIcon={<WhatsAppIcon />}
-              onClick={handleWhatsAppClick}
-              className={classes.ctaButton}
-              component={motion.button}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              {t("Solicita tu Consulta", "Book Your Consultation")}
-            </Button>
+            <MagneticButton strength={0.4}>
+              <Button
+                variant="contained"
+                color="primary"
+                size="large"
+                startIcon={<WhatsAppIcon />}
+                onClick={handleWhatsAppClick}
+                className={classes.ctaButton}
+                component={motion.button}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                {t("Solicita tu Consulta", "Book Your Consultation")}
+              </Button>
+            </MagneticButton>
           </motion.div>
         </motion.div>
 

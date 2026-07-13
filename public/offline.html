@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sin conexión · Yakeline Contadora</title>
+    <style>
+      :root { color-scheme: light; }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+        background: linear-gradient(135deg, #f5f3ff 0%, #ffffff 55%, #fffbeb 100%);
+        color: #1f2937;
+        padding: 24px;
+        text-align: center;
+      }
+      .card {
+        max-width: 440px;
+        padding: 40px 28px;
+        border-radius: 24px;
+        background: rgba(255, 255, 255, 0.75);
+        backdrop-filter: blur(16px);
+        border: 1px solid rgba(93, 63, 211, 0.1);
+        box-shadow: 0 24px 60px -20px rgba(93, 63, 211, 0.25);
+      }
+      .badge {
+        width: 72px;
+        height: 72px;
+        margin: 0 auto 20px;
+        border-radius: 22px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #7c5ce7, #5d3fd3);
+        box-shadow: 0 12px 28px -8px rgba(93, 63, 211, 0.5);
+      }
+      .badge svg { width: 40px; height: 40px; }
+      h1 { font-size: 1.5rem; margin: 0 0 10px; }
+      p { color: #4b5563; line-height: 1.6; margin: 0 0 24px; }
+      button {
+        border: none;
+        cursor: pointer;
+        font-size: 1rem;
+        font-weight: 700;
+        color: #fff;
+        padding: 14px 30px;
+        border-radius: 999px;
+        background: linear-gradient(135deg, #5d3fd3, #7c5ce7);
+        box-shadow: 0 12px 28px -8px rgba(93, 63, 211, 0.5);
+      }
+      button:hover { filter: brightness(1.05); }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <div class="badge">
+        <svg viewBox="0 0 512 512" fill="none" stroke="#fff" stroke-width="40" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M164 156 L256 296 L348 156" />
+          <path d="M256 296 L256 372" />
+        </svg>
+      </div>
+      <h1>Estás sin conexión</h1>
+      <p>Parece que no tienes internet en este momento. Revisa tu conexión y vuelve a intentarlo — tu asesoría contable te espera.</p>
+      <button onclick="location.reload()">Reintentar</button>
+    </div>
+  </body>
+</html>

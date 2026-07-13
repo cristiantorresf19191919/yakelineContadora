@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import { Outfit, Playfair_Display } from "next/font/google";
-import Script from "next/script";
 import EmotionCacheProvider from "./emotion-cache";
 import ThemeProvider from "./ThemeProvider";
 import { ThemeScript } from "./components/ThemeScript/ThemeScript";
@@ -11,6 +10,8 @@ import BackToTopButton from "./components/BackToTopButton/BackToTopButton";
 import "./globals.css";
 import { FloatingButtonsContainer } from "./components/FloatingButtonsContainer/FloatingButtonsContainer";
 import { LanguageProvider } from "./contexts/LanguageContext";
+import ServiceWorkerRegister from "./components/ServiceWorkerRegister/ServiceWorkerRegister";
+import JsonLd from "./components/JsonLd/JsonLd";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -107,6 +108,18 @@ export const metadata: Metadata = {
     },
   },
   category: 'business',
+  appleWebApp: {
+    capable: true,
+    title: "Yakeline",
+    statusBarStyle: "default",
+  },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.svg", type: "image/svg+xml" },
+    ],
+    apple: [{ url: "/icon.svg" }],
+  },
 };
 
 export default function RootLayout({
@@ -129,7 +142,8 @@ export default function RootLayout({
         "address": {
           "@type": "PostalAddress",
           "addressCountry": "CO",
-          "addressLocality": "Colombia"
+          "addressRegion": "Antioquia",
+          "addressLocality": "Medellín"
         },
         "areaServed": {
           "@type": "Country",
@@ -194,13 +208,7 @@ export default function RootLayout({
     >
       <body>
         <ThemeScript />
-        <Script
-          id="schema-org"
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(schemaData),
-          }}
-        />
+        <JsonLd data={schemaData} />
         <EmotionCacheProvider>
           <ThemeProvider>
             <LanguageProvider>
@@ -210,6 +218,7 @@ export default function RootLayout({
               <FloatingButtonsContainer />
               <BackToTopButton />
               <CommandPalette />
+              <ServiceWorkerRegister />
             </LanguageProvider>
           </ThemeProvider>
         </EmotionCacheProvider>

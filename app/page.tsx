@@ -1,25 +1,46 @@
 "use client";
 
+import dynamic from "next/dynamic";
+
 import AboutSection from "./components/AboutSection/AboutSection";
-import ClientResults from "./components/ClientResults/ClientResults";
 import ConfidenceShowcase from "./components/ConfidenceShowcase/ConfidenceShowcase";
 import CredibilityBadges from "./components/CredibilityBadges/CredibilityBadges";
 import DiagnosisPromo from "./components/DiagnosisPromo/DiagnosisPromo";
+import DocumentChecklist from "./components/DocumentChecklist/DocumentChecklist";
+import FaqSection from "./components/FaqSection/FaqSection";
 import FinancialGrowth from "./components/FinancialGrowth/FinancialGrowth";
 import FinancialHealthQuiz from "./components/FinancialHealthQuiz/FinancialHealthQuiz";
 import Footer from "./components/Footer/Footer";
 import Hero from "./components/Hero/Hero";
+import HomeVideoSection from "./components/HomeVideoSection/HomeVideoSection";
 import NewsletterSection from "./components/NewsletterSection/NewsletterSection";
-import PremiumClientsCarousel from "./components/PremiumClientsCarousel/PremiumClientsCarousel";
 import ProcessSteps from "./components/ProcessSteps/ProcessSteps";
 import SectionDivider from "./components/SectionDivider/SectionDivider";
 import ServicesHighlights from "./components/ServicesHighlights/ServicesHighlights";
-import HomeVideoSection from "./components/HomeVideoSection/HomeVideoSection";
-import SmartPopup from "./components/SmartPopup/SmartPopup";
-import SocialProofToast from "./components/SocialProofToast/SocialProofToast";
-import TaxCalendar from "./components/TaxCalendar/TaxCalendar";
 import TaxSavingsCalculator from "./components/TaxSavingsCalculator/TaxSavingsCalculator";
-import GamesArcade from "./components/GamesArcade/GamesArcade";
+import UvtBracketVisualizer from "./components/UvtBracketVisualizer/UvtBracketVisualizer";
+
+// Below-the-fold, interaction-only sections carry no SEO value, so they are
+// code-split and loaded on the client — this keeps them out of the initial
+// server HTML and the main JS bundle, trimming first-load cost.
+const GamesArcade = dynamic(
+  () => import("./components/GamesArcade/GamesArcade"),
+  { ssr: false }
+);
+const SmartPopup = dynamic(() => import("./components/SmartPopup/SmartPopup"), {
+  ssr: false,
+});
+const SocialProofToast = dynamic(
+  () => import("./components/SocialProofToast/SocialProofToast"),
+  { ssr: false }
+);
+// Client-only: TaxCalendar computes "now" at render for its day-counters and
+// upcoming-deadline filtering. Rendering it only on the client avoids a
+// build-time-vs-visit-time hydration mismatch (and defers its JS).
+const TaxCalendar = dynamic(
+  () => import("./components/TaxCalendar/TaxCalendar"),
+  { ssr: false }
+);
 
 export default function Home() {
   return (
@@ -32,17 +53,17 @@ export default function Home() {
       <ServicesHighlights />
       <SectionDivider variant="curve" topColor="#FFFFFF" bottomColor="#F8F6FF" />
       <TaxSavingsCalculator />
+      <UvtBracketVisualizer />
       <FinancialHealthQuiz />
       <ProcessSteps />
-      <SectionDivider variant="curve" topColor="#FFFFFF" bottomColor="#FAFAFA" flip />
+      <DocumentChecklist />
+      <SectionDivider variant="curve" topColor="#F8F6FF" bottomColor="#FAFAFA" flip />
       <DiagnosisPromo />
-      <ClientResults />
       <ConfidenceShowcase />
-      <SectionDivider variant="wave" topColor="#FAFAFA" bottomColor="#FFF7F0" />
-      <PremiumClientsCarousel />
       <GamesArcade />
       <TaxCalendar />
       <AboutSection />
+      <FaqSection />
       <NewsletterSection />
       <Footer />
       <SmartPopup />
