@@ -32,7 +32,10 @@ function buildTheme(id: ThemeId): Theme {
       text: def.mui.text,
     },
     shape: {
-      borderRadius: 24,
+      // Base unit = 6px, so MUI sx `borderRadius: N` maps onto the token scale
+      // (4 -> 24px = --r-lg, 3 -> 18px, 2 -> 12px = --r-sm). Was 24, which rendered
+      // cards at an over-rounded ~96px; this unifies corners site-wide.
+      borderRadius: 6,
     },
     components: {
       MuiCssBaseline: {

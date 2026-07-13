@@ -15,7 +15,7 @@ import Hero from "./components/Hero/Hero";
 import HomeVideoSection from "./components/HomeVideoSection/HomeVideoSection";
 import NewsletterSection from "./components/NewsletterSection/NewsletterSection";
 import ProcessSteps from "./components/ProcessSteps/ProcessSteps";
-import SectionDivider from "./components/SectionDivider/SectionDivider";
+import SectionSkeleton from "./components/SectionSkeleton/SectionSkeleton";
 import ServicesHighlights from "./components/ServicesHighlights/ServicesHighlights";
 import TaxSavingsCalculator from "./components/TaxSavingsCalculator/TaxSavingsCalculator";
 import UvtBracketVisualizer from "./components/UvtBracketVisualizer/UvtBracketVisualizer";
@@ -25,7 +25,7 @@ import UvtBracketVisualizer from "./components/UvtBracketVisualizer/UvtBracketVi
 // server HTML and the main JS bundle, trimming first-load cost.
 const GamesArcade = dynamic(
   () => import("./components/GamesArcade/GamesArcade"),
-  { ssr: false }
+  { ssr: false, loading: () => <SectionSkeleton /> }
 );
 const SmartPopup = dynamic(() => import("./components/SmartPopup/SmartPopup"), {
   ssr: false,
@@ -39,7 +39,7 @@ const SocialProofToast = dynamic(
 // build-time-vs-visit-time hydration mismatch (and defers its JS).
 const TaxCalendar = dynamic(
   () => import("./components/TaxCalendar/TaxCalendar"),
-  { ssr: false }
+  { ssr: false, loading: () => <SectionSkeleton /> }
 );
 
 export default function Home() {
@@ -48,16 +48,13 @@ export default function Home() {
       <Hero />
       <CredibilityBadges />
       <HomeVideoSection />
-      <SectionDivider variant="wave" topColor="#FAFAFA" bottomColor="#FFFFFF" />
       <FinancialGrowth />
       <ServicesHighlights />
-      <SectionDivider variant="curve" topColor="#FFFFFF" bottomColor="#F8F6FF" />
       <TaxSavingsCalculator />
       <UvtBracketVisualizer />
       <FinancialHealthQuiz />
       <ProcessSteps />
       <DocumentChecklist />
-      <SectionDivider variant="curve" topColor="#F8F6FF" bottomColor="#FAFAFA" flip />
       <DiagnosisPromo />
       <ConfidenceShowcase />
       <GamesArcade />

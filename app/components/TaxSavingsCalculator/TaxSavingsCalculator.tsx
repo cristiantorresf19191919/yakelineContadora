@@ -104,7 +104,7 @@ export default function TaxSavingsCalculator() {
       component="section"
       sx={{
         py: { xs: 8, md: 12 },
-        background: "linear-gradient(180deg, #F8F6FF 0%, #FFFFFF 100%)",
+        background: "var(--bg)",
         position: "relative",
         overflow: "hidden",
       }}
@@ -177,7 +177,7 @@ export default function TaxSavingsCalculator() {
             </Typography>
             <Typography
               sx={{
-                color: "text.secondary",
+                color: "var(--text-muted)",
                 fontSize: { xs: "1rem", md: "1.1rem" },
                 maxWidth: 500,
                 mx: "auto",
@@ -191,11 +191,11 @@ export default function TaxSavingsCalculator() {
           {/* Calculator Card */}
           <Box
             sx={{
-              bgcolor: "white",
-              borderRadius: 4,
+              bgcolor: "var(--surface)",
+              borderRadius: "var(--r-lg)",
               p: { xs: 3, md: 5 },
-              boxShadow: "0 20px 60px rgba(var(--brand-primary-rgb), 0.08), 0 4px 16px rgba(0,0,0,0.04)",
-              border: "1px solid rgba(var(--brand-primary-rgb), 0.06)",
+              boxShadow: "var(--shadow-md)",
+              border: "1px solid var(--border)",
             }}
           >
             {/* Slider Section */}
@@ -204,7 +204,7 @@ export default function TaxSavingsCalculator() {
                 sx={{
                   fontWeight: 600,
                   fontSize: "0.95rem",
-                  color: "#374151",
+                  color: "var(--text-muted)",
                   mb: 1,
                 }}
               >
@@ -256,11 +256,11 @@ export default function TaxSavingsCalculator() {
                     },
                   },
                   "& .MuiSlider-rail": {
-                    bgcolor: "#E8E0F7",
+                    bgcolor: "rgba(var(--brand-primary-rgb), 0.15)",
                   },
                   "& .MuiSlider-markLabel": {
                     fontSize: "0.75rem",
-                    color: "#9CA3AF",
+                    color: "var(--text-subtle)",
                   },
                 }}
               />
@@ -285,14 +285,14 @@ export default function TaxSavingsCalculator() {
                   <Box
                     sx={{
                       p: 2.5,
-                      borderRadius: 3,
-                      bgcolor: "#FEF2F2",
-                      border: "1px solid #FECACA",
+                      borderRadius: "var(--r-md)",
+                      bgcolor: "rgba(239, 68, 68, 0.1)",
+                      border: "1px solid rgba(239, 68, 68, 0.28)",
                       textAlign: "center",
                     }}
                   >
                     <TrendingDownRoundedIcon sx={{ color: "#EF4444", fontSize: 28, mb: 0.5 }} />
-                    <Typography sx={{ fontSize: "0.75rem", color: "#9CA3AF", fontWeight: 500 }}>
+                    <Typography sx={{ fontSize: "0.75rem", color: "var(--text-subtle)", fontWeight: 500 }}>
                       Sin optimizar
                     </Typography>
                     <Typography
@@ -318,14 +318,14 @@ export default function TaxSavingsCalculator() {
                   <Box
                     sx={{
                       p: 2.5,
-                      borderRadius: 3,
-                      bgcolor: "#F0FDF4",
-                      border: "1px solid #BBF7D0",
+                      borderRadius: "var(--r-md)",
+                      bgcolor: "rgba(16, 185, 129, 0.12)",
+                      border: "1px solid rgba(16, 185, 129, 0.28)",
                       textAlign: "center",
                     }}
                   >
                     <AccountBalanceWalletRoundedIcon sx={{ color: "#22C55E", fontSize: 28, mb: 0.5 }} />
-                    <Typography sx={{ fontSize: "0.75rem", color: "#9CA3AF", fontWeight: 500 }}>
+                    <Typography sx={{ fontSize: "0.75rem", color: "var(--text-subtle)", fontWeight: 500 }}>
                       Con Yakeline
                     </Typography>
                     <Typography
@@ -351,7 +351,7 @@ export default function TaxSavingsCalculator() {
                   <Box
                     sx={{
                       p: 2.5,
-                      borderRadius: 3,
+                      borderRadius: "var(--r-md)",
                       background: "linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-primary-strong) 100%)",
                       textAlign: "center",
                       boxShadow: "0 8px 20px rgba(var(--brand-primary-rgb), 0.25)",
@@ -386,9 +386,9 @@ export default function TaxSavingsCalculator() {
                 sx={{
                   textAlign: "center",
                   p: 3,
-                  borderRadius: 3,
-                  bgcolor: "#FFFBEB",
-                  border: "1px solid #FDE68A",
+                  borderRadius: "var(--r-md)",
+                  bgcolor: "rgba(245, 158, 11, 0.12)",
+                  border: "1px solid rgba(245, 158, 11, 0.28)",
                   mb: 3,
                 }}
               >
@@ -447,7 +447,7 @@ export default function TaxSavingsCalculator() {
                   size="large"
                   startIcon={<WhatsAppIcon />}
                   sx={{
-                    borderRadius: 50,
+                    borderRadius: "var(--r-pill)",
                     px: 5,
                     py: 1.8,
                     fontSize: "1rem",
@@ -478,7 +478,7 @@ export default function TaxSavingsCalculator() {
                     )
                   }
                   sx={{
-                    borderRadius: 50,
+                    borderRadius: "var(--r-pill)",
                     px: 3.5,
                     py: 1.5,
                     fontSize: "0.95rem",
@@ -511,7 +511,7 @@ export default function TaxSavingsCalculator() {
                     )
                   }
                   sx={{
-                    borderRadius: 50,
+                    borderRadius: "var(--r-pill)",
                     px: 3.5,
                     py: 1.5,
                     fontSize: "0.95rem",
@@ -533,7 +533,7 @@ export default function TaxSavingsCalculator() {
               <Typography
                 sx={{
                   fontSize: "0.75rem",
-                  color: "#9CA3AF",
+                  color: "var(--text-subtle)",
                   mt: 1.5,
                 }}
               >

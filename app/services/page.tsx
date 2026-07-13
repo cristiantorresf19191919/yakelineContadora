@@ -153,11 +153,11 @@ export default function ServicesPage() {
       <Box sx={{
         pt: { xs: 16, md: 20 },
         pb: { xs: 6, md: 10 },
-        background: "linear-gradient(135deg, #f3f4f6 0%, #fff 100%)",
+        background: "var(--bg)",
         position: "relative",
         overflow: "hidden"
       }}>
-        <Box sx={{ position: "absolute", top: -100, right: -100, width: 600, height: 600, borderRadius: "50%", background: "radial-gradient(circle, rgba(124, 58, 237, 0.05) 0%, rgba(255,255,255,0) 70%)" }} />
+        <Box sx={{ position: "absolute", top: -100, right: -100, width: 600, height: 600, borderRadius: "50%", background: "radial-gradient(circle, rgba(var(--brand-primary-rgb), 0.05) 0%, rgba(var(--brand-primary-rgb), 0) 70%)" }} />
 
         <Container maxWidth="lg" sx={{ textAlign: "center", position: "relative", zIndex: 1 }}>
           <motion.div
@@ -170,7 +170,7 @@ export default function ServicesPage() {
             </Typography>
             <Typography variant="h1" sx={{ fontSize: { xs: "2.2rem", sm: "3rem", md: "4rem" }, fontWeight: 900, mb: 3, mt: 1, letterSpacing: "-0.02em", lineHeight: 1.15 }}>
               Tranquilidad Fiscal y <br/>
-              <span style={{ background: "linear-gradient(90deg, #7C3AED 0%, #DB2777 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+              <span style={{ background: "var(--brand-gradient)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
                 Crecimiento Financiero
               </span>
             </Typography>
@@ -182,7 +182,7 @@ export default function ServicesPage() {
       </Box>
 
       {/* CARDS SECTION */}
-      <Box sx={{ py: { xs: 6, md: 10 }, bgcolor: "#fff" }}>
+      <Box sx={{ py: { xs: 6, md: 10 }, bgcolor: "var(--bg)" }}>
         <Container maxWidth="lg">
           <Grid container spacing={{ xs: 3, md: 4 }}>
             {services.map((service, index) => {
@@ -206,15 +206,15 @@ export default function ServicesPage() {
                       position: "relative",
                       overflow: "hidden",
                       boxShadow: isExpanded
-                        ? `0 24px 48px ${service.color}20`
-                        : "0 8px 32px rgba(0,0,0,0.06)",
+                        ? "var(--shadow-lg)"
+                        : "var(--shadow-md)",
                       border: isExpanded
-                        ? `2px solid ${service.color}30`
-                        : service.popular ? `2px solid ${service.color}30` : "1px solid rgba(0,0,0,0.05)",
+                        ? "2px solid rgba(var(--brand-primary-rgb), 0.18)"
+                        : service.popular ? "2px solid rgba(var(--brand-primary-rgb), 0.18)" : "1px solid var(--border)",
                       transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
                       "&:hover": {
                         transform: "translateY(-6px)",
-                        boxShadow: `0 20px 48px ${service.color}18`,
+                        boxShadow: "var(--shadow-lg)",
                       }
                     }}>
                       {service.popular && (
@@ -226,7 +226,7 @@ export default function ServicesPage() {
                             position: "absolute",
                             top: 16,
                             right: 16,
-                            background: `linear-gradient(135deg, ${service.color} 0%, ${service.color}cc 100%)`,
+                            background: "var(--brand-gradient)",
                             color: "white",
                             fontWeight: 700,
                             fontSize: "0.7rem",
@@ -241,8 +241,8 @@ export default function ServicesPage() {
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        background: `linear-gradient(135deg, ${service.color} 0%, ${service.color}cc 100%)`,
-                        boxShadow: `0 8px 20px ${service.color}35`,
+                        background: "var(--brand-gradient)",
+                        boxShadow: "0 8px 20px rgba(var(--brand-primary-rgb), 0.2)",
                         mb: 3
                       }}>
                         {service.icon}
@@ -261,7 +261,7 @@ export default function ServicesPage() {
                         aria-controls={`service-details-${index}`}
                         endIcon={isExpanded ? <ExpandLessIcon /> : <ExpandMoreIcon />}
                         sx={{
-                          color: service.color,
+                          color: "var(--brand-primary)",
                           fontWeight: 700,
                           p: 0,
                           mb: 1,
@@ -274,10 +274,10 @@ export default function ServicesPage() {
 
                       {/* Expandable Details */}
                       <Collapse in={isExpanded} timeout={400}>
-                        <Box id={`service-details-${index}`} sx={{ mt: 2, pt: 2, borderTop: `1px solid ${service.color}15` }}>
+                        <Box id={`service-details-${index}`} sx={{ mt: 2, pt: 2, borderTop: "1px solid rgba(var(--brand-primary-rgb), 0.08)" }}>
                           {service.details.map((detail, i) => (
                             <Box key={i} sx={{ display: "flex", alignItems: "flex-start", gap: 1.5, mb: 1.5 }}>
-                              <CheckCircleOutlineIcon sx={{ color: service.color, fontSize: 20, mt: 0.3, flexShrink: 0 }} />
+                              <CheckCircleOutlineIcon sx={{ color: "var(--brand-primary)", fontSize: 20, mt: 0.3, flexShrink: 0 }} />
                               <Typography variant="body2" sx={{ color: "text.secondary", lineHeight: 1.6 }}>
                                 {detail}
                               </Typography>
@@ -287,10 +287,10 @@ export default function ServicesPage() {
                             mt: 3,
                             p: 2,
                             borderRadius: 2,
-                            bgcolor: `${service.color}08`,
-                            border: `1px solid ${service.color}15`
+                            bgcolor: "rgba(var(--brand-primary-rgb), 0.05)",
+                            border: "1px solid rgba(var(--brand-primary-rgb), 0.08)"
                           }}>
-                            <Typography variant="body2" sx={{ color: service.color, fontWeight: 600, lineHeight: 1.6 }}>
+                            <Typography variant="body2" sx={{ color: "var(--brand-primary)", fontWeight: 600, lineHeight: 1.6 }}>
                               {service.benefit}
                             </Typography>
                           </Box>
@@ -308,14 +308,14 @@ export default function ServicesPage() {
                           variant="outlined"
                           fullWidth
                           sx={{
-                            borderColor: `${service.color}40`,
-                            color: service.color,
+                            borderColor: "rgba(var(--brand-primary-rgb), 0.25)",
+                            color: "var(--brand-primary)",
                             fontWeight: 600,
                             borderRadius: 3,
                             py: 1.2,
                             "&:hover": {
-                              bgcolor: `${service.color}08`,
-                              borderColor: service.color,
+                              bgcolor: "rgba(var(--brand-primary-rgb), 0.05)",
+                              borderColor: "var(--brand-primary)",
                             }
                           }}
                         >
@@ -335,7 +335,7 @@ export default function ServicesPage() {
       <ServicePackages />
 
       {/* FAQ SECTION */}
-      <Box sx={{ py: { xs: 8, md: 12 }, bgcolor: "#fafafa" }}>
+      <Box sx={{ py: { xs: 8, md: 12 }, bgcolor: "var(--bg)" }}>
         <Container maxWidth="md">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -355,9 +355,9 @@ export default function ServicesPage() {
                 disableGutters
                 elevation={0}
                 sx={{
-                  bgcolor: "white",
-                  border: "1px solid #e8e8e8",
-                  borderRadius: "12px !important",
+                  bgcolor: "var(--surface)",
+                  border: "1px solid var(--border)",
+                  borderRadius: "var(--r-sm) !important",
                   mb: 1.5,
                   "&:before": { display: "none" },
                   overflow: "hidden",

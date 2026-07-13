@@ -12,8 +12,7 @@ const badgesData = [
     Icon: VerifiedIcon,
     es: "10+ años de experiencia",
     en: "10+ Years of Experience",
-    color: "#4CAF50",
-    gradient: "linear-gradient(135deg, #4CAF50 0%, #66BB6A 100%)",
+    gradient: "var(--brand-gradient)",
     descEs: "Experiencia comprobada en contabilidad y finanzas",
     descEn: "Proven experience in accounting and finance",
   },
@@ -21,8 +20,7 @@ const badgesData = [
     Icon: SchoolIcon,
     es: "Contadora Pública Certificada",
     en: "Certified Public Accountant",
-    color: "#2196F3",
-    gradient: "linear-gradient(135deg, #2196F3 0%, #42A5F5 100%)",
+    gradient: "var(--brand-gradient)",
     descEs: "Títulos y certificaciones profesionales",
     descEn: "Professional degrees and certifications",
   },
@@ -30,8 +28,7 @@ const badgesData = [
     Icon: PeopleIcon,
     es: "500+ clientes satisfechos",
     en: "500+ Satisfied Clients",
-    color: "#FF9800",
-    gradient: "linear-gradient(135deg, #FF9800 0%, #FFB74D 100%)",
+    gradient: "linear-gradient(135deg, var(--brand-accent) 0%, var(--brand-primary) 100%)",
     descEs: "Resultados que hablan por sí solos",
     descEn: "Results that speak for themselves",
   },
@@ -42,7 +39,6 @@ export default function CredibilityBadges() {
   const badges = badgesData.map((b) => ({
     Icon: b.Icon,
     text: lang === "es" ? b.es : b.en,
-    color: b.color,
     gradient: b.gradient,
     description: lang === "es" ? b.descEs : b.descEn,
   }));
@@ -50,7 +46,7 @@ export default function CredibilityBadges() {
   return (
     <Box sx={{
       py: { xs: 4, md: 7 },
-      background: "linear-gradient(180deg, #f8f9fa 0%, #f0f1f3 100%)",
+      background: "var(--bg)",
       position: "relative",
       overflow: "hidden",
     }}>
@@ -90,20 +86,20 @@ export default function CredibilityBadges() {
                   textAlign: { xs: "left", md: "center" },
                   gap: { xs: 2, md: 2 },
                   p: { xs: 2.5, md: 3.5 },
-                  bgcolor: "rgba(255, 255, 255, 0.7)",
+                  bgcolor: "rgba(var(--surface-rgb), 0.72)",
                   backdropFilter: "blur(12px)",
                   WebkitBackdropFilter: "blur(12px)",
                   borderRadius: { xs: 3, md: 4 },
-                  border: "1px solid rgba(255, 255, 255, 0.6)",
-                  boxShadow: "0 8px 32px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.8)",
+                  border: "1px solid var(--border)",
+                  boxShadow: "var(--shadow-md)",
                   height: "100%",
                   transition: "transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease",
                   position: "relative",
                   overflow: "hidden",
                   "&:hover": {
                     transform: { xs: "none", md: "translateY(-6px)" },
-                    boxShadow: `0 16px 40px ${badge.color}20, inset 0 1px 0 rgba(255,255,255,0.9)`,
-                    borderColor: `${badge.color}30`,
+                    boxShadow: "var(--shadow-lg)",
+                    borderColor: "rgba(var(--brand-primary-rgb), 0.3)",
                   },
                   // Shimmer accent line at top
                   "&::before": {
@@ -127,7 +123,7 @@ export default function CredibilityBadges() {
                     borderRadius: "50%",
                     background: badge.gradient,
                     flexShrink: 0,
-                    boxShadow: `0 8px 20px ${badge.color}30`,
+                    boxShadow: "0 8px 20px rgba(var(--brand-primary-rgb), 0.3)",
                     transition: "transform 0.3s ease",
                     "&:hover": {
                       transform: "scale(1.05)",
@@ -149,7 +145,7 @@ export default function CredibilityBadges() {
                       variant="h6"
                       sx={{
                         fontWeight: 700,
-                        color: "#1a1a1a",
+                        color: "var(--text)",
                         fontSize: { xs: "0.95rem", md: "1.25rem" },
                         lineHeight: { xs: 1.3, md: 1.5 },
                       }}
@@ -159,7 +155,7 @@ export default function CredibilityBadges() {
                     <Typography
                       variant="body2"
                       sx={{
-                        color: "text.secondary",
+                        color: "var(--text-muted)",
                         fontSize: { xs: "0.8rem", md: "0.875rem" },
                         lineHeight: { xs: 1.4, md: 1.5 },
                       }}

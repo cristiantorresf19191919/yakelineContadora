@@ -2,16 +2,15 @@ import { makeStyles } from "tss-react/mui";
 import { Theme } from "@mui/material/styles";
 
 const useStyles = makeStyles({ name: "AboutSection" })((theme: Theme) => {
-  const { breakpoints, spacing, palette } = theme;
-  const headingColor = "#5C3D27";
-  const textMuted = "#80614B";
+  const { breakpoints, spacing } = theme;
+  const headingColor = "var(--text)";
+  const textMuted = "var(--text-muted)";
 
   return {
     section: {
       position: "relative",
       overflow: "hidden",
-      background:
-        "linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,245,233,0.96) 55%, rgba(240,229,255,0.88) 100%)",
+      background: "var(--tint-soft), var(--bg)",
       padding: spacing(12, 7),
       [breakpoints.down("lg")]: {
         padding: spacing(10, 5),
@@ -30,7 +29,7 @@ const useStyles = makeStyles({ name: "AboutSection" })((theme: Theme) => {
       width: 420,
       height: 420,
       background:
-        "radial-gradient(circle, rgba(255, 224, 191, 0.45) 0%, rgba(255, 224, 191, 0) 70%)",
+        "radial-gradient(circle, rgba(var(--brand-accent-rgb), 0.15) 0%, rgba(var(--brand-accent-rgb), 0) 70%)",
       filter: "blur(10px)",
       pointerEvents: "none",
     },
@@ -41,7 +40,7 @@ const useStyles = makeStyles({ name: "AboutSection" })((theme: Theme) => {
       width: 480,
       height: 480,
       background:
-        "radial-gradient(circle, rgba(210, 188, 255, 0.45) 0%, rgba(210, 188, 255, 0) 75%)",
+        "radial-gradient(circle, rgba(var(--brand-primary-rgb), 0.15) 0%, rgba(var(--brand-primary-rgb), 0) 75%)",
       filter: "blur(12px)",
       pointerEvents: "none",
     },
@@ -105,12 +104,11 @@ const useStyles = makeStyles({ name: "AboutSection" })((theme: Theme) => {
     },
     summaryCard: {
       position: "relative",
-      borderRadius: "32px",
+      borderRadius: "var(--r-xl)",
       padding: spacing(5),
       background:
-        "linear-gradient(150deg, rgba(255,255,255,0.98) 0%, rgba(245, 236, 255, 0.95) 100%)",
-      boxShadow:
-        "0 26px 60px rgba(92, 61, 39, 0.12), inset 0 0 0 1px rgba(255,255,255,0.65)",
+        "linear-gradient(150deg, var(--surface) 0%, var(--surface-muted) 100%)",
+      boxShadow: "var(--shadow-lg)",
       display: "flex",
       flexDirection: "column",
       gap: spacing(3.5),
@@ -127,7 +125,7 @@ const useStyles = makeStyles({ name: "AboutSection" })((theme: Theme) => {
       textTransform: "uppercase",
       letterSpacing: 1.8,
       fontWeight: 600,
-      color: palette.primary.dark,
+      color: "var(--brand-primary-dark)",
       display: "inline-flex",
       alignItems: "center",
       gap: spacing(1),
@@ -136,7 +134,7 @@ const useStyles = makeStyles({ name: "AboutSection" })((theme: Theme) => {
         width: 32,
         height: 2,
         borderRadius: 999,
-        backgroundColor: palette.primary.main,
+        backgroundColor: "var(--brand-primary)",
         display: "inline-block",
       },
     },
@@ -169,9 +167,8 @@ const useStyles = makeStyles({ name: "AboutSection" })((theme: Theme) => {
     statBlock: {
       borderRadius: "22px",
       padding: spacing(2.75, 2.5),
-      backgroundColor: "rgba(233, 220, 255, 0.35)",
-      boxShadow:
-        "0 18px 36px rgba(92, 61, 39, 0.12), inset 0 0 0 1px rgba(255,255,255,0.55)",
+      backgroundColor: "var(--surface-muted)",
+      boxShadow: "var(--shadow-md)",
       display: "flex",
       flexDirection: "column",
       gap: spacing(0.75),
@@ -197,7 +194,7 @@ const useStyles = makeStyles({ name: "AboutSection" })((theme: Theme) => {
       fontWeight: 600,
       letterSpacing: "0.08em",
       textTransform: "uppercase",
-      color: palette.primary.dark,
+      color: "var(--brand-primary-dark)",
     },
     gallery: {
       position: "relative",
@@ -213,9 +210,9 @@ const useStyles = makeStyles({ name: "AboutSection" })((theme: Theme) => {
       position: "relative",
       borderRadius: "36px",
       overflow: "hidden",
-      boxShadow: "0 30px 70px rgba(70, 46, 30, 0.22)",
+      boxShadow: "var(--shadow-lg)",
       minHeight: 480,
-      backgroundColor: "rgba(255, 255, 255, 0.35)",
+      backgroundColor: "rgba(var(--surface-rgb), 0.35)",
       [breakpoints.down("lg")]: {
         minHeight: 440,
       },
@@ -244,8 +241,8 @@ const useStyles = makeStyles({ name: "AboutSection" })((theme: Theme) => {
       borderRadius: "28px",
       overflow: "hidden",
       minHeight: 220,
-      boxShadow: "0 24px 50px rgba(70, 46, 30, 0.18)",
-      backgroundColor: "rgba(255,255,255,0.35)",
+      boxShadow: "var(--shadow-md)",
+      backgroundColor: "rgba(var(--surface-rgb), 0.35)",
       [breakpoints.down("sm")]: {
         minHeight: 240,
       },
@@ -259,13 +256,13 @@ const useStyles = makeStyles({ name: "AboutSection" })((theme: Theme) => {
       bottom: spacing(2),
       left: spacing(2),
       padding: spacing(0.75, 1.75),
-      borderRadius: "999px",
-      backgroundColor: "rgba(255, 255, 255, 0.82)",
+      borderRadius: "var(--r-pill)",
+      backgroundColor: "rgba(var(--surface-rgb), 0.82)",
       color: headingColor,
       fontWeight: 600,
       fontSize: "0.85rem",
       letterSpacing: 0.6,
-      boxShadow: "0 10px 24px rgba(92, 61, 39, 0.15)",
+      boxShadow: "var(--shadow-md)",
     },
   };
 });

@@ -321,7 +321,7 @@ export default function MentorshipPage() {
                   sx={{
                     bgcolor: "#111",
                     border: "1px solid #222",
-                    borderRadius: "12px !important",
+                    borderRadius: "var(--r-sm) !important",
                     mb: 1.5,
                     "&:before": { display: "none" },
                     overflow: "hidden",

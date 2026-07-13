@@ -186,7 +186,7 @@ function ChecklistRow({
           : "1.5px solid rgba(var(--brand-primary-rgb), 0.08)",
         background: checked
           ? "rgba(var(--brand-primary-rgb), 0.05)"
-          : "rgba(255,255,255,0.6)",
+          : "rgba(var(--surface-rgb), 0.72)",
         transition: "border-color 0.2s ease, background 0.2s ease",
         "&:hover": {
           borderColor: "rgba(var(--brand-primary-rgb), 0.3)",
@@ -250,7 +250,7 @@ function ChecklistRow({
         sx={{
           fontSize: { xs: "0.88rem", md: "0.95rem" },
           fontWeight: checked ? 600 : 500,
-          color: checked ? "var(--brand-primary-dark)" : "#374151",
+          color: checked ? "var(--brand-primary-dark)" : "var(--text-muted)",
           lineHeight: 1.4,
           textDecoration: checked ? "line-through" : "none",
           textDecorationColor: "rgba(var(--brand-primary-rgb), 0.4)",
@@ -368,7 +368,7 @@ export default function DocumentChecklist() {
         py: { xs: 8, md: 12 },
         position: "relative",
         overflow: "hidden",
-        background: "linear-gradient(180deg, #FFFFFF 0%, #F8F6FF 100%)",
+        background: "var(--bg)",
       }}
     >
       {/* Decorative background blobs */}
@@ -431,7 +431,7 @@ export default function DocumentChecklist() {
                 fontWeight: 700,
                 fontSize: { xs: "1.75rem", sm: "2.1rem", md: "2.6rem" },
                 lineHeight: 1.2,
-                color: "#1F2937",
+                color: "var(--text)",
                 mb: 1.5,
               }}
             >
@@ -449,7 +449,7 @@ export default function DocumentChecklist() {
             </Typography>
             <Typography
               sx={{
-                color: "#6B7280",
+                color: "var(--text-subtle)",
                 fontSize: { xs: "0.95rem", md: "1.05rem" },
                 maxWidth: 560,
                 mx: "auto",
@@ -547,11 +547,10 @@ export default function DocumentChecklist() {
         {/* Checklist card */}
         <Box
           sx={{
-            bgcolor: "white",
-            borderRadius: 4,
+            bgcolor: "var(--surface)",
+            borderRadius: "var(--r-lg)",
             p: { xs: 2.5, md: 4 },
-            boxShadow:
-              "0 20px 60px rgba(var(--brand-primary-rgb), 0.08), 0 4px 16px rgba(0,0,0,0.04)",
+            boxShadow: "var(--shadow-md)",
             border: "1px solid rgba(var(--brand-primary-rgb), 0.06)",
           }}
         >
@@ -567,7 +566,7 @@ export default function DocumentChecklist() {
               }}
             >
               <Typography
-                sx={{ fontWeight: 700, fontSize: "0.95rem", color: "#374151" }}
+                sx={{ fontWeight: 700, fontSize: "0.95rem", color: "var(--text-muted)" }}
                 aria-live="polite"
               >
                 {checkedCount} de {totalCount} documentos listos
@@ -577,7 +576,7 @@ export default function DocumentChecklist() {
                 startIcon={<RestartAltRoundedIcon />}
                 disabled={checkedCount === 0}
                 sx={{
-                  color: "#6B7280",
+                  color: "var(--text-subtle)",
                   fontWeight: 500,
                   fontSize: "0.8rem",
                   textTransform: "none",
@@ -596,10 +595,10 @@ export default function DocumentChecklist() {
               value={progress}
               sx={{
                 height: 8,
-                borderRadius: 999,
+                borderRadius: "var(--r-pill)",
                 backgroundColor: "rgba(var(--brand-primary-rgb), 0.1)",
                 "& .MuiLinearProgress-bar": {
-                  borderRadius: 999,
+                  borderRadius: "var(--r-pill)",
                   background:
                     "linear-gradient(90deg, var(--brand-primary), var(--brand-primary-light), var(--brand-accent))",
                   transition: "transform 0.5s ease",
@@ -678,7 +677,7 @@ export default function DocumentChecklist() {
                   sx={{
                     mt: 3,
                     p: 2,
-                    borderRadius: 3,
+                    borderRadius: "var(--r-md)",
                     display: "flex",
                     alignItems: "center",
                     gap: 1.5,
@@ -687,7 +686,7 @@ export default function DocumentChecklist() {
                   }}
                 >
                   <CelebrationRoundedIcon sx={{ color: "#10B981" }} />
-                  <Typography sx={{ fontWeight: 600, fontSize: "0.9rem", color: "#0F766E" }}>
+                  <Typography sx={{ fontWeight: 600, fontSize: "0.9rem", color: "#10B981" }}>
                     ¡Listo! Tienes todos los documentos de este perfil.
                   </Typography>
                 </Box>
@@ -710,7 +709,7 @@ export default function DocumentChecklist() {
               variant="outlined"
               startIcon={<PrintRoundedIcon />}
               sx={{
-                borderRadius: 50,
+                borderRadius: "var(--r-pill)",
                 px: 3.5,
                 py: 1.4,
                 fontWeight: 600,
@@ -736,7 +735,7 @@ export default function DocumentChecklist() {
               variant="contained"
               startIcon={<WhatsAppIcon />}
               sx={{
-                borderRadius: 50,
+                borderRadius: "var(--r-pill)",
                 px: 3.5,
                 py: 1.4,
                 fontWeight: 700,
@@ -760,7 +759,7 @@ export default function DocumentChecklist() {
           <Typography
             sx={{
               fontSize: "0.75rem",
-              color: "#6B7280",
+              color: "var(--text-subtle)",
               textAlign: "center",
               mt: 2.5,
               lineHeight: 1.6,

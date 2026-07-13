@@ -500,8 +500,7 @@ export default function FinancialHealthQuiz() {
         py: { xs: 8, md: 12 },
         position: "relative",
         overflow: "hidden",
-        background:
-          "linear-gradient(135deg, #F5F3FF 0%, #FDF4FF 30%, #FFFBEB 60%, #F0F9FF 100%)",
+        background: "var(--bg)",
       }}
     >
       {/* Background decorative mesh */}
@@ -511,7 +510,7 @@ export default function FinancialHealthQuiz() {
           inset: 0,
           opacity: 0.4,
           background:
-            "radial-gradient(circle at 20% 20%, rgba(var(--brand-primary-rgb), 0.08) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(var(--brand-accent-rgb), 0.08) 0%, transparent 50%), radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.05) 0%, transparent 40%)",
+            "radial-gradient(circle at 20% 20%, rgba(var(--brand-primary-rgb), 0.08) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(var(--brand-accent-rgb), 0.08) 0%, transparent 50%), radial-gradient(circle at 50% 50%, rgba(var(--brand-primary-rgb), 0.05) 0%, transparent 40%)",
           pointerEvents: "none",
         }}
       />
@@ -546,7 +545,7 @@ export default function FinancialHealthQuiz() {
                 fontFamily: "'Playfair Display', serif",
                 fontWeight: 700,
                 fontSize: { xs: "1.75rem", md: "2.25rem" },
-                color: "#1F2937",
+                color: "var(--text)",
                 lineHeight: 1.3,
                 mb: 1.5,
               }}
@@ -567,7 +566,7 @@ export default function FinancialHealthQuiz() {
             <Typography
               sx={{
                 fontSize: { xs: "0.95rem", md: "1.05rem" },
-                color: "#6B7280",
+                color: "var(--text-subtle)",
                 maxWidth: 500,
                 mx: "auto",
               }}
@@ -588,13 +587,12 @@ export default function FinancialHealthQuiz() {
           <Box
             sx={{
               position: "relative",
-              borderRadius: "24px",
-              background: "rgba(255, 255, 255, 0.7)",
+              borderRadius: "var(--r-lg)",
+              background: "rgba(var(--surface-rgb), 0.72)",
               backdropFilter: "blur(20px)",
               WebkitBackdropFilter: "blur(20px)",
-              border: "1px solid rgba(255, 255, 255, 0.8)",
-              boxShadow:
-                "0 20px 60px -15px rgba(var(--brand-primary-rgb), 0.15), 0 0 0 1px rgba(var(--brand-primary-rgb), 0.05)",
+              border: "1px solid var(--border)",
+              boxShadow: "var(--shadow-md)",
               overflow: "hidden",
               minHeight: { xs: 420, md: 400 },
             }}
@@ -650,7 +648,7 @@ export default function FinancialHealthQuiz() {
                         fontFamily: "'Playfair Display', serif",
                         fontWeight: 700,
                         fontSize: { xs: "1.15rem", md: "1.3rem" },
-                        color: "#1F2937",
+                        color: "var(--text)",
                         mb: 3,
                         lineHeight: 1.4,
                       }}
@@ -694,13 +692,13 @@ export default function FinancialHealthQuiz() {
                                 color: "inherit",
                                 appearance: "none",
                                 p: { xs: 2, md: 2.5 },
-                                borderRadius: "16px",
+                                borderRadius: "var(--r-md)",
                                 border: isSelected
                                   ? "2px solid var(--brand-primary)"
                                   : "2px solid rgba(var(--brand-primary-rgb), 0.08)",
                                 background: isSelected
-                                  ? "linear-gradient(135deg, rgba(var(--brand-primary-rgb), 0.08), rgba(139, 92, 246, 0.06))"
-                                  : "rgba(255, 255, 255, 0.6)",
+                                  ? "linear-gradient(135deg, rgba(var(--brand-primary-rgb), 0.08), rgba(var(--brand-primary-rgb), 0.06))"
+                                  : "rgba(var(--surface-rgb), 0.72)",
                                 cursor:
                                   selectedOption === null
                                     ? "pointer"
@@ -760,7 +758,7 @@ export default function FinancialHealthQuiz() {
                                     fontWeight: isSelected ? 600 : 500,
                                     color: isSelected
                                       ? "var(--brand-primary)"
-                                      : "#374151",
+                                      : "var(--text-muted)",
                                     lineHeight: 1.4,
                                   }}
                                 >
@@ -785,7 +783,7 @@ export default function FinancialHealthQuiz() {
                           startIcon={<ArrowBackRoundedIcon />}
                           sx={{
                             mt: 3,
-                            color: "#6B7280",
+                            color: "var(--text-subtle)",
                             fontWeight: 500,
                             fontSize: "0.85rem",
                             textTransform: "none",
@@ -861,7 +859,7 @@ export default function FinancialHealthQuiz() {
                         <Typography
                           sx={{
                             fontSize: { xs: "0.95rem", md: "1rem" },
-                            color: "#4B5563",
+                            color: "var(--text-muted)",
                             lineHeight: 1.6,
                             mb: 3,
                             maxWidth: 480,
@@ -883,7 +881,7 @@ export default function FinancialHealthQuiz() {
                             textAlign: "left",
                             mb: 4,
                             p: { xs: 2.5, md: 3 },
-                            borderRadius: "16px",
+                            borderRadius: "var(--r-md)",
                             background: "rgba(var(--brand-primary-rgb), 0.03)",
                             border:
                               "1px solid rgba(var(--brand-primary-rgb), 0.08)",
@@ -895,7 +893,7 @@ export default function FinancialHealthQuiz() {
                                 "'Playfair Display', serif",
                               fontWeight: 700,
                               fontSize: "1rem",
-                              color: "#1F2937",
+                              color: "var(--text)",
                               mb: 2,
                             }}
                           >
@@ -943,7 +941,7 @@ export default function FinancialHealthQuiz() {
                                   <Typography
                                     sx={{
                                       fontSize: "0.9rem",
-                                      color: "#4B5563",
+                                      color: "var(--text-muted)",
                                       lineHeight: 1.5,
                                     }}
                                   >
@@ -985,7 +983,7 @@ export default function FinancialHealthQuiz() {
                               fontSize: "0.95rem",
                               py: 1.5,
                               px: 3.5,
-                              borderRadius: "50px",
+                              borderRadius: "var(--r-pill)",
                               textTransform: "none",
                               boxShadow:
                                 "0 8px 25px -5px rgba(37, 211, 102, 0.4)",
@@ -1019,7 +1017,7 @@ export default function FinancialHealthQuiz() {
                               fontSize: "0.9rem",
                               py: 1.3,
                               px: 3,
-                              borderRadius: "50px",
+                              borderRadius: "var(--r-pill)",
                               textTransform: "none",
                               boxShadow: "none",
                               "&:hover": {
@@ -1052,7 +1050,7 @@ export default function FinancialHealthQuiz() {
                               fontSize: "0.9rem",
                               py: 1.3,
                               px: 3,
-                              borderRadius: "50px",
+                              borderRadius: "var(--r-pill)",
                               textTransform: "none",
                               boxShadow: "none",
                               "&:hover": {
@@ -1077,7 +1075,7 @@ export default function FinancialHealthQuiz() {
                               fontSize: "0.9rem",
                               py: 1.3,
                               px: 3,
-                              borderRadius: "50px",
+                              borderRadius: "var(--r-pill)",
                               textTransform: "none",
                               boxShadow: "none",
                               "&:hover": {

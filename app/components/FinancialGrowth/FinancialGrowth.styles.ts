@@ -69,7 +69,7 @@ const useStyles = makeStyles({ name: "FinancialGrowth" })((theme: Theme) => {
         marginTop: spacing(4),
         padding: spacing(2, 6),
         fontSize: "1.25rem",
-        borderRadius: 50,
+        borderRadius: "var(--r-pill)",
         background: palette.secondary.main,
         color: "#000",
         fontWeight: 700,

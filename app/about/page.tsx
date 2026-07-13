@@ -112,7 +112,7 @@ const timelineItems = [
   },
   {
     title: "Hoy",
-    color: "#1a1a1a",
+    color: "var(--text)",
     text: "Hoy, ayudo a cientos de empresarios a navegar el complejo mundo fiscal con confianza. Autora, conferencista y tu próxima aliada. ¿Estás listo para llevar tu negocio al siguiente nivel?",
   },
 ];
@@ -130,7 +130,7 @@ export default function AboutPage() {
     <>
       <JsonLd data={personSchema} />
       <JsonLd data={aboutBreadcrumbSchema} />
-      <Box sx={{ bgcolor: "#fff", overflow: "hidden" }} ref={containerRef}>
+      <Box sx={{ bgcolor: "var(--bg)", overflow: "hidden" }} ref={containerRef}>
         {/* HERO SECTION */}
         <Box sx={{
           minHeight: { xs: "auto", md: "90vh" },
@@ -139,7 +139,7 @@ export default function AboutPage() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          background: "radial-gradient(circle at 60% 50%, #fdfbf7 0%, #fff 60%)"
+          background: "radial-gradient(circle at 60% 50%, var(--surface-muted) 0%, var(--bg) 60%)"
         }}>
           <Container maxWidth="lg" sx={{
             position: "relative",
@@ -162,14 +162,14 @@ export default function AboutPage() {
               <Typography variant="h1" sx={{
                 fontSize: { xs: "2.5rem", sm: "3.2rem", md: "4rem" },
                 fontWeight: 800,
-                color: "#1a1a1a",
+                color: "var(--text)",
                 lineHeight: 1.15,
                 mb: 3,
                 letterSpacing: "-0.02em"
               }}>
-                Más que una contadora, tu <span style={{ color: "#8B7355" }}>aliada estratégica.</span>
+                Más que una contadora, tu <span style={{ color: "var(--brand-accent)" }}>aliada estratégica.</span>
               </Typography>
-              <Typography variant="body1" sx={{ fontSize: { xs: "1.05rem", md: "1.2rem" }, color: "text.secondary", maxWidth: 500, mb: 4, lineHeight: 1.85 }}>
+              <Typography variant="body1" sx={{ fontSize: { xs: "1.05rem", md: "1.2rem" }, color: "var(--text-muted)", maxWidth: 500, mb: 4, lineHeight: 1.85 }}>
                 Transformo números complejos en estrategias de crecimiento claras. Mi misión es empoderarte para que tomes el control de tu destino financiero.
               </Typography>
               <Link href="/services" passHref>
@@ -204,7 +204,7 @@ export default function AboutPage() {
                 height: { xs: 400, sm: 500, md: 600 },
                 borderRadius: { xs: "24px", md: "300px 300px 20px 20px" },
                 overflow: "hidden",
-                boxShadow: "0 40px 80px rgba(0,0,0,0.1)"
+                boxShadow: "var(--shadow-lg)"
               }}>
                 <Image
                   src="/photo2.png"
@@ -224,7 +224,7 @@ export default function AboutPage() {
                   width: { xs: 80, md: 120 },
                   height: { xs: 80, md: 120 },
                   borderRadius: "50%",
-                  background: "#8B7355",
+                  background: "var(--brand-accent)",
                   zIndex: -1,
                   display: { xs: "none", md: "block" }
                 }}
@@ -236,7 +236,7 @@ export default function AboutPage() {
         {/* TRUST METRICS */}
         <Box sx={{
           py: { xs: 5, md: 7 },
-          background: "linear-gradient(135deg, #F8F5FF 0%, #FAFAFA 100%)",
+          background: "linear-gradient(135deg, var(--surface-muted) 0%, var(--bg) 100%)",
           borderTop: "1px solid rgba(var(--brand-primary-rgb), 0.06)",
           borderBottom: "1px solid rgba(var(--brand-primary-rgb), 0.06)",
         }}>
@@ -258,7 +258,7 @@ export default function AboutPage() {
                     <Box sx={{
                       width: 56,
                       height: 56,
-                      borderRadius: "16px",
+                      borderRadius: "var(--r-md)",
                       background: "linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-primary-strong) 100%)",
                       display: "flex",
                       alignItems: "center",
@@ -279,7 +279,7 @@ export default function AboutPage() {
                     }}>
                       <AnimatedCounter target={metric.target} suffix={metric.suffix} duration={2000 + i * 300} />
                     </Typography>
-                    <Typography sx={{ color: "#6B7280", fontSize: "0.85rem", fontWeight: 500 }}>
+                    <Typography sx={{ color: "var(--text-subtle)", fontSize: "0.85rem", fontWeight: 500 }}>
                       {metric.label}
                     </Typography>
                   </Box>
@@ -328,8 +328,8 @@ export default function AboutPage() {
                         height: 16,
                         bgcolor: item.color,
                         borderRadius: "50%",
-                        border: "4px solid #fff",
-                        boxShadow: "0 0 0 2px #e0e0e0",
+                        border: "4px solid var(--bg)",
+                        boxShadow: "0 0 0 2px var(--border)",
                         flexShrink: 0,
                       }} />
                       {index < timelineItems.length - 1 && (
@@ -337,7 +337,7 @@ export default function AboutPage() {
                           width: 2,
                           flex: 1,
                           minHeight: 40,
-                          bgcolor: "#f0f0f0",
+                          bgcolor: "var(--border)",
                           mt: 1,
                         }} />
                       )}
@@ -348,7 +348,7 @@ export default function AboutPage() {
                       <Typography variant="h4" sx={{ mb: 1.5, fontWeight: 700, fontSize: { xs: "1.3rem", md: "1.6rem" } }}>
                         {item.title}
                       </Typography>
-                      <Typography variant="body1" sx={{ color: "text.secondary", fontSize: { xs: "1rem", md: "1.1rem" }, lineHeight: 1.85 }}>
+                      <Typography variant="body1" sx={{ color: "var(--text-muted)", fontSize: { xs: "1rem", md: "1.1rem" }, lineHeight: 1.85 }}>
                         {item.text}
                       </Typography>
                     </Box>

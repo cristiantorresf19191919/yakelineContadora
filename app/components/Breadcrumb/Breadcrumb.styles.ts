@@ -6,9 +6,9 @@ const useStyles = makeStyles({ name: "Breadcrumb" })(
     const { breakpoints, spacing } = theme;
     return {
       breadcrumb: {
-        backgroundColor: "#FFFFFF",
+        backgroundColor: "var(--surface)",
         padding: spacing(2, 6),
-        borderBottom: "1px solid rgba(139, 115, 85, 0.1)",
+        borderBottom: "1px solid var(--border)",
         position: "sticky",
         top: 0,
         zIndex: 999,
@@ -28,24 +28,24 @@ const useStyles = makeStyles({ name: "Breadcrumb" })(
         flexWrap: "wrap",
       },
       link: {
-        color: "#8B7355",
+        color: "var(--text-muted)",
         textDecoration: "none",
         fontSize: "0.875rem",
         fontWeight: 400,
         transition: "color 0.2s ease",
         "&:hover": {
-          color: "#6F5B40",
+          color: "var(--text)",
           textDecoration: "underline",
         },
       },
       separator: {
-        color: "#8B7355",
+        color: "var(--text-subtle)",
         fontSize: "0.875rem",
         margin: spacing(0, 0.5),
         opacity: 0.6,
       },
       current: {
-        color: "#4A3728",
+        color: "var(--text)",
         fontSize: "0.875rem",
         fontWeight: 500,
       },

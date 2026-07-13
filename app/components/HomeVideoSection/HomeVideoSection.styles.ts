@@ -2,12 +2,12 @@ import { makeStyles } from "tss-react/mui";
 import { Theme } from "@mui/material/styles";
 
 const useStyles = makeStyles({ name: "HomeVideoSection" })((theme: Theme) => {
-  const { breakpoints, spacing, palette } = theme;
+  const { breakpoints, spacing } = theme;
 
   return {
     section: {
       padding: spacing(8, 2),
-      background: `linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%)`,
+      background: "var(--bg)",
       position: "relative",
       overflow: "hidden",
       [breakpoints.down("md")]: {
@@ -35,7 +35,7 @@ const useStyles = makeStyles({ name: "HomeVideoSection" })((theme: Theme) => {
       },
     },
     subTitle: {
-      color: palette.primary.main,
+      color: "var(--brand-primary)",
       fontWeight: 700,
       letterSpacing: "3px",
       textTransform: "uppercase",
@@ -55,13 +55,13 @@ const useStyles = makeStyles({ name: "HomeVideoSection" })((theme: Theme) => {
         transform: "translateX(-50%)",
         width: 40,
         height: 2,
-        background: palette.primary.main,
+        background: "var(--brand-primary)",
       },
     },
     title: {
       fontSize: "3rem",
       fontWeight: 800,
-      color: "#1a1a1a",
+      color: "var(--text)",
       letterSpacing: "-1px",
       marginBottom: spacing(2),
       [breakpoints.down("lg")]: {
@@ -77,7 +77,7 @@ const useStyles = makeStyles({ name: "HomeVideoSection" })((theme: Theme) => {
     },
     description: {
       fontSize: "1.1rem",
-      color: palette.text.secondary,
+      color: "var(--text-muted)",
       maxWidth: 650,
       margin: "0 auto",
       lineHeight: 1.7,
@@ -111,12 +111,12 @@ const useStyles = makeStyles({ name: "HomeVideoSection" })((theme: Theme) => {
       },
     },
     card: {
-      background: "rgba(255, 255, 255, 0.98)",
+      background: "rgba(var(--surface-rgb), 0.98)",
       backdropFilter: "blur(20px)",
-      borderRadius: "24px",
+      borderRadius: "var(--r-lg)",
       overflow: "visible",
-      boxShadow: "0 8px 24px rgba(0,0,0,0.06), 0 2px 8px rgba(0,0,0,0.04)",
-      border: "1px solid rgba(0, 0, 0, 0.08)",
+      boxShadow: "var(--shadow-md)",
+      border: "1px solid var(--border)",
       transition: "all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
       position: "relative",
       display: "flex",
@@ -130,14 +130,14 @@ const useStyles = makeStyles({ name: "HomeVideoSection" })((theme: Theme) => {
         left: 0,
         right: 0,
         height: "3px",
-        background: `linear-gradient(90deg, ${palette.primary.main} 0%, ${palette.secondary?.main || palette.primary.light} 100%)`,
+        background: "linear-gradient(90deg, var(--brand-primary) 0%, var(--brand-accent) 100%)",
         zIndex: 2,
-        borderRadius: "24px 24px 0 0",
+        borderRadius: "var(--r-lg) var(--r-lg) 0 0",
       },
       "&:hover": {
         transform: "translateY(-8px) scale(1.02)",
-        boxShadow: "0 16px 48px rgba(0,0,0,0.12), 0 4px 12px rgba(0,0,0,0.08)",
-        borderColor: "rgba(0, 0, 0, 0.12)",
+        boxShadow: "var(--shadow-lg)",
+        borderColor: "var(--border)",
       },
       [breakpoints.down("sm")]: {
         borderRadius: "20px",
@@ -202,7 +202,7 @@ const useStyles = makeStyles({ name: "HomeVideoSection" })((theme: Theme) => {
         right: "-2px",
         bottom: "-2px",
         borderRadius: "22px",
-        background: `linear-gradient(135deg, ${palette.primary.main}15, ${palette.secondary?.main || palette.primary.light}15)`,
+        background: "linear-gradient(135deg, rgba(var(--brand-primary-rgb), 0.08), rgba(var(--brand-accent-rgb), 0.08))",
         zIndex: -1,
         opacity: 0,
         transition: "opacity 0.3s ease",

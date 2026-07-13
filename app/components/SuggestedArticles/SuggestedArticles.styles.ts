@@ -6,7 +6,7 @@ const useStyles = makeStyles({ name: "SuggestedArticles" })(
     const { breakpoints, spacing } = theme;
     return {
       section: {
-        backgroundColor: "#FDFBF8",
+        backgroundColor: "var(--bg)",
         padding: spacing(8, 6),
         [breakpoints.down("md")]: {
           padding: spacing(6, 4),
@@ -22,7 +22,7 @@ const useStyles = makeStyles({ name: "SuggestedArticles" })(
       title: {
         fontSize: "2rem",
         fontWeight: 700,
-        color: "#4A3728",
+        color: "var(--text)",
         marginBottom: spacing(5),
         textAlign: "center",
         [breakpoints.down("md")]: {
@@ -48,8 +48,8 @@ const useStyles = makeStyles({ name: "SuggestedArticles" })(
         },
       },
       card: {
-        backgroundColor: "#FFFFFF",
-        borderRadius: "12px",
+        backgroundColor: "var(--surface)",
+        borderRadius: "var(--r-sm)",
         overflow: "hidden",
         transition: "transform 0.3s ease, boxShadow 0.3s ease",
         textDecoration: "none",
@@ -57,7 +57,7 @@ const useStyles = makeStyles({ name: "SuggestedArticles" })(
         flexDirection: "column",
         "&:hover": {
           transform: "translateY(-4px)",
-          boxShadow: "0 8px 24px rgba(0, 0, 0, 0.1)",
+          boxShadow: "var(--shadow-lg)",
         },
       },
       imageWrapper: {
@@ -83,7 +83,7 @@ const useStyles = makeStyles({ name: "SuggestedArticles" })(
       cardCategory: {
         fontSize: "0.75rem",
         fontWeight: 600,
-        color: "#8B7355",
+        color: "var(--text-subtle)",
         textTransform: "uppercase",
         letterSpacing: "0.1em",
         marginBottom: spacing(1),
@@ -91,7 +91,7 @@ const useStyles = makeStyles({ name: "SuggestedArticles" })(
       cardTitle: {
         fontSize: "1.25rem",
         fontWeight: 600,
-        color: "#4A3728",
+        color: "var(--text)",
         marginBottom: spacing(1.5),
         lineHeight: 1.3,
         display: "-webkit-box",
@@ -101,7 +101,7 @@ const useStyles = makeStyles({ name: "SuggestedArticles" })(
       },
       cardExcerpt: {
         fontSize: "0.9375rem",
-        color: "#6B5B4A",
+        color: "var(--text-muted)",
         lineHeight: 1.6,
         display: "-webkit-box",
         WebkitLineClamp: 3,
@@ -113,7 +113,7 @@ const useStyles = makeStyles({ name: "SuggestedArticles" })(
         marginTop: spacing(2),
         fontSize: "0.875rem",
         fontWeight: 600,
-        color: "#9FE870",
+        color: "var(--brand-primary)",
         display: "flex",
         alignItems: "center",
         gap: spacing(0.5),

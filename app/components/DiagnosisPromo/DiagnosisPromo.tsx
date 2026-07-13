@@ -32,9 +32,9 @@ export default function DiagnosisPromo() {
             width={600}
             height={800}
             style={{ 
-              width: "100%", 
+              width: "100%",
               height: "auto",
-              borderRadius: "16px",
+              borderRadius: "var(--r-md)",
               objectFit: "cover"
             }}
             priority
@@ -66,8 +66,8 @@ export default function DiagnosisPromo() {
 
           <Box className={classes.ctaContainer}>
             <Box>
-                <Typography className={classes.ctaLabel}>COMENTA: <span style={{color: '#d4af37'}}>&quot;DIAGNÓSTICO&quot;</span></Typography>
-                <Typography className={classes.ctaLabel}>O ESCRÍBEME: <span style={{color: '#d4af37'}}>&quot;FINANZAS&quot;</span></Typography>
+                <Typography className={classes.ctaLabel}>COMENTA: <span style={{color: 'var(--brand-accent)'}}>&quot;DIAGNÓSTICO&quot;</span></Typography>
+                <Typography className={classes.ctaLabel}>O ESCRÍBEME: <span style={{color: 'var(--brand-accent)'}}>&quot;FINANZAS&quot;</span></Typography>
                 <Typography variant="body2" sx={{mt: 1}}>Y te envío el enlace para agendar.</Typography>
             </Box>
             

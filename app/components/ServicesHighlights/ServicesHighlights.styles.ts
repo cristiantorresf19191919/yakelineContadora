@@ -10,7 +10,7 @@ const useStyles = makeStyles({ name: "ServicesHighlights" })(
         position: "relative",
         overflow: "hidden",
         padding: spacing(12, 4),
-        background: `linear-gradient(180deg, ${palette.background.default} 0%, #FFFFFF 100%)`,
+        background: "var(--bg)",
         [breakpoints.down("lg")]: {
           padding: spacing(10, 3),
         },
@@ -78,15 +78,15 @@ const useStyles = makeStyles({ name: "ServicesHighlights" })(
         position: "relative",
         padding: spacing(4),
         borderRadius: 42,
-        background: `linear-gradient(145deg, rgba(255,255,255,0.95) 0%, ${palette.background.paper} 100%)`,
-        boxShadow: `0 40px 80px ${palette.primary.light}15`, // soft purple shadow
+        background: `linear-gradient(145deg, rgba(var(--surface-rgb), 0.95) 0%, var(--surface) 100%)`,
+        boxShadow: "var(--shadow-lg)", // soft brand shadow
         isolation: "isolate",
         "&::before": {
           content: '""',
           position: "absolute",
           inset: spacing(3),
           borderRadius: 36,
-          background: `linear-gradient(90deg, ${palette.primary.light}10 0%, rgba(255,255,255,0.85) 50%, ${palette.primary.light}10 100%)`,
+          background: `linear-gradient(90deg, ${palette.primary.light}10 0%, rgba(var(--surface-rgb), 0.85) 50%, ${palette.primary.light}10 100%)`,
           zIndex: -1,
         },
         [breakpoints.down("md")]: {
@@ -111,15 +111,15 @@ const useStyles = makeStyles({ name: "ServicesHighlights" })(
         position: "relative",
         padding: spacing(4),
         textAlign: "left",
-        backgroundColor: "rgba(255, 255, 255, 0.8)",
+        backgroundColor: "rgba(var(--surface-rgb), 0.8)",
         borderRadius: shape.borderRadius * 1.5,
         border: `1px solid ${palette.primary.light}20`,
-        boxShadow: `0 18px 30px ${palette.secondary.main}10, inset 0 1px 0 rgba(255,255,255,0.4)`,
+        boxShadow: "var(--shadow-md), inset 0 1px 0 rgba(var(--surface-rgb), 0.4)",
         backdropFilter: "blur(6px)",
         // Removed animation prop as handled by Framer Motion
         "&:hover": {
           // transform handled by motion
-          boxShadow: `0 28px 60px ${palette.secondary.main}25, inset 0 1px 0 rgba(255,255,255,0.6)`,
+          boxShadow: "var(--shadow-lg), inset 0 1px 0 rgba(var(--surface-rgb), 0.6)",
           borderColor: `${palette.secondary.main}40`,
         },
         [breakpoints.down("lg")]: {

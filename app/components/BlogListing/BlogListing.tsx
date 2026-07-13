@@ -246,7 +246,7 @@ function BlogListingContent({ articles }: BlogListingProps) {
               aria-live="polite"
               sx={{
                 textAlign: "center",
-                color: "#6B7280",
+                color: "var(--text-subtle)",
                 fontSize: "0.95rem",
                 fontWeight: 500,
                 mb: 3,

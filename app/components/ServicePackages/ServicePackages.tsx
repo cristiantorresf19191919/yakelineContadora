@@ -84,7 +84,7 @@ export default function ServicePackages({ onSelectPackage }: ServicePackagesProp
       sx={{
         py: { xs: 6, md: 8 },
         px: { xs: 2, md: 4 },
-        background: "linear-gradient(180deg, #FAFAFA 0%, #F3EEFF 50%, #FAFAFA 100%)",
+        background: "var(--tint-soft), var(--bg)",
       }}
     >
       <Box sx={{ maxWidth: 1200, mx: "auto" }}>
@@ -116,7 +116,7 @@ export default function ServicePackages({ onSelectPackage }: ServicePackagesProp
                 fontFamily: "'Playfair Display', serif",
                 fontWeight: 700,
                 fontSize: { xs: "1.8rem", md: "2.5rem" },
-                color: "#1F2937",
+                color: "var(--text)",
                 mb: 1.5,
                 lineHeight: 1.2,
               }}
@@ -135,7 +135,7 @@ export default function ServicePackages({ onSelectPackage }: ServicePackagesProp
             </Typography>
             <Typography
               sx={{
-                color: "#6B7280",
+                color: "var(--text-subtle)",
                 fontSize: { xs: "0.95rem", md: "1.1rem" },
                 maxWidth: 600,
                 mx: "auto",
@@ -195,7 +195,7 @@ export default function ServicePackages({ onSelectPackage }: ServicePackagesProp
 
               <Box
                 sx={{
-                  background: "white",
+                  background: "var(--surface)",
                   borderRadius: "20px",
                   p: { xs: 3, md: 3.5 },
                   height: "100%",
@@ -205,8 +205,8 @@ export default function ServicePackages({ onSelectPackage }: ServicePackagesProp
                     ? "2px solid rgba(var(--brand-primary-rgb), 0.3)"
                     : "1px solid rgba(var(--brand-primary-rgb), 0.08)",
                   boxShadow: pkg.popular
-                    ? "0 20px 60px rgba(var(--brand-primary-rgb), 0.15), 0 8px 24px rgba(0,0,0,0.06)"
-                    : "0 8px 32px rgba(0,0,0,0.04)",
+                    ? "var(--shadow-lg)"
+                    : "var(--shadow-md)",
                   transition: "all 0.35s cubic-bezier(0.4, 0, 0.2, 1)",
                   transform: hoveredId === pkg.id ? "translateY(-8px)" : "none",
                   position: "relative",
@@ -245,7 +245,7 @@ export default function ServicePackages({ onSelectPackage }: ServicePackagesProp
                       fontFamily: "'Playfair Display', serif",
                       fontWeight: 700,
                       fontSize: "1.2rem",
-                      color: "#1F2937",
+                      color: "var(--text)",
                     }}
                   >
                     {pkg.name}
@@ -265,7 +265,7 @@ export default function ServicePackages({ onSelectPackage }: ServicePackagesProp
                     >
                       {pkg.price}
                     </Typography>
-                    <Typography sx={{ color: "#9CA3AF", fontSize: "0.85rem" }}>
+                    <Typography sx={{ color: "var(--text-subtle)", fontSize: "0.85rem" }}>
                       {pkg.priceNote}
                     </Typography>
                   </Box>
@@ -286,7 +286,7 @@ export default function ServicePackages({ onSelectPackage }: ServicePackagesProp
                       <CheckCircleRoundedIcon
                         sx={{ fontSize: 18, color: pkg.color, mt: 0.2, flexShrink: 0 }}
                       />
-                      <Typography sx={{ fontSize: "0.88rem", color: "#4B5563", lineHeight: 1.5 }}>
+                      <Typography sx={{ fontSize: "0.88rem", color: "var(--text-muted)", lineHeight: 1.5 }}>
                         {feature}
                       </Typography>
                     </Box>
@@ -311,7 +311,7 @@ export default function ServicePackages({ onSelectPackage }: ServicePackagesProp
                   }}
                   startIcon={pkg.id !== "starter" ? <WhatsAppIcon /> : undefined}
                   sx={{
-                    borderRadius: "50px",
+                    borderRadius: "var(--r-pill)",
                     py: 1.3,
                     fontWeight: 700,
                     textTransform: "none",
@@ -355,7 +355,7 @@ export default function ServicePackages({ onSelectPackage }: ServicePackagesProp
               flexWrap: "wrap",
               justifyContent: "center",
               gap: { xs: 2, md: 4 },
-              color: "#9CA3AF",
+              color: "var(--text-subtle)",
               fontSize: "0.82rem",
             }}
           >
@@ -367,7 +367,7 @@ export default function ServicePackages({ onSelectPackage }: ServicePackagesProp
             ].map((text) => (
               <Box key={text} sx={{ display: "flex", alignItems: "center", gap: 0.5 }}>
                 <CheckCircleRoundedIcon sx={{ fontSize: 14, color: "#10B981" }} />
-                <Typography sx={{ fontSize: "0.82rem", color: "#6B7280" }}>{text}</Typography>
+                <Typography sx={{ fontSize: "0.82rem", color: "var(--text-subtle)" }}>{text}</Typography>
               </Box>
             ))}
           </Box>

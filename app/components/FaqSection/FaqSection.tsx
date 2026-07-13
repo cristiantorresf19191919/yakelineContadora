@@ -85,7 +85,7 @@ export default function FaqSection() {
         py: { xs: 8, md: 12 },
         position: "relative",
         overflow: "hidden",
-        background: "linear-gradient(180deg, #FFFFFF 0%, #F8F6FF 100%)",
+        background: "var(--bg)",
       }}
     >
       {/* Embedded FAQPage structured data (schema.org). Content is static and author-controlled. */}
@@ -136,7 +136,7 @@ export default function FaqSection() {
                 px: 2,
                 py: 0.75,
                 mb: 2,
-                borderRadius: 50,
+                borderRadius: "var(--r-pill)",
                 bgcolor: "rgba(var(--brand-primary-rgb), 0.08)",
                 color: "var(--brand-primary)",
               }}
@@ -157,7 +157,7 @@ export default function FaqSection() {
                 fontWeight: 800,
                 fontSize: { xs: "1.9rem", sm: "2.3rem", md: "2.8rem" },
                 lineHeight: 1.2,
-                color: "#1F2937",
+                color: "var(--text)",
                 mb: 2,
               }}
             >
@@ -165,7 +165,7 @@ export default function FaqSection() {
             </Typography>
             <Typography
               sx={{
-                color: "#4B5563",
+                color: "var(--text-muted)",
                 fontSize: { xs: "1rem", md: "1.1rem" },
                 maxWidth: 560,
                 mx: "auto",
@@ -193,7 +193,7 @@ export default function FaqSection() {
                   disableGutters
                   elevation={0}
                   sx={{
-                    bgcolor: "white",
+                    bgcolor: "var(--surface)",
                     border: "1px solid rgba(var(--brand-primary-rgb), 0.1)",
                     borderRadius: "14px !important",
                     mb: 1.5,
@@ -202,7 +202,7 @@ export default function FaqSection() {
                     "&:before": { display: "none" },
                     "&.Mui-expanded": {
                       borderColor: "rgba(var(--brand-primary-rgb), 0.35)",
-                      boxShadow: "0 12px 32px rgba(var(--brand-primary-rgb), 0.1)",
+                      boxShadow: "var(--shadow-md)",
                     },
                   }}
                 >
@@ -227,7 +227,7 @@ export default function FaqSection() {
                         fontWeight: 600,
                         fontSize: { xs: "0.98rem", md: "1.1rem" },
                         lineHeight: 1.5,
-                        color: "#1F2937",
+                        color: "var(--text)",
                         pr: 1,
                       }}
                     >
@@ -240,7 +240,7 @@ export default function FaqSection() {
                   >
                     <Typography
                       sx={{
-                        color: "#4B5563",
+                        color: "var(--text-muted)",
                         lineHeight: 1.75,
                         fontSize: { xs: "0.92rem", md: "0.98rem" },
                       }}
@@ -270,7 +270,7 @@ export default function FaqSection() {
                 fontFamily: "'Playfair Display', serif",
                 fontWeight: 700,
                 fontSize: { xs: "1.25rem", md: "1.5rem" },
-                color: "#1F2937",
+                color: "var(--text)",
                 mb: 1,
               }}
             >
@@ -278,7 +278,7 @@ export default function FaqSection() {
             </Typography>
             <Typography
               sx={{
-                color: "#6B7280",
+                color: "var(--text-subtle)",
                 fontSize: { xs: "0.95rem", md: "1rem" },
                 maxWidth: 460,
                 mx: "auto",
@@ -297,7 +297,7 @@ export default function FaqSection() {
               size="large"
               startIcon={<WhatsAppIcon />}
               sx={{
-                borderRadius: 50,
+                borderRadius: "var(--r-pill)",
                 px: 4.5,
                 py: 1.6,
                 fontSize: "1rem",

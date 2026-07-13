@@ -217,10 +217,10 @@ export default function NewsletterSection() {
           transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
         >
           <Box className={classes.formCard}>
-            <Typography 
-              variant="subtitle1" 
-              sx={{ 
-                color: "#5B21B6", 
+            <Typography
+              variant="subtitle1"
+              sx={{
+                color: "var(--brand-primary-dark)",
                 fontWeight: 600,
                 fontSize: "1.125rem",
                 lineHeight: 1.5,

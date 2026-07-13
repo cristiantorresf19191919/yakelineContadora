@@ -120,7 +120,7 @@ const useStyles = makeStyles({ name: "Footer" })((theme: Theme) => {
     iconWrapper: {
       width: 36,
       height: 36,
-      borderRadius: "12px",
+      borderRadius: "var(--r-sm)",
       backgroundColor: "rgba(229, 196, 223, 0.18)",
       display: "grid",
       placeItems: "center",
@@ -134,7 +134,7 @@ const useStyles = makeStyles({ name: "Footer" })((theme: Theme) => {
     socialButton: {
       width: 44,
       height: 44,
-      borderRadius: "12px",
+      borderRadius: "var(--r-sm)",
       display: "grid",
       placeItems: "center",
       backgroundColor: "rgba(229, 196, 223, 0.18)",

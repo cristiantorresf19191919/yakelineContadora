@@ -285,7 +285,7 @@ export default function BlogArticle({ article }: BlogArticleProps) {
           <Typography className={classes.ctaText}>
             ¿Te acompañamos a organizar tu mente y tus números?
           </Typography>
-          <Typography component="p" sx={{ marginBottom: 2, fontSize: "1.125rem", color: "#4A3728" }}>
+          <Typography component="p" sx={{ marginBottom: 2, fontSize: "1.125rem", color: "var(--text)" }}>
             Si sientes que:
           </Typography>
           <ul className={classes.ctaList}>
@@ -299,7 +299,7 @@ export default function BlogArticle({ article }: BlogArticleProps) {
             sx={{
               marginBottom: 3,
               fontSize: "1.125rem",
-              color: "#4A3728",
+              color: "var(--text)",
               lineHeight: 1.7,
             }}
           >

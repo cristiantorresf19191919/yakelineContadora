@@ -4,10 +4,9 @@ import { Theme } from "@mui/material/styles";
 const useStyles = makeStyles({ name: "Header" })(
   (theme: Theme) => {
     const { breakpoints, spacing } = theme;
-    const headerTextColor = theme.palette.primary.main;
-    const headerHoverColor = theme.palette.primary.dark;
-    const mobileMenuBackground =
-      "linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(244, 228, 255, 0.95) 85%)";
+    const headerTextColor = "var(--brand-primary)";
+    const headerHoverColor = "var(--brand-primary-dark)";
+    const mobileMenuBackground = "var(--surface)";
 
     return {
       header: {
@@ -17,7 +16,7 @@ const useStyles = makeStyles({ name: "Header" })(
         position: "sticky",
         top: 0,
         zIndex: 1000,
-        boxShadow: "0 10px 28px rgba(90, 60, 130, 0.08)",
+        boxShadow: "var(--shadow-md)",
         borderBottom: "1px solid var(--border)",
         [breakpoints.down("sm")]: {
           backgroundColor: "transparent",
@@ -70,7 +69,8 @@ const useStyles = makeStyles({ name: "Header" })(
         width: "36px",
         height: "36px",
         borderRadius: "10px",
-        background: `linear-gradient(135deg, ${headerTextColor}15 0%, ${headerTextColor}25 100%)`,
+        background:
+          "linear-gradient(135deg, rgba(var(--brand-primary-rgb), 0.08) 0%, rgba(var(--brand-primary-rgb), 0.15) 100%)",
         color: headerTextColor,
         "& svg": {
           fontSize: "1.5rem",
@@ -141,8 +141,8 @@ const useStyles = makeStyles({ name: "Header" })(
           padding: spacing(1.25),
           color: headerTextColor,
           zIndex: 1001,
-          borderRadius: "12px",
-          boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)",
+          borderRadius: "var(--r-sm)",
+          boxShadow: "var(--shadow-sm)",
           transition: "background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease",
           position: "fixed",
           top: spacing(2),
@@ -152,7 +152,7 @@ const useStyles = makeStyles({ name: "Header" })(
           },
           "&:hover": {
             backgroundColor: "var(--bg-elevated)",
-            boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
+            boxShadow: "var(--shadow-md)",
           },
         },
       },
@@ -184,7 +184,7 @@ const useStyles = makeStyles({ name: "Header" })(
           left: 0,
           right: 0,
           background: mobileMenuBackground,
-          boxShadow: "0px 10px 28px rgba(106, 63, 160, 0.15)",
+          boxShadow: "var(--shadow-lg)",
           padding: spacing(2, 0),
           zIndex: 999,
         },
@@ -203,7 +203,7 @@ const useStyles = makeStyles({ name: "Header" })(
         padding: spacing(1.5, 3),
         transition: "background-color 0.2s ease, color 0.2s ease",
         "&:hover": {
-          backgroundColor: "rgba(106, 63, 160, 0.08)",
+          backgroundColor: "rgba(var(--brand-primary-rgb), 0.08)",
           color: headerHoverColor,
         },
       },

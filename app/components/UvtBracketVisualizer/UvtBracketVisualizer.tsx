@@ -182,7 +182,7 @@ export default function UvtBracketVisualizer() {
         py: { xs: 8, md: 12 },
         position: "relative",
         overflow: "hidden",
-        background: "linear-gradient(180deg, #F8F6FF 0%, #FFFFFF 100%)",
+        background: "var(--bg)",
       }}
     >
       {/* Adornos decorativos */}
@@ -243,7 +243,7 @@ export default function UvtBracketVisualizer() {
                 fontWeight: 800,
                 fontSize: { xs: "1.8rem", sm: "2.2rem", md: "2.6rem" },
                 lineHeight: 1.25,
-                color: "#1F2937",
+                color: "var(--text)",
                 mb: 1.5,
               }}
             >
@@ -262,7 +262,7 @@ export default function UvtBracketVisualizer() {
             </Typography>
             <Typography
               sx={{
-                color: "#6B7280",
+                color: "var(--text-subtle)",
                 fontSize: { xs: "1rem", md: "1.1rem" },
                 maxWidth: 560,
                 mx: "auto",
@@ -292,11 +292,10 @@ export default function UvtBracketVisualizer() {
           {/* Tarjeta */}
           <Box
             sx={{
-              bgcolor: "white",
-              borderRadius: 4,
+              bgcolor: "var(--surface)",
+              borderRadius: "var(--r-lg)",
               p: { xs: 3, md: 5 },
-              boxShadow:
-                "0 20px 60px rgba(var(--brand-primary-rgb), 0.08), 0 4px 16px rgba(0,0,0,0.04)",
+              boxShadow: "var(--shadow-md)",
               border: "1px solid rgba(var(--brand-primary-rgb), 0.06)",
             }}
           >
@@ -317,7 +316,7 @@ export default function UvtBracketVisualizer() {
                     sx={{
                       fontWeight: 600,
                       fontSize: "0.95rem",
-                      color: "#374151",
+                      color: "var(--text-muted)",
                       mb: 0.5,
                     }}
                   >
@@ -334,7 +333,7 @@ export default function UvtBracketVisualizer() {
                   >
                     <AnimatedNumber value={rlgCop} format={formatCOP} reduce={reduce} />
                   </Typography>
-                  <Typography sx={{ fontSize: "0.85rem", color: "#6B7280", mt: 0.25 }}>
+                  <Typography sx={{ fontSize: "0.85rem", color: "var(--text-subtle)", mt: 0.25 }}>
                     ≈ {formatUVT(result.rlgUvt)} UVT
                   </Typography>
                 </Box>
@@ -399,7 +398,7 @@ export default function UvtBracketVisualizer() {
                   },
                   "& .MuiSlider-markLabel": {
                     fontSize: "0.72rem",
-                    color: "#6B7280",
+                    color: "var(--text-subtle)",
                   },
                 }}
               />
@@ -417,7 +416,7 @@ export default function UvtBracketVisualizer() {
               <Box
                 sx={{
                   p: 2.5,
-                  borderRadius: 3,
+                  borderRadius: "var(--r-md)",
                   textAlign: "center",
                   background:
                     "linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-primary-strong) 100%)",
@@ -454,7 +453,7 @@ export default function UvtBracketVisualizer() {
               <Box
                 sx={{
                   p: 2.5,
-                  borderRadius: 3,
+                  borderRadius: "var(--r-md)",
                   textAlign: "center",
                   bgcolor: "rgba(var(--brand-primary-rgb), 0.05)",
                   border: "1px solid rgba(var(--brand-primary-rgb), 0.12)",
@@ -464,7 +463,7 @@ export default function UvtBracketVisualizer() {
                   sx={{ color: "var(--brand-primary)", fontSize: 28, mb: 0.5 }}
                 />
                 <Typography
-                  sx={{ fontSize: "0.75rem", color: "#6B7280", fontWeight: 500 }}
+                  sx={{ fontSize: "0.75rem", color: "var(--text-subtle)", fontWeight: 500 }}
                 >
                   Tarifa efectiva
                 </Typography>
@@ -486,7 +485,7 @@ export default function UvtBracketVisualizer() {
               <Box
                 sx={{
                   p: 2.5,
-                  borderRadius: 3,
+                  borderRadius: "var(--r-md)",
                   textAlign: "center",
                   bgcolor: "rgba(var(--brand-accent-rgb), 0.08)",
                   border: "1px solid rgba(var(--brand-accent-rgb), 0.25)",
@@ -496,7 +495,7 @@ export default function UvtBracketVisualizer() {
                   sx={{ color: "var(--brand-accent-dark)", fontSize: 28, mb: 0.5 }}
                 />
                 <Typography
-                  sx={{ fontSize: "0.75rem", color: "#6B7280", fontWeight: 500 }}
+                  sx={{ fontSize: "0.75rem", color: "var(--text-subtle)", fontWeight: 500 }}
                 >
                   Tarifa marginal
                 </Typography>
@@ -522,7 +521,7 @@ export default function UvtBracketVisualizer() {
                 sx={{
                   fontWeight: 600,
                   fontSize: "0.9rem",
-                  color: "#374151",
+                  color: "var(--text-muted)",
                   mb: 1.5,
                 }}
               >
@@ -586,7 +585,7 @@ export default function UvtBracketVisualizer() {
                   sx={{
                     display: "flex",
                     height: 40,
-                    borderRadius: 2,
+                    borderRadius: "var(--r-sm)",
                     overflow: "hidden",
                     border: "1px solid rgba(var(--brand-primary-rgb), 0.1)",
                   }}
@@ -649,7 +648,7 @@ export default function UvtBracketVisualizer() {
                       alignItems: "center",
                       gap: 1,
                       p: 1,
-                      borderRadius: 2,
+                      borderRadius: "var(--r-sm)",
                       bgcolor: isMarginal
                         ? "rgba(var(--brand-accent-rgb), 0.08)"
                         : "transparent",
@@ -679,7 +678,7 @@ export default function UvtBracketVisualizer() {
                       {b.label}
                     </Typography>
                     <Typography
-                      sx={{ fontSize: "0.78rem", color: "#6B7280" }}
+                      sx={{ fontSize: "0.78rem", color: "var(--text-subtle)" }}
                     >
                       {bracketRangeLabel(b)}
                     </Typography>
@@ -695,15 +694,15 @@ export default function UvtBracketVisualizer() {
                 gap: 1.5,
                 alignItems: "flex-start",
                 p: 2.5,
-                borderRadius: 3,
-                bgcolor: "#FFFBEB",
-                border: "1px solid #FDE68A",
+                borderRadius: "var(--r-md)",
+                bgcolor: "rgba(245, 158, 11, 0.12)",
+                border: "1px solid rgba(245, 158, 11, 0.28)",
                 mb: 3,
               }}
             >
               <InfoOutlinedIcon sx={{ color: "#B45309", fontSize: 22, mt: 0.25 }} />
               <Typography
-                sx={{ fontSize: "0.85rem", color: "#92400E", lineHeight: 1.6 }}
+                sx={{ fontSize: "0.85rem", color: "#B45309", lineHeight: 1.6 }}
               >
                 Cálculo ilustrativo del impuesto sobre la renta líquida gravable.
                 Tu impuesto real depende de deducciones, rentas exentas y tu
@@ -722,7 +721,7 @@ export default function UvtBracketVisualizer() {
                 size="large"
                 startIcon={<WhatsAppIcon />}
                 sx={{
-                  borderRadius: 50,
+                  borderRadius: "var(--r-pill)",
                   px: 5,
                   py: 1.8,
                   fontSize: "1rem",
@@ -740,7 +739,7 @@ export default function UvtBracketVisualizer() {
               >
                 Quiero calcular mi renta real
               </Button>
-              <Typography sx={{ fontSize: "0.75rem", color: "#6B7280", mt: 1.5 }}>
+              <Typography sx={{ fontSize: "0.75rem", color: "var(--text-subtle)", mt: 1.5 }}>
                 * Estimación referencial basada en la tabla del Art. 241 ET y la
                 UVT 2026. No sustituye una asesoría profesional.
               </Typography>

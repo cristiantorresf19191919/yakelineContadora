@@ -11,7 +11,7 @@ const useStyles = makeStyles({ name: "ConfidenceShowcase" })(
         position: "relative",
         overflow: "hidden",
         padding: spacing(10, 4, 14),
-        background: `linear-gradient(180deg, ${palette.background.default} 0%, #FFFFFF 100%)`,
+        background: "var(--bg)",
         [breakpoints.down("lg")]: {
           padding: spacing(9, 3, 12),
         },
@@ -30,7 +30,7 @@ const useStyles = makeStyles({ name: "ConfidenceShowcase" })(
         width: 860,
         height: 860,
         background:
-          "radial-gradient(circle, rgba(139,115,85,0.1) 0%, rgba(255,248,238,0) 60%)",
+          "radial-gradient(circle, rgba(var(--brand-primary-rgb), 0.1) 0%, rgba(var(--brand-primary-rgb), 0) 60%)",
         filter: "blur(40px)",
         opacity: 0.6,
         pointerEvents: "none",
@@ -83,7 +83,7 @@ const useStyles = makeStyles({ name: "ConfidenceShowcase" })(
         justifyContent: "center",
         color: primary,
         padding: spacing(0.5, 1.5),
-        borderRadius: "999px",
+        borderRadius: "var(--r-pill)",
         background:
           "linear-gradient(90deg, rgba(var(--brand-primary-rgb), 0.08) 0%, rgba(var(--brand-primary-light-rgb), 0.2) 100%)",
       },
@@ -113,8 +113,8 @@ const useStyles = makeStyles({ name: "ConfidenceShowcase" })(
         position: "relative",
         overflow: "hidden",
         borderRadius: shape.borderRadius * 2,
-        boxShadow: "0 20px 40px rgba(0,0,0,0.1)",
-        backgroundColor: "#FFFFFF",
+        boxShadow: "var(--shadow-md)",
+        backgroundColor: "var(--surface)",
         isolation: "isolate",
         cursor: "pointer",
         // Framer motion will handle transforms
@@ -249,7 +249,7 @@ const useStyles = makeStyles({ name: "ConfidenceShowcase" })(
         justifyContent: "center",
         gap: spacing(1.5),
         padding: spacing(1.75, 5),
-        borderRadius: "999px",
+        borderRadius: "var(--r-pill)",
         backgroundColor: "#25D366",
         color: "#FFFFFF",
         fontWeight: 700,

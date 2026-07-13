@@ -14,6 +14,7 @@ const steps = [
       "Escr\u00edbenos por WhatsApp o agenda en l\u00ednea. En menos de 24 horas coordinamos tu primera sesi\u00f3n gratuita de 15 minutos.",
     Icon: WhatsAppIcon,
     color: "#25D366",
+    rgb: "37, 211, 102",
   },
   {
     number: "02",
@@ -21,7 +22,8 @@ const steps = [
     description:
       "Analizamos tu situaci\u00f3n contable, tributaria y fiscal. Identificamos oportunidades y riesgos que quiz\u00e1s no ves.",
     Icon: SearchRoundedIcon,
-    color: "#5D3FD3",
+    color: "var(--brand-primary)",
+    rgb: "var(--brand-primary-rgb)",
   },
   {
     number: "03",
@@ -29,7 +31,8 @@ const steps = [
     description:
       "Recibe un plan personalizado con pasos concretos para optimizar tus finanzas, reducir impuestos y crecer con tranquilidad.",
     Icon: TrendingUpRoundedIcon,
-    color: "#F59E0B",
+    color: "var(--brand-accent)",
+    rgb: "var(--brand-accent-rgb)",
   },
 ];
 
@@ -57,7 +60,7 @@ export default function ProcessSteps() {
       sx={{
         py: { xs: 8, md: 12 },
         px: { xs: 2, md: 4 },
-        background: "linear-gradient(180deg, #FFFFFF 0%, #F8F6FF 50%, #FFFFFF 100%)",
+        background: "var(--bg)",
         position: "relative",
         overflow: "hidden",
       }}
@@ -111,7 +114,7 @@ export default function ProcessSteps() {
           </Typography>
           <Typography
             sx={{
-              color: "text.secondary",
+              color: "var(--text-muted)",
               fontSize: { xs: "1.05rem", md: "1.2rem" },
               mt: 2,
               maxWidth: 600,
@@ -174,14 +177,14 @@ export default function ProcessSteps() {
                       borderRadius: "50%",
                       display: "grid",
                       placeItems: "center",
-                      background: `linear-gradient(135deg, ${step.color}18 0%, ${step.color}08 100%)`,
-                      border: `2px solid ${step.color}30`,
+                      background: `linear-gradient(135deg, rgba(${step.rgb}, 0.09) 0%, rgba(${step.rgb}, 0.03) 100%)`,
+                      border: `2px solid rgba(${step.rgb}, 0.19)`,
                       mb: 3,
                       position: "relative",
                       transition: "transform 0.3s ease, box-shadow 0.3s ease",
                       "&:hover": {
                         transform: "scale(1.08)",
-                        boxShadow: `0 12px 32px ${step.color}25`,
+                        boxShadow: `0 12px 32px rgba(${step.rgb}, 0.15)`,
                       },
                     }}
                   >
@@ -203,7 +206,7 @@ export default function ProcessSteps() {
                         fontWeight: 800,
                         display: "grid",
                         placeItems: "center",
-                        boxShadow: `0 4px 12px ${step.color}40`,
+                        boxShadow: `0 4px 12px rgba(${step.rgb}, 0.25)`,
                       }}
                     >
                       {step.number}
@@ -216,14 +219,14 @@ export default function ProcessSteps() {
                       fontWeight: 700,
                       fontSize: { xs: "1.2rem", md: "1.35rem" },
                       mb: 1.5,
-                      color: "text.primary",
+                      color: "var(--text)",
                     }}
                   >
                     {step.title}
                   </Typography>
                   <Typography
                     sx={{
-                      color: "text.secondary",
+                      color: "var(--text-muted)",
                       fontSize: { xs: "0.95rem", md: "1.05rem" },
                       lineHeight: 1.7,
                       maxWidth: 320,

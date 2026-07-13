@@ -79,8 +79,8 @@ const useStyles = makeStyles({ name: "BlogListing" })(
         textDecoration: "none",
         display: "flex",
         flexDirection: "column",
-        boxShadow: "0 4px 20px rgba(0, 0, 0, 0.05)",
-        border: "1px solid rgba(0, 0, 0, 0.05)",
+        boxShadow: "var(--shadow-md)",
+        border: "1px solid var(--border)",
         // Framer motion handles hover transforms
       },
       imageWrapper: {

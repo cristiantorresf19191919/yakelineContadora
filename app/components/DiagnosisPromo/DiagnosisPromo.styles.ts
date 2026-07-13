@@ -32,7 +32,7 @@ const useStyles = makeStyles({ name: "DiagnosisPromo" })((theme: Theme) => {
         maxWidth: "100%",
         height: "auto",
         borderRadius: shape.borderRadius * 2,
-        boxShadow: `0 20px 40px ${palette.primary.light}30`,
+        boxShadow: "var(--shadow-lg)",
       },
     },
     contentWrapper: {
@@ -46,7 +46,7 @@ const useStyles = makeStyles({ name: "DiagnosisPromo" })((theme: Theme) => {
       fontWeight: 800,
       lineHeight: 1.1,
       marginBottom: spacing(2),
-      color: palette.primary.dark,
+      color: "var(--brand-primary)",
       textTransform: "uppercase",
       [breakpoints.down("lg")]: {
         fontSize: "2rem",
@@ -56,7 +56,7 @@ const useStyles = makeStyles({ name: "DiagnosisPromo" })((theme: Theme) => {
       fontSize: "1.25rem",
       fontWeight: 500,
       marginBottom: spacing(3),
-      color: palette.text.secondary,
+      color: "var(--text-muted)",
     },
     list: {
       listStyle: "none",
@@ -68,7 +68,7 @@ const useStyles = makeStyles({ name: "DiagnosisPromo" })((theme: Theme) => {
       alignItems: "center",
       marginBottom: spacing(1.5),
       fontSize: "1.1rem",
-      color: palette.text.primary,
+      color: "var(--text)",
       "& svg": {
         marginRight: spacing(1.5),
         color: palette.secondary.main,
@@ -88,12 +88,12 @@ const useStyles = makeStyles({ name: "DiagnosisPromo" })((theme: Theme) => {
     },
     ctaLabel: {
         fontSize: "1.2rem", 
-        fontWeight: 700, 
-        color: palette.text.primary
+        fontWeight: 700,
+        color: "var(--text)"
     },
     ctaButton: {
         padding: spacing(1.5, 4),
-        borderRadius: 50,
+        borderRadius: "var(--r-pill)",
         fontSize: "1rem",
         fontWeight: 700,
         textTransform: "none",

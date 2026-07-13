@@ -74,15 +74,15 @@ export default function SocialProofToast() {
               display: "flex",
               alignItems: "center",
               gap: 1.5,
-              bgcolor: "white",
-              borderRadius: "16px",
+              bgcolor: "var(--surface)",
+              borderRadius: "var(--r-md)",
               px: 2.5,
               py: 1.5,
-              boxShadow: "0 12px 40px rgba(0,0,0,0.12), 0 4px 12px rgba(var(--brand-primary-rgb), 0.08)",
+              boxShadow: "var(--shadow-md)",
               border: "1px solid rgba(var(--brand-primary-rgb), 0.08)",
               cursor: "pointer",
               maxWidth: 360,
-              "&:hover": { boxShadow: "0 12px 40px rgba(0,0,0,0.16)" },
+              "&:hover": { boxShadow: "var(--shadow-lg)" },
               transition: "box-shadow 0.2s",
             }}
           >
@@ -90,7 +90,7 @@ export default function SocialProofToast() {
               sx={{
                 width: 40,
                 height: 40,
-                borderRadius: "12px",
+                borderRadius: "var(--r-sm)",
                 background: current.icon === "lightbulb"
                   ? "linear-gradient(135deg, var(--brand-accent) 0%, #FCD34D 100%)"
                   : "linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-primary-strong) 100%)",
@@ -121,7 +121,7 @@ export default function SocialProofToast() {
               <Typography
                 sx={{
                   fontSize: "0.78rem",
-                  color: "#4B5563",
+                  color: "var(--text-muted)",
                   lineHeight: 1.4,
                 }}
               >

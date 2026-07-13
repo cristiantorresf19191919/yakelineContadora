@@ -44,7 +44,7 @@ export default function GamesArcade() {
       sx={{
         py: { xs: 6, md: 10 },
         px: { xs: 2, md: 4 },
-        background: "linear-gradient(180deg, #0F0A1A 0%, #1A1040 50%, #0F0A1A 100%)",
+        background: "var(--tint-soft), var(--bg)",
         position: "relative",
         overflow: "hidden",
       }}
@@ -105,7 +105,7 @@ export default function GamesArcade() {
                 fontFamily: "'Playfair Display', serif",
                 fontWeight: 700,
                 fontSize: { xs: "1.8rem", md: "2.5rem" },
-                color: "white",
+                color: "var(--text)",
                 mb: 1.5,
                 lineHeight: 1.2,
               }}
@@ -124,7 +124,7 @@ export default function GamesArcade() {
             </Typography>
             <Typography
               sx={{
-                color: "rgba(255,255,255,0.6)",
+                color: "var(--text-muted)",
                 fontSize: { xs: "0.95rem", md: "1.1rem" },
                 maxWidth: 600,
                 mx: "auto",
@@ -153,7 +153,7 @@ export default function GamesArcade() {
               onClick={() => setActiveGame(game.id)}
               startIcon={game.icon}
               sx={{
-                borderRadius: "50px",
+                borderRadius: "var(--r-pill)",
                 px: { xs: 2, md: 3 },
                 py: { xs: 1, md: 1.2 },
                 fontWeight: 700,
@@ -167,12 +167,12 @@ export default function GamesArcade() {
                       boxShadow: `0 4px 20px ${game.color}50`,
                     }
                   : {
-                      background: "rgba(255,255,255,0.06)",
-                      color: "rgba(255,255,255,0.6)",
-                      border: "1px solid rgba(255,255,255,0.1)",
+                      background: "var(--surface-muted)",
+                      color: "var(--text-muted)",
+                      border: "1px solid var(--border)",
                       "&:hover": {
-                        background: "rgba(255,255,255,0.1)",
-                        color: "white",
+                        background: "var(--surface)",
+                        color: "var(--text)",
                       },
                     }),
               }}
@@ -194,7 +194,7 @@ export default function GamesArcade() {
             <Typography
               sx={{
                 textAlign: "center",
-                color: "rgba(255,255,255,0.5)",
+                color: "var(--text-subtle)",
                 fontSize: "0.85rem",
                 mb: 3,
               }}
@@ -229,7 +229,7 @@ export default function GamesArcade() {
           <Typography
             sx={{
               textAlign: "center",
-              color: "rgba(255,255,255,0.35)",
+              color: "var(--text-subtle)",
               fontSize: "0.78rem",
               mt: 4,
               lineHeight: 1.6,

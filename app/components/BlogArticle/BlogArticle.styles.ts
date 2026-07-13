@@ -30,16 +30,16 @@ const useStyles = makeStyles({ name: "BlogArticle" })(
       heroImageWrapper: {
         position: "relative",
         width: "100%",
-        borderRadius: "24px",
+        borderRadius: "var(--r-lg)",
         overflow: "hidden",
         marginBottom: spacing(4),
-        boxShadow: "0 20px 60px rgba(0, 0, 0, 0.12)",
+        boxShadow: "var(--shadow-lg)",
         [breakpoints.down("md")]: {
-          borderRadius: "16px",
+          borderRadius: "var(--r-md)",
           marginBottom: spacing(3),
         },
         [breakpoints.down("sm")]: {
-          borderRadius: "12px",
+          borderRadius: "var(--r-sm)",
           marginBottom: spacing(2),
         },
       },
@@ -61,14 +61,14 @@ const useStyles = makeStyles({ name: "BlogArticle" })(
         background:
           "linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0) 100%)",
         padding: spacing(6, 4),
-        borderRadius: "0 0 24px 24px",
+        borderRadius: "0 0 var(--r-lg) var(--r-lg)",
         [breakpoints.down("md")]: {
           padding: spacing(5, 3),
-          borderRadius: "0 0 16px 16px",
+          borderRadius: "0 0 var(--r-md) var(--r-md)",
         },
         [breakpoints.down("sm")]: {
           padding: spacing(4, 2),
-          borderRadius: "0 0 12px 12px",
+          borderRadius: "0 0 var(--r-sm) var(--r-sm)",
         },
       },
       headerContent: {
@@ -86,7 +86,7 @@ const useStyles = makeStyles({ name: "BlogArticle" })(
         letterSpacing: "0.15em",
         marginBottom: spacing(2),
         padding: spacing(0.75, 2),
-        borderRadius: "50px",
+        borderRadius: "var(--r-pill)",
         border: "1px solid rgba(255, 255, 255, 0.3)",
       },
       title: {
@@ -251,8 +251,8 @@ const useStyles = makeStyles({ name: "BlogArticle" })(
         backgroundColor: "transparent",
         background: `linear-gradient(135deg, ${palette.primary.light} 0%, ${palette.background.paper} 100%)`,
         borderRadius: "20px",
-        border: `2px solid rgba(207, 166, 220, 0.45)`,
-        boxShadow: "0 8px 32px rgba(44, 18, 54, 0.08)",
+        border: `2px solid var(--border)`,
+        boxShadow: "var(--shadow-md)",
         position: "relative",
         overflow: "hidden",
         "&::before": {
@@ -267,7 +267,7 @@ const useStyles = makeStyles({ name: "BlogArticle" })(
         [breakpoints.down("sm")]: {
           padding: spacing(4),
           marginTop: spacing(6),
-          borderRadius: "16px",
+          borderRadius: "var(--r-md)",
         },
       },
       ctaText: {
@@ -314,7 +314,7 @@ const useStyles = makeStyles({ name: "BlogArticle" })(
         backgroundColor: palette.primary.main,
         color: palette.primary.contrastText,
         padding: spacing(1.75, 4),
-        borderRadius: "50px",
+        borderRadius: "var(--r-pill)",
         textDecoration: "none",
         fontWeight: 600,
         fontSize: "1.125rem",
