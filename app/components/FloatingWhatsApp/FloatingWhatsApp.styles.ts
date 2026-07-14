@@ -20,7 +20,19 @@ const useStyles = makeStyles({ name: "FloatingWhatsApp" })(
         cursor: "pointer",
         zIndex: 999,
         transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
-        animation: "pulse 2s ease-in-out infinite, fadeInScale 0.5s ease-out",
+        animation: "fadeInScale 0.5s ease-out",
+        // Gentle expanding "ping" ring behind the button — a subtle attention
+        // cue on the primary conversion action (transform + opacity only).
+        "&::before": {
+          content: '""',
+          position: "absolute",
+          inset: 0,
+          borderRadius: "50%",
+          backgroundColor: "#25D366",
+          zIndex: -1,
+          pointerEvents: "none",
+          animation: "yc-ping 2.4s cubic-bezier(0, 0, 0.2, 1) infinite",
+        },
         "&:hover": {
           transform: "scale(1.1)",
           boxShadow: "0 6px 30px rgba(37, 211, 102, 0.6)",
@@ -93,6 +105,11 @@ const useStyles = makeStyles({ name: "FloatingWhatsApp" })(
           opacity: 1,
           transform: "scale(1)",
         },
+      },
+      "@keyframes yc-ping": {
+        "0%": { transform: "scale(1)", opacity: 0.5 },
+        "70%": { transform: "scale(1.7)", opacity: 0 },
+        "100%": { transform: "scale(1.7)", opacity: 0 },
       },
     };
   }

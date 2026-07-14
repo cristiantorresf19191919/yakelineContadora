@@ -7,6 +7,8 @@ import PlaceRoundedIcon from "@mui/icons-material/PlaceRounded";
 import FacebookRoundedIcon from "@mui/icons-material/FacebookRounded";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import YouTubeIcon from "@mui/icons-material/YouTube";
+import LanguageRoundedIcon from "@mui/icons-material/LanguageRounded";
 import useStyles from "./Footer.styles";
 
 const socialLinks = [
@@ -24,6 +26,26 @@ const socialLinks = [
     label: "LinkedIn",
     href: "https://www.linkedin.com/in/yakelin-bustamante",
     icon: <LinkedInIcon fontSize="small" />,
+  },
+];
+
+const developerUrl = "https://agencypartner2.netlify.app/en/developer-section";
+
+const developerLinks = [
+  {
+    label: "Sitio del desarrollador",
+    href: developerUrl,
+    icon: <LanguageRoundedIcon fontSize="small" />,
+  },
+  {
+    label: "LinkedIn de Cristian Torres",
+    href: "https://www.linkedin.com/in/cristian-torres-ab3448170/",
+    icon: <LinkedInIcon fontSize="small" />,
+  },
+  {
+    label: "YouTube de Cristian Torres",
+    href: "https://www.youtube.com/@cristianscript5649",
+    icon: <YouTubeIcon fontSize="small" />,
   },
 ];
 
@@ -133,6 +155,36 @@ export default function Footer() {
         <Box className={classes.legalLinks}>
           <Link href="/politica-de-privacidad">Pol&iacute;tica de privacidad</Link>
           <Link href="/terminos-y-condiciones">T&eacute;rminos y condiciones</Link>
+        </Box>
+      </Box>
+
+      <Box className={classes.devBar}>
+        <Typography component="span" className={classes.devText}>
+          Diseñado y desarrollado por{" "}
+          <Link
+            href={developerUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={classes.devName}
+          >
+            Cristian Torres
+          </Link>
+        </Typography>
+        <Box className={classes.devLinksRow}>
+          {developerLinks.map((item) => (
+            <IconButton
+              key={item.label}
+              component="a"
+              href={item.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={classes.devIcon}
+              aria-label={item.label}
+              size="small"
+            >
+              {item.icon}
+            </IconButton>
+          ))}
         </Box>
       </Box>
     </Box>

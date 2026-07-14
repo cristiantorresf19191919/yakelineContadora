@@ -67,6 +67,28 @@ function buildTheme(id: ThemeId): Theme {
           containedPrimary: {
             background: "var(--brand-gradient)",
           },
+          // Subtle premium sheen that sweeps across filled buttons on hover.
+          // Input-driven, transform-only, and clipped to the button; the global
+          // reduced-motion rule neutralizes the transition.
+          contained: {
+            position: "relative",
+            overflow: "hidden",
+            "&::after": {
+              content: '""',
+              position: "absolute",
+              inset: 0,
+              background:
+                "linear-gradient(115deg, transparent 35%, rgba(255, 255, 255, 0.3) 50%, transparent 65%)",
+              transform: "translateX(-130%)",
+              pointerEvents: "none",
+            },
+            "@media (hover: hover) and (pointer: fine)": {
+              "&:hover::after": {
+                transform: "translateX(130%)",
+                transition: "transform 0.7s cubic-bezier(0.22, 1, 0.36, 1)",
+              },
+            },
+          },
         },
       },
       MuiPaper: {
