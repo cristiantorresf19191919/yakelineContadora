@@ -2,12 +2,19 @@
 
 import { Box, Typography, Button } from "@mui/material";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { InstagramEmbed } from "react-social-media-embed";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import useStyles from "./InstagramFeed.styles";
 import { instagramVideos } from "@/data/instagramVideos";
 import { useRef } from "react";
+
+// InstagramEmbed generates a random UUID per render, so it can't be SSR'd
+// without a hydration mismatch — load it client-only.
+const InstagramEmbed = dynamic(
+  () => import("react-social-media-embed").then((mod) => mod.InstagramEmbed),
+  { ssr: false }
+);
 
 interface InstagramFeedProps {
   limit?: number;

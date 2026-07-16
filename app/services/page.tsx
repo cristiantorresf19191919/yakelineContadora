@@ -66,7 +66,7 @@ const services = [
 ];
 
 const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://yakelinecontadora.com";
+  process.env.NEXT_PUBLIC_SITE_URL || "https://yakelincontadora.com";
 
 const faqItems: { q: string; a: string }[] = [
   {

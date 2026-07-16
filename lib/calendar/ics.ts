@@ -62,7 +62,7 @@ function slugify(value: string): string {
 /** Stable UID derived from the event date + title, so re-imports dedupe. */
 function buildUid(event: IcsEvent): string {
   const slug = slugify(event.title) || "evento";
-  return `${formatDate(event.date)}-${slug}@yakelinecontadora.com`;
+  return `${formatDate(event.date)}-${slug}@yakelincontadora.com`;
 }
 
 /** Description that always appends the WhatsApp booking note. */

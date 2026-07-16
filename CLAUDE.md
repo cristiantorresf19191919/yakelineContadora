@@ -4,7 +4,7 @@
 
 This is a modern Next.js 16.1 application for Yakeline Contadora, a Colombian accounting and tax consulting services website. The project uses React 19, TypeScript, Material-UI (MUI), Emotion CSS-in-JS, and Framer Motion for animations.
 
-Live Site: https://yakelinecontadora.com
+Live Site: https://yakelincontadora.com
 Hosting: Netlify
 Framework: Next.js 16.1 (App Router)
 
@@ -185,7 +185,7 @@ Server Components: App Router leverages SSR, reduces client JS
 ## 13. Deployment
 
 Platform: Netlify
-Domain: yakelinecontadora.com
+Domain: yakelincontadora.com
 Config: .netlify.toml
 
 Build: npm run build -> .next directory -> Netlify detects and deploys

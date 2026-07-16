@@ -12,7 +12,10 @@ import {
   Alert,
 } from "@mui/material";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+import Link from "next/link";
 import ChecklistRoundedIcon from "@mui/icons-material/ChecklistRounded";
+import PictureAsPdfRoundedIcon from "@mui/icons-material/PictureAsPdfRounded";
+import ArrowForwardRoundedIcon from "@mui/icons-material/ArrowForwardRounded";
 import CheckRoundedIcon from "@mui/icons-material/CheckRounded";
 import BadgeRoundedIcon from "@mui/icons-material/BadgeRounded";
 import WorkRoundedIcon from "@mui/icons-material/WorkRounded";
@@ -770,6 +773,82 @@ export default function DocumentChecklist() {
             contador antes de declarar.
           </Typography>
         </Box>
+
+        {/* Promo: checklist oficial 2025 en PDF */}
+        <motion.div
+          initial={reduce ? false : { opacity: 0, y: 20 }}
+          whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          <Box
+            sx={{
+              mt: 3,
+              p: { xs: 2.5, md: 3 },
+              borderRadius: "var(--r-lg)",
+              display: "flex",
+              flexDirection: { xs: "column", sm: "row" },
+              alignItems: "center",
+              gap: 2,
+              background:
+                "linear-gradient(135deg, rgba(var(--brand-accent-rgb), 0.1) 0%, rgba(var(--brand-primary-rgb), 0.07) 100%)",
+              border: "1px solid rgba(var(--brand-accent-rgb), 0.25)",
+            }}
+          >
+            <Box
+              aria-hidden="true"
+              sx={{
+                width: 52,
+                height: 52,
+                minWidth: 52,
+                borderRadius: "16px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                background:
+                  "linear-gradient(135deg, var(--brand-accent), var(--brand-accent-dark))",
+                boxShadow: "0 10px 24px rgba(var(--brand-accent-rgb), 0.35)",
+              }}
+            >
+              <PictureAsPdfRoundedIcon sx={{ color: "#fff", fontSize: 28 }} />
+            </Box>
+            <Box sx={{ flex: 1, textAlign: { xs: "center", sm: "left" } }}>
+              <Typography sx={{ fontWeight: 700, color: "var(--text)", fontSize: "1rem" }}>
+                Checklist oficial Renta 2025 en PDF
+              </Typography>
+              <Typography sx={{ fontSize: "0.85rem", color: "var(--text-subtle)" }}>
+                La lista completa de entrega de documentos, gratis y lista para
+                imprimir o marcar en línea.
+              </Typography>
+            </Box>
+            <Button
+              component={Link}
+              href="/checklist-renta"
+              variant="contained"
+              endIcon={<ArrowForwardRoundedIcon />}
+              sx={{
+                borderRadius: "var(--r-pill)",
+                px: 3,
+                py: 1.2,
+                fontWeight: 700,
+                fontSize: "0.9rem",
+                textTransform: "none",
+                whiteSpace: "nowrap",
+                background:
+                  "linear-gradient(135deg, var(--brand-accent), var(--brand-accent-dark))",
+                color: "#fff",
+                boxShadow: "0 10px 26px rgba(var(--brand-accent-rgb), 0.35)",
+                "&:hover": {
+                  background:
+                    "linear-gradient(135deg, var(--brand-accent-dark), var(--brand-accent))",
+                  boxShadow: "0 14px 32px rgba(var(--brand-accent-rgb), 0.45)",
+                },
+              }}
+            >
+              Descargar gratis
+            </Button>
+          </Box>
+        </motion.div>
       </Container>
 
       {/* Storage error feedback */}

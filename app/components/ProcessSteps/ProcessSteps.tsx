@@ -11,23 +11,23 @@ const steps = [
     number: "01",
     title: "Agenda tu consulta",
     description:
-      "Escr\u00edbenos por WhatsApp o agenda en l\u00ednea. En menos de 24 horas coordinamos tu primera sesi\u00f3n gratuita de 15 minutos.",
+      "Escríbenos por WhatsApp o agenda en línea. En menos de 24 horas coordinamos tu primera sesión gratuita de 15 minutos.",
     Icon: WhatsAppIcon,
     color: "#25D366",
     rgb: "37, 211, 102",
   },
   {
     number: "02",
-    title: "Diagn\u00f3stico financiero",
+    title: "Diagnóstico financiero",
     description:
-      "Analizamos tu situaci\u00f3n contable, tributaria y fiscal. Identificamos oportunidades y riesgos que quiz\u00e1s no ves.",
+      "Analizamos tu situación contable, tributaria y fiscal. Identificamos oportunidades y riesgos que quizás no ves.",
     Icon: SearchRoundedIcon,
     color: "var(--brand-primary)",
     rgb: "var(--brand-primary-rgb)",
   },
   {
     number: "03",
-    title: "Plan de acci\u00f3n claro",
+    title: "Plan de acción claro",
     description:
       "Recibe un plan personalizado con pasos concretos para optimizar tus finanzas, reducir impuestos y crecer con tranquilidad.",
     Icon: TrendingUpRoundedIcon,
@@ -110,7 +110,7 @@ export default function ProcessSteps() {
               letterSpacing: "-0.02em",
             }}
           >
-            \u00bfC\u00f3mo funciona?
+            ¿Cómo funciona?
           </Typography>
           <Typography
             sx={{

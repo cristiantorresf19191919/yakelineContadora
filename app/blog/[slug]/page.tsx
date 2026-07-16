@@ -14,7 +14,7 @@ import { Box, Typography } from "@mui/material";
 import JsonLd from "@/app/components/JsonLd/JsonLd";
 
 const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://yakelinecontadora.com";
+  process.env.NEXT_PUBLIC_SITE_URL || "https://yakelincontadora.com";
 
 export default function BlogArticlePage() {
   const params = useParams();

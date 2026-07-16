@@ -17,6 +17,7 @@ import PersonIcon from "@mui/icons-material/Person";
 import BusinessIcon from "@mui/icons-material/Business";
 import SchoolIcon from "@mui/icons-material/School";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
+import ChecklistIcon from "@mui/icons-material/Checklist";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
 import ArticleIcon from "@mui/icons-material/Article";
 import VideoLibraryIcon from "@mui/icons-material/VideoLibrary";
@@ -158,6 +159,7 @@ export function CommandPalette() {
       ["/services", t("Servicios", "Services"), t("Servicios contables", "Accounting services"), <BusinessIcon key="b" />, "servicios services contable"],
       ["/mentorship", t("Mentorías", "Mentorship"), t("Asesoría personalizada", "Personalized guidance"), <SchoolIcon key="s" />, "mentoria mentorship asesoria"],
       ["/citas", t("Agendar cita", "Book now"), t("Reserva tu consulta", "Book your consult"), <CalendarMonthIcon key="c" />, "cita agendar book appointment"],
+      ["/checklist-renta", t("Checklist Renta 2025", "2025 Tax Checklist"), t("Documentos para tu declaración (PDF gratis)", "Documents for your tax return (free PDF)"), <ChecklistIcon key="cl" />, "checklist renta 2025 documentos declaracion pdf descargar download"],
       ["/book", t("Libro", "Book"), t("Publicaciones", "Publications"), <MenuBookIcon key="m" />, "libro book publicaciones"],
       ["/blog", t("Blog", "Blog"), t("Artículos y noticias", "Articles & news"), <ArticleIcon key="a" />, "blog articulos noticias"],
       ["/videos", t("Video Blog", "Videos"), t("Videos y contenido", "Videos & content"), <VideoLibraryIcon key="v" />, "videos video blog"],

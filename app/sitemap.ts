@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next'
 import { getAllBlogArticles } from '@/lib/blogData'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://yakelinecontadora.com'
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://yakelincontadora.com'
 
   const blogArticles = getAllBlogArticles()
 
@@ -36,6 +36,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${baseUrl}/blog`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/checklist-renta`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
       priority: 0.8,
     },
     {

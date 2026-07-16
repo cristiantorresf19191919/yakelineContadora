@@ -37,7 +37,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://yakelinecontadora.com"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://yakelincontadora.com"),
   title: {
     default: "Yakeline Contadora - Asesoría Contable y Tributaria Profesional en Colombia",
     template: "%s | Yakeline Contadora"
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
     "contador público",
     "servicios contables"
   ],
-  authors: [{ name: "Yakelin Bustamante", url: "https://yakelinecontadora.com" }],
+  authors: [{ name: "Yakelin Bustamante", url: "https://yakelincontadora.com" }],
   creator: "Yakelin Bustamante",
   publisher: "Yakeline Contadora",
   formatDetection: {
@@ -132,13 +132,13 @@ export default function RootLayout({
     "@graph": [
       {
         "@type": "AccountingService",
-        "@id": `${process.env.NEXT_PUBLIC_SITE_URL || "https://yakelinecontadora.com"}/#organization`,
+        "@id": `${process.env.NEXT_PUBLIC_SITE_URL || "https://yakelincontadora.com"}/#organization`,
         "name": "Yakeline Contadora",
         "alternateName": "Yakelin Bustamante - Contadora Pública",
         "description": "Asesoría contable y tributaria profesional para personas naturales y empresas en Colombia. Experta en gestión tributaria, declaración de renta y consultoría financiera.",
-        "url": process.env.NEXT_PUBLIC_SITE_URL || "https://yakelinecontadora.com",
+        "url": process.env.NEXT_PUBLIC_SITE_URL || "https://yakelincontadora.com",
         "telephone": "+57-320-726-9417",
-        "email": "contacto@yakelinecontadora.com",
+        "email": "contacto@yakelincontadora.com",
         "address": {
           "@type": "PostalAddress",
           "addressCountry": "CO",
@@ -174,25 +174,25 @@ export default function RootLayout({
       },
       {
         "@type": "WebSite",
-        "@id": `${process.env.NEXT_PUBLIC_SITE_URL || "https://yakelinecontadora.com"}/#website`,
-        "url": process.env.NEXT_PUBLIC_SITE_URL || "https://yakelinecontadora.com",
+        "@id": `${process.env.NEXT_PUBLIC_SITE_URL || "https://yakelincontadora.com"}/#website`,
+        "url": process.env.NEXT_PUBLIC_SITE_URL || "https://yakelincontadora.com",
         "name": "Yakeline Contadora",
         "description": "Asesoría contable y tributaria profesional en Colombia",
         "publisher": {
-          "@id": `${process.env.NEXT_PUBLIC_SITE_URL || "https://yakelinecontadora.com"}/#organization`
+          "@id": `${process.env.NEXT_PUBLIC_SITE_URL || "https://yakelincontadora.com"}/#organization`
         },
         "inLanguage": "es-CO"
       },
       {
         "@type": "WebPage",
-        "@id": `${process.env.NEXT_PUBLIC_SITE_URL || "https://yakelinecontadora.com"}/#webpage`,
-        "url": process.env.NEXT_PUBLIC_SITE_URL || "https://yakelinecontadora.com",
+        "@id": `${process.env.NEXT_PUBLIC_SITE_URL || "https://yakelincontadora.com"}/#webpage`,
+        "url": process.env.NEXT_PUBLIC_SITE_URL || "https://yakelincontadora.com",
         "name": "Yakeline Contadora - Asesoría Contable y Tributaria Profesional en Colombia",
         "isPartOf": {
-          "@id": `${process.env.NEXT_PUBLIC_SITE_URL || "https://yakelinecontadora.com"}/#website`
+          "@id": `${process.env.NEXT_PUBLIC_SITE_URL || "https://yakelincontadora.com"}/#website`
         },
         "about": {
-          "@id": `${process.env.NEXT_PUBLIC_SITE_URL || "https://yakelinecontadora.com"}/#organization`
+          "@id": `${process.env.NEXT_PUBLIC_SITE_URL || "https://yakelincontadora.com"}/#organization`
         },
         "description": "Experta en asesoría contable y tributaria en Colombia. Gestión tributaria integral, declaración de renta, facturación electrónica y consultoría financiera personalizada.",
         "inLanguage": "es-CO"

@@ -10,6 +10,7 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import LanguageRoundedIcon from "@mui/icons-material/LanguageRounded";
 import useStyles from "./Footer.styles";
+import TechStackStrip from "./TechStackStrip";
 
 const socialLinks = [
   {
@@ -98,6 +99,9 @@ export default function Footer() {
             <Link href="/mentorship" className={classes.footerLink}>
               Mentorías
             </Link>
+            <Link href="/checklist-renta" className={classes.footerLink}>
+              Checklist Renta 2025
+            </Link>
             <Link href="/about" className={classes.footerLink}>
               Quien Soy
             </Link>
@@ -137,6 +141,8 @@ export default function Footer() {
           </Box>
         </Box>
       </Box>
+
+      <TechStackStrip />
 
       <Box className={classes.bottomBar}>
         <Typography component="span">

@@ -65,20 +65,20 @@ interface GameStats {
 // ─── Item Definitions ─────────────────────────────────────────────────────────
 
 const GOOD_ITEMS = [
-  { emoji: "\u{1F4B0}", label: "Deducci\u00f3n de Salud", points: 10, fact: "Gastos m\u00e9dicos son deducibles en tu declaraci\u00f3n", isPowerUp: false, isLifeLoss: false },
-  { emoji: "\u{1F4DA}", label: "Educaci\u00f3n Deducible", points: 15, fact: "Inversi\u00f3n en educaci\u00f3n reduce tu base gravable", isPowerUp: false, isLifeLoss: false },
+  { emoji: "\u{1F4B0}", label: "Deducción de Salud", points: 10, fact: "Gastos médicos son deducibles en tu declaración", isPowerUp: false, isLifeLoss: false },
+  { emoji: "\u{1F4DA}", label: "Educación Deducible", points: 15, fact: "Inversión en educación reduce tu base gravable", isPowerUp: false, isLifeLoss: false },
   { emoji: "\u{1F3E0}", label: "Intereses Hipoteca", points: 20, fact: "Los intereses de vivienda son deducibles hasta 1,200 UVT", isPowerUp: false, isLifeLoss: false },
   { emoji: "\u{1F4BC}", label: "Gastos de Negocio", points: 15, fact: "Gastos necesarios para tu actividad son deducibles", isPowerUp: false, isLifeLoss: false },
-  { emoji: "\u{1F381}", label: "Donaci\u00f3n Deducible", points: 25, fact: "Donaciones a fundaciones dan beneficio tributario", isPowerUp: false, isLifeLoss: false },
+  { emoji: "\u{1F381}", label: "Donación Deducible", points: 25, fact: "Donaciones a fundaciones dan beneficio tributario", isPowerUp: false, isLifeLoss: false },
 ];
 
 const POWER_UP = {
-  emoji: "\u2B50", label: "Escudo Fiscal", points: 0, fact: "\u00a1Escudo activado! 5 segundos de inmunidad", isPowerUp: true, isLifeLoss: false,
+  emoji: "⭐", label: "Escudo Fiscal", points: 0, fact: "¡Escudo activado! 5 segundos de inmunidad", isPowerUp: true, isLifeLoss: false,
 };
 
 const BAD_ITEMS = [
-  { emoji: "\u{1F4CB}", label: "Multa DIAN", points: -20, fact: "\u00a1La DIAN sanciona declaraciones tard\u00edas!", isPowerUp: false, isLifeLoss: false },
-  { emoji: "\u26A0\uFE0F", label: "Sanci\u00f3n Tributaria", points: -15, fact: "No declarar a tiempo genera intereses moratorios", isPowerUp: false, isLifeLoss: false },
+  { emoji: "\u{1F4CB}", label: "Multa DIAN", points: -20, fact: "¡La DIAN sanciona declaraciones tardías!", isPowerUp: false, isLifeLoss: false },
+  { emoji: "⚠️", label: "Sanción Tributaria", points: -15, fact: "No declarar a tiempo genera intereses moratorios", isPowerUp: false, isLifeLoss: false },
   { emoji: "\u{1F6AB}", label: "Embargo Fiscal", points: -25, fact: "Las deudas con la DIAN pueden generar embargos", isPowerUp: false, isLifeLoss: false },
   { emoji: "\u{1F480}", label: "Cierre de Negocio", points: 0, fact: "El desorden contable puede cerrar tu negocio", isPowerUp: false, isLifeLoss: true },
 ];
@@ -90,19 +90,19 @@ const DIFFICULTY_SETTINGS: Record<Difficulty, { speedMult: number; spawnMult: nu
 };
 
 const RANKS = [
-  { min: 0, max: 150, title: "Aprendiz Fiscal \u{1F4DD}", message: "Necesitas una asesora que te gu\u00ede" },
-  { min: 150, max: 400, title: "Contador Junior \u{1F4CA}", message: "Vas por buen camino, una consulta te impulsar\u00e1" },
-  { min: 400, max: 800, title: "Estratega Tributario \u{1F9E0}", message: "\u00a1Gran instinto! Imagina con asesor\u00eda profesional" },
-  { min: 800, max: Infinity, title: "Maestro de Deducciones \u{1F451}", message: "\u00a1Incre\u00edble! Agenda para llevar tus finanzas al siguiente nivel" },
+  { min: 0, max: 150, title: "Aprendiz Fiscal \u{1F4DD}", message: "Necesitas una asesora que te guíe" },
+  { min: 150, max: 400, title: "Contador Junior \u{1F4CA}", message: "Vas por buen camino, una consulta te impulsará" },
+  { min: 400, max: 800, title: "Estratega Tributario \u{1F9E0}", message: "¡Gran instinto! Imagina con asesoría profesional" },
+  { min: 800, max: Infinity, title: "Maestro de Deducciones \u{1F451}", message: "¡Increíble! Agenda para llevar tus finanzas al siguiente nivel" },
 ];
 
 const TAX_TIPS = [
   "Declara a tiempo para evitar sanciones e intereses moratorios.",
-  "Organiza tus facturas mensuales para facilitar tu declaraci\u00f3n.",
+  "Organiza tus facturas mensuales para facilitar tu declaración.",
   "Los aportes voluntarios a pensiones son deducibles.",
-  "Guarda tus certificados de retenci\u00f3n en la fuente.",
+  "Guarda tus certificados de retención en la fuente.",
   "La medicina prepagada puede ser deducible en tu renta.",
-  "Un buen contador te ahorra m\u00e1s de lo que cuesta.",
+  "Un buen contador te ahorra más de lo que cuesta.",
 ];
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
@@ -545,7 +545,7 @@ export default function DeductionCatcherGame() {
     ctx.textBaseline = "top";
     let heartsStr = "";
     for (let i = 0; i < 3; i++) {
-      heartsStr += i < lives ? "\u2764\uFE0F" : "\u{1F5A4}";
+      heartsStr += i < lives ? "❤️" : "\u{1F5A4}";
     }
     ctx.fillText(heartsStr, w - 10, 20);
 
@@ -565,7 +565,7 @@ export default function DeductionCatcherGame() {
       ctx.fillStyle = "#FFD700";
       ctx.textAlign = "left";
       ctx.textBaseline = "top";
-      ctx.fillText(`\u2B50 ${remaining.toFixed(1)}s`, 10, 42);
+      ctx.fillText(`⭐ ${remaining.toFixed(1)}s`, 10, 42);
     }
   }, []);
 
@@ -681,7 +681,7 @@ export default function DeductionCatcherGame() {
             shieldActiveRef.current = true;
             shieldEndTimeRef.current = time + 5000;
             spawnParticles(item.x, item.y, "#FFD700", 15);
-            addFloatingText(item.x, item.y - 20, "\u2B50 Escudo Fiscal!", "#FFD700", true);
+            addFloatingText(item.x, item.y - 20, "⭐ Escudo Fiscal!", "#FFD700", true);
             addFloatingText(item.x, item.y - 40, item.fact, "#FFD700", false);
           } else if (item.isGood) {
             const pts = item.points * multiplierRef.current;
@@ -704,7 +704,7 @@ export default function DeductionCatcherGame() {
             if (shieldActiveRef.current) {
               // Blocked by shield
               spawnParticles(item.x, item.y, "#FFD700", 8);
-              addFloatingText(item.x, item.y - 20, "\u2B50 Bloqueado!", "#FFD700", true);
+              addFloatingText(item.x, item.y - 20, "⭐ Bloqueado!", "#FFD700", true);
             } else if (item.isLifeLoss) {
               livesRef.current--;
               comboRef.current = 0;
@@ -960,7 +960,7 @@ export default function DeductionCatcherGame() {
                   fontWeight: 600,
                 }}
               >
-                {"\u{1F3C6}"} R\u00e9cord: {highScore} pts
+                {"\u{1F3C6}"} Récord: {highScore} pts
               </Typography>
             )}
 
@@ -1101,7 +1101,7 @@ export default function DeductionCatcherGame() {
             >
               {[
                 { label: "Atrapados", value: finalStats.itemsCaught },
-                { label: "Precisi\u00f3n", value: `${accuracy}%` },
+                { label: "Precisión", value: `${accuracy}%` },
                 { label: "Mejor Combo", value: finalStats.bestCombo },
                 { label: "Tiempo", value: `${finalStats.timeSurvived}s` },
               ].map((stat) => (
@@ -1170,7 +1170,7 @@ export default function DeductionCatcherGame() {
                   "&:hover": { backgroundColor: "#1EBE57" },
                 }}
               >
-                {"\u{1F4F2}"} Quiero Asesor\u00eda Profesional
+                {"\u{1F4F2}"} Quiero Asesoría Profesional
               </Button>
             </Box>
           </Box>

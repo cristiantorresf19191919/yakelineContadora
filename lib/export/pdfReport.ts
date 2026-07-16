@@ -198,7 +198,7 @@ async function buildAndSave(content: ReportContent): Promise<void> {
   doc.setTextColor(107, 114, 128);
   const dateStr = new Date().toLocaleDateString("es-CO");
   doc.text(
-    sanitize(`${dateStr}   |   yakelinecontadora.com   |   WhatsApp +57 320 726 9417`),
+    sanitize(`${dateStr}   |   yakelincontadora.com   |   WhatsApp +57 320 726 9417`),
     margin,
     footerTop + 15
   );

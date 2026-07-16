@@ -12,6 +12,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import BedtimeIcon from "@mui/icons-material/Bedtime";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import ForestIcon from "@mui/icons-material/Forest";
+import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
 
 import {
   DARK_THEMES,
@@ -38,6 +39,7 @@ const ICONS: Record<ThemeIconKey, SvgIconComponent> = {
   nightlight: BedtimeIcon,
   darkMode: DarkModeIcon,
   forest: ForestIcon,
+  sparkle: AutoAwesomeIcon,
 };
 
 const SPRING = { type: "spring", stiffness: 320, damping: 26, mass: 0.6 } as const;

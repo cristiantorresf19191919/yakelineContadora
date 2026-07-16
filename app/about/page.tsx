@@ -16,7 +16,7 @@ import Footer from "../components/Footer/Footer";
 import JsonLd from "@/app/components/JsonLd/JsonLd";
 
 const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://yakelinecontadora.com";
+  process.env.NEXT_PUBLIC_SITE_URL || "https://yakelincontadora.com";
 
 const personSchema = {
   "@context": "https://schema.org",

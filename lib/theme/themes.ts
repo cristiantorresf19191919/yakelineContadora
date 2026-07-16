@@ -29,7 +29,8 @@ export type ThemeId =
   // Dark moods
   | "medianoche"
   | "onix"
-  | "bosque";
+  | "bosque"
+  | "cristal";
 
 export type ThemeMode = "light" | "dark";
 
@@ -42,7 +43,8 @@ export type ThemeIconKey =
   | "favorite"
   | "nightlight"
   | "darkMode"
-  | "forest";
+  | "forest"
+  | "sparkle";
 
 export interface MoodPalette {
   primary: { main: string; light: string; dark: string; contrastText: string };
@@ -201,6 +203,25 @@ export const THEMES: Record<ThemeId, ThemeDefinition> = {
       text: { primary: "#E6F4EC", secondary: "#9CC0AE" },
     },
   },
+  cristal: {
+    id: "cristal",
+    name: "Cristal",
+    tagline: "Vidrio violeta",
+    mode: "dark",
+    accent: "#E879F9",
+    swatchBg: "#31125E",
+    halo: "rgba(232, 121, 249, 0.36)",
+    icon: "sparkle",
+    mui: {
+      primary: { main: "#E879F9", light: "#F0ABFC", dark: "#C026D3", contrastText: "#2A0A3D" },
+      secondary: { main: "#FBBF24", light: "#FCD34D", dark: "#D97706", contrastText: "#2A0A3D" },
+      // Paper is translucent on purpose: paired with the cristal-only
+      // backdrop-filter rule in globals.css, every MUI surface frosts the
+      // gradient behind it (menus, drawers, dialogs).
+      background: { default: "#22093E", paper: "rgba(49, 18, 94, 0.78)" },
+      text: { primary: "#F7F2FF", secondary: "#CFBCEA" },
+    },
+  },
 };
 
 export const DEFAULT_THEME: ThemeId = "iris";
@@ -213,7 +234,12 @@ export const LIGHT_THEMES: ReadonlyArray<ThemeId> = [
   "rosa",
 ];
 
-export const DARK_THEMES: ReadonlyArray<ThemeId> = ["medianoche", "onix", "bosque"];
+export const DARK_THEMES: ReadonlyArray<ThemeId> = [
+  "medianoche",
+  "onix",
+  "bosque",
+  "cristal",
+];
 
 export const THEME_ORDER: ReadonlyArray<ThemeId> = [...LIGHT_THEMES, ...DARK_THEMES];
 

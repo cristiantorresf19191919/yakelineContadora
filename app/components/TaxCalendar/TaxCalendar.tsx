@@ -45,8 +45,8 @@ const CATEGORY_COLORS: Record<TaxDeadline["category"], string> = {
 const CATEGORY_LABELS: Record<TaxDeadline["category"], string> = {
   renta: "Renta",
   iva: "IVA",
-  retencion: "Retenci\u00f3n",
-  exogena: "Ex\u00f3gena",
+  retencion: "Retención",
+  exogena: "Exógena",
   gmf: "GMF",
   otro: "Otro",
 };
@@ -57,251 +57,251 @@ const TAX_DEADLINES_2026: TaxDeadline[] = [
   {
     id: "iva-bim-1",
     name: "IVA Bimestral - Ene/Feb",
-    description: "Declaraci\u00f3n y pago del IVA correspondiente al primer bimestre de 2026.",
+    description: "Declaración y pago del IVA correspondiente al primer bimestre de 2026.",
     date: new Date(2026, 2, 13), // Mar 13
     category: "iva",
   },
   {
     id: "iva-bim-2",
     name: "IVA Bimestral - Mar/Abr",
-    description: "Declaraci\u00f3n y pago del IVA correspondiente al segundo bimestre de 2026.",
+    description: "Declaración y pago del IVA correspondiente al segundo bimestre de 2026.",
     date: new Date(2026, 4, 15), // May 15
     category: "iva",
   },
   {
     id: "iva-bim-3",
     name: "IVA Bimestral - May/Jun",
-    description: "Declaraci\u00f3n y pago del IVA correspondiente al tercer bimestre de 2026.",
+    description: "Declaración y pago del IVA correspondiente al tercer bimestre de 2026.",
     date: new Date(2026, 6, 17), // Jul 17
     category: "iva",
   },
   {
     id: "iva-bim-4",
     name: "IVA Bimestral - Jul/Ago",
-    description: "Declaraci\u00f3n y pago del IVA bimestral correspondiente al cuarto bimestre.",
+    description: "Declaración y pago del IVA bimestral correspondiente al cuarto bimestre.",
     date: new Date(2026, 8, 11), // Sep 11
     category: "iva",
   },
   {
     id: "iva-bim-5",
     name: "IVA Bimestral - Sep/Oct",
-    description: "Declaraci\u00f3n y pago del IVA correspondiente al quinto bimestre de 2026.",
+    description: "Declaración y pago del IVA correspondiente al quinto bimestre de 2026.",
     date: new Date(2026, 10, 13), // Nov 13
     category: "iva",
   },
   {
     id: "iva-bim-6",
     name: "IVA Bimestral - Nov/Dic",
-    description: "Declaraci\u00f3n y pago del IVA correspondiente al sexto bimestre de 2026.",
+    description: "Declaración y pago del IVA correspondiente al sexto bimestre de 2026.",
     date: new Date(2027, 0, 15), // Jan 15, 2027
     category: "iva",
   },
 
-  // Retenci\u00f3n en la fuente - monthly
+  // Retención en la fuente - monthly
   {
     id: "ret-feb",
-    name: "Retenci\u00f3n en la Fuente - Enero",
-    description: "Declaraci\u00f3n mensual de retenci\u00f3n en la fuente correspondiente a enero 2026.",
+    name: "Retención en la Fuente - Enero",
+    description: "Declaración mensual de retención en la fuente correspondiente a enero 2026.",
     date: new Date(2026, 1, 13), // Feb 13
     category: "retencion",
   },
   {
     id: "ret-mar",
-    name: "Retenci\u00f3n en la Fuente - Febrero",
-    description: "Declaraci\u00f3n mensual de retenci\u00f3n en la fuente correspondiente a febrero 2026.",
+    name: "Retención en la Fuente - Febrero",
+    description: "Declaración mensual de retención en la fuente correspondiente a febrero 2026.",
     date: new Date(2026, 2, 13), // Mar 13
     category: "retencion",
   },
   {
     id: "ret-apr",
-    name: "Retenci\u00f3n en la Fuente - Marzo",
-    description: "Declaraci\u00f3n mensual de retenci\u00f3n en la fuente correspondiente a marzo 2026.",
+    name: "Retención en la Fuente - Marzo",
+    description: "Declaración mensual de retención en la fuente correspondiente a marzo 2026.",
     date: new Date(2026, 3, 17), // Apr 17
     category: "retencion",
   },
   {
     id: "ret-may",
-    name: "Retenci\u00f3n en la Fuente - Abril",
-    description: "Declaraci\u00f3n mensual de retenci\u00f3n en la fuente correspondiente a abril 2026.",
+    name: "Retención en la Fuente - Abril",
+    description: "Declaración mensual de retención en la fuente correspondiente a abril 2026.",
     date: new Date(2026, 4, 15), // May 15
     category: "retencion",
   },
   {
     id: "ret-jun",
-    name: "Retenci\u00f3n en la Fuente - Mayo",
-    description: "Declaraci\u00f3n mensual de retenci\u00f3n en la fuente correspondiente a mayo 2026.",
+    name: "Retención en la Fuente - Mayo",
+    description: "Declaración mensual de retención en la fuente correspondiente a mayo 2026.",
     date: new Date(2026, 5, 12), // Jun 12
     category: "retencion",
   },
   {
     id: "ret-jul",
-    name: "Retenci\u00f3n en la Fuente - Junio",
-    description: "Declaraci\u00f3n mensual de retenci\u00f3n en la fuente correspondiente a junio 2026.",
+    name: "Retención en la Fuente - Junio",
+    description: "Declaración mensual de retención en la fuente correspondiente a junio 2026.",
     date: new Date(2026, 6, 17), // Jul 17
     category: "retencion",
   },
   {
     id: "ret-aug",
-    name: "Retenci\u00f3n en la Fuente - Julio",
-    description: "Declaraci\u00f3n mensual de retenci\u00f3n en la fuente correspondiente a julio 2026.",
+    name: "Retención en la Fuente - Julio",
+    description: "Declaración mensual de retención en la fuente correspondiente a julio 2026.",
     date: new Date(2026, 7, 14), // Aug 14
     category: "retencion",
   },
   {
     id: "ret-sep",
-    name: "Retenci\u00f3n en la Fuente - Agosto",
-    description: "Declaraci\u00f3n mensual de retenci\u00f3n en la fuente correspondiente a agosto 2026.",
+    name: "Retención en la Fuente - Agosto",
+    description: "Declaración mensual de retención en la fuente correspondiente a agosto 2026.",
     date: new Date(2026, 8, 11), // Sep 11
     category: "retencion",
   },
   {
     id: "ret-oct",
-    name: "Retenci\u00f3n en la Fuente - Septiembre",
-    description: "Declaraci\u00f3n mensual de retenci\u00f3n en la fuente correspondiente a septiembre 2026.",
+    name: "Retención en la Fuente - Septiembre",
+    description: "Declaración mensual de retención en la fuente correspondiente a septiembre 2026.",
     date: new Date(2026, 9, 16), // Oct 16
     category: "retencion",
   },
   {
     id: "ret-nov",
-    name: "Retenci\u00f3n en la Fuente - Octubre",
-    description: "Declaraci\u00f3n mensual de retenci\u00f3n en la fuente correspondiente a octubre 2026.",
+    name: "Retención en la Fuente - Octubre",
+    description: "Declaración mensual de retención en la fuente correspondiente a octubre 2026.",
     date: new Date(2026, 10, 13), // Nov 13
     category: "retencion",
   },
   {
     id: "ret-dec",
-    name: "Retenci\u00f3n en la Fuente - Noviembre",
-    description: "Declaraci\u00f3n mensual de retenci\u00f3n en la fuente correspondiente a noviembre 2026.",
+    name: "Retención en la Fuente - Noviembre",
+    description: "Declaración mensual de retención en la fuente correspondiente a noviembre 2026.",
     date: new Date(2026, 11, 11), // Dec 11
     category: "retencion",
   },
 
-  // Informaci\u00f3n ex\u00f3gena
+  // Información exógena
   {
     id: "exo-gdes",
-    name: "Informaci\u00f3n Ex\u00f3gena - Grandes Contribuyentes",
-    description: "Reporte de informaci\u00f3n ex\u00f3gena para grandes contribuyentes, a\u00f1o gravable 2025.",
+    name: "Información Exógena - Grandes Contribuyentes",
+    description: "Reporte de información exógena para grandes contribuyentes, año gravable 2025.",
     date: new Date(2026, 2, 27), // Mar 27
     category: "exogena",
   },
   {
     id: "exo-jur",
-    name: "Informaci\u00f3n Ex\u00f3gena - Personas Jur\u00eddicas",
-    description: "Reporte de informaci\u00f3n ex\u00f3gena para personas jur\u00eddicas, a\u00f1o gravable 2025.",
+    name: "Información Exógena - Personas Jurídicas",
+    description: "Reporte de información exógena para personas jurídicas, año gravable 2025.",
     date: new Date(2026, 3, 10), // Apr 10
     category: "exogena",
   },
   {
     id: "exo-nat",
-    name: "Informaci\u00f3n Ex\u00f3gena - Personas Naturales",
-    description: "Reporte de informaci\u00f3n ex\u00f3gena para personas naturales obligadas, a\u00f1o gravable 2025.",
+    name: "Información Exógena - Personas Naturales",
+    description: "Reporte de información exógena para personas naturales obligadas, año gravable 2025.",
     date: new Date(2026, 3, 24), // Apr 24
     category: "exogena",
   },
 
-  // Declaraci\u00f3n de Renta Personas Naturales (NIT-based dates Aug-Oct 2026)
+  // Declaración de Renta Personas Naturales (NIT-based dates Aug-Oct 2026)
   {
     id: "renta-pn-1",
     name: "Renta Personas Naturales - NIT terminados en 01-02",
-    description: "Declaraci\u00f3n de renta personas naturales a\u00f1o gravable 2025. \u00daltimos d\u00edgitos NIT 01-02.",
+    description: "Declaración de renta personas naturales año gravable 2025. Últimos dígitos NIT 01-02.",
     date: new Date(2026, 7, 11), // Aug 11
     category: "renta",
   },
   {
     id: "renta-pn-2",
     name: "Renta Personas Naturales - NIT terminados en 03-04",
-    description: "Declaraci\u00f3n de renta personas naturales a\u00f1o gravable 2025. \u00daltimos d\u00edgitos NIT 03-04.",
+    description: "Declaración de renta personas naturales año gravable 2025. Últimos dígitos NIT 03-04.",
     date: new Date(2026, 7, 12), // Aug 12
     category: "renta",
   },
   {
     id: "renta-pn-3",
     name: "Renta Personas Naturales - NIT terminados en 05-06",
-    description: "Declaraci\u00f3n de renta personas naturales a\u00f1o gravable 2025. \u00daltimos d\u00edgitos NIT 05-06.",
+    description: "Declaración de renta personas naturales año gravable 2025. Últimos dígitos NIT 05-06.",
     date: new Date(2026, 7, 14), // Aug 14
     category: "renta",
   },
   {
     id: "renta-pn-4",
     name: "Renta Personas Naturales - NIT terminados en 07-08",
-    description: "Declaraci\u00f3n de renta personas naturales a\u00f1o gravable 2025. \u00daltimos d\u00edgitos NIT 07-08.",
+    description: "Declaración de renta personas naturales año gravable 2025. Últimos dígitos NIT 07-08.",
     date: new Date(2026, 7, 18), // Aug 18
     category: "renta",
   },
   {
     id: "renta-pn-5",
     name: "Renta Personas Naturales - NIT terminados en 09-10",
-    description: "Declaraci\u00f3n de renta personas naturales a\u00f1o gravable 2025. \u00daltimos d\u00edgitos NIT 09-10.",
+    description: "Declaración de renta personas naturales año gravable 2025. Últimos dígitos NIT 09-10.",
     date: new Date(2026, 7, 19), // Aug 19
     category: "renta",
   },
   {
     id: "renta-pn-6",
     name: "Renta Personas Naturales - NIT terminados en 11-15",
-    description: "Declaraci\u00f3n de renta personas naturales a\u00f1o gravable 2025. \u00daltimos d\u00edgitos NIT 11-15.",
+    description: "Declaración de renta personas naturales año gravable 2025. Últimos dígitos NIT 11-15.",
     date: new Date(2026, 7, 21), // Aug 21
     category: "renta",
   },
   {
     id: "renta-pn-7",
     name: "Renta Personas Naturales - NIT terminados en 16-20",
-    description: "Declaraci\u00f3n de renta personas naturales a\u00f1o gravable 2025. \u00daltimos d\u00edgitos NIT 16-20.",
+    description: "Declaración de renta personas naturales año gravable 2025. Últimos dígitos NIT 16-20.",
     date: new Date(2026, 7, 25), // Aug 25
     category: "renta",
   },
   {
     id: "renta-pn-8",
     name: "Renta Personas Naturales - NIT terminados en 21-30",
-    description: "Declaraci\u00f3n de renta personas naturales a\u00f1o gravable 2025. \u00daltimos d\u00edgitos NIT 21-30.",
+    description: "Declaración de renta personas naturales año gravable 2025. Últimos dígitos NIT 21-30.",
     date: new Date(2026, 8, 1), // Sep 1
     category: "renta",
   },
   {
     id: "renta-pn-9",
     name: "Renta Personas Naturales - NIT terminados en 31-40",
-    description: "Declaraci\u00f3n de renta personas naturales a\u00f1o gravable 2025. \u00daltimos d\u00edgitos NIT 31-40.",
+    description: "Declaración de renta personas naturales año gravable 2025. Últimos dígitos NIT 31-40.",
     date: new Date(2026, 8, 4), // Sep 4
     category: "renta",
   },
   {
     id: "renta-pn-10",
     name: "Renta Personas Naturales - NIT terminados en 41-50",
-    description: "Declaraci\u00f3n de renta personas naturales a\u00f1o gravable 2025. \u00daltimos d\u00edgitos NIT 41-50.",
+    description: "Declaración de renta personas naturales año gravable 2025. Últimos dígitos NIT 41-50.",
     date: new Date(2026, 8, 8), // Sep 8
     category: "renta",
   },
   {
     id: "renta-pn-11",
     name: "Renta Personas Naturales - NIT terminados en 51-60",
-    description: "Declaraci\u00f3n de renta personas naturales a\u00f1o gravable 2025. \u00daltimos d\u00edgitos NIT 51-60.",
+    description: "Declaración de renta personas naturales año gravable 2025. Últimos dígitos NIT 51-60.",
     date: new Date(2026, 8, 11), // Sep 11
     category: "renta",
   },
   {
     id: "renta-pn-12",
     name: "Renta Personas Naturales - NIT terminados en 61-70",
-    description: "Declaraci\u00f3n de renta personas naturales a\u00f1o gravable 2025. \u00daltimos d\u00edgitos NIT 61-70.",
+    description: "Declaración de renta personas naturales año gravable 2025. Últimos dígitos NIT 61-70.",
     date: new Date(2026, 8, 15), // Sep 15
     category: "renta",
   },
   {
     id: "renta-pn-13",
     name: "Renta Personas Naturales - NIT terminados en 71-80",
-    description: "Declaraci\u00f3n de renta personas naturales a\u00f1o gravable 2025. \u00daltimos d\u00edgitos NIT 71-80.",
+    description: "Declaración de renta personas naturales año gravable 2025. Últimos dígitos NIT 71-80.",
     date: new Date(2026, 8, 18), // Sep 18
     category: "renta",
   },
   {
     id: "renta-pn-14",
     name: "Renta Personas Naturales - NIT terminados en 81-90",
-    description: "Declaraci\u00f3n de renta personas naturales a\u00f1o gravable 2025. \u00daltimos d\u00edgitos NIT 81-90.",
+    description: "Declaración de renta personas naturales año gravable 2025. Últimos dígitos NIT 81-90.",
     date: new Date(2026, 8, 22), // Sep 22
     category: "renta",
   },
   {
     id: "renta-pn-15",
     name: "Renta Personas Naturales - NIT terminados en 91-00",
-    description: "Declaraci\u00f3n de renta personas naturales a\u00f1o gravable 2025. \u00daltimos d\u00edgitos NIT 91-00.",
+    description: "Declaración de renta personas naturales año gravable 2025. Últimos dígitos NIT 91-00.",
     date: new Date(2026, 9, 2), // Oct 2
     category: "renta",
   },
@@ -309,8 +309,8 @@ const TAX_DEADLINES_2026: TaxDeadline[] = [
   // GMF
   {
     id: "gmf-2026",
-    name: "GMF (4x1000) - Declaraci\u00f3n Anual",
-    description: "Declaraci\u00f3n del Gravamen a los Movimientos Financieros. Aplica a entidades financieras.",
+    name: "GMF (4x1000) - Declaración Anual",
+    description: "Declaración del Gravamen a los Movimientos Financieros. Aplica a entidades financieras.",
     date: new Date(2026, 3, 24), // Apr 24
     category: "gmf",
   },
@@ -342,9 +342,9 @@ function getUrgencyColor(daysRemaining: number): string {
 function getUrgencyLabel(daysRemaining: number): string {
   if (daysRemaining < 0) return "Vencido";
   if (daysRemaining === 0) return "Hoy";
-  if (daysRemaining === 1) return "Ma\u00f1ana";
+  if (daysRemaining === 1) return "Mañana";
   if (daysRemaining < 30) return "Urgente";
-  if (daysRemaining < 60) return "Pr\u00f3ximo";
+  if (daysRemaining < 60) return "Próximo";
   return "A tiempo";
 }
 
@@ -449,8 +449,8 @@ export default function TaxCalendar() {
     { key: "all", label: "Todos" },
     { key: "renta", label: "Renta" },
     { key: "iva", label: "IVA" },
-    { key: "retencion", label: "Retenci\u00f3n" },
-    { key: "exogena", label: "Ex\u00f3gena" },
+    { key: "retencion", label: "Retención" },
+    { key: "exogena", label: "Exógena" },
     { key: "gmf", label: "GMF" },
   ];
 
@@ -563,7 +563,7 @@ export default function TaxCalendar() {
               }}
             >
               Cumplir con las fechas tributarias es clave para evitar sanciones e intereses.
-              Consulta los pr\u00f3ximos vencimientos y mantente al d\u00eda con tus obligaciones fiscales.
+              Consulta los próximos vencimientos y mantente al día con tus obligaciones fiscales.
             </Typography>
           </Box>
         </motion.div>
@@ -693,7 +693,7 @@ export default function TaxCalendar() {
                     sx={{ fontSize: 48, color: "rgba(255,255,255,0.2)", mb: 2 }}
                   />
                   <Typography sx={{ color: "rgba(255,255,255,0.72)", fontSize: "1.1rem" }}>
-                    No hay vencimientos pr\u00f3ximos en esta categor\u00eda.
+                    No hay vencimientos próximos en esta categoría.
                   </Typography>
                 </Box>
               ) : (
@@ -1021,7 +1021,7 @@ export default function TaxCalendar() {
                                   )}
                                   <CountdownNumber
                                     value={daysRemaining >= 30 ? daysRemaining % 30 : daysRemaining}
-                                    label={daysRemaining >= 30 ? "d\u00edas" : "d\u00edas"}
+                                    label={daysRemaining >= 30 ? "días" : "días"}
                                   />
                                 </>
                               ) : (
@@ -1094,7 +1094,7 @@ export default function TaxCalendar() {
                 lineHeight: 1.3,
               }}
             >
-              \u00bfNo sabes cu\u00e1les aplican a ti?
+              ¿No sabes cuáles aplican a ti?
             </Typography>
             <Typography
               sx={{
@@ -1112,7 +1112,7 @@ export default function TaxCalendar() {
             <Button
               component="a"
               href={`https://wa.me/573207269417?text=${encodeURIComponent(
-                "Hola Yakeline, quiero saber cu\u00e1les son mis fechas tributarias y c\u00f3mo prepararme. \u00bfPodemos hablar?"
+                "Hola Yakeline, quiero saber cuáles son mis fechas tributarias y cómo prepararme. ¿Podemos hablar?"
               )}`}
               target="_blank"
               rel="noopener noreferrer"
@@ -1144,7 +1144,7 @@ export default function TaxCalendar() {
                 mt: 2,
               }}
             >
-              * Las fechas son referenciales. Consulta el calendario oficial de la DIAN para tu caso espec\u00edfico.
+              * Las fechas son referenciales. Consulta el calendario oficial de la DIAN para tu caso específico.
             </Typography>
           </Box>
         </motion.div>

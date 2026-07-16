@@ -63,9 +63,9 @@ const EXPLANATION_DELAY = 1800;
 const HIGHSCORE_KEY = "triviaTributaria_highScore";
 
 const STREAK_TIERS: StreakTier[] = [
-  { name: "Diamond", emoji: "\uD83D\uDC8E", multiplier: 3, minStreak: 8 },
-  { name: "Lightning", emoji: "\u26A1", multiplier: 2, minStreak: 5 },
-  { name: "Fire", emoji: "\uD83D\uDD25", multiplier: 1.5, minStreak: 3 },
+  { name: "Diamond", emoji: "💎", multiplier: 3, minStreak: 8 },
+  { name: "Lightning", emoji: "⚡", multiplier: 2, minStreak: 5 },
+  { name: "Fire", emoji: "🔥", multiplier: 1.5, minStreak: 3 },
 ];
 
 const LETTER_PREFIXES = ["A", "B", "C", "D"];
@@ -86,7 +86,7 @@ const CONFETTI_COLORS = [
 const QUESTIONS_BANK: Question[] = [
   {
     question:
-      "\u00BFCu\u00E1l es el plazo m\u00E1ximo para presentar la declaraci\u00F3n de renta de personas naturales?",
+      "¿Cuál es el plazo máximo para presentar la declaración de renta de personas naturales?",
     options: [
       "Agosto-Octubre",
       "Enero-Marzo",
@@ -95,12 +95,12 @@ const QUESTIONS_BANK: Question[] = [
     ],
     correctAnswer: "Agosto-Octubre",
     explanation:
-      "El plazo va de agosto a octubre, seg\u00FAn los \u00FAltimos d\u00EDgitos del NIT. \u00A1No dejes todo para el \u00FAltimo d\u00EDa!",
+      "El plazo va de agosto a octubre, según los últimos dígitos del NIT. ¡No dejes todo para el último día!",
     difficulty: 1,
   },
   {
     question:
-      "\u00BFQu\u00E9 porcentaje de IVA general aplica en Colombia?",
+      "¿Qué porcentaje de IVA general aplica en Colombia?",
     options: ["19%", "16%", "21%", "15%"],
     correctAnswer: "19%",
     explanation:
@@ -108,44 +108,44 @@ const QUESTIONS_BANK: Question[] = [
     difficulty: 1,
   },
   {
-    question: "\u00BFQu\u00E9 significa NIT?",
+    question: "¿Qué significa NIT?",
     options: [
-      "N\u00FAmero de Identificaci\u00F3n Tributaria",
-      "N\u00FAmero de Impuesto Total",
+      "Número de Identificación Tributaria",
+      "Número de Impuesto Total",
       "Nota de Ingreso Tributario",
-      "N\u00FAmero Interno de Trabajo",
+      "Número Interno de Trabajo",
     ],
-    correctAnswer: "N\u00FAmero de Identificaci\u00F3n Tributaria",
+    correctAnswer: "Número de Identificación Tributaria",
     explanation:
-      "El NIT es tu c\u00E9dula tributaria, indispensable para cualquier tr\u00E1mite ante la DIAN.",
+      "El NIT es tu cédula tributaria, indispensable para cualquier trámite ante la DIAN.",
     difficulty: 1,
   },
   {
     question:
-      "\u00BFCu\u00E1l es el valor de la UVT para 2026?",
+      "¿Cuál es el valor de la UVT para 2026?",
     options: ["$49,799", "$47,065", "$42,412", "$50,500"],
     correctAnswer: "$49,799",
     explanation:
-      "La Unidad de Valor Tributario (UVT) se actualiza cada a\u00F1o y es clave para calcular impuestos y sanciones.",
+      "La Unidad de Valor Tributario (UVT) se actualiza cada año y es clave para calcular impuestos y sanciones.",
     difficulty: 2,
   },
   {
     question:
-      "\u00BFQui\u00E9n administra los impuestos nacionales en Colombia?",
+      "¿Quién administra los impuestos nacionales en Colombia?",
     options: [
       "DIAN",
       "Ministerio de Hacienda",
-      "Banco de la Rep\u00FAblica",
-      "Contralor\u00EDa",
+      "Banco de la República",
+      "Contraloría",
     ],
     correctAnswer: "DIAN",
     explanation:
-      "La Direcci\u00F3n de Impuestos y Aduanas Nacionales (DIAN) es la entidad encargada de administrar los impuestos.",
+      "La Dirección de Impuestos y Aduanas Nacionales (DIAN) es la entidad encargada de administrar los impuestos.",
     difficulty: 1,
   },
   {
     question:
-      "\u00BFCada cu\u00E1nto se presenta el IVA bimestral?",
+      "¿Cada cuánto se presenta el IVA bimestral?",
     options: [
       "Cada 2 meses",
       "Cada mes",
@@ -159,7 +159,7 @@ const QUESTIONS_BANK: Question[] = [
   },
   {
     question:
-      "\u00BFQu\u00E9 es la retenci\u00F3n en la fuente?",
+      "¿Qué es la retención en la fuente?",
     options: [
       "Anticipo de impuestos",
       "Un impuesto adicional",
@@ -173,44 +173,44 @@ const QUESTIONS_BANK: Question[] = [
   },
   {
     question:
-      "\u00BFLos aportes voluntarios a pensi\u00F3n son deducibles?",
+      "¿Los aportes voluntarios a pensión son deducibles?",
     options: [
-      "S\u00ED, hasta el 25% del ingreso",
+      "Sí, hasta el 25% del ingreso",
       "No, nunca",
       "Solo para empresas",
-      "Solo despu\u00E9s de los 50 a\u00F1os",
+      "Solo después de los 50 años",
     ],
-    correctAnswer: "S\u00ED, hasta el 25% del ingreso",
+    correctAnswer: "Sí, hasta el 25% del ingreso",
     explanation:
-      "Los aportes voluntarios a pensi\u00F3n pueden deducirse hasta el 25% del ingreso laboral. \u00A1Gran beneficio tributario!",
+      "Los aportes voluntarios a pensión pueden deducirse hasta el 25% del ingreso laboral. ¡Gran beneficio tributario!",
     difficulty: 2,
   },
   {
     question:
-      "\u00BFQu\u00E9 documento necesitas para facturar electr\u00F3nicamente?",
+      "¿Qué documento necesitas para facturar electrónicamente?",
     options: [
-      "Resoluci\u00F3n de facturaci\u00F3n DIAN",
-      "C\u00E1mara de Comercio",
-      "RUT \u00FAnicamente",
+      "Resolución de facturación DIAN",
+      "Cámara de Comercio",
+      "RUT únicamente",
       "Pasaporte",
     ],
-    correctAnswer: "Resoluci\u00F3n de facturaci\u00F3n DIAN",
+    correctAnswer: "Resolución de facturación DIAN",
     explanation:
-      "Necesitas una resoluci\u00F3n de facturaci\u00F3n expedida por la DIAN para emitir facturas electr\u00F3nicas v\u00E1lidas.",
+      "Necesitas una resolución de facturación expedida por la DIAN para emitir facturas electrónicas válidas.",
     difficulty: 2,
   },
   {
     question:
-      "\u00BFCu\u00E1l es la sanci\u00F3n m\u00EDnima de la DIAN en 2026?",
+      "¿Cuál es la sanción mínima de la DIAN en 2026?",
     options: ["10 UVT", "5 UVT", "1 UVT", "20 UVT"],
     correctAnswer: "10 UVT",
     explanation:
-      "La sanci\u00F3n m\u00EDnima es de 10 UVT. En 2026 eso equivale a casi $498,000. \u00A1Mejor cumplir a tiempo!",
+      "La sanción mínima es de 10 UVT. En 2026 eso equivale a casi $498,000. ¡Mejor cumplir a tiempo!",
     difficulty: 2,
   },
   {
     question:
-      "\u00BFLas personas naturales con ingresos mayores a cu\u00E1nto deben declarar renta?",
+      "¿Las personas naturales con ingresos mayores a cuánto deben declarar renta?",
     options: [
       "1,400 UVT anuales",
       "500 UVT anuales",
@@ -219,43 +219,43 @@ const QUESTIONS_BANK: Question[] = [
     ],
     correctAnswer: "1,400 UVT anuales",
     explanation:
-      "Si tus ingresos superan 1,400 UVT al a\u00F1o (aprox. $69.7 millones en 2026), debes declarar renta.",
+      "Si tus ingresos superan 1,400 UVT al año (aprox. $69.7 millones en 2026), debes declarar renta.",
     difficulty: 2,
   },
   {
-    question: "\u00BFQu\u00E9 es el RUT?",
+    question: "¿Qué es el RUT?",
     options: [
-      "Registro \u00DAnico Tributario",
+      "Registro Único Tributario",
       "Registro Universal de Trabajo",
-      "Resoluci\u00F3n de Uso Tributario",
-      "Recibo \u00DAnico de Transferencia",
+      "Resolución de Uso Tributario",
+      "Recibo Único de Transferencia",
     ],
-    correctAnswer: "Registro \u00DAnico Tributario",
+    correctAnswer: "Registro Único Tributario",
     explanation:
-      "El RUT es tu identificaci\u00F3n ante la DIAN. Es obligatorio para cualquier actividad econ\u00F3mica.",
+      "El RUT es tu identificación ante la DIAN. Es obligatorio para cualquier actividad económica.",
     difficulty: 1,
   },
   {
     question:
-      "\u00BFLos gastos m\u00E9dicos son deducibles en Colombia?",
+      "¿Los gastos médicos son deducibles en Colombia?",
     options: [
-      "S\u00ED, como deducciones",
+      "Sí, como deducciones",
       "No, nunca",
       "Solo para empresas",
       "Solo con factura",
     ],
-    correctAnswer: "S\u00ED, como deducciones",
+    correctAnswer: "Sí, como deducciones",
     explanation:
-      "Los gastos m\u00E9dicos prepagados y ciertos seguros de salud pueden incluirse como deducciones en tu renta.",
+      "Los gastos médicos prepagados y ciertos seguros de salud pueden incluirse como deducciones en tu renta.",
     difficulty: 2,
   },
   {
     question:
-      "\u00BFQu\u00E9 impuesto pagan las empresas sobre sus ganancias?",
+      "¿Qué impuesto pagan las empresas sobre sus ganancias?",
     options: [
       "Impuesto de renta (35%)",
       "IVA (19%)",
-      "Retenci\u00F3n (10%)",
+      "Retención (10%)",
       "GMF (4x1000)",
     ],
     correctAnswer: "Impuesto de renta (35%)",
@@ -264,35 +264,35 @@ const QUESTIONS_BANK: Question[] = [
     difficulty: 2,
   },
   {
-    question: "\u00BFQu\u00E9 es el GMF (4x1000)?",
+    question: "¿Qué es el GMF (4x1000)?",
     options: [
       "Gravamen a Movimientos Financieros",
       "Gasto Municipal Federal",
-      "Ganancia M\u00EDnima Fiscal",
-      "Garant\u00EDa Monetaria Financiera",
+      "Ganancia Mínima Fiscal",
+      "Garantía Monetaria Financiera",
     ],
     correctAnswer: "Gravamen a Movimientos Financieros",
     explanation:
-      "El 4x1000 te cobra $4 por cada $1,000 que muevas en el sistema financiero. \u00A1Se acumula r\u00E1pido!",
+      "El 4x1000 te cobra $4 por cada $1,000 que muevas en el sistema financiero. ¡Se acumula rápido!",
     difficulty: 1,
   },
   {
     question:
-      "\u00BFCada cu\u00E1nto se renueva el RUT?",
+      "¿Cada cuánto se renueva el RUT?",
     options: [
       "No se renueva, se actualiza",
-      "Cada a\u00F1o",
-      "Cada 5 a\u00F1os",
-      "Cada 2 a\u00F1os",
+      "Cada año",
+      "Cada 5 años",
+      "Cada 2 años",
     ],
     correctAnswer: "No se renueva, se actualiza",
     explanation:
-      "El RUT no tiene vencimiento. Solo debes actualizarlo cuando cambien tus datos o actividades econ\u00F3micas.",
+      "El RUT no tiene vencimiento. Solo debes actualizarlo cuando cambien tus datos o actividades económicas.",
     difficulty: 1,
   },
   {
     question:
-      "\u00BFQu\u00E9 es una factura electr\u00F3nica?",
+      "¿Qué es una factura electrónica?",
     options: [
       "Documento digital validado por la DIAN",
       "Un correo con el precio",
@@ -301,114 +301,114 @@ const QUESTIONS_BANK: Question[] = [
     ],
     correctAnswer: "Documento digital validado por la DIAN",
     explanation:
-      "La factura electr\u00F3nica tiene validez legal y debe ser validada por la DIAN antes de ser entregada al comprador.",
+      "La factura electrónica tiene validez legal y debe ser validada por la DIAN antes de ser entregada al comprador.",
     difficulty: 1,
   },
   {
     question:
-      "\u00BFCu\u00E1ntos a\u00F1os debe conservar una empresa sus documentos contables?",
+      "¿Cuántos años debe conservar una empresa sus documentos contables?",
     options: [
-      "M\u00EDnimo 10 a\u00F1os",
-      "5 a\u00F1os",
-      "3 a\u00F1os",
-      "1 a\u00F1o",
+      "Mínimo 10 años",
+      "5 años",
+      "3 años",
+      "1 año",
     ],
-    correctAnswer: "M\u00EDnimo 10 a\u00F1os",
+    correctAnswer: "Mínimo 10 años",
     explanation:
-      "Seg\u00FAn el C\u00F3digo de Comercio, los documentos contables deben conservarse por m\u00EDnimo 10 a\u00F1os.",
+      "Según el Código de Comercio, los documentos contables deben conservarse por mínimo 10 años.",
     difficulty: 3,
   },
   {
     question:
-      "\u00BFQu\u00E9 beneficio tributario dan las donaciones?",
+      "¿Qué beneficio tributario dan las donaciones?",
     options: [
       "Descuento del 25% en renta",
-      "Exenci\u00F3n total",
+      "Exención total",
       "No dan beneficio",
       "Solo si supera 100 UVT",
     ],
     correctAnswer: "Descuento del 25% en renta",
     explanation:
-      "Las donaciones a entidades sin \u00E1nimo de lucro pueden dar un descuento del 25% del valor donado en tu renta.",
+      "Las donaciones a entidades sin ánimo de lucro pueden dar un descuento del 25% del valor donado en tu renta.",
     difficulty: 3,
   },
   {
     question:
-      "\u00BFQu\u00E9 es la planeaci\u00F3n tributaria?",
+      "¿Qué es la planeación tributaria?",
     options: [
       "Estrategia legal para optimizar impuestos",
       "Evadir impuestos",
-      "Pagar m\u00E1s impuestos",
+      "Pagar más impuestos",
       "Ignorar la DIAN",
     ],
     correctAnswer: "Estrategia legal para optimizar impuestos",
     explanation:
-      "La planeaci\u00F3n tributaria busca legalmente reducir tu carga fiscal aprovechando beneficios y deducciones.",
+      "La planeación tributaria busca legalmente reducir tu carga fiscal aprovechando beneficios y deducciones.",
     difficulty: 2,
   },
   {
     question:
-      "\u00BFQui\u00E9n necesita revisor fiscal obligatoriamente?",
+      "¿Quién necesita revisor fiscal obligatoriamente?",
     options: [
-      "Sociedades an\u00F3nimas y ciertas SAS",
+      "Sociedades anónimas y ciertas SAS",
       "Todas las personas",
       "Solo bancos",
       "Nadie, es voluntario",
     ],
-    correctAnswer: "Sociedades an\u00F3nimas y ciertas SAS",
+    correctAnswer: "Sociedades anónimas y ciertas SAS",
     explanation:
       "Las S.A. siempre lo requieren. Las SAS lo necesitan cuando superan ciertos topes de ingresos o activos.",
     difficulty: 3,
   },
   {
     question:
-      "\u00BFQu\u00E9 pasa si no declaras renta a tiempo?",
+      "¿Qué pasa si no declaras renta a tiempo?",
     options: [
-      "Sanci\u00F3n por extemporaneidad + intereses",
-      "Nada, se hace despu\u00E9s",
-      "Te meten a la c\u00E1rcel",
+      "Sanción por extemporaneidad + intereses",
+      "Nada, se hace después",
+      "Te meten a la cárcel",
       "Pierdes el RUT",
     ],
-    correctAnswer: "Sanci\u00F3n por extemporaneidad + intereses",
+    correctAnswer: "Sanción por extemporaneidad + intereses",
     explanation:
-      "Cada mes de retraso genera sanci\u00F3n del 5% del impuesto a cargo, m\u00E1s intereses de mora. \u00A1Costoso!",
+      "Cada mes de retraso genera sanción del 5% del impuesto a cargo, más intereses de mora. ¡Costoso!",
     difficulty: 2,
   },
   {
     question:
-      "\u00BFCu\u00E1nto es la tarifa de retenci\u00F3n para servicios profesionales?",
+      "¿Cuánto es la tarifa de retención para servicios profesionales?",
     options: ["11%", "5%", "19%", "25%"],
     correctAnswer: "11%",
     explanation:
-      "La retenci\u00F3n para servicios profesionales es del 11% cuando el beneficiario es declarante de renta.",
+      "La retención para servicios profesionales es del 11% cuando el beneficiario es declarante de renta.",
     difficulty: 3,
   },
   {
     question:
-      "\u00BFQu\u00E9 es el r\u00E9gimen simple de tributaci\u00F3n?",
+      "¿Qué es el régimen simple de tributación?",
     options: [
-      "R\u00E9gimen unificado para simplificar impuestos",
+      "Régimen unificado para simplificar impuestos",
       "Un impuesto para pobres",
       "Solo para grandes empresas",
-      "Un r\u00E9gimen temporal",
+      "Un régimen temporal",
     ],
-    correctAnswer: "R\u00E9gimen unificado para simplificar impuestos",
+    correctAnswer: "Régimen unificado para simplificar impuestos",
     explanation:
-      "El R\u00E9gimen Simple unifica varios impuestos en uno solo, ideal para peque\u00F1os y medianos negocios.",
+      "El Régimen Simple unifica varios impuestos en uno solo, ideal para pequeños y medianos negocios.",
     difficulty: 3,
   },
   {
     question:
-      "\u00BFLos intereses de cr\u00E9ditos de vivienda son deducibles?",
+      "¿Los intereses de créditos de vivienda son deducibles?",
     options: [
-      "S\u00ED, hasta 1,200 UVT anuales",
+      "Sí, hasta 1,200 UVT anuales",
       "No, nunca",
-      "Solo el primer a\u00F1o",
+      "Solo el primer año",
       "Solo para vivienda nueva",
     ],
-    correctAnswer: "S\u00ED, hasta 1,200 UVT anuales",
+    correctAnswer: "Sí, hasta 1,200 UVT anuales",
     explanation:
-      "Puedes deducir intereses de cr\u00E9dito hipotecario hasta 1,200 UVT anuales. \u00A1Gran ahorro en tu renta!",
+      "Puedes deducir intereses de crédito hipotecario hasta 1,200 UVT anuales. ¡Gran ahorro en tu renta!",
     difficulty: 3,
   },
 ];
@@ -657,14 +657,14 @@ function FloatingScoreAnimation({ scores }: { scores: FloatingScore[] }) {
 
 function BackgroundIcons() {
   const icons = [
-    "\uD83D\uDCB0",
-    "\uD83D\uDCCA",
-    "\uD83D\uDCCB",
-    "\uD83C\uDFE6",
-    "\uD83D\uDCB3",
-    "\uD83D\uDCC8",
-    "\uD83E\uDDEE",
-    "\uD83D\uDCDD",
+    "💰",
+    "📊",
+    "📋",
+    "🏦",
+    "💳",
+    "📈",
+    "🧮",
+    "📝",
   ];
   return (
     <Box
@@ -1036,29 +1036,29 @@ export default function TriviaBlitzGame() {
   const getRank = useCallback(() => {
     if (score >= 900)
       return {
-        title: "Gur\u00FA Tributario \uD83D\uDC51",
+        title: "Gurú Tributario 👑",
         message:
-          "\u00A1Extraordinario! Eres de los mejores. Agenda para estrategias avanzadas.",
+          "¡Extraordinario! Eres de los mejores. Agenda para estrategias avanzadas.",
         color: "#F59E0B",
       };
     if (score >= 600)
       return {
-        title: "Analista Financiero \uD83D\uDCCA",
+        title: "Analista Financiero 📊",
         message:
-          "\u00A1Impresionante dominio! Imagina optimizar tus impuestos con una experta.",
+          "¡Impresionante dominio! Imagina optimizar tus impuestos con una experta.",
         color: "#8B5CF6",
       };
     if (score >= 300)
       return {
-        title: "Estudiante Tributario \uD83D\uDCDA",
+        title: "Estudiante Tributario 📚",
         message:
-          "\u00A1Buen conocimiento base! Con asesor\u00EDa profesional ir\u00EDas mucho m\u00E1s lejos.",
+          "¡Buen conocimiento base! Con asesoría profesional irías mucho más lejos.",
         color: "#3B82F6",
       };
     return {
-      title: "Novato Fiscal \uD83D\uDCDD",
+      title: "Novato Fiscal 📝",
       message:
-        "Los impuestos colombianos son complejos. \u00A1Una asesora experta te puede guiar!",
+        "Los impuestos colombianos son complejos. ¡Una asesora experta te puede guiar!",
       color: "#10B981",
     };
   }, [score]);
@@ -1106,7 +1106,7 @@ export default function TriviaBlitzGame() {
               lineHeight: 1.1,
             }}
           >
-            {"\uD83E\uDDE0"} Trivia Tributaria
+            {"🧠"} Trivia Tributaria
           </Typography>
 
           <Typography
@@ -1117,7 +1117,7 @@ export default function TriviaBlitzGame() {
               fontFamily: "'Outfit', sans-serif",
             }}
           >
-            {"\u00BFCu\u00E1nto sabes de impuestos en Colombia?"}
+            {"¿Cuánto sabes de impuestos en Colombia?"}
           </Typography>
 
           <Box
@@ -1166,7 +1166,7 @@ export default function TriviaBlitzGame() {
                   fontWeight: 600,
                 }}
               >
-                {"\u2B50"} Mejor puntaje: {highScore}
+                {"⭐"} Mejor puntaje: {highScore}
               </Typography>
             </MotionBox>
           )}
@@ -1304,7 +1304,7 @@ export default function TriviaBlitzGame() {
                 label: "Correctas",
                 value: `${correctAnswers}/${correctAnswers + wrongAnswers.length}`,
               },
-              { label: "Precisi\u00F3n", value: `${accuracy}%` },
+              { label: "Precisión", value: `${accuracy}%` },
               { label: "Mejor racha", value: `${bestStreak}` },
               { label: "Tiempo prom.", value: `${avgTime}s` },
             ].map((stat) => (
@@ -1363,7 +1363,7 @@ export default function TriviaBlitzGame() {
                   mb: 0.5,
                 }}
               >
-                {"\uD83D\uDCA1"} {"\u00BFSab\u00EDas que...?"}
+                {"💡"} {"¿Sabías que...?"}
               </Typography>
               <Typography
                 sx={{
@@ -1524,7 +1524,7 @@ export default function TriviaBlitzGame() {
               mt: 3,
             }}
           >
-            Basado en legislaci\u00F3n tributaria colombiana vigente
+            Basado en legislación tributaria colombiana vigente
           </Typography>
         </MotionBox>
       </Box>
@@ -1784,10 +1784,10 @@ export default function TriviaBlitzGame() {
                     }}
                   >
                     {currentQuestion.difficulty === 1
-                      ? "F\u00E1cil"
+                      ? "Fácil"
                       : currentQuestion.difficulty === 2
                         ? "Medio"
-                        : "Dif\u00EDcil"}
+                        : "Difícil"}
                   </Typography>
                 </Box>
 
@@ -1955,7 +1955,7 @@ export default function TriviaBlitzGame() {
                         fontFamily: "'Outfit', sans-serif",
                       }}
                     >
-                      {"\uD83D\uDCA1"} {currentQuestion.explanation}
+                      {"💡"} {currentQuestion.explanation}
                     </Typography>
                   </MotionBox>
                 )}
@@ -2025,7 +2025,7 @@ export default function TriviaBlitzGame() {
           mt: 1.5,
         }}
       >
-        Basado en legislaci\u00F3n tributaria colombiana vigente
+        Basado en legislación tributaria colombiana vigente
       </Typography>
     </Box>
   );

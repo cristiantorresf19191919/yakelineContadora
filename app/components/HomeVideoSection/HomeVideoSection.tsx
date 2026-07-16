@@ -2,11 +2,18 @@
 
 import { Box, Typography, Button, useMediaQuery, useTheme } from "@mui/material";
 import { motion } from "framer-motion";
-import { InstagramEmbed } from "react-social-media-embed";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import useStyles from "./HomeVideoSection.styles";
 import { instagramVideos } from "@/data/instagramVideos";
+
+// InstagramEmbed generates a random UUID per render, so it can't be SSR'd
+// without a hydration mismatch — load it client-only.
+const InstagramEmbed = dynamic(
+  () => import("react-social-media-embed").then((mod) => mod.InstagramEmbed),
+  { ssr: false }
+);
 
 export default function HomeVideoSection() {
   const { classes } = useStyles();
