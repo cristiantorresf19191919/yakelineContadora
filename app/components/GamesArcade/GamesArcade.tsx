@@ -7,11 +7,20 @@ import SportsEsportsRoundedIcon from "@mui/icons-material/SportsEsportsRounded";
 import DirectionsRunRoundedIcon from "@mui/icons-material/DirectionsRunRounded";
 import CatchingPokemonRoundedIcon from "@mui/icons-material/CatchingPokemonRounded";
 import QuizRoundedIcon from "@mui/icons-material/QuizRounded";
+import SpellcheckRoundedIcon from "@mui/icons-material/SpellcheckRounded";
 import TaxRunnerGame from "../TaxRunnerGame/TaxRunnerGame";
 import DeductionCatcherGame from "../DeductionCatcherGame/DeductionCatcherGame";
 import TriviaBlitzGame from "../TriviaBlitzGame/TriviaBlitzGame";
+import AhorcadoGame from "../AhorcadoGame/AhorcadoGame";
 
 const games = [
+  {
+    id: "ahorcado",
+    label: "Ahorcado Tributario",
+    icon: <SpellcheckRoundedIcon sx={{ fontSize: 20 }} />,
+    description: "Adivina el término tributario antes de que ahorquen al muñequito",
+    color: "#EF4444",
+  },
   {
     id: "runner",
     label: "Tax Runner",
@@ -36,7 +45,7 @@ const games = [
 ];
 
 export default function GamesArcade() {
-  const [activeGame, setActiveGame] = useState("runner");
+  const [activeGame, setActiveGame] = useState("ahorcado");
 
   return (
     <Box
@@ -213,6 +222,7 @@ export default function GamesArcade() {
             exit={{ opacity: 0, scale: 0.98 }}
             transition={{ duration: 0.35 }}
           >
+            {activeGame === "ahorcado" && <AhorcadoGame />}
             {activeGame === "runner" && <TaxRunnerGame />}
             {activeGame === "catcher" && <DeductionCatcherGame />}
             {activeGame === "trivia" && <TriviaBlitzGame />}
