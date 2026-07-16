@@ -19,6 +19,7 @@ import SectionSkeleton from "./components/SectionSkeleton/SectionSkeleton";
 import ServicesHighlights from "./components/ServicesHighlights/ServicesHighlights";
 import TaxSavingsCalculator from "./components/TaxSavingsCalculator/TaxSavingsCalculator";
 import UvtBracketVisualizer from "./components/UvtBracketVisualizer/UvtBracketVisualizer";
+import VideoShowcase from "./components/VideoShowcase/VideoShowcase";
 
 // Below-the-fold, interaction-only sections carry no SEO value, so they are
 // code-split and loaded on the client — this keeps them out of the initial
@@ -47,6 +48,7 @@ export default function Home() {
     <>
       <Hero />
       <CredibilityBadges />
+      <VideoShowcase />
       <HomeVideoSection />
       <FinancialGrowth />
       <ServicesHighlights />
