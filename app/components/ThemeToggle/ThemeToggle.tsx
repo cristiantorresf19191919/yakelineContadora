@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { useEffect, useId, useRef, useState, useSyncExternalStore } from "react";
+import { useEffect, useId, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import { createPortal, flushSync } from "react-dom";
 import type { SvgIconComponent } from "@mui/icons-material";
 import SpaIcon from "@mui/icons-material/Spa";
@@ -44,35 +44,40 @@ const ICONS: Record<ThemeIconKey, SvgIconComponent> = {
 
 const SPRING = { type: "spring", stiffness: 320, damping: 26, mass: 0.6 } as const;
 
-/* Wheel geometry — two concentric rings (light moods outside, dark inside). */
-const WHEEL = 280;
-const CENTER = WHEEL / 2;
-const RING_LIGHT = 112;
-const RING_DARK = 60;
-const DOT = 40;
-
 interface Placed {
   id: ThemeId;
   x: number;
   y: number;
 }
 
-function placeRing(ids: ReadonlyArray<ThemeId>, radius: number): Placed[] {
+function placeRing(ids: ReadonlyArray<ThemeId>, radius: number, center: number): Placed[] {
   const n = ids.length;
   return ids.map((id, i) => {
     const angle = (-90 + (360 / n) * i) * (Math.PI / 180);
     return {
       id,
-      x: CENTER + radius * Math.cos(angle),
-      y: CENTER + radius * Math.sin(angle),
+      x: center + radius * Math.cos(angle),
+      y: center + radius * Math.sin(angle),
     };
   });
 }
 
-const PLACED: Placed[] = [
-  ...placeRing(LIGHT_THEMES, RING_LIGHT),
-  ...placeRing(DARK_THEMES, RING_DARK),
-];
+/* Geometry is derived from a responsive `size` so the two concentric rings
+   (light moods outside, dark inside) stay generously spaced and never overlap
+   the hub — on any viewport, from a phone to a wide desktop. */
+function computeGeometry(size: number) {
+  const center = size / 2;
+  const ringLight = size * 0.42;
+  const ringDark = size * 0.27;
+  const dot = Math.round(size * 0.122);
+  const hub = Math.round(size * 0.31);
+  const swatch = Math.round(size * 0.145);
+  const placed = [
+    ...placeRing(LIGHT_THEMES, ringLight, center),
+    ...placeRing(DARK_THEMES, ringDark, center),
+  ];
+  return { size, center, ringLight, ringDark, dot, hub, swatch, placed };
+}
 
 type StartViewTransition = (cb: () => void) => { ready: Promise<void> };
 
@@ -151,6 +156,17 @@ export function ThemeToggle({ label = "Cambiar tema" }: ThemeToggleProps) {
   const dialogRef = useRef<HTMLDivElement>(null);
   const reduceMotion = useReducedMotion();
   const dialogId = useId();
+
+  // Wheel scales with the viewport: big and airy on desktop, snug on phones.
+  const [wheelSize, setWheelSize] = useState(340);
+  useEffect(() => {
+    const measure = () =>
+      setWheelSize(Math.round(Math.min(340, Math.max(272, window.innerWidth - 48))));
+    measure();
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  }, []);
+  const geo = useMemo(() => computeGeometry(wheelSize), [wheelSize]);
 
   const active = THEMES[theme];
   const hubId = preview ?? theme;
@@ -282,48 +298,60 @@ export function ThemeToggle({ label = "Cambiar tema" }: ThemeToggleProps) {
 
                   <div
                     className={styles.wheel}
-                    style={{ width: WHEEL, height: WHEEL }}
+                    style={{ width: geo.size, height: geo.size }}
                     onMouseLeave={() => setPreview(null)}
                   >
                     <span
                       className={styles.ring}
                       aria-hidden
                       style={{
-                        width: RING_LIGHT * 2,
-                        height: RING_LIGHT * 2,
-                        left: CENTER - RING_LIGHT,
-                        top: CENTER - RING_LIGHT,
+                        width: geo.ringLight * 2,
+                        height: geo.ringLight * 2,
+                        left: geo.center - geo.ringLight,
+                        top: geo.center - geo.ringLight,
                       }}
                     />
                     <span
                       className={styles.ringDashed}
                       aria-hidden
                       style={{
-                        width: RING_DARK * 2,
-                        height: RING_DARK * 2,
-                        left: CENTER - RING_DARK,
-                        top: CENTER - RING_DARK,
+                        width: geo.ringDark * 2,
+                        height: geo.ringDark * 2,
+                        left: geo.center - geo.ringDark,
+                        top: geo.center - geo.ringDark,
                       }}
                     />
 
                     <motion.div
                       className={styles.hub}
-                      style={{ width: 104, height: 104, left: CENTER - 52, top: CENTER - 52 }}
+                      style={{
+                        width: geo.hub,
+                        height: geo.hub,
+                        left: geo.center - geo.hub / 2,
+                        top: geo.center - geo.hub / 2,
+                      }}
                       initial={reduceMotion ? false : { scale: 0.6, opacity: 0 }}
                       animate={{ scale: 1, opacity: 1 }}
                       transition={reduceMotion ? { duration: 0 } : { ...SPRING, delay: 0.05 }}
                     >
                       <span
+                        className={reduceMotion ? styles.hubHaloStatic : styles.hubHalo}
+                        aria-hidden
+                        style={{
+                          background: `conic-gradient(from 0deg, ${hub.accent}, var(--brand-accent), ${hub.accent})`,
+                        }}
+                      />
+                      <span
                         className={styles.hubGlow}
                         aria-hidden
                         style={{
-                          background: `radial-gradient(closest-side, ${hub.accent}33, transparent 80%)`,
+                          background: `radial-gradient(closest-side, ${hub.accent}44, transparent 78%)`,
                         }}
                       />
                       <span
                         className={styles.hubSwatch}
                         aria-hidden
-                        style={{ background: hub.swatchBg, color: hub.accent }}
+                        style={{ width: geo.swatch, height: geo.swatch, background: hub.swatchBg, color: hub.accent }}
                       >
                         <HubIcon />
                       </span>
@@ -331,12 +359,12 @@ export function ThemeToggle({ label = "Cambiar tema" }: ThemeToggleProps) {
                       <span className={styles.hubTagline}>{hub.tagline}</span>
                     </motion.div>
 
-                    {PLACED.map(({ id, x, y }, i) => {
+                    {geo.placed.map(({ id, x, y }, i) => {
                       const def = THEMES[id];
                       const Icon = ICONS[def.icon];
                       const isActive = theme === id;
-                      const dx = x - CENTER;
-                      const dy = y - CENTER;
+                      const dx = x - geo.center;
+                      const dy = y - geo.center;
                       return (
                         <motion.button
                           key={id}
@@ -345,7 +373,7 @@ export function ThemeToggle({ label = "Cambiar tema" }: ThemeToggleProps) {
                           aria-checked={isActive}
                           aria-label={`${def.name} — ${def.tagline}`}
                           title={def.name}
-                          className={styles.dot}
+                          className={`${styles.dot}${isActive ? ` ${styles.dotActive}` : ""}`}
                           onClick={(e) => pick(id, e.currentTarget)}
                           onMouseEnter={() => setPreview(id)}
                           onFocus={() => setPreview(id)}
@@ -358,18 +386,18 @@ export function ThemeToggle({ label = "Cambiar tema" }: ThemeToggleProps) {
                           transition={
                             reduceMotion ? { duration: 0 } : { ...SPRING, delay: 0.06 + i * 0.03 }
                           }
-                          whileHover={reduceMotion ? undefined : { scale: 1.18 }}
+                          whileHover={reduceMotion ? undefined : { scale: 1.16, y: -2 }}
                           whileTap={reduceMotion ? undefined : { scale: 0.92 }}
                           style={{
-                            width: DOT,
-                            height: DOT,
-                            left: x - DOT / 2,
-                            top: y - DOT / 2,
-                            background: def.swatchBg,
+                            width: geo.dot,
+                            height: geo.dot,
+                            left: x - geo.dot / 2,
+                            top: y - geo.dot / 2,
+                            background: `radial-gradient(circle at 30% 26%, rgba(255,255,255,0.34), transparent 58%), ${def.swatchBg}`,
                             color: def.accent,
                             boxShadow: isActive
-                              ? `0 0 0 2px ${def.accent}, 0 6px 16px -6px ${def.accent}`
-                              : `inset 0 0 0 1px var(--border)`,
+                              ? `0 0 0 2.5px ${def.accent}, 0 0 20px -1px ${def.accent}, 0 8px 20px -8px ${def.accent}`
+                              : `inset 0 1px 0 rgba(255,255,255,0.22), 0 4px 12px -6px rgba(0,0,0,0.4)`,
                           }}
                         >
                           <Icon />
