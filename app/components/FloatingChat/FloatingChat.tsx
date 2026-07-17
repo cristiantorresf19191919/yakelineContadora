@@ -553,8 +553,15 @@ export function FloatingChat() {
               InputProps={{
                 sx: {
                   backgroundColor: "white",
+                  // Color fijo: el drawer siempre es blanco, pero en temas
+                  // oscuros text.primary del theme es casi blanco e invisible
+                  color: "#1F2937",
                   borderRadius: "16px",
                   transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                  "& textarea::placeholder, & input::placeholder": {
+                    color: "#6B7280",
+                    opacity: 1,
+                  },
                   "& fieldset": {
                     borderColor: "rgba(139, 92, 246, 0.2)",
                     borderWidth: "1.5px",

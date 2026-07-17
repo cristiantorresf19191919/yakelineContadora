@@ -7,6 +7,11 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { createPortal } from "react-dom";
 
+const POPUP_STORAGE_KEY = 'popup-last-shown';
+const POPUP_COOLDOWN_MS = 7 * 24 * 60 * 60 * 1000; // no repetir durante 7 días
+const POPUP_DELAY_MS = 120000; // mostrar después de 2 minutos
+const POPUP_SCROLL_THRESHOLD = 85; // o al 85% del scroll
+
 export default function SmartPopup() {
   const [open, setOpen] = useState(false);
   const [hasSeen, setHasSeen] = useState(false);
@@ -14,34 +19,35 @@ export default function SmartPopup() {
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   useEffect(() => {
-    // Verificar si ya vieron el popup hoy
-    const popupSeen = localStorage.getItem('popup-seen');
-    const popupDate = localStorage.getItem('popup-date');
-    const today = new Date().toDateString();
-    
-    // Si ya lo vieron hoy, no mostrar
-    if (popupSeen === 'true' && popupDate === today) {
+    // No mostrar si ya se mostró dentro de la ventana de enfriamiento
+    const lastShown = Number(localStorage.getItem(POPUP_STORAGE_KEY) || 0);
+    if (lastShown && Date.now() - lastShown < POPUP_COOLDOWN_MS) {
       return;
     }
 
-    // Mostrar después de 30 segundos
+    // Registrar al mostrarse (no solo al cerrarse) para que recargar la
+    // página con el popup abierto no lo vuelva a disparar
+    const showPopup = () => {
+      localStorage.setItem(POPUP_STORAGE_KEY, Date.now().toString());
+      setOpen(true);
+    };
+
     const timer = setTimeout(() => {
       if (!hasSeen) {
-        setOpen(true);
+        showPopup();
       }
-    }, 30000);
+    }, POPUP_DELAY_MS);
 
-    // Mostrar al 70% del scroll
     const handleScroll = () => {
-      const scrollPercent = 
+      const scrollPercent =
         (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-      if (scrollPercent > 70 && !hasSeen && !open) {
-        setOpen(true);
+      if (scrollPercent > POPUP_SCROLL_THRESHOLD && !hasSeen && !open) {
+        showPopup();
       }
     };
 
     window.addEventListener('scroll', handleScroll);
-    
+
     return () => {
       clearTimeout(timer);
       window.removeEventListener('scroll', handleScroll);
@@ -51,9 +57,7 @@ export default function SmartPopup() {
   const handleClose = () => {
     setOpen(false);
     setHasSeen(true);
-    const today = new Date().toDateString();
-    localStorage.setItem('popup-seen', 'true');
-    localStorage.setItem('popup-date', today);
+    localStorage.setItem(POPUP_STORAGE_KEY, Date.now().toString());
   };
 
   const handleWhatsAppClick = () => {

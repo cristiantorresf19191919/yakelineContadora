@@ -78,8 +78,14 @@ export async function POST(request: NextRequest) {
 
       fullPrompt += `Usuario: ${message.trim()}\n\nAsistente:`;
 
-      // Usar solo el modelo disponible (gemini-2.0-flash)
-      const modelsToTry = ["gemini-2.0-flash"];
+      // Modelos con capa gratuita (gemini-2.0-flash fue apagado el 1 jun 2026).
+      // Se intentan en orden: si Google retira uno, caemos al siguiente.
+      const modelsToTry = [
+        "gemini-3.5-flash",
+        "gemini-3-flash-preview",
+        "gemini-2.5-flash",
+        "gemini-2.5-flash-lite",
+      ];
       let result;
       let aiResponse = "";
 
