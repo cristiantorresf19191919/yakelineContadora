@@ -13,6 +13,7 @@ import FinancialHealthQuiz from "./components/FinancialHealthQuiz/FinancialHealt
 import Footer from "./components/Footer/Footer";
 import Hero from "./components/Hero/Hero";
 import HomeVideoSection from "./components/HomeVideoSection/HomeVideoSection";
+import LedgerShowcase from "./components/LedgerShowcase/LedgerShowcase";
 import NewsletterSection from "./components/NewsletterSection/NewsletterSection";
 import ProcessSteps from "./components/ProcessSteps/ProcessSteps";
 import SectionSkeleton from "./components/SectionSkeleton/SectionSkeleton";
@@ -51,6 +52,7 @@ export default function Home() {
       <VideoShowcase />
       <HomeVideoSection />
       <FinancialGrowth />
+      <LedgerShowcase />
       <ServicesHighlights />
       <TaxSavingsCalculator />
       <UvtBracketVisualizer />
